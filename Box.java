@@ -10,6 +10,7 @@ public class Box extends Moveable {
      * Default constructor
      */
      //Valami változtatás
+     //Még valami változtatás
     public Box() {
     }
 
