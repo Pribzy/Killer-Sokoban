@@ -7,7 +7,7 @@ import java.util.*;
 public abstract class Field {
 
     //attribútumok
-    private Map<Direction,Field> neighbors = new HashMap<Direction,Field>(); //szeirntetek ez így jó lehet?
+    private Map<Direction,Field> neighbors; //szeirntetek ez így jó lehet?
     private Moveable moveable;
 
     //konstruktor

@@ -12,7 +12,7 @@ public class SteppableField extends Field {
 
    //függvények
     public void StepOn(Worker w, Direction d) {
-
+        
     }
 
     public void StepOn(Box b, Direction d) {
