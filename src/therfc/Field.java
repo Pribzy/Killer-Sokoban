@@ -14,8 +14,6 @@ public abstract class Field {
     public Field() {
     }
 
-
-
     //függvények
     public abstract void StepOn(Worker w, Direction d);
 
@@ -25,13 +23,11 @@ public abstract class Field {
 
     public void AddMoveable(Moveable m) {
         this.moveable=m;
-
     }
 
 
     public void RemoveMoveable(Moveable m) {
         this.moveable=null;
-
     }
 
 
@@ -40,9 +36,14 @@ public abstract class Field {
     }
 
 
-    public void GetPreviousField(Direction d) {
-        // TODO implement here
-
+    public Field GetPreviousField(Direction d) {
+        switch (d){
+            case Up: return neighbors.get(Direction.Down);
+            case Down: return neighbors.get(Direction.Up);
+            case Right: return neighbors.get(Direction.Left);
+            case Left: return neighbors.get(Direction.Right);
+            default: return null;
+        }
     }
 
 
