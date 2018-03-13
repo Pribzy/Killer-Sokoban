@@ -23,7 +23,6 @@ public class Worker extends Moveable {
         Field nextField=this.GetField().GetNextField(d);
         nextField.StepOn(this,d);
         this.GetWarehouse().CheckStuckedWorkers();
-
     }
 
     public void Push(Worker w, Direction d) {

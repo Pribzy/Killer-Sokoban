@@ -12,7 +12,6 @@ public class SteppableField extends Field {
 
    //függvények
     public void StepOn(Worker w, Direction d) {
-        // TODO implement here
 
     }
 
