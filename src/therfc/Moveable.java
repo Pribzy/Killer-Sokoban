@@ -40,4 +40,12 @@ public abstract class Moveable {
         this.field=f;
     }
 
+    public Field GetField(){
+        return field;
+    }
+
+    public Warehouse GetWarehouse(){
+        return wareHouse;
+    }
+
 }
