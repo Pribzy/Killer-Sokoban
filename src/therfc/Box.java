@@ -6,6 +6,7 @@ import java.util.*;
  */
 public class Box extends Moveable {
 
+    //ez egy box
 
     //attribútumok
     private Worker pushWorker;
