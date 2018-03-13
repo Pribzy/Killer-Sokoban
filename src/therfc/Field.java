@@ -7,7 +7,7 @@ import java.util.*;
 public abstract class Field {
 
     //attribútumok
-    private Field neighbors;
+    private Map<Direction,Field> neighbors = new HashMap<Direction,Field>(); //szeirntetek ez így jó lehet?
     private Moveable moveable;
 
     //konstruktor
@@ -24,20 +24,19 @@ public abstract class Field {
 
 
     public void AddMoveable(Moveable m) {
-        // TODO implement here
+        this.moveable=m;
 
     }
 
 
     public void RemoveMoveable(Moveable m) {
-        // TODO implement here
+        this.moveable=null;
 
     }
 
 
     public Field GetNextField(Direction d) {
-        // TODO implement here
-        return null;
+        return neighbors.get(d);
     }
 
 
@@ -48,14 +47,12 @@ public abstract class Field {
 
 
     public void SetNeighbor(Field f, Direction d) {
-        // TODO implement here
-
+        this.neighbors.put(d,f);
     }
 
 
     public Boolean GetMoveablePushedToWall() {
-        // TODO implement here
-        return null;
+        return moveable.CanPushToWall();
     }
 
 }
