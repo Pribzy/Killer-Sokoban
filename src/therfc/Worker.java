@@ -26,7 +26,6 @@ public class Worker extends Moveable {
         // TODO implement here
 
     }
-
     public Boolean GetPushed() {
         // TODO implement here
         return null;

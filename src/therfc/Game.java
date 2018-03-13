@@ -6,28 +6,23 @@ import java.util.*;
  */
 public class Game {
 
-    /**
-     * Default constructor
-     */
+
+    //attribútumok
+    private Warehouse level;
+
+    //konstruktor
     public Game() {
     }
 
-    /**
-     * 
-     */
-    private Warehouse level;
 
-    /**
-     * @return
-     */
+
+   //függvények
     public void StartGame() {
         // TODO implement here
 
     }
 
-    /**
-     * @return
-     */
+
     public void EndGame() {
         // TODO implement here
 

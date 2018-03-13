@@ -6,32 +6,16 @@ import java.util.*;
  */
 public abstract class Moveable {
 
-    /**
-     * Default constructor
-     */
+    //attribútumok
+    private Boolean pushedToWall;
+    private Field field;
+    private Warehouse wareHouse;
+
+    //konstruktor
     public Moveable() {
     }
 
-    /**
-     * 
-     */
-    private Boolean pushedToWall;
-
-    /**
-     * 
-     */
-    private Field field;
-
-    /**
-     * 
-     */
-    private Warehouse wareHouse;
-
-    /**
-     * @param w 
-     * @param d 
-     * @return
-     */
+   //függvények
     public abstract void Push(Worker w, Direction d);
 
     /**
