@@ -20,14 +20,12 @@ public class Warehouse {
 
     //függvények
     public int GetBoxNumber() {
-        // TODO implement here
-        return 0;
+       return boxNumber;
     }
 
 
     public int GetWorkerNumber() {
-        // TODO implement here
-        return 0;
+        return workerNumber;
     }
 
 
@@ -56,25 +54,25 @@ public class Warehouse {
 
 
     public void IncreaseBoxNumber() {
-        // TODO implement here
+       boxNumber++;
 
     }
 
 
     public void DecreaseBoxNumber() {
-        // TODO implement here
+        boxNumber--;
 
     }
 
 
     public void IncreaseWorkerNumber() {
-        // TODO implement here
+        workerNumber++;
 
     }
 
 
     public void DecreaseWorkerNumber() {
-        // TODO implement here
+        workerNumber--;
 
     }
 

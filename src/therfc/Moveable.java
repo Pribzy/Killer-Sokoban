@@ -18,40 +18,26 @@ public abstract class Moveable {
    //függvények
     public abstract void Push(Worker w, Direction d);
 
-    /**
-     * @return
-     */
+
     public abstract Boolean IsStuck();
 
-    /**
-     * @return
-     */
+
     public abstract Boolean CanPushToWall();
 
-    /**
-     * @return
-     */
+
     public void Die() {
         // TODO implement here
 
     }
 
-    /**
-     * @param wh 
-     * @return
-     */
-    public void SetWarehouse(Warehouse wh) {
-        // TODO implement here
 
+    public void SetWarehouse(Warehouse wh) {
+       this.wareHouse=wh;
     }
 
-    /**
-     * @param f 
-     * @return
-     */
-    public void SetField(Field f) {
-        // TODO implement here
 
+    public void SetField(Field f) {
+        this.field=f;
     }
 
 }

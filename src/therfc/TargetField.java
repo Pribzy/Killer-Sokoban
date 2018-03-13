@@ -27,8 +27,8 @@ public class TargetField extends Field {
     }
 
 
-    public void SetActive(Boolean b) {
-        // TODO implement here
+    public void SetActive(Boolean a) {
+        this.active=a;
 
     }
 

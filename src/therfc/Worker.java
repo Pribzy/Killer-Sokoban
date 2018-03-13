@@ -27,12 +27,11 @@ public class Worker extends Moveable {
 
     }
     public Boolean GetPushed() {
-        // TODO implement here
-        return null;
+       return pushed;
     }
 
-    public void SetPushed(Boolean pushed) {
-        // TODO implement here
+    public void SetPushed(Boolean p) {
+       this.pushed=p;
 
     }
 
@@ -52,8 +51,7 @@ public class Worker extends Moveable {
     }
 
     public Boolean CanPushToWall() {
-        // TODO implement here
-        return null;
+        return false;
     }
     
 }

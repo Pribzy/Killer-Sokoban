@@ -28,8 +28,8 @@ public class Hole extends Field {
     }
 
 
-    public void SetOpen(Boolean open) {
-        // TODO implement here
+    public void SetOpen(Boolean o) {
+        this.open=o;
 
     }
 

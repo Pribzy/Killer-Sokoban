@@ -28,7 +28,7 @@ public class Switch extends Field {
 
 
     public void SetHole(Hole h) {
-        // TODO implement here
+       this.hole=h;
 
     }
 

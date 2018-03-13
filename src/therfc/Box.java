@@ -22,8 +22,7 @@ public class Box extends Moveable {
 
 
     public Worker GetWorker() {
-        // TODO implement here
-        return null;
+        return pushWorker;
     }
 
 
@@ -34,14 +33,13 @@ public class Box extends Moveable {
 
 
     public void SetWorker(Worker w) {
-        // TODO implement here
+        this.pushWorker=w;
 
     }
 
 
     public Boolean CanPushToWall() {
-        // TODO implement here
-        return null;
+       return true;
     }
 
 
