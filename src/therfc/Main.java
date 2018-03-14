@@ -4,10 +4,11 @@ public class Main {
 
     public static void main(String[] args) {
         BoxPushedToSteppableField();
-
+        WorkerMoveToSteppableField();
     }
 
-    public static void BoxPushedToSteppableField() { //empty steppablefield
+    private static void BoxPushedToSteppableField() { //empty steppablefield
+        System.out.println("Worker Push Box To SteppableField:");
         System.out.println("\tinit:--------------------------------------");
         Warehouse wh = new Warehouse();
         Box b = new Box();
@@ -25,5 +26,22 @@ public class Main {
         b.SetWarehouse(wh);
         System.out.println("\t-------------------------------------------");
         w.Move(Direction.Right);
+        System.out.println();
+    }
+
+    private static void WorkerMoveToSteppableField(){
+        System.out.println("Worker Move To SteppableField:");
+        System.out.println("\tinit:--------------------------------------");
+        Warehouse wh = new Warehouse();
+        Worker w = new Worker();
+        SteppableField f1 = new SteppableField();
+        SteppableField f2 = new SteppableField();
+        f1.SetNeighbor(f2, Direction.Right);
+        f2.SetNeighbor(f1, Direction.Left);
+        f1.AddMoveable(w);
+        w.SetWarehouse(wh);
+        System.out.println("\t-------------------------------------------");
+        w.Move(Direction.Right);
+        System.out.println( );
     }
 }

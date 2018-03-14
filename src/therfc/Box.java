@@ -47,7 +47,10 @@ public class Box extends Moveable {
 
 
     public Boolean CanPushToWall() {
+        logger.Enter(this,"CanPushToWall","");
+        logger.Exit(this,"CanPushToWall","true");
        return true;
+
     }
 
 
