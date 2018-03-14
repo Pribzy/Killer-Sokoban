@@ -13,7 +13,6 @@ public abstract class Field {
     //konstruktor
     public Field() {
     }
-
     //függvények
     public abstract void StepOn(Worker w, Direction d);
 
