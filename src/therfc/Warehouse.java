@@ -36,7 +36,9 @@ public class Warehouse {
 
 
     public void CheckStuckedWorkers() {
-        // TODO implement here
+        logger.Enter(this,"CheckStuckedWorkers","");
+        //Todo: implement checkstuckedworkers
+        logger.Exit(this,"CheckStuckedWorkers","checked stucked workers");
 
     }
 

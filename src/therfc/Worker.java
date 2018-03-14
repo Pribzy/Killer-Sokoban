@@ -11,7 +11,8 @@ public class Worker extends Moveable {
     //attribútumok
     private int point;
     private Boolean pushed;
-    private Worker worker;
+
+    private Logger logger = new Logger();
 
     //konstruktor
     public Worker() {
@@ -19,10 +20,12 @@ public class Worker extends Moveable {
 
     //függvények
     public void Move(Direction d) {
+        logger.Enter(this,"Move","d");
         SetPushed(false);
         Field nextField=this.GetField().GetNextField(d);
         nextField.StepOn(this,d);
         this.GetWarehouse().CheckStuckedWorkers();
+        logger.Exit(this,"Move","worker moved to next field to d direction");
     }
 
     public void Push(Worker w, Direction d) {
