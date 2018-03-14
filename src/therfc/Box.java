@@ -29,11 +29,15 @@ public class Box extends Moveable {
 
 
     public Worker GetWorker() {
+        logger.Enter(this,"GetWorker","");
+        logger.Exit(this,"GetWorker","w");
         return pushWorker;
     }
 
 
     public Boolean IsStuck() {
+        logger.Enter(this,"IsStuck","");
+        logger.Exit(this,"IsStuck","stucked");
         // TODO implement here
         return null;
     }
