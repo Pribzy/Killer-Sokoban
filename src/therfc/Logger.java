@@ -36,6 +36,6 @@ public class Logger {
         System.out.println("-> ["+GetObjectName(o)+": "+fv_name+"("+parameters+")]");
     }
     public void Exit(Object o,String fv_name, String returnValue){
-        System.out.println("<- ["+GetObjectName(o)+": "+fv_name+" return "+returnValue+"]");
+        System.out.println("<- ["+GetObjectName(o)+": "+fv_name+" | return ("+returnValue+")]");
     }
 }

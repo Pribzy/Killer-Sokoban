@@ -11,7 +11,7 @@ public class Warehouse {
     private int workerNumber;
     private List<Field> fields;
     private List<Worker> players;
-
+    private Logger logger = new Logger();
     //konstruktor
     public Warehouse() {
     }
@@ -42,7 +42,9 @@ public class Warehouse {
 
 
     public void CheckStuckedBoxes() {
-        // TODO implement here
+        logger.Enter(this,"CheckStuckedBoxes","");
+        //Todo: implement checkstuckedboxes
+        logger.Exit(this,"CheckStuckedBoxes","checked stucked boxes");
 
     }
 

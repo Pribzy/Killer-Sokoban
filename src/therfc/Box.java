@@ -4,10 +4,10 @@ package therfc;
  * 
  */
 public class Box extends Moveable {
-    
+
     //attribútumok
     private Worker pushWorker;
-    Logger logger = new Logger();
+    private Logger logger = new Logger();
 
 
 
@@ -19,8 +19,11 @@ public class Box extends Moveable {
     //függvények
     public void Push(Worker w, Direction d) {
         logger.Enter(this,"Push","w,d");
-        //TODO: Push függvény implementálása
-        logger.Exit(this,"Push","void");
+        SetWorker(w);
+        Field nextField=this.GetField().GetNextField(d);
+        nextField.StepOn(this,d);
+        this.GetWarehouse().CheckStuckedBoxes();
+        logger.Exit(this,"Push","box pushed to next field");
 
     }
 
@@ -37,8 +40,9 @@ public class Box extends Moveable {
 
 
     public void SetWorker(Worker w) {
+        logger.Enter(this,"SetWorker","w");
         this.pushWorker=w;
-
+        logger.Exit(this,"SetWorker","pushWorker setted to 'w' ");
     }
 
 
