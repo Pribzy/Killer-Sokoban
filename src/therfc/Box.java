@@ -9,17 +9,20 @@ public class Box extends Moveable {
 
     //attribútumok
     private Worker pushWorker;
-
     Logger logger = new Logger();
+
+
 
    //konstruktor
     public Box() {
-        logger.Enter(this,"valami","valami");
+
     }
 
     //függvények
     public void Push(Worker w, Direction d) {
-        // TODO implement here
+        logger.Enter(this,"Push","w,d");
+        //TODO: Push függvény implementálása
+        logger.Exit(this,"Push","void");
 
     }
 

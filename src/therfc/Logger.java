@@ -1,33 +1,41 @@
 package therfc;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class Logger {
     //attribútumok
-    private HashMap<Object,String> objects = new HashMap<>();
+
+    private static final Map<String, String> objects;
+    static
+    {
+        objects = new HashMap<String, String>();
+        objects.put("therfc.Worker", "Worker");
+        objects.put("therfc.Box", "Box");
+        objects.put("therfc.SteppableField", "SteppableField");
+        objects.put("therfc.TargetField", "TargetField");
+        objects.put("therfc.Switch", "Switch");
+        objects.put("therfc.Hole", "Hole");
+        objects.put("therfc.Wall", "Wall");
+        objects.put("therfc.Warehouse", "Warehouse");
+        objects.put("therfc.Game", "Game");
+
+    }
 
     //konstruktor
     public Logger(){
-        objects.put(Wall.class,"Wall");
-        objects.put(Worker.class,"Worker");
-        objects.put(Box.class,"Box");
-        objects.put(SteppableField.class,"SteppableField");
-        objects.put(Switch.class,"Switch");
-        objects.put(TargetField.class,"TargetField");
-        objects.put(Hole.class,"Hole");
-        objects.put(Warehouse.class,"Warehouse");
-        objects.put(Game.class,"Game");
+
     }
 
     //függvények
-    public String GetObjectName(Object o){
-        return objects.get(o);
+    public String GetObjectName(Object o){ //visszaadja az obejtum nevét
+        return objects.get(o.getClass().getName());
     }
 
     public void Enter(Object o, String fv_name, String parameters){
-        System.out.println(GetObjectName(o));
+        System.out.println("-> ["+GetObjectName(o)+": "+fv_name+"("+parameters+")]");
     }
     public void Exit(Object o,String fv_name, String returnValue){
-
+        System.out.println("<- ["+GetObjectName(o)+": "+fv_name+" return "+returnValue+"]");
     }
 }
