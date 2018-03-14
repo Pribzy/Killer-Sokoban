@@ -64,4 +64,8 @@ public abstract class Field {
         return moveable.CanPushToWall();
     }
 
+    public Moveable GetMoveable(){
+        return moveable;
+    }
+
 }
