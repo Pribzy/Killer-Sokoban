@@ -4,9 +4,7 @@ package therfc;
  * 
  */
 public class Box extends Moveable {
-
-    //ez egy box pénisz a box vaginában énisz pénisz
-
+    
     //attribútumok
     private Worker pushWorker;
     Logger logger = new Logger();
