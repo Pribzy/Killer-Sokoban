@@ -1,5 +1,4 @@
 package therfc;
-import java.util.*;
 
 /**
  * 
@@ -11,8 +10,11 @@ public class Box extends Moveable {
     //attribútumok
     private Worker pushWorker;
 
+    Logger logger = new Logger();
+
    //konstruktor
     public Box() {
+        logger.Enter(this,"valami","valami");
     }
 
     //függvények
