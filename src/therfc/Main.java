@@ -59,7 +59,8 @@ public class Main {
             case "15":WorkerPushMoreBoxToSteppableField();Menu();
             case "16":WorkerPushBoxAndWorkerToSteppableField();Menu();
             case "17":WorkerPushBoxAndWorkerToWall();Menu();
-            default: Menu();
+            default:
+                System.out.println("\nNem található ilyen teszteset.\n");Menu();
         }
 
 
@@ -126,8 +127,9 @@ public class Main {
         f3.SetNeighbor(f2, Direction.Left);
         f1.AddMoveable(w);
         f2.AddMoveable(b);
-        w.SetWarehouse(wh);
+        wh.AddWorker(w);
         b.SetWarehouse(wh);
+        wh.AddField(f1); wh.AddField(f2); wh.AddField(f3);
         System.out.println("\t-------------------------------------------");
         w.Move(Direction.Right);
         System.out.println();
@@ -143,7 +145,8 @@ public class Main {
         f1.SetNeighbor(f2, Direction.Right);
         f2.SetNeighbor(f1, Direction.Left);
         f1.AddMoveable(w);
-        w.SetWarehouse(wh);
+        wh.AddWorker(w);
+        wh.AddField(f1); wh.AddField(f2);
         System.out.println("\t-------------------------------------------");
         w.Move(Direction.Right);
         System.out.println();
