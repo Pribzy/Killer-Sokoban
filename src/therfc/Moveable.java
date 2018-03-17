@@ -27,7 +27,9 @@ public abstract class Moveable {
 
 
     public void Die() {
-        // TODO implement here
+        logger.Enter(this,"Die","");
+        field.RemoveMoveable(this);
+        logger.Enter(this,"Die","this moveable died");
 
     }
 

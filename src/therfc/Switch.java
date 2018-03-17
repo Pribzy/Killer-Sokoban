@@ -17,7 +17,6 @@ public class Switch extends Field {
 
    //függvények
     public void StepOn(Worker w, Direction d) {
-        // TODO implement here
         logger.Enter(this, "StepOn", "w,d");
         Field previousField = this.GetPreviousField(d);
         if (this.GetMoveable() != null) {
@@ -35,7 +34,6 @@ public class Switch extends Field {
 
 
     public void StepOn(Box b, Direction d) {
-        // TODO implement here
         logger.Enter(this, "StepOn", "b,d");
         Field previousField = this.GetPreviousField(d);
         if (this.GetMoveable() != null) {

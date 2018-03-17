@@ -14,11 +14,10 @@ public class Wall extends Field {
 
     //függvények
     public void StepOn(Worker w, Direction d) {
-        // TODO implement here
         logger.Enter(this, "StepOn", "w,d");
         Field previousField = this.GetPreviousField(d);
-        if (w.GetPushed() == true) {
-            if (previousField.GetPreviousField(d).GetCanPushMoveable() == true) {
+        if (w.GetPushed()) {
+            if (previousField.GetPreviousField(d).GetMoveablePushedToWall()) {
                 w.Die();
             }
         }
@@ -26,8 +25,8 @@ public class Wall extends Field {
     }
 
     public void StepOn(Box b, Direction d) {
-        // TODO implement here
         logger.Enter(this, "StepOn", "b,d");
+        //itt semmit nem csinál
         logger.Exit(this, "StepOn", "b stepped on wall");
     }
 

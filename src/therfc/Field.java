@@ -56,15 +56,20 @@ public abstract class Field {
 
 
     public void SetNeighbor(Field f, Direction d) {
+        logger.Enter(this,"SetNeighbor","w,d");
         this.neighbors.put(d,f);
+        logger.Exit(this,"SetNeighbor","neighbor setted");
     }
 
 
     public Boolean GetMoveablePushedToWall() {
+        logger.Enter(this,"GetMoveablePushedToWall","");
+        logger.Exit(this,"GetMoveablePushedToWall","can push to wall");
         return moveable.CanPushToWall();
+
     }
 
-    public Moveable GetMoveable(){
+    public Moveable GetMoveable(){ //nem kell logger függvény neki
         return moveable;
     }
 
