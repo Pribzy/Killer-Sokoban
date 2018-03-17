@@ -31,6 +31,11 @@ public class Main {
         System.out.println("15. Worker Push More(3) Box To SteppableField");
         System.out.println("16. Worker Push Box And Worker To SteppableField");
         System.out.println("17. Worker Push Box And Worker To Wall");
+        System.out.println("18. End Game When All Worker Is Stucked");
+        System.out.println("19.  End Game When All Box Is Stucked");
+        System.out.println("20.  End Game When All Worker Is Dead");
+        System.out.println("21.  End Game When All Box Is Dead");
+        System.out.println("22.  End Game When All Box Pushed To TargetFields (All Box Reach TargetField)");
         System.out.println("=======================");
 
         System.out.print("Válasszon tesztesetet: ");
@@ -59,12 +64,32 @@ public class Main {
             case "15":WorkerPushMoreBoxToSteppableField();Menu();
             case "16":WorkerPushBoxAndWorkerToSteppableField();Menu();
             case "17":WorkerPushBoxAndWorkerToWall();Menu();
+            case "18":EndGameWhenAllWorkerIsStucked();Menu();
+            case "19":EndGameWhenAllBoxIsStucked();Menu();
+            case "20":EndGameWhenAllWorkerIsDead();Menu();
+            case "21":EndGameWhenAllBoxIsDead();Menu();
+            case "22":EndGameWhenAllBoxPushedToTargetFields();Menu();
             default:
                 System.out.println("\nNem található ilyen teszteset.\n");Menu();
         }
 
 
 
+    }
+
+    private static void EndGameWhenAllBoxPushedToTargetFields() {
+    }
+
+    private static void EndGameWhenAllBoxIsDead() {
+    }
+
+    private static void EndGameWhenAllWorkerIsDead() {
+    }
+
+    private static void EndGameWhenAllBoxIsStucked() {
+    }
+
+    private static void EndGameWhenAllWorkerIsStucked() {
     }
 
     //11.
