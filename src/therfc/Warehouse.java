@@ -38,10 +38,7 @@ public class Warehouse {
 
     public void CheckStuckedWorkers() {
         logger.Enter(this, "CheckStuckedWorkers", "");
-        Boolean stuck=false;
-        for(Worker i:players){
-            stuck= i.IsStuck();
-        }
+
 
         logger.Exit(this, "CheckStuckedWorkers", "checked stucked workers");
 
@@ -70,6 +67,10 @@ public class Warehouse {
 
     public void DecreaseBoxNumber() {
         boxNumber--;
+        if (boxNumber==0){
+            Game game = Game.getInstance();
+            game.EndGame();
+        }
 
     }
 
@@ -82,6 +83,10 @@ public class Warehouse {
 
     public void DecreaseWorkerNumber() {
         workerNumber--;
+        if (workerNumber==0){
+            Game game = Game.getInstance();
+            game.EndGame();
+        }
 
     }
 
