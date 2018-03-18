@@ -361,12 +361,7 @@ public class Main {
     }
 
     private static void WorkerMoveToTargetField() {
-        Warehouse wh = new Warehouse();
-        TargetField tf = new TargetField();
-        Hole h = new Hole();
-        wh.AddField(tf);
-        wh.AddField(h);
-        wh.CheckTargetFields();
+
     }
 
     // ez a 6.
