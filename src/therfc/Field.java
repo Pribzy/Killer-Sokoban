@@ -45,6 +45,8 @@ public abstract class Field {
 
 
     public Field GetPreviousField(Direction d) {
+        logger.Enter(this,"GetPreviousField","d");
+        logger.Exit(this,"GetPreviousField","previous field from the opposite of d direction");
         switch (d){
             case Up: return neighbors.get(Direction.Down);
             case Down: return neighbors.get(Direction.Up);
