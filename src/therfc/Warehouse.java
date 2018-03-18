@@ -40,8 +40,8 @@ public class Warehouse {
     public void CheckStuckedWorkers() {
         logger.Enter(this, "CheckStuckedWorkers", "");
         boolean allstucked = true;
-        for (int i = 0; i < players.size(); i++) {
-            if (!players.get(i).IsStuck()) {
+        for (Worker player : players) {
+            if (!player.IsStuck()) {
                 allstucked = false;
             }
         }
@@ -57,8 +57,8 @@ public class Warehouse {
     public void CheckStuckedBoxes() {
         logger.Enter(this, "CheckStuckedBoxes", "");
         boolean allstucked = true;
-        for (int i = 0; i < boxes.size(); i++) {
-            if (!boxes.get(i).IsStuck()) {
+        for (Box boxe : boxes) {
+            if (!boxe.IsStuck()) {
                 allstucked = false;
             }
         }
@@ -75,15 +75,15 @@ public class Warehouse {
         logger.Enter(this, "CheckTargetFields", "");
         boolean allInActive = true;
         List<TargetField> targetfields = new ArrayList<>();
-        for (int i = 0; i < fields.size(); i++) {
-            if (logger.GetObjectName(fields.get(i)) == "TargetField") {
-                targetfields.add((TargetField) fields.get(i));
+        for (Field field : fields) {
+            if (logger.GetObjectName(field).compareTo("TargetField")==0) {
+                targetfields.add((TargetField) field);
             }
         }
-        for (int i = 0; i < targetfields.size(); i++) {
-         if(targetfields.get(i).GetActive()){
-             allInActive=false;
-         }
+        for (TargetField targetfield : targetfields) {
+            if (targetfield.GetActive()) {
+                allInActive = false;
+            }
         }
         if(allInActive){
             Game game = Game.getInstance();
@@ -96,7 +96,7 @@ public class Warehouse {
     }
 
 
-    public void IncreaseBoxNumber() {
+    private void IncreaseBoxNumber() {
         logger.Enter(this, "IncreaseBoxNumber", "");
         boxNumber++;
         logger.Exit(this, "IncreaseBoxNumber", "Box number increased");
@@ -116,7 +116,7 @@ public class Warehouse {
     }
 
 
-    public void IncreaseWorkerNumber() {
+    private void IncreaseWorkerNumber() {
         logger.Enter(this, "IncreaseWorkerNumber", "");
         workerNumber++;
         logger.Exit(this, "IncreaseWorkerNumber", "Worker number increased");
