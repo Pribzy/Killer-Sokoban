@@ -54,7 +54,7 @@ public class Main {
             case "6":WorkerMoveToWall();Menu();
             case "7":WorkerPushBoxToSteppableField(); Menu();
             case "8":WorkerPushBoxToSwitch();Menu();
-            case "9":WorkerPushBoxToSteppableFieldTarget();Menu();
+            case "9":WorkerPushBoxToTargetField();Menu();
             case "10":WorkerPushBoxToWall();Menu();
             case "11":WorkerPushBoxToOpenHole();Menu();
             case "12":WorkerPushBoxToCloseHole();Menu();
@@ -322,7 +322,7 @@ public class Main {
     }
 
     //9.
-    private static void WorkerPushBoxToSteppableFieldTarget() {
+    private static void WorkerPushBoxToTargetField() {
         System.out.println("Worker Push Box To SteppableField:");
         System.out.println("\tinit:--------------------------------------");
         Warehouse wh = new Warehouse();
@@ -331,6 +331,7 @@ public class Main {
         SteppableField f1 = new SteppableField();
         SteppableField f2 = new SteppableField();
         TargetField f3 = new TargetField();
+        f3.SetActive(true);
         f1.SetNeighbor(f2, Direction.Right);
         f2.SetNeighbor(f3, Direction.Right);
         f2.SetNeighbor(f1, Direction.Left);

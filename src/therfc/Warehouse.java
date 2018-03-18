@@ -89,10 +89,11 @@ public class Warehouse {
         List<TargetField> targetfields = new ArrayList<>();
         for (int i = 0; i < fields.size(); i++) {
             if (logger.GetObjectName(fields.get(i)) == "TargetField") {
-
+                targetfields.add((TargetField) fields.get(i));
 
             }
         }
+
 
         logger.Exit(this, "CheckTargetFields", "Check if all TargetFields are inactive. If yes, calling EndGame()");
 

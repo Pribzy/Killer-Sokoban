@@ -54,14 +54,16 @@ public class TargetField extends Field {
             if (moveable != null) {
                 moveable.Push(worker,d);
                 if (this.GetMoveable() == null){
+                    this.SetActive(false);
                     worker.AddPoint();
                     b.Die();
-                    this.SetActive(false);
+
                 }
             } else {
+                this.SetActive(false);
                 worker.AddPoint();
                 b.Die();
-                this.SetActive(false);
+
             }
         }
         logger.Exit(this,"StepOn","Box stepped on targetField");
