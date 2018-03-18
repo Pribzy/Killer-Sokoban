@@ -85,7 +85,7 @@ public class Warehouse {
 
     public void CheckTargetFields() {
         logger.Enter(this, "CheckTargetFields", "");
-        boolean allActive = true;
+        boolean allInActive = true;
         List<TargetField> targetfields = new ArrayList<>();
         for (int i = 0; i < fields.size(); i++) {
             if (logger.GetObjectName(fields.get(i)) == "TargetField") {
@@ -93,11 +93,11 @@ public class Warehouse {
             }
         }
         for (int i = 0; i < targetfields.size(); i++) {
-         if(!targetfields.get(i).GetActive()){
-             allActive=false;
+         if(targetfields.get(i).GetActive()){
+             allInActive=false;
          }
         }
-        if(!allActive){
+        if(allInActive){
             Game game = Game.getInstance();
             game.EndGame();
         }
@@ -150,6 +150,7 @@ public class Warehouse {
     public void AddWorker(Worker w) {
         logger.Enter(this,"AddWorker","w");
         players.add(w);
+        workerNumber++;
         w.SetWarehouse(this);
         logger.Exit(this,"AddWorker","w added to warehouse");
     }
@@ -163,6 +164,7 @@ public class Warehouse {
     public void AddBox(Box b) {
         logger.Enter(this,"AddBox","b");
         boxes.add(b);
+        boxNumber++;
         b.SetWarehouse(this);
         logger.Exit(this,"AddBox","b added to warehouse");
     }

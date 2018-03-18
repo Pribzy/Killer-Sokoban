@@ -30,7 +30,7 @@ public class Game {
 
     public  void EndGame( ) {
         logger.Enter(this,"EndGame","");
-        level.GetMaxPointPlayer();
+       // level.GetMaxPointPlayer();
         logger.Exit(this,"EndGame","max point player");
     }
 

@@ -70,12 +70,16 @@ public class TargetField extends Field {
     }
 
     public boolean GetActive() {
-
-        return active;
+        logger.Enter(this,"GetActive","");
+        Boolean getActive= active;
+        logger.Exit(this,"GetActive",String.valueOf(getActive));
+        return getActive;
     }
 
     public void SetActive(Boolean a) {
+        logger.Enter(this,"SetActive","a");
         this.active=a;
+        logger.Exit(this,"SetActive","set "+String.valueOf(a));
 
     }
 
