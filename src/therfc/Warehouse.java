@@ -21,7 +21,7 @@ public class Warehouse {
 
 
     //függvények
-    
+
 
     public Worker GetMaxPointPlayer() {
         logger.Enter(this, "GetMaxPointPlayer", "");
@@ -138,7 +138,7 @@ public class Warehouse {
     public void AddWorker(Worker w) {
         logger.Enter(this,"AddWorker","w");
         players.add(w);
-        workerNumber++;
+        IncreaseWorkerNumber();
         w.SetWarehouse(this);
         logger.Exit(this,"AddWorker","w added to warehouse");
     }
@@ -152,7 +152,7 @@ public class Warehouse {
     public void AddBox(Box b) {
         logger.Enter(this,"AddBox","b");
         boxes.add(b);
-        boxNumber++;
+        IncreaseBoxNumber();
         b.SetWarehouse(this);
         logger.Exit(this,"AddBox","b added to warehouse");
     }
