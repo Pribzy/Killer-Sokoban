@@ -78,15 +78,19 @@ public class Main {
     }
 
     private static void EndGameWhenAllBoxPushedToTargetFields() {
+
     }
 
     private static void EndGameWhenAllBoxIsDead() {
+
     }
 
     private static void EndGameWhenAllWorkerIsDead() {
+
     }
 
     private static void EndGameWhenAllBoxIsStucked() {
+
     }
 
     private static void EndGameWhenAllWorkerIsStucked() {
@@ -357,6 +361,7 @@ public class Main {
     }
 
     private static void WorkerMoveToTargetField() {
+
     }
 
     // ez a 6.
