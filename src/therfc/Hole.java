@@ -9,6 +9,7 @@ public class Hole extends Field {
 
     //attribútumok
     private Boolean open;
+    private Logger logger = new Logger();
 
     //konstruktor
     public Hole() {
@@ -17,14 +18,47 @@ public class Hole extends Field {
 
    //függvények
     public void StepOn(Box b, Direction d) {
-        // TODO implement here
-
+        logger.Enter(this,"StepOn","b,d");
+        if (!open) {
+            Moveable moveable = this.GetMoveable();
+            Field previousField = this.GetPreviousField(d);
+            if (moveable != null){
+                Worker w = b.GetWorker();
+                moveable.Push(w,d);
+                if (this.GetMoveable() == null){
+                    previousField.RemoveMoveable(b);
+                    this.AddMoveable(b);
+                }
+            } else {
+                previousField.RemoveMoveable(b);
+                this.AddMoveable(b);
+            }
+        } else {
+            b.Die();
+        }
+        logger.Exit(this,"StepOn","b stepped on wall");
     }
 
 
     public void StepOn(Worker w, Direction d) {
-        // TODO implement here
-
+        logger.Enter(this,"StepOn","w,d");
+        if (!open) {
+            Moveable moveable = this.GetMoveable();
+            Field previousField = this.GetPreviousField(d);
+            if (moveable != null){
+                moveable.Push(w,d);
+                if (this.GetMoveable() == null){
+                    previousField.RemoveMoveable(w);
+                    this.AddMoveable(w);
+                }
+            } else {
+                previousField.RemoveMoveable(w);
+                this.AddMoveable(w);
+            }
+        } else {
+            w.Die();
+        }
+        logger.Exit(this,"StepOn","w stepped on wall");
     }
 
 
