@@ -85,13 +85,21 @@ public class Warehouse {
 
     public void CheckTargetFields() {
         logger.Enter(this, "CheckTargetFields", "");
-        boolean allinactive = true;
+        boolean allActive = true;
         List<TargetField> targetfields = new ArrayList<>();
         for (int i = 0; i < fields.size(); i++) {
             if (logger.GetObjectName(fields.get(i)) == "TargetField") {
                 targetfields.add((TargetField) fields.get(i));
-
             }
+        }
+        for (int i = 0; i < targetfields.size(); i++) {
+         if(!targetfields.get(i).GetActive()){
+             allActive=false;
+         }
+        }
+        if(!allActive){
+            Game game = Game.getInstance();
+            game.EndGame();
         }
 
 
