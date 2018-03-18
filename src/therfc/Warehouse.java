@@ -12,6 +12,7 @@ public class Warehouse {
     private int workerNumber;
     private List<Field> fields = new ArrayList<>();
     private List<Worker> players= new ArrayList<>();
+    private List<Box> boxes= new ArrayList<>();
     private Logger logger = new Logger();
 
     //konstruktor
@@ -50,24 +51,50 @@ public class Warehouse {
 
     public void CheckStuckedWorkers() {
         logger.Enter(this, "CheckStuckedWorkers", "");
-
-
-        logger.Exit(this, "CheckStuckedWorkers", "checked stucked workers");
+        boolean allstucked = true;
+        for (int i = 0; i < players.size(); i++) {
+            if (!players.get(i).IsStuck()) {
+                allstucked = false;
+            }
+        }
+        if (allstucked) {
+            Game game = Game.getInstance();
+            game.EndGame();
+        }
+        logger.Exit(this, "CheckStuckedWorkers", "Check if all workers are stucked. If yes, calling EndGame()");
 
     }
 
 
     public void CheckStuckedBoxes() {
         logger.Enter(this, "CheckStuckedBoxes", "");
-
-        logger.Exit(this, "CheckStuckedBoxes", "checked stucked boxes");
+        boolean allstucked = true;
+        for (int i = 0; i < boxes.size(); i++) {
+            if (!boxes.get(i).IsStuck()) {
+                allstucked = false;
+            }
+        }
+        if (allstucked) {
+            Game game = Game.getInstance();
+            game.EndGame();
+        }
+        logger.Exit(this, "CheckStuckedBoxes", "Check if all boxes are stucked. If yes, calling EndGame()");
 
     }
 
 
     public void CheckTargetFields() {
+        logger.Enter(this, "CheckTargetFields", "");
+        boolean allinactive = true;
+        List<TargetField> targetfields = new ArrayList<>();
+        for (int i = 0; i < fields.size(); i++) {
+            if (logger.GetObjectName(fields.get(i)) == "TargetField") {
 
 
+            }
+        }
+
+        logger.Exit(this, "CheckTargetFields", "Check if all TargetFields are inactive. If yes, calling EndGame()");
 
     }
 
@@ -122,6 +149,12 @@ public class Warehouse {
         logger.Enter(this,"AddField","f");
         fields.add(f);
         logger.Exit(this,"AddField","f added to warehouse");
+    }
+
+    public void AddBox(Box b) {
+        logger.Enter(this,"AddBox","b");
+        boxes.add(b);
+        logger.Exit(this,"AddBox","b added to warehouse");
     }
 
 }
