@@ -62,6 +62,7 @@ public class Worker extends Moveable {
     public void AddPoint() {
         logger.Enter(this,"AddPoint","");
         point++;
+        this.GetWarehouse().CheckTargetFields();
         logger.Exit(this,"AddPoint","1 point added");
 
     }
