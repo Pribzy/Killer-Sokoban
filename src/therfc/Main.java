@@ -331,6 +331,8 @@ public class Main {
         SteppableField f1 = new SteppableField();
         SteppableField f2 = new SteppableField();
         TargetField f3 = new TargetField();
+        TargetField f4 = new TargetField();
+        f4.SetActive(true);
         f3.SetActive(true);
         f1.SetNeighbor(f2, Direction.Right);
         f2.SetNeighbor(f3, Direction.Right);
@@ -340,7 +342,7 @@ public class Main {
         f2.AddMoveable(b);
         wh.AddWorker(w);
         wh.AddBox(b);
-        wh.AddField(f1); wh.AddField(f2); wh.AddField(f3);
+        wh.AddField(f1); wh.AddField(f2); wh.AddField(f3); wh.AddField(f4);
         System.out.println("\t-------------------------------------------");
         w.Move(Direction.Right);
         System.out.println();
@@ -372,11 +374,42 @@ public class Main {
         System.out.println();
     }
 
-
+    //4.
     private static void WorkerMoveToCloseHole() {
+        System.out.println("Worker Move To Wall:");
+        System.out.println("\tinit:--------------------------------------");
+        Warehouse wh = new Warehouse();
+        Worker w = new Worker();
+        SteppableField f1 = new SteppableField();
+        Hole f2 = new Hole();
+        f2.SetOpen(false);
+        f1.SetNeighbor(f2, Direction.Right);
+        f2.SetNeighbor(f1, Direction.Left);
+        f1.AddMoveable(w);
+        wh.AddWorker(w);
+        wh.AddField(f1); wh.AddField(f2);
+        System.out.println("\t-------------------------------------------");
+        w.Move(Direction.Right);
+        System.out.println();
     }
 
+    //5.
     private static void WorkerMoveToTargetField() {
+        System.out.println("Worker Move To Wall:");
+        System.out.println("\tinit:--------------------------------------");
+        Warehouse wh = new Warehouse();
+        Worker w = new Worker();
+        SteppableField f1 = new SteppableField();
+        Hole f2 = new Hole();
+        f2.SetOpen(false);
+        f1.SetNeighbor(f2, Direction.Right);
+        f2.SetNeighbor(f1, Direction.Left);
+        f1.AddMoveable(w);
+        wh.AddWorker(w);
+        wh.AddField(f1); wh.AddField(f2);
+        System.out.println("\t-------------------------------------------");
+        w.Move(Direction.Right);
+        System.out.println();
 
     }
 
@@ -398,10 +431,46 @@ public class Main {
         System.out.println();
     }
 
+    //3.
     private static void WorkerMoveToOpenHole() {
+        System.out.println("Worker Move To Wall:");
+        System.out.println("\tinit:--------------------------------------");
+        Warehouse wh = new Warehouse();
+        Worker w = new Worker();
+        SteppableField f1 = new SteppableField();
+        Hole f2 = new Hole();
+        f2.SetOpen(true);
+        f1.SetNeighbor(f2, Direction.Right);
+        f2.SetNeighbor(f1, Direction.Left);
+        f1.AddMoveable(w);
+        wh.AddWorker(w);
+        wh.AddField(f1); wh.AddField(f2);
+        System.out.println("\t-------------------------------------------");
+        w.Move(Direction.Right);
+        System.out.println();
     }
 
+    //2.
     private static void WorkerMoveToSwitch() {
+        System.out.println("Worker Move To Wall:");
+        System.out.println("\tinit:--------------------------------------");
+        Warehouse wh = new Warehouse();
+        Worker w = new Worker();
+        SteppableField f1 = new SteppableField();
+        Switch f2 = new Switch();
+        Hole f3 = new Hole();
+        f2.SetHole(f3);
+
+        f1.SetNeighbor(f2, Direction.Right);
+        f2.SetNeighbor(f3, Direction.Right);
+        f2.SetNeighbor(f1, Direction.Left);
+        f3.SetNeighbor(f2, Direction.Left);
+        f1.AddMoveable(w);
+        wh.AddWorker(w);
+        wh.AddField(f1); wh.AddField(f2); wh.AddField(f3);
+        System.out.println("\t-------------------------------------------");
+        w.Move(Direction.Right);
+        System.out.println();
     }
 
     // ez a 7.
