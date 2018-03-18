@@ -21,19 +21,7 @@ public class Warehouse {
 
 
     //függvények
-    public int GetBoxNumber() {
-        logger.Enter(this, "GetBoxNumber", "");
-        logger.Exit(this, "GetBoxNumber", "number of boxes in the Warehouse");
-        return boxNumber;
-    }
-
-
-    public int GetWorkerNumber() {
-        logger.Enter(this, "GetWorkerNumber", "");
-        logger.Exit(this, "GetWorkerNumber", "number of living workers in the Warehouse");
-        return workerNumber;
-    }
-
+    
 
     public Worker GetMaxPointPlayer() {
         logger.Enter(this, "GetMaxPointPlayer", "");
