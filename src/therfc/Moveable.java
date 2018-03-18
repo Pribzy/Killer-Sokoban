@@ -26,12 +26,7 @@ public abstract class Moveable {
     public abstract Boolean CanPushToWall();
 
 
-    public void Die() {
-        logger.Enter(this,"Die","");
-        field.RemoveMoveable(this);
-        logger.Enter(this,"Die","this moveable died");
-
-    }
+    public abstract void Die();
 
 
     public void SetWarehouse(Warehouse wh) {
@@ -48,6 +43,7 @@ public abstract class Moveable {
     }
 
     public Field GetField(){
+
         return field;
     }
 

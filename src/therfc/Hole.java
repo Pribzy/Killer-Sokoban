@@ -21,7 +21,7 @@ public class Hole extends Field {
         logger.Enter(this,"StepOn","b,d");
         if (!open) {
             Moveable moveable = this.GetMoveable();
-            Field previousField = this.GetPreviousField(d);
+            Field previousField =  neighbors.get(d.OppositeDirection());
             if (moveable != null){
                 Worker w = b.GetWorker();
                 moveable.Push(w,d);
@@ -44,7 +44,7 @@ public class Hole extends Field {
         logger.Enter(this,"StepOn","w,d");
         if (!open) {
             Moveable moveable = this.GetMoveable();
-            Field previousField = this.GetPreviousField(d);
+            Field previousField =  neighbors.get(d.OppositeDirection());
             if (moveable != null){
                 moveable.Push(w,d);
                 if (this.GetMoveable() == null){

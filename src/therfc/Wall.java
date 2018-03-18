@@ -15,9 +15,11 @@ public class Wall extends Field {
     //függvények
     public void StepOn(Worker w, Direction d) {
         logger.Enter(this, "StepOn", "w,d");
-        Field previousField = this.GetPreviousField(d);
-        if (w.GetPushed()) {
-            if (previousField.GetPreviousField(d).GetMoveablePushedToWall()) {
+        Boolean pushed = w.GetPushed();
+        if (pushed) {
+            Field previousField =  neighbors.get(d.OppositeDirection()).GetPreviousField(d);
+            Boolean canPushToWall =previousField.GetMoveablePushedToWall();
+            if (canPushToWall) {
                 w.Die();
             }
         }

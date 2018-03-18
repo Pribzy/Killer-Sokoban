@@ -38,8 +38,7 @@ public class Box extends Moveable {
     public Boolean IsStuck() {
         logger.Enter(this,"IsStuck","");
         logger.Exit(this,"IsStuck","stucked");
-        // TODO implement here
-        return null;
+        return false;
     }
 
 
@@ -54,6 +53,13 @@ public class Box extends Moveable {
         logger.Enter(this,"CanPushToWall","");
         logger.Exit(this,"CanPushToWall","true");
        return true;
+
+    }
+    public void Die() {
+        logger.Enter(this,"Die","");
+        this.GetField().RemoveMoveable(this);
+        this.GetWarehouse().DecreaseBoxNumber();
+        logger.Enter(this,"Die","this moveable died");
 
     }
 

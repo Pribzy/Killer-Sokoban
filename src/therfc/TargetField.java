@@ -19,7 +19,7 @@ public class TargetField extends Field {
     public void StepOn(Worker w, Direction d) {
         logger.Enter(this,"StepOn","w,d");
         Moveable moveable = this.GetMoveable();
-        Field previousField = this.GetPreviousField(d);
+        Field previousField = neighbors.get(d.OppositeDirection());
         if (moveable != null) {
             moveable.Push(w,d);
             if (this.GetMoveable() == null){
@@ -38,7 +38,7 @@ public class TargetField extends Field {
         logger.Enter(this,"StepOn","b,d");
         Worker worker = b.GetWorker();
         Moveable moveable = this.GetMoveable();
-        Field previousField = this.GetPreviousField(d);
+        Field previousField = neighbors.get(d.OppositeDirection());
         if (!active){
             if (moveable != null) {
                 moveable.Push(worker,d);
@@ -68,6 +68,7 @@ public class TargetField extends Field {
     }
 
     public boolean GetActive() {
+
         return active;
     }
 

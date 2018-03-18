@@ -7,8 +7,8 @@ import java.util.*;
 public abstract class Field {
 
     //attribútumok
-    private Map<Direction,Field> neighbors = new HashMap<>(); //szeirntetek ez így jó lehet?
-    private Moveable moveable;
+    protected Map<Direction,Field> neighbors = new HashMap<>(); //szeirntetek ez így jó lehet?
+    protected Moveable moveable;
     private Logger logger = new Logger();
 
     //konstruktor
@@ -66,12 +66,15 @@ public abstract class Field {
 
     public Boolean GetMoveablePushedToWall() {
         logger.Enter(this,"GetMoveablePushedToWall","");
-        logger.Exit(this,"GetMoveablePushedToWall","can push to wall");
-        return moveable.CanPushToWall();
+
+        Boolean canPushedTowall= moveable.CanPushToWall();
+        logger.Exit(this,"GetMoveablePushedToWall",String.valueOf(canPushedTowall));
+        return canPushedTowall;
 
     }
 
     public Moveable GetMoveable(){ //nem kell logger függvény neki
+
         return moveable;
     }
 

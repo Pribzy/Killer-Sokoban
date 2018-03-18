@@ -10,6 +10,7 @@ public class Game {
     //attribútumok
     private Warehouse level;
     private static Game game = new Game( );
+    private Logger logger = new Logger();
 
     //konstruktor
     private Game() { }
@@ -28,7 +29,9 @@ public class Game {
 
 
     public  void EndGame( ) {
-        System.out.println("demoMethod for singleton");
+        logger.Enter(this,"EndGame","");
+        level.GetMaxPointPlayer();
+        logger.Exit(this,"EndGame","max point player");
     }
 
 

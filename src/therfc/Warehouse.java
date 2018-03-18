@@ -154,7 +154,9 @@ public class Warehouse {
     public void AddBox(Box b) {
         logger.Enter(this,"AddBox","b");
         boxes.add(b);
+        b.SetWarehouse(this);
         logger.Exit(this,"AddBox","b added to warehouse");
     }
+
 
 }

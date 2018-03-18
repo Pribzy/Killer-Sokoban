@@ -31,11 +31,10 @@ public class Main {
         System.out.println("15. Worker Push More(3) Box To SteppableField");
         System.out.println("16. Worker Push Box And Worker To SteppableField");
         System.out.println("17. Worker Push Box And Worker To Wall");
-        System.out.println("18. End Game When All Worker Is Stucked");
-        System.out.println("19.  End Game When All Box Is Stucked");
-        System.out.println("20.  End Game When All Worker Is Dead");
-        System.out.println("21.  End Game When All Box Is Dead");
-        System.out.println("22.  End Game When All Box Pushed To TargetFields (All Box Reach TargetField)");
+        ;
+        System.out.println("18.  End Game When All Worker Is Dead");
+        System.out.println("19.  End Game When All Box Is Dead");
+        System.out.println("20.  End Game When All Box Pushed To TargetFields (All Box Reach TargetField)");
         System.out.println("=======================");
 
         System.out.print("Válasszon tesztesetet: ");
@@ -64,11 +63,9 @@ public class Main {
             case "15":WorkerPushMoreBoxToSteppableField();Menu();
             case "16":WorkerPushBoxAndWorkerToSteppableField();Menu();
             case "17":WorkerPushBoxAndWorkerToWall();Menu();
-            case "18":EndGameWhenAllWorkerIsStucked();Menu();
-            case "19":EndGameWhenAllBoxIsStucked();Menu();
-            case "20":EndGameWhenAllWorkerIsDead();Menu();
-            case "21":EndGameWhenAllBoxIsDead();Menu();
-            case "22":EndGameWhenAllBoxPushedToTargetFields();Menu();
+            case "18":EndGameWhenAllWorkerIsDead();Menu();
+            case "19":EndGameWhenAllBoxIsDead();Menu();
+            case "20":EndGameWhenAllBoxPushedToTargetFields();Menu();
             default:
                 System.out.println("\nNem található ilyen teszteset.\n");Menu();
         }
@@ -89,12 +86,7 @@ public class Main {
 
     }
 
-    private static void EndGameWhenAllBoxIsStucked() {
 
-    }
-
-    private static void EndGameWhenAllWorkerIsStucked() {
-    }
 
     //11.
     private static void WorkerPushBoxToOpenHole() {
@@ -114,7 +106,7 @@ public class Main {
         f1.AddMoveable(w);
         f2.AddMoveable(b);
         wh.AddWorker(w);
-        b.SetWarehouse(wh);
+        wh.AddBox(b);
         wh.AddField(f1); wh.AddField(f2); wh.AddField(f3);
         System.out.println("\t-------------------------------------------");
         w.Move(Direction.Right);
@@ -139,7 +131,7 @@ public class Main {
         f1.AddMoveable(w);
         f2.AddMoveable(b);
         wh.AddWorker(w);
-        b.SetWarehouse(wh);
+        wh.AddBox(b);
         wh.AddField(f1); wh.AddField(f2); wh.AddField(f3);
         System.out.println("\t-------------------------------------------");
         w.Move(Direction.Right);
@@ -226,9 +218,9 @@ public class Main {
         f3.AddMoveable(b2);
         f4.AddMoveable(b3);
         wh.AddWorker(w);
-        b1.SetWarehouse(wh);
-        b2.SetWarehouse(wh);
-        b3.SetWarehouse(wh);
+        wh.AddBox(b1);
+        wh.AddBox(b2);
+        wh.AddBox(b3);
         wh.AddField(f1); wh.AddField(f2); wh.AddField(f3); wh.AddField(f4); wh.AddField(f5);
         System.out.println("\t-------------------------------------------");
         w.Move(Direction.Right);
@@ -263,7 +255,7 @@ public class Main {
 
         wh.AddWorker(w1);
         wh.AddWorker(w2);
-        b.SetWarehouse(wh);
+        wh.AddBox(b);
         wh.AddField(f1); wh.AddField(f2); wh.AddField(f3); wh.AddField(f4);
         System.out.println("\t-------------------------------------------");
         w1.Move(Direction.Right);
@@ -298,7 +290,7 @@ public class Main {
 
         wh.AddWorker(w1);
         wh.AddWorker(w2);
-        b.SetWarehouse(wh);
+        wh.AddBox(b);
         wh.AddField(f1); wh.AddField(f2); wh.AddField(f3); wh.AddField(f4);
         System.out.println("\t-------------------------------------------");
         w1.Move(Direction.Right);
@@ -322,7 +314,7 @@ public class Main {
         f1.AddMoveable(w);
         f2.AddMoveable(b);
         wh.AddWorker(w);
-        b.SetWarehouse(wh);
+        wh.AddBox(b);
         wh.AddField(f1); wh.AddField(f2); wh.AddField(f3);
         System.out.println("\t-------------------------------------------");
         w.Move(Direction.Right);
@@ -346,7 +338,7 @@ public class Main {
         f1.AddMoveable(w);
         f2.AddMoveable(b);
         wh.AddWorker(w);
-        b.SetWarehouse(wh);
+        wh.AddBox(b);
         wh.AddField(f1); wh.AddField(f2); wh.AddField(f3);
         System.out.println("\t-------------------------------------------");
         w.Move(Direction.Right);
@@ -405,7 +397,7 @@ public class Main {
         f1.AddMoveable(w);
         f2.AddMoveable(b);
         wh.AddWorker(w);
-        b.SetWarehouse(wh);
+        wh.AddBox(b);
         wh.AddField(f1); wh.AddField(f2); wh.AddField(f3);
         System.out.println("\t-------------------------------------------");
         w.Move(Direction.Right);
