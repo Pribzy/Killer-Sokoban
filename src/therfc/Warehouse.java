@@ -21,17 +21,23 @@ public class Warehouse {
 
     //függvények
     public int GetBoxNumber() {
+        logger.Enter(this, "GetBoxNumber", "");
+        logger.Exit(this, "GetBoxNumber", "number of boxes in the Warehouse");
         return boxNumber;
     }
 
 
     public int GetWorkerNumber() {
+        logger.Enter(this, "GetWorkerNumber", "");
+        logger.Exit(this, "GetWorkerNumber", "number of living workers in the Warehouse");
         return workerNumber;
     }
 
 
     public Worker GetMaxPointPlayer() {
-        // TODO implement here
+
+        for (Worker worker : players)
+            if (worker.)
         return null;
     }
 
@@ -61,33 +67,41 @@ public class Warehouse {
 
 
     public void IncreaseBoxNumber() {
+        logger.Enter(this, "IncreaseBoxNumber", "");
         boxNumber++;
+        logger.Exit(this, "IncreaseBoxNumber", "Box number increased");
 
     }
 
 
     public void DecreaseBoxNumber() {
+        logger.Enter(this, "DecreaseBoxNumber", "");
         boxNumber--;
         if (boxNumber==0){
             Game game = Game.getInstance();
             game.EndGame();
         }
+        logger.Exit(this, "DecreaseBoxNumber", "Box number decreased. If 0, calling EndGame()");
 
     }
 
 
     public void IncreaseWorkerNumber() {
+        logger.Enter(this, "IncreaseWorkerNumber", "");
         workerNumber++;
+        logger.Exit(this, "IncreaseWorkerNumber", "Worker number increased");
 
     }
 
 
     public void DecreaseWorkerNumber() {
+        logger.Enter(this, "DecreaseWorkerNumber", "");
         workerNumber--;
         if (workerNumber==0){
             Game game = Game.getInstance();
             game.EndGame();
         }
+        logger.Exit(this, "DecreaseWorkerNumber", "Worker number decreased. If 0, calling EndGame()");
 
     }
 

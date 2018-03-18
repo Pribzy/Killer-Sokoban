@@ -19,6 +19,14 @@ public class Worker extends Moveable {
     }
 
     //függvények
+
+    public int GetPoints() {
+        logger.Enter(this,"GetPoints","");
+        logger.Exit(this,"GetPoints","return points of the player");
+        return point;
+
+    }
+
     public void Move(Direction d) {
         logger.Enter(this,"Move","d");
         SetPushed(false);
