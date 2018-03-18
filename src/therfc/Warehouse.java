@@ -35,10 +35,16 @@ public class Warehouse {
 
 
     public Worker GetMaxPointPlayer() {
+        logger.Enter(this, "GetMaxPointPlayer", "");
 
-        for (Worker worker : players)
-            if (worker.)
-        return null;
+        Worker max = players.get(0);
+
+        for (int i = 1; i < players.size(); i++){
+            if (players.get(i).GetPoints() > max.GetPoints())
+                max = players.get(i);
+            }
+        logger.Exit(this, "GetMaxPointPlayer", "returning the player with the highest points");
+        return max;
     }
 
 
