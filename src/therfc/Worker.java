@@ -17,6 +17,9 @@ public class Worker extends Moveable {
     //konstruktor
     public Worker() {
     }
+    public Worker(int p) {
+        this.point=p;
+    }
 
     //függvények
 
@@ -85,7 +88,7 @@ public class Worker extends Moveable {
         logger.Enter(this,"Die","");
         this.GetField().RemoveMoveable(this);
         this.GetWarehouse().DecreaseWorkerNumber();
-        logger.Enter(this,"Die","this moveable died");
+        logger.Exit(this,"Die","this moveable died");
 
     }
     

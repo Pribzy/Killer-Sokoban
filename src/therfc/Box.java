@@ -59,7 +59,7 @@ public class Box extends Moveable {
         logger.Enter(this,"Die","");
         this.GetField().RemoveMoveable(this);
         this.GetWarehouse().DecreaseBoxNumber();
-        logger.Enter(this,"Die","this moveable died");
+        logger.Exit(this,"Die","this moveable died");
 
     }
 

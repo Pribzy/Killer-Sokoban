@@ -30,8 +30,14 @@ public class Game {
 
     public  void EndGame( ) {
         logger.Enter(this,"EndGame","");
-       // level.GetMaxPointPlayer();
+        Worker yourWinner=level.GetMaxPointPlayer();
+        System.out.println("Your Winner! Your points: "+yourWinner.GetPoints());
+
         logger.Exit(this,"EndGame","max point player");
+    }
+
+    public void SetWarehouse(Warehouse wh){
+        this.level=wh;
     }
 
 
