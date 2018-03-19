@@ -38,7 +38,7 @@ public class Warehouse {
                 if (players.get(i).GetPoints() > max.GetPoints())
                     max = players.get(i);
             }
-            logger.Exit(this, "GetMaxPointPlayer", String.valueOf(max));
+            logger.Exit(this, "GetMaxPointPlayer", logger.GetObjectName(max));
             return max;
         }
     }
