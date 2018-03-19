@@ -23,17 +23,17 @@ public abstract class Field {
 
     public void AddMoveable(Moveable m) {
 
-        logger.Enter(this,"AddMoveable","m");
+        logger.Enter(this,"AddMoveable",logger.GetObjectName(m));
         this.moveable=m;
         m.SetField(this);
-        logger.Exit(this,"AddMoveable","m added from this field");
+        logger.Exit(this,"AddMoveable",logger.GetObjectName(m)+" added to "+logger.GetObjectName(this));
     }
 
 
     public void RemoveMoveable(Moveable m) {
-        logger.Enter(this,"RemoveMoveable","m");
+        logger.Enter(this,"RemoveMoveable",logger.GetObjectName(m));
         this.moveable=null;
-        logger.Exit(this,"RemoveMoveable","m removed from this field");
+        logger.Exit(this,"RemoveMoveable",logger.GetObjectName(m)+" removed from "+logger.GetObjectName(this));
     }
 
 
@@ -47,13 +47,7 @@ public abstract class Field {
     public Field GetPreviousField(Direction d) {
         logger.Enter(this,"GetPreviousField","d");
         logger.Exit(this,"GetPreviousField","previous field from the opposite of d direction");
-        switch (d){
-            case Up: return neighbors.get(Direction.Down);
-            case Down: return neighbors.get(Direction.Up);
-            case Right: return neighbors.get(Direction.Left);
-            case Left: return neighbors.get(Direction.Right);
-            default: return null;
-        }
+        return neighbors.get(d.OppositeDirection());
     }
 
 

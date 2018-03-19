@@ -3,7 +3,6 @@ package therfc;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.lang.annotation.Target;
 
 public class Main {
 
@@ -32,10 +31,9 @@ public class Main {
         System.out.println("15. Worker Push More(3) Box To SteppableField");
         System.out.println("16. Worker Push Box And Worker To SteppableField");
         System.out.println("17. Worker Push Box And Worker To Wall");
-        ;
         System.out.println("18.  End Game When All Worker Is Dead");
         System.out.println("19.  End Game When All Box Is Dead");
-        System.out.println("20.  End Game When All Box Pushed To TargetFields (All Box Reach TargetField)");
+        System.out.println("20.  End Game When All  TargetFields Are Inactive (All Box Reach TargetField)");
         System.out.println("=======================");
 
         System.out.print("Válasszon tesztesetet: ");
@@ -66,7 +64,8 @@ public class Main {
             case "17":WorkerPushBoxAndWorkerToWall();Menu();
             case "18":EndGameWhenAllWorkerIsDead();Menu();
             case "19":EndGameWhenAllBoxIsDead();Menu();
-            case "20":EndGameWhenAllBoxPushedToTargetFields();Menu();
+            case "20":
+                EndGameWhenAllTargetFieldsAreInactive();Menu();
             default:
                 System.out.println("\nNem található ilyen teszteset.\n");Menu();
         }
@@ -75,8 +74,8 @@ public class Main {
 
     }
 
-    private static void EndGameWhenAllBoxPushedToTargetFields() {
-        System.out.println("End Game When All Box Pushed To TargetField:");
+    private static void EndGameWhenAllTargetFieldsAreInactive() {
+        System.out.println("TEnd Game When All  TargetFields Are Inactive:");
         System.out.println("\tinit:--------------------------------------");
         Warehouse wh = new Warehouse();
         Box b = new Box();

@@ -25,8 +25,9 @@ public class Worker extends Moveable {
 
     public int GetPoints() {
         logger.Enter(this,"GetPoints","");
-        logger.Exit(this,"GetPoints","return points of the player");
-        return point;
+        int points=point;
+        logger.Exit(this,"GetPoints",String.valueOf(points));
+        return points;
 
     }
 
@@ -56,9 +57,9 @@ public class Worker extends Moveable {
     }
 
     private void SetPushed(Boolean p) {
-        logger.Enter(this,"SetPushed","p");
-       this.pushed=p;
-       logger.Exit(this,"SetPushed","pushed setted to p");
+        logger.Enter(this,"SetPushed",String.valueOf(p));
+        this.pushed=p;
+        logger.Exit(this,"SetPushed","Worker pushed attribute set to: "+String.valueOf(p));
 
     }
 
@@ -74,9 +75,9 @@ public class Worker extends Moveable {
 
     public Boolean IsStuck() {
         logger.Enter(this,"IsStuck","");
-        logger.Exit(this,"IsStuck","stucked");
-        // TODO implement here
-        return false;
+        Boolean stuck=false;
+        logger.Exit(this,"IsStuck",String.valueOf(stuck));
+        return stuck;
     }
 
     public Boolean CanPushToWall() {
@@ -87,7 +88,7 @@ public class Worker extends Moveable {
     public void Die() {
         logger.Enter(this,"Die","");
         this.GetField().RemoveMoveable(this);
-        this.GetWarehouse().DecreaseWorkerNumber();
+        this.GetWarehouse().RemoveWorker(this);
         logger.Exit(this,"Die","this moveable died");
 
     }

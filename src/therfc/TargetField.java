@@ -69,7 +69,7 @@ public class TargetField extends Field {
         logger.Exit(this,"StepOn","Box stepped on targetField");
     }
 
-    public boolean GetActive() {
+    public Boolean GetActive() {
         logger.Enter(this,"GetActive","");
         Boolean getActive= active;
         logger.Exit(this,"GetActive",String.valueOf(getActive));

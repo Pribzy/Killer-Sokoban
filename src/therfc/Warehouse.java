@@ -25,49 +25,60 @@ public class Warehouse {
 
     public Worker GetMaxPointPlayer() {
         logger.Enter(this, "GetMaxPointPlayer", "");
+        if(players.isEmpty()){
+            Worker nullWorker=new Worker(0);
+            logger.Exit(this, "GetMaxPointPlayer", "All player is dead");
+            return nullWorker;
 
-        Worker max = players.get(0);
+        }
+        else {
+            Worker max = players.get(0);
 
-        for (int i = 1; i < players.size(); i++){
-            if (players.get(i).GetPoints() > max.GetPoints())
-                max = players.get(i);
+            for (int i = 1; i < players.size(); i++) {
+                if (players.get(i).GetPoints() > max.GetPoints())
+                    max = players.get(i);
             }
-        logger.Exit(this, "GetMaxPointPlayer", "returning the player with the highest points");
-        return max;
+            logger.Exit(this, "GetMaxPointPlayer", String.valueOf(max));
+            return max;
+        }
     }
 
 
     public void CheckStuckedWorkers() {
         logger.Enter(this, "CheckStuckedWorkers", "");
-        boolean allstucked = true;
-        for (Worker player : players) {
-            if (!player.IsStuck()) {
-                allstucked = false;
+        boolean allStucked = true;
+        if(!players.isEmpty()) {
+            for (Worker player : players) {
+                if (!player.IsStuck()) {
+                    allStucked = false;
+                }
+            }
+            if (allStucked) {
+                Game game = Game.getInstance();
+                game.EndGame();
             }
         }
-        if (allstucked) {
-            Game game = Game.getInstance();
-            game.EndGame();
-        }
-        logger.Exit(this, "CheckStuckedWorkers", "Check if all workers are stucked. If yes, calling EndGame()");
+        logger.Exit(this, "CheckStuckedWorkers", "Checked workers");
 
     }
 
 
     public void CheckStuckedBoxes() {
         logger.Enter(this, "CheckStuckedBoxes", "");
-        boolean allstucked = true;
-        for (Box boxe : boxes) {
-            if (!boxe.IsStuck()) {
-                allstucked = false;
+        boolean allStucked = true;
+        if(!boxes.isEmpty()) {
+            for (Box box : boxes) {
+                if (!box.IsStuck()) {
+                    allStucked = false;
+                }
             }
-        }
-        if (allstucked) {
-            Game game = Game.getInstance();
-            game.EndGame();
-        }
-        logger.Exit(this, "CheckStuckedBoxes", "Check if all boxes are stucked. If yes, calling EndGame()");
+            if (allStucked) {
+                Game game = Game.getInstance();
+                game.EndGame();
+            }
 
+        }
+        logger.Exit(this, "CheckStuckedBoxes", "Checked boxes");
     }
 
 
@@ -91,70 +102,54 @@ public class Warehouse {
         }
 
 
-        logger.Exit(this, "CheckTargetFields", "Check if all TargetFields are inactive. If yes, calling EndGame()");
+        logger.Exit(this, "CheckTargetFields", "Checked TargetFields");
 
     }
 
 
-    private void IncreaseBoxNumber() {
-        logger.Enter(this, "IncreaseBoxNumber", "");
+
+
+
+    public void AddWorker(Worker w) {
+        logger.Enter(this,"AddWorker",logger.GetObjectName(w));
+        players.add(w);
+        workerNumber++;
+        w.SetWarehouse(this);
+        logger.Exit(this,"AddWorker",logger.GetObjectName(w)+" added to warehouse");
+    }
+
+    public void AddField(Field f) {
+        logger.Enter(this,"AddField",logger.GetObjectName(f));
+        fields.add(f);
+        logger.Exit(this,"AddField",logger.GetObjectName(f)+" added to warehouse");
+    }
+
+    public void AddBox(Box b) {
+        logger.Enter(this,"AddBox",logger.GetObjectName(b));
+        boxes.add(b);
         boxNumber++;
-        logger.Exit(this, "IncreaseBoxNumber", "Box number increased");
-
+        b.SetWarehouse(this);
+        logger.Exit(this,"AddBox",logger.GetObjectName(b)+" added to Warehouse");
     }
-
-
-    public void DecreaseBoxNumber() {
-        logger.Enter(this, "DecreaseBoxNumber", "");
+    public void RemoveBox(Box b){
+        logger.Enter(this,"RemoveBox",logger.GetObjectName(b));
+        boxes.remove(b);
         boxNumber--;
         if (boxNumber==0){
             Game game = Game.getInstance();
             game.EndGame();
         }
-        logger.Exit(this, "DecreaseBoxNumber", "Box number decreased. If 0, calling EndGame()");
-
+        logger.Exit(this,"RemoveBox",logger.GetObjectName(b)+" removed from Warehouse");
     }
-
-
-    private void IncreaseWorkerNumber() {
-        logger.Enter(this, "IncreaseWorkerNumber", "");
-        workerNumber++;
-        logger.Exit(this, "IncreaseWorkerNumber", "Worker number increased");
-
-    }
-
-
-    public void DecreaseWorkerNumber() {
-        logger.Enter(this, "DecreaseWorkerNumber", "");
+    public void RemoveWorker(Worker w){
+        logger.Enter(this,"RemoveWorker",logger.GetObjectName(w));
+        players.remove(w);
         workerNumber--;
         if (workerNumber==0){
             Game game = Game.getInstance();
             game.EndGame();
         }
-        logger.Exit(this, "DecreaseWorkerNumber", "Worker number decreased. If 0, calling EndGame()");
-
-    }
-
-    public void AddWorker(Worker w) {
-        logger.Enter(this,"AddWorker","w");
-        players.add(w);
-        IncreaseWorkerNumber();
-        w.SetWarehouse(this);
-        logger.Exit(this,"AddWorker","w added to warehouse");
-    }
-
-    public void AddField(Field f) {
-        logger.Enter(this,"AddField","f");
-        fields.add(f);
-        logger.Exit(this,"AddField","f added to warehouse");
-    }
-
-    public void AddBox(Box b) {
-        logger.Enter(this,"AddBox","b");
-        boxes.add(b);
-        IncreaseBoxNumber();
-        b.SetWarehouse(this);
-        logger.Exit(this,"AddBox","b added to warehouse");
+        logger.Exit(this,"RemoveWorker",logger.GetObjectName(w)+" removed from Warehouse");
     }
 
 

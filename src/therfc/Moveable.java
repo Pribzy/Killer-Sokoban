@@ -30,16 +30,16 @@ public abstract class Moveable {
 
 
     public void SetWarehouse(Warehouse wh) {
-        logger.Enter(this,"SetWarehouse","wh");
+        logger.Enter(this,"SetWarehouse",logger.GetObjectName(wh));
         this.wareHouse=wh;
-        logger.Exit(this,"SetWarehouse","warehouse setted to wh");
+        logger.Exit(this,"SetWarehouse","warehouse setted to :"+logger.GetObjectName(wh));
     }
 
 
     public void SetField(Field f) {
-        logger.Enter(this,"SetField","f");
+        logger.Enter(this,"SetField",logger.GetObjectName(f));
         this.field=f;
-        logger.Exit(this,"SetField","field setted to f");
+        logger.Exit(this,"SetField","field setted to :"+logger.GetObjectName(f));
     }
 
     public Field GetField(){
