@@ -63,7 +63,7 @@ public class Hole extends Field {
 
 
     public void SetOpen(Boolean o) {
-        logger.Enter(this,"SetOpen","o");
+        logger.Enter(this,"SetOpen",String.valueOf(o));
         this.open=o;
         logger.Exit(this,"SetOpen","hole set to "+String.valueOf(o));
     }
