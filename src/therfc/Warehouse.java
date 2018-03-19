@@ -23,7 +23,7 @@ public class Warehouse {
     //függvények
 
 
-    public Worker GetMaxPointPlayer() {
+    public Worker GetMaxPointPlayer() { //visszaadja a legnagyobb ponttal rendelkező játékost
         logger.Enter(this, "GetMaxPointPlayer", "");
         if(players.isEmpty()){
             Worker nullWorker=new Worker(0);
@@ -44,7 +44,7 @@ public class Warehouse {
     }
 
 
-    public void CheckStuckedWorkers() {
+    public void CheckStuckedWorkers() { //leellenőrzi az összes munkást,hogy beragadt-e
         logger.Enter(this, "CheckStuckedWorkers", "");
         boolean allStucked = true;
         if(!players.isEmpty()) {
@@ -63,7 +63,7 @@ public class Warehouse {
     }
 
 
-    public void CheckStuckedBoxes() {
+    public void CheckStuckedBoxes() {//leelenőrzi az összes doboz,hogy beragadt-e
         logger.Enter(this, "CheckStuckedBoxes", "");
         boolean allStucked = true;
         if(!boxes.isEmpty()) {
@@ -82,7 +82,7 @@ public class Warehouse {
     }
 
 
-    public void CheckTargetFields() {
+    public void CheckTargetFields() {//leelenőrzi az összes TargetField-et, hogy active-e, ha za összes inaktív,akkor vége a játéknak
         logger.Enter(this, "CheckTargetFields", "");
         boolean allInActive = true;
         List<TargetField> targetfields = new ArrayList<>();

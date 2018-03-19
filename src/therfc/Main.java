@@ -11,7 +11,7 @@ public class Main {
     }
 
 
-    private static void Menu() {
+    private static void Menu() { //menürendszer
         System.out.println("Tesztesetek:");
         System.out.println("=======================");
         System.out.println("1. Worker Move To SteppableField");

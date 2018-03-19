@@ -17,7 +17,7 @@ public class Hole extends Field {
 
 
    //függvények
-    public void StepOn(Box b, Direction d) {
+    public void StepOn(Box b, Direction d) { //hogyan kezeli le,hogyha doboz akar rálépni
         logger.Enter(this,"StepOn","b,d");
         if (!open) {
             Moveable moveable = this.GetMoveable();
@@ -40,7 +40,7 @@ public class Hole extends Field {
     }
 
 
-    public void StepOn(Worker w, Direction d) {
+    public void StepOn(Worker w, Direction d) {  //hogyan kezeli le,hogyha worker akar rálépni
         logger.Enter(this,"StepOn","w,d");
         if (!open) {
             Moveable moveable = this.GetMoveable();
@@ -62,7 +62,7 @@ public class Hole extends Field {
     }
 
 
-    public void SetOpen(Boolean o) {
+    public void SetOpen(Boolean o) { //beállítja a lyukát nyitottra (true), vagy zártra (false)
         logger.Enter(this,"SetOpen",String.valueOf(o));
         this.open=o;
         logger.Exit(this,"SetOpen","hole set to "+String.valueOf(o));

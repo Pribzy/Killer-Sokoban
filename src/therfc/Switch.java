@@ -16,7 +16,7 @@ public class Switch extends Field {
     }
 
    //függvények
-    public void StepOn(Worker w, Direction d) {
+    public void StepOn(Worker w, Direction d) {// Ez történik Ha egy munkás Switchre lép
         logger.Enter(this, "StepOn", "w,d");
         Field previousField =  neighbors.get(d.OppositeDirection());
         if (this.GetMoveable() != null) {
@@ -33,7 +33,7 @@ public class Switch extends Field {
     }
 
 
-    public void StepOn(Box b, Direction d) {
+    public void StepOn(Box b, Direction d) {// Ez történik Ha egy doboz Sitch-re lép
         logger.Enter(this, "StepOn", "b,d");
         Field previousField =  neighbors.get(d.OppositeDirection());
         if (this.GetMoveable() != null) {
@@ -53,7 +53,7 @@ public class Switch extends Field {
     }
 
 
-    public void SetHole(Hole h) {
+    public void SetHole(Hole h) { //Beállítja a lyukát
        this.hole=h;
 
     }

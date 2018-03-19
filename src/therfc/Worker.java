@@ -10,7 +10,7 @@ public class Worker extends Moveable {
 
     //attribútumok
     private int point;
-    private Boolean pushed;
+    private Boolean pushed; //annak eldöntésére,hogy önszántából lépett-e,vagy tolták(ha ==true, akkor tolták,ha false, akkor lépett)
 
     private Logger logger = new Logger();
 
@@ -31,7 +31,7 @@ public class Worker extends Moveable {
 
     }
 
-    public void Move(Direction d) {
+    public void Move(Direction d) { //a játékos önszántából lép
         logger.Enter(this,"Move","d");
         SetPushed(false);
         Field nextField=this.GetField().GetNextField(d);
@@ -40,7 +40,7 @@ public class Worker extends Moveable {
         logger.Exit(this,"Move","worker moved to next field to d direction");
     }
 
-    public void Push(Worker w, Direction d) {
+    public void Push(Worker w, Direction d) { //a játékost toljákd irányba
         logger.Enter(this,"Push","w,d");
         SetPushed(true);
         Field nextField=this.GetField().GetNextField(d);
@@ -66,7 +66,7 @@ public class Worker extends Moveable {
     public void AddPoint() {
         logger.Enter(this,"AddPoint","");
         point++;
-        this.GetWarehouse().CheckTargetFields();
+        this.GetWarehouse().CheckTargetFields(); //ha kap egy pontot a játékos,akkor leelenőrizzük az összes TargetField-et
         logger.Exit(this,"AddPoint","1 point added");
 
     }
@@ -80,12 +80,13 @@ public class Worker extends Moveable {
         return stuck;
     }
 
-    public Boolean CanPushToWall() {
+    public Boolean CanPushToWall() { //ez adja vissza, hogy fel tud-e munkást tolni a falra (false)
         logger.Enter(this,"CanPushToWall","");
-        logger.Exit(this,"CanPushToWall","false");
-        return false;
+        Boolean canPush=false;
+        logger.Exit(this,"CanPushToWall",String.valueOf(canPush));
+        return canPush;
     }
-    public void Die() {
+    public void Die() {//ez hívódik meg,hogyha meghal a munkás
         logger.Enter(this,"Die","");
         this.GetField().RemoveMoveable(this);
         this.GetWarehouse().RemoveWorker(this);

@@ -5,7 +5,7 @@ import java.util.*;
 public enum  Direction {
     Up,Down,Right,Left;
 
-    public Direction OppositeDirection(){
+    public Direction OppositeDirection(){ //ellentétes irány visszaadása
         switch (this){
             case Up: return Down;
             case Down: return Up;

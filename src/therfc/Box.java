@@ -17,7 +17,7 @@ public class Box extends Moveable {
     }
 
     //függvények
-    public void Push(Worker w, Direction d) {
+    public void Push(Worker w, Direction d) { //ha tolják,ez a függvény hívódik meg
         logger.Enter(this,"Push","w,d");
         SetWorker(w);
         Field nextField=this.GetField().GetNextField(d);
@@ -35,7 +35,7 @@ public class Box extends Moveable {
     }
 
 
-    public Boolean IsStuck() {
+    public Boolean IsStuck() { // ez a függvény nézi meg,hogy beszorult-e a doboz
         logger.Enter(this,"IsStuck","");
         Boolean stuck=false;
         logger.Exit(this,"IsStuck",String.valueOf(stuck));
@@ -43,17 +43,18 @@ public class Box extends Moveable {
     }
 
 
-    public void SetWorker(Worker w) {
+    public void SetWorker(Worker w) { //beállítja azt a munkást,amelyik tolja
         logger.Enter(this,"SetWorker","w");
         this.pushWorker=w;
         logger.Exit(this,"SetWorker","pushWorker setted to 'w' ");
     }
 
 
-    public Boolean CanPushToWall() {
+    public Boolean CanPushToWall() { //azt adja vissza, hogy fel tudja-e tolni a munkást (igaz)
         logger.Enter(this,"CanPushToWall","");
-        logger.Exit(this,"CanPushToWall","true");
-       return true;
+        Boolean canPush=true;
+        logger.Exit(this,"CanPushToWall",String.valueOf(canPush));
+       return canPush;
 
     }
     public void Die() {

@@ -15,10 +15,10 @@ public abstract class Field {
     public Field() {
     }
     //függvények
-    public abstract void StepOn(Worker w, Direction d);
+    public abstract void StepOn(Worker w, Direction d);// Ez történik Ha egy munkás  egy mezőre lép
 
 
-    public abstract void StepOn(Box b, Direction d);
+    public abstract void StepOn(Box b, Direction d);// Ez történik Ha egy doboz  egy mezőre lép
 
 
     public void AddMoveable(Moveable m) {
@@ -58,7 +58,7 @@ public abstract class Field {
     }
 
 
-    public Boolean GetMoveablePushedToWall() {
+    public Boolean GetMoveablePushedToWall() { //a rajta lévő mozgatható dolog fel tudja-e tolni a munkást a falra,vagy sem
         logger.Enter(this,"GetMoveablePushedToWall","");
 
         Boolean canPushedTowall= moveable.CanPushToWall();

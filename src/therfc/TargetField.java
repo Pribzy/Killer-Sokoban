@@ -8,7 +8,7 @@ public class TargetField extends Field {
 
 
     //attribútumok
-    private Boolean active;
+    private Boolean active; //ha ==true, akkor lehet rá tolni dobozt és kap pontot a játékos, ha ==false,akkor már nem kap érte pontot
     private Logger logger = new Logger();
 
     //konstruktor
@@ -16,7 +16,7 @@ public class TargetField extends Field {
     }
 
     //függvények
-    public void StepOn(Worker w, Direction d) {
+    public void StepOn(Worker w, Direction d) { // Ez történik Ha egy munkás Targetfield-re lép
         logger.Enter(this,"StepOn","w,d");
         Moveable moveable = this.GetMoveable();
         Field previousField = neighbors.get(d.OppositeDirection());
@@ -34,7 +34,7 @@ public class TargetField extends Field {
     }
 
 
-    public void StepOn(Box b, Direction d) {
+    public void StepOn(Box b, Direction d) {// Ez történik Ha egy doboz TargetField-re lép
         logger.Enter(this,"StepOn","b,d");
         Worker worker = b.GetWorker();
         Moveable moveable = this.GetMoveable();

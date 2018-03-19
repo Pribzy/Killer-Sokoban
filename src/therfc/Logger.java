@@ -46,7 +46,7 @@ public class Logger {
 
     }
 
-    public void WriteTab() {
+    public void WriteTab() { //tabulátorok kiiírása
         for (int i = 0; i <= tabNumber; i++) {
             System.out.print("\t\t");
         }
