@@ -598,7 +598,8 @@ public class Main {
         Warehouse wh = new Warehouse();
         Box b = new Box();
         Worker w = new Worker();
-
+        b.SetTraction(1);
+        w.SetPower(2);
         SteppableField f1 = new SteppableField();
         SteppableField f2 = new SteppableField();
         SteppableField f3 = new SteppableField();
