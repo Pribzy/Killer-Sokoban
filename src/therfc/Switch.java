@@ -58,6 +58,15 @@ public class Switch extends Field {
 
     }
 
+    @Override
+    public void RemoveMoveable(Moveable m){
+        logger.Enter(this,"RemoveMoveable",logger.GetObjectName(m));
+        this.moveable=null;
+        hole.SetOpen(false);
+        logger.Exit(this,"RemoveMoveable",logger.GetObjectName(m)+" removed from "+logger.GetObjectName(this));
+
+    }
+
 
 
 }
