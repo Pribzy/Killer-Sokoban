@@ -27,13 +27,20 @@ public abstract class Field {
         logger.Enter(this,"AddMoveable",logger.GetObjectName(m));
         this.moveable=m;
         m.SetField(this);
+        if(trap!=null) {
+          trap.ChangeTractionWhenStepOn(m);
+        }
         logger.Exit(this,"AddMoveable",logger.GetObjectName(m)+" added to "+logger.GetObjectName(this));
     }
 
 
     public void RemoveMoveable(Moveable m) {
         logger.Enter(this,"RemoveMoveable",logger.GetObjectName(m));
+        if(trap!=null) {
+            trap.ChangeTractionWhenStepOff(m);
+        }
         this.moveable=null;
+
         logger.Exit(this,"RemoveMoveable",logger.GetObjectName(m)+" removed from "+logger.GetObjectName(this));
     }
 
@@ -61,7 +68,6 @@ public abstract class Field {
 
     public Boolean GetMoveablePushedToWall() { //a rajta lévő mozgatható dolog fel tudja-e tolni a munkást a falra,vagy sem
         logger.Enter(this,"GetMoveablePushedToWall","");
-
         Boolean canPushedTowall= moveable.CanPushToWall();
         logger.Exit(this,"GetMoveablePushedToWall",String.valueOf(canPushedTowall));
         return canPushedTowall;
@@ -74,6 +80,7 @@ public abstract class Field {
     }
     public void AddTrap(Trap t){
         this.trap=t;
+        t.SetField(this);
     }
 
 

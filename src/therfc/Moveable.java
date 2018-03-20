@@ -29,6 +29,8 @@ public abstract class Moveable {
 
     public abstract int GetAllTraction(Direction d);
 
+    public abstract void ChangeTraction(int t);
+
 
 
 

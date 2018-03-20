@@ -77,10 +77,24 @@ public class Box extends Moveable {
         logger.Exit(this,"GetAllTraction",String.valueOf(myTraction));
         return myTraction;
     }
-    public void SetTraction(int t){
-        this.traction=t;
+
+    @Override
+    public void ChangeTraction(int t) {
+        int oldTraction=traction;
+        logger.Enter(this,"ChangeTraction",String.valueOf(t));
+        this.traction+=t;
+        logger.Exit(this,"ChangeTraction","traction changed from "+String.valueOf(oldTraction)+" to "+String.valueOf(this.traction));
+
     }
 
+
+     public void SetTraction(int i){
+        this.traction=i;
+     }
+
+    public int GetTraction(){
+        return traction;
+    }
 
 
 }

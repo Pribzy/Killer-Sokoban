@@ -35,6 +35,8 @@ public class Main {
         System.out.println("19.  End Game When All Box Is Dead");
         System.out.println("20.  End Game When All  TargetFields Are Inactive (All Box Reach TargetField)");
         System.out.println("21. Worker Push Box And Worker And Box To SteppableField");
+        System.out.println("22. Worker Push Box To SteppableField With Honey");
+        System.out.println("23. Worker Push Box To SteppableField With Oil");
         System.out.println("=======================");
 
         System.out.print("Válasszon tesztesetet: ");
@@ -65,9 +67,10 @@ public class Main {
             case "17":WorkerPushBoxAndWorkerToWall();Menu();
             case "18":EndGameWhenAllWorkerIsDead();Menu();
             case "19":EndGameWhenAllBoxIsDead();Menu();
-            case "20":
-                EndGameWhenAllTargetFieldsAreInactive();Menu();
-                case "21":WorkerPushBoxAndWorkerAndBoxToSteppableField();Menu();
+            case "20": EndGameWhenAllTargetFieldsAreInactive();Menu();
+            case "21":WorkerPushBoxAndWorkerAndBoxToSteppableField();Menu();
+            case "22":WorkerPushBoxToSteppableFieldWithHoney();Menu();
+            case "23":WorkerPushBoxToSteppableFieldWithOil();Menu();
             default:
                 System.out.println("\nNem található ilyen teszteset.\n");Menu();
         }
@@ -75,6 +78,63 @@ public class Main {
 
 
     }
+
+
+    private static void WorkerPushBoxToSteppableFieldWithOil() {
+        System.out.println("Worker Push Box To SteppableField:");
+        System.out.println("\tinit:--------------------------------------");
+        Warehouse wh = new Warehouse();
+        Box b = new Box();
+        Worker w = new Worker();
+        Oil h=new Oil();
+        SteppableField f1 = new SteppableField();
+        SteppableField f2 = new SteppableField();
+        SteppableField f3 = new SteppableField();
+        f3.AddTrap(h);
+        b.SetTraction(2);
+        w.SetPower(2);
+        f1.SetNeighbor(f2, Direction.Right);
+        f2.SetNeighbor(f3, Direction.Right);
+        f2.SetNeighbor(f1, Direction.Left);
+        f3.SetNeighbor(f2, Direction.Left);
+        f1.AddMoveable(w);
+        f2.AddMoveable(b);
+        wh.AddWorker(w);
+        wh.AddBox(b);
+        wh.AddField(f1); wh.AddField(f2); wh.AddField(f3);
+        System.out.println("\t-------------------------------------------");
+        w.Move(Direction.Right);
+        System.out.println();
+    }
+
+    private static void WorkerPushBoxToSteppableFieldWithHoney() {
+        System.out.println("Worker Push Box To SteppableField:");
+        System.out.println("\tinit:--------------------------------------");
+        Warehouse wh = new Warehouse();
+        Box b = new Box();
+        Worker w = new Worker();
+        Honey h=new Honey();
+        SteppableField f1 = new SteppableField();
+        SteppableField f2 = new SteppableField();
+        SteppableField f3 = new SteppableField();
+        f3.AddTrap(h);
+        b.SetTraction(2);
+        w.SetPower(2);
+        f1.SetNeighbor(f2, Direction.Right);
+        f2.SetNeighbor(f3, Direction.Right);
+        f2.SetNeighbor(f1, Direction.Left);
+        f3.SetNeighbor(f2, Direction.Left);
+        f1.AddMoveable(w);
+        f2.AddMoveable(b);
+        wh.AddWorker(w);
+        wh.AddBox(b);
+        wh.AddField(f1); wh.AddField(f2); wh.AddField(f3);
+        System.out.println("\t-------------------------------------------");
+        w.Move(Direction.Right);
+        System.out.println();
+    }
+
+
 
     private static void WorkerPushBoxAndWorkerAndBoxToSteppableField() {
         System.out.println("Worker Push Box And Worker And Box To SteppableField:");
@@ -90,7 +150,10 @@ public class Main {
         SteppableField f3 = new SteppableField();
         SteppableField f4 = new SteppableField();
         SteppableField f5 = new SteppableField();
-
+        w1.SetPower(4);
+        w2.SetPower(1);
+        b1.SetTraction(2);
+        b2.SetTraction(2);
 
         f1.SetNeighbor(f2, Direction.Right);
         f2.SetNeighbor(f3, Direction.Right);
@@ -106,10 +169,7 @@ public class Main {
         f2.AddMoveable(b1);
         f3.AddMoveable(w2);
         f4.AddMoveable(b2);
-        w1.SetPower(4);
-        w2.SetPower(1);
-        b1.SetTraction(1);
-        b2.SetTraction(2);
+
 
         wh.AddWorker(w1);
         wh.AddWorker(w2);
@@ -318,6 +378,12 @@ public class Main {
         SteppableField f4 = new SteppableField();
         SteppableField f5 = new SteppableField();
 
+        b1.SetTraction(1);
+        b2.SetTraction(1);
+        b3.SetTraction(1);
+        Oil oil = new Oil();
+        w.SetPower(2);
+        f2.AddTrap(oil);
         f1.SetNeighbor(f2, Direction.Right);
         f2.SetNeighbor(f3, Direction.Right);
         f3.SetNeighbor(f4,Direction.Right);
@@ -598,8 +664,8 @@ public class Main {
         Warehouse wh = new Warehouse();
         Box b = new Box();
         Worker w = new Worker();
-        b.SetTraction(1);
-        w.SetPower(2);
+
+
         SteppableField f1 = new SteppableField();
         SteppableField f2 = new SteppableField();
         SteppableField f3 = new SteppableField();

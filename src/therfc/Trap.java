@@ -6,11 +6,13 @@ public abstract class Trap {
     //konstruktor
 
     //függvények
-    public abstract void ChangeTraction();
+    public abstract void  ChangeTractionWhenStepOn(Moveable m);
+    public abstract void  ChangeTractionWhenStepOff(Moveable m);
 
-    public void AddField(Field f){
+    public void SetField(Field f){
         this.field=f;
     }
+
     public Field GetField(){
         return field;
     }

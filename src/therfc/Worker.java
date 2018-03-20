@@ -117,5 +117,10 @@ public class Worker extends Moveable {
         logger.Exit(this,"GetAllTraction",String.valueOf(traction));
         return traction;
     }
-    
+
+    @Override
+    public void ChangeTraction(int t) {
+
+    }
+
 }

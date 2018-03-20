@@ -20,6 +20,8 @@ public class Logger {
         objects.put("therfc.Wall", "Wall");
         objects.put("therfc.Warehouse", "Warehouse");
         objects.put("therfc.Game", "Game");
+        objects.put("therfc.Honey", "Honey");
+        objects.put("therfc.Oil", "Oil");
 
     }
 

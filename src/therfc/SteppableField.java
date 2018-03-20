@@ -20,7 +20,7 @@ public class SteppableField extends Field {
 
         if (this.GetMoveable() != null) {
             if (!w.GetPushed()) {
-                int traction = this.GetMoveable().GetTraction(d);
+                int traction = this.GetMoveable().GetAllTraction(d);
                 if (w.GetPower() >= traction) {
                     this.GetMoveable().Push(w, d);
                     if (this.GetMoveable() == null) {
