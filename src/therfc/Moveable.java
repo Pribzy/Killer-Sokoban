@@ -10,7 +10,7 @@ public abstract class Moveable {
     private Field field;
     private Warehouse wareHouse;
     private Logger logger= new Logger();
-
+    private int traction;
     //konstruktor
     public Moveable() {
     }
@@ -26,6 +26,8 @@ public abstract class Moveable {
 
 
     public abstract void Die();
+
+    public abstract int GetTraction(Direction d);
 
 
     public void SetWarehouse(Warehouse wh) { //beállítja a hozzá tartozó Warehouse-t
@@ -49,5 +51,7 @@ public abstract class Moveable {
     public Warehouse GetWarehouse(){
         return wareHouse;
     }
+
+
 
 }

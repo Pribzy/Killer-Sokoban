@@ -7,6 +7,7 @@ public class Box extends Moveable {
 
     //attribútumok
     private Worker pushWorker;
+    private int traction;
     private Logger logger = new Logger();
 
 
@@ -63,6 +64,21 @@ public class Box extends Moveable {
         this.GetWarehouse().RemoveBox(this);
         logger.Exit(this,"Die","this moveable died");
 
+    }
+    public int GetTraction(Direction d){
+        logger.Enter(this,"GetTraction","d");
+        Field nextField = this.GetField().GetNextField(d);
+        int myTraction=traction;
+        Moveable nextMoveable = nextField.GetMoveable();
+        if(nextMoveable!=null){
+            int nextTraction = nextMoveable.GetTraction(d);
+            myTraction+=nextTraction;
+        }
+        logger.Exit(this,"GetTraction",String.valueOf(myTraction));
+        return myTraction;
+    }
+    public void SetTraction(int t){
+        this.traction=t;
     }
 
 

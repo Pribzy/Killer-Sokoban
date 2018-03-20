@@ -11,7 +11,7 @@ public class Worker extends Moveable {
     //attribútumok
     private int point;
     private Boolean pushed; //annak eldöntésére,hogy önszántából lépett-e,vagy tolták(ha ==true, akkor tolták,ha false, akkor lépett)
-
+    private int power;
     private Logger logger = new Logger();
 
     //konstruktor
@@ -92,6 +92,30 @@ public class Worker extends Moveable {
         this.GetWarehouse().RemoveWorker(this);
         logger.Exit(this,"Die","this moveable died");
 
+    }
+    public void SetPower(int p){
+        logger.Enter(this,"SetPower",String.valueOf(p));
+        this.power=p;
+        logger.Exit(this,"SetPower",String.valueOf(p));
+
+    }
+    public int GetPower(){
+        logger.Enter(this,"GetPower","");
+        int getPower=power;
+        logger.Exit(this,"GetPower",String.valueOf(getPower));
+        return power;
+    }
+    public int GetTraction(Direction d){
+        logger.Enter(this,"GetTraction","d");
+        int traction=0;
+        Field nextField = this.GetField().GetNextField(d);
+        Moveable nextMoveable = nextField.GetMoveable();
+        if(nextMoveable!=null){
+            int nextTraction = nextMoveable.GetTraction(d);
+            traction+=nextTraction;
+        }
+        logger.Exit(this,"GetTraction",String.valueOf(traction));
+        return traction;
     }
     
 }

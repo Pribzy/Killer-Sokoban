@@ -34,6 +34,7 @@ public class Main {
         System.out.println("18.  End Game When All Worker Is Dead");
         System.out.println("19.  End Game When All Box Is Dead");
         System.out.println("20.  End Game When All  TargetFields Are Inactive (All Box Reach TargetField)");
+        System.out.println("21. Worker Push Box And Worker And Box To SteppableField");
         System.out.println("=======================");
 
         System.out.print("Válasszon tesztesetet: ");
@@ -66,12 +67,58 @@ public class Main {
             case "19":EndGameWhenAllBoxIsDead();Menu();
             case "20":
                 EndGameWhenAllTargetFieldsAreInactive();Menu();
+                case "21":WorkerPushBoxAndWorkerAndBoxToSteppableField();Menu();
             default:
                 System.out.println("\nNem található ilyen teszteset.\n");Menu();
         }
 
 
 
+    }
+
+    private static void WorkerPushBoxAndWorkerAndBoxToSteppableField() {
+        System.out.println("Worker Push Box And Worker And Box To SteppableField:");
+        System.out.println("\tinit:--------------------------------------");
+        Warehouse wh = new Warehouse();
+        Box b1 = new Box();
+        Box b2=new Box();
+        Worker w1 = new Worker();
+        Worker w2 = new Worker();
+
+        SteppableField f1 = new SteppableField();
+        SteppableField f2 = new SteppableField();
+        SteppableField f3 = new SteppableField();
+        SteppableField f4 = new SteppableField();
+        SteppableField f5 = new SteppableField();
+
+
+        f1.SetNeighbor(f2, Direction.Right);
+        f2.SetNeighbor(f3, Direction.Right);
+        f3.SetNeighbor(f4,Direction.Right);
+        f4.SetNeighbor(f5,Direction.Right);
+
+        f2.SetNeighbor(f1, Direction.Left);
+        f3.SetNeighbor(f2, Direction.Left);
+        f4.SetNeighbor(f3, Direction.Left);
+        f5.SetNeighbor(f4, Direction.Left);
+
+        f1.AddMoveable(w1);
+        f2.AddMoveable(b1);
+        f3.AddMoveable(w2);
+        f4.AddMoveable(b2);
+        w1.SetPower(4);
+        w2.SetPower(1);
+        b1.SetTraction(1);
+        b2.SetTraction(2);
+
+        wh.AddWorker(w1);
+        wh.AddWorker(w2);
+        wh.AddBox(b1);
+        wh.AddBox(b2);
+        wh.AddField(f1); wh.AddField(f2); wh.AddField(f3); wh.AddField(f4); wh.AddField(f5);
+        System.out.println("\t-------------------------------------------");
+        w1.Move(Direction.Right);
+        System.out.println();
     }
 
     private static void EndGameWhenAllTargetFieldsAreInactive() {
@@ -264,6 +311,7 @@ public class Main {
         Box b2 = new Box();
         Box b3 = new Box();
         Worker w = new Worker();
+
         SteppableField f1 = new SteppableField();
         SteppableField f2 = new SteppableField();
         SteppableField f3 = new SteppableField();
@@ -300,6 +348,7 @@ public class Main {
         Box b = new Box();
         Worker w1 = new Worker();
         Worker w2 = new Worker();
+
         SteppableField f1 = new SteppableField();
         SteppableField f2 = new SteppableField();
         SteppableField f3 = new SteppableField();
@@ -549,6 +598,7 @@ public class Main {
         Warehouse wh = new Warehouse();
         Box b = new Box();
         Worker w = new Worker();
+
         SteppableField f1 = new SteppableField();
         SteppableField f2 = new SteppableField();
         SteppableField f3 = new SteppableField();

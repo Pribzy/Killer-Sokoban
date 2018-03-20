@@ -19,10 +19,21 @@ public class SteppableField extends Field {
         logger.Enter(this, "StepOn", "w,d");
 
         if (this.GetMoveable() != null) {
-            this.GetMoveable().Push(w, d);
-            if (this.GetMoveable() == null) {
-                neighbors.get(d.OppositeDirection()).RemoveMoveable(w);
-                this.AddMoveable(w);
+            if (!w.GetPushed()) {
+                int traction = this.GetMoveable().GetTraction(d);
+                if (w.GetPower() >= traction) {
+                    this.GetMoveable().Push(w, d);
+                    if (this.GetMoveable() == null) {
+                        neighbors.get(d.OppositeDirection()).RemoveMoveable(w);
+                        this.AddMoveable(w);
+                    }
+                }
+            } else {
+                this.GetMoveable().Push(w, d);
+                if (this.GetMoveable() == null) {
+                    neighbors.get(d.OppositeDirection()).RemoveMoveable(w);
+                    this.AddMoveable(w);
+                }
             }
         } else {
             neighbors.get(d.OppositeDirection()).RemoveMoveable(w);
