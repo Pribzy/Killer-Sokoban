@@ -379,11 +379,11 @@ public class Main {
         SteppableField f5 = new SteppableField();
 
         b1.SetTraction(1);
-        b2.SetTraction(1);
+        b2.SetTraction(2);
         b3.SetTraction(1);
         Oil oil = new Oil();
         w.SetPower(2);
-        f2.AddTrap(oil);
+        f3.AddTrap(oil);
         f1.SetNeighbor(f2, Direction.Right);
         f2.SetNeighbor(f3, Direction.Right);
         f3.SetNeighbor(f4,Direction.Right);
