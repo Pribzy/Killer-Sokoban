@@ -65,16 +65,16 @@ public class Box extends Moveable {
         logger.Exit(this,"Die","this moveable died");
 
     }
-    public int GetTraction(Direction d){
-        logger.Enter(this,"GetTraction","d");
+    public int GetAllTraction(Direction d){
+        logger.Enter(this,"GetAllTraction","d");
         Field nextField = this.GetField().GetNextField(d);
         int myTraction=traction;
         Moveable nextMoveable = nextField.GetMoveable();
         if(nextMoveable!=null){
-            int nextTraction = nextMoveable.GetTraction(d);
+            int nextTraction = nextMoveable.GetAllTraction(d);
             myTraction+=nextTraction;
         }
-        logger.Exit(this,"GetTraction",String.valueOf(myTraction));
+        logger.Exit(this,"GetAllTraction",String.valueOf(myTraction));
         return myTraction;
     }
     public void SetTraction(int t){

@@ -9,6 +9,7 @@ public abstract class Field {
     //attribútumok
     protected Map<Direction,Field> neighbors = new HashMap<>(); //szeirntetek ez így jó lehet?
     protected Moveable moveable;
+    private Trap trap;
     private Logger logger = new Logger();
 
     //konstruktor
@@ -71,5 +72,10 @@ public abstract class Field {
 
         return moveable;
     }
+    public void AddTrap(Trap t){
+        this.trap=t;
+    }
+
+
 
 }

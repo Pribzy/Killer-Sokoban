@@ -105,16 +105,16 @@ public class Worker extends Moveable {
         logger.Exit(this,"GetPower",String.valueOf(getPower));
         return power;
     }
-    public int GetTraction(Direction d){
-        logger.Enter(this,"GetTraction","d");
+    public int GetAllTraction(Direction d){
+        logger.Enter(this,"GetAllTraction","d");
         int traction=0;
         Field nextField = this.GetField().GetNextField(d);
         Moveable nextMoveable = nextField.GetMoveable();
         if(nextMoveable!=null){
-            int nextTraction = nextMoveable.GetTraction(d);
+            int nextTraction = nextMoveable.GetAllTraction(d);
             traction+=nextTraction;
         }
-        logger.Exit(this,"GetTraction",String.valueOf(traction));
+        logger.Exit(this,"GetAllTraction",String.valueOf(traction));
         return traction;
     }
     
