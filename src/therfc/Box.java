@@ -38,10 +38,31 @@ public class Box extends Moveable {
 
     public Boolean IsStuck() { // ez a függvény nézi meg,hogy beszorult-e a doboz
         logger.Enter(this,"IsStuck","");
-        Boolean stuck=false;
+        Boolean stuck;
+        Boolean up,down,right,left;
+        up= CheckStuckInDirection(Direction.Up);
+        down= CheckStuckInDirection(Direction.Down);
+        left= CheckStuckInDirection(Direction.Left);
+        right= CheckStuckInDirection(Direction.Right);
+
+        //ide jönnek,hogy mikor ragad be a doboz
+        if(up&&right){ stuck=true; }
+        else if(right&&down){ stuck=true; }
+        else if(down&&left){ stuck=true; }
+        else if(left&&up){ stuck=true; }
+        else if(up&&right&&down){ stuck=true; }
+        else if(right&&down&&left){ stuck=true; }
+        else if(down&&left&&up){ stuck=true; }
+        else if(left&&up&&right){ stuck=true; }
+        else if(left&&up&&right&&down){stuck=true;}
+         else{stuck=false;}
+
         logger.Exit(this,"IsStuck",String.valueOf(stuck));
         return stuck;
+
     }
+
+
 
 
     public void SetWorker(Worker w) { //beállítja azt a munkást,amelyik tolja
@@ -79,7 +100,7 @@ public class Box extends Moveable {
     }
 
     @Override
-    public void ChangeTraction(int t) {
+    public void ChangeTraction(int t) { //hozzáadja az aktuális tapadásához a paraméterként kapott tapadást
         int oldTraction=traction;
         logger.Enter(this,"ChangeTraction",String.valueOf(t));
         this.traction+=t;

@@ -33,7 +33,7 @@ public class Worker extends Moveable {
     }
 
     public void Move(Direction d) { //a játékos önszántából lép
-        logger.Enter(this, "Move", "d");
+        logger.Enter(this, "Move", String.valueOf(d));
 
         SetPushed(false);
         Field nextField = this.GetField().GetNextField(d);
@@ -85,11 +85,23 @@ public class Worker extends Moveable {
     }
 
 
-    public Boolean IsStuck() {
-        logger.Enter(this, "IsStuck", "");
-        Boolean stuck = false;
-        logger.Exit(this, "IsStuck", String.valueOf(stuck));
+    public Boolean IsStuck() { // ez a függvény nézi meg,hogy beszorult-e a doboz
+        logger.Enter(this,"IsStuck","");
+        Boolean stuck;
+        Boolean up,down,right,left;
+        up= CheckStuckInDirection(Direction.Up);
+        down= CheckStuckInDirection(Direction.Down);
+        left= CheckStuckInDirection(Direction.Left);
+        right= CheckStuckInDirection(Direction.Right);
+
+        //ide jönnek,hogy mikor ragad be a játékos
+
+        if(left&&up&&right&&down){stuck=true;}
+        else{stuck=false;}
+
+        logger.Exit(this,"IsStuck",String.valueOf(stuck));
         return stuck;
+
     }
 
     public Boolean CanPushToWall() { //ez adja vissza, hogy fel tud-e munkást tolni a falra (false)
@@ -135,7 +147,7 @@ public class Worker extends Moveable {
     }
 
     @Override
-    public void ChangeTraction(int t) {
+    public void ChangeTraction(int t) { //ez a függvény igazából nem csinál semmit
 
     }
 

@@ -27,10 +27,9 @@ public abstract class Moveable {
 
     public abstract void Die();
 
-    public abstract int GetAllTraction(Direction d);
+    public abstract int GetAllTraction(Direction d); //rekurzívan lekérdezni az elötte álló dolgok tapadását
 
-    public abstract void ChangeTraction(int t);
-
+    public abstract void ChangeTraction(int t); //hozzáadja az aktuális tapadásához a paraméterként kapott tapadást
 
 
 
@@ -56,6 +55,22 @@ public abstract class Moveable {
         return wareHouse;
     }
 
+    //stuck függvények:
+    public Boolean CheckStuckInDirection(Direction d){ //rekurzívan leellenőrzi, hogy d irányba beragadt-e a Moveable
+        logger.Enter(this,"CheckStuckInDirection",String.valueOf(d));
+        Boolean stuckInDirection=false;
+        Field NextField = this.GetField().GetNextField(d);
+        if(NextField.GetMoveable()!=null){
+
+            stuckInDirection= NextField.GetMoveable().CheckStuckInDirection(d);
+
+        }
+        else {
+            stuckInDirection=!NextField.CheckStepOn();
+        }
+        logger.Exit(this,"CheckStuckInDirection",String.valueOf(stuckInDirection));
+        return stuckInDirection;
+    }
 
 
 }

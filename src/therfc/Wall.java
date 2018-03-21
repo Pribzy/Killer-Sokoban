@@ -32,5 +32,13 @@ public class Wall extends Field {
         logger.Exit(this, "StepOn", "b stepped on wall");
     }
 
+    @Override
+    public Boolean CheckStepOn() {
+        logger.Enter(this, "CheckStepOn", "");
+        Boolean check= false;
+        logger.Exit(this,"CheckStepOn",String.valueOf(check));
+        return check;
+    }
+
 
 }

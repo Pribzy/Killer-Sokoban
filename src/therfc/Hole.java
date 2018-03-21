@@ -1,8 +1,9 @@
 package therfc;
+
 import java.util.*;
 
 /**
- * 
+ *
  */
 public class Hole extends Field {
 
@@ -16,16 +17,16 @@ public class Hole extends Field {
     }
 
 
-   //függvények
+    //függvények
     public void StepOn(Box b, Direction d) { //hogyan kezeli le,hogyha doboz akar rálépni
-        logger.Enter(this,"StepOn","b,d");
+        logger.Enter(this, "StepOn", "b,d");
         if (!open) {
             Moveable moveable = this.GetMoveable();
-            Field previousField =  neighbors.get(d.OppositeDirection());
-            if (moveable != null){
+            Field previousField = neighbors.get(d.OppositeDirection());
+            if (moveable != null) {
                 Worker w = b.GetWorker();
-                moveable.Push(w,d);
-                if (this.GetMoveable() == null){
+                moveable.Push(w, d);
+                if (this.GetMoveable() == null) {
                     previousField.RemoveMoveable(b);
                     this.AddMoveable(b);
                 }
@@ -36,18 +37,20 @@ public class Hole extends Field {
         } else {
             b.Die();
         }
-        logger.Exit(this,"StepOn","b stepped on wall");
+        logger.Exit(this, "StepOn", "b stepped on wall");
     }
 
 
+
+
     public void StepOn(Worker w, Direction d) {  //hogyan kezeli le,hogyha worker akar rálépni
-        logger.Enter(this,"StepOn","w,d");
+        logger.Enter(this, "StepOn", "w,d");
         if (!open) {
             Moveable moveable = this.GetMoveable();
-            Field previousField =  neighbors.get(d.OppositeDirection());
-            if (moveable != null){
-                moveable.Push(w,d);
-                if (this.GetMoveable() == null){
+            Field previousField = neighbors.get(d.OppositeDirection());
+            if (moveable != null) {
+                moveable.Push(w, d);
+                if (this.GetMoveable() == null) {
                     previousField.RemoveMoveable(w);
                     this.AddMoveable(w);
                 }
@@ -58,16 +61,15 @@ public class Hole extends Field {
         } else {
             w.Die();
         }
-        logger.Exit(this,"StepOn","w stepped on wall");
+        logger.Exit(this, "StepOn", "w stepped on wall");
     }
 
 
     public void SetOpen(Boolean o) { //beállítja a lyukát nyitottra (true), vagy zártra (false)
-        logger.Enter(this,"SetOpen",String.valueOf(o));
-        this.open=o;
-        logger.Exit(this,"SetOpen","hole set to "+String.valueOf(o));
+        logger.Enter(this, "SetOpen", String.valueOf(o));
+        this.open = o;
+        logger.Exit(this, "SetOpen", "hole set to " + String.valueOf(o));
     }
-
 
 
 }

@@ -6,8 +6,8 @@ public abstract class Trap {
     //konstruktor
 
     //függvények
-    public abstract void  ChangeTractionWhenStepOn(Moveable m);
-    public abstract void  ChangeTractionWhenStepOff(Moveable m);
+    public abstract void  ChangeTractionWhenStepOn(Moveable m); //ez történik a paraméterként kapott Moveable tapadásával ha rálép a csapdára
+    public abstract void  ChangeTractionWhenStepOff(Moveable m); //ez történik a paraméterként kapott Moveable tapadásával ha lelép a csapdáról
 
     public void SetField(Field f){
         this.field=f;

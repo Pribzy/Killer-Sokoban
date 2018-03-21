@@ -46,9 +46,10 @@ public abstract class Field {
 
 
     public Field GetNextField(Direction d) {
-        logger.Enter(this,"GetNextField","d");
-        logger.Exit(this,"GetNextField","next field from d direction");
-        return neighbors.get(d);
+        logger.Enter(this,"GetNextField",String.valueOf(d));
+        Field nextField=neighbors.get(d);
+        logger.Exit(this,"GetNextField",logger.GetObjectName(nextField));
+        return nextField;
     }
 
 
@@ -81,6 +82,13 @@ public abstract class Field {
     public void AddTrap(Trap t){
         this.trap=t;
         t.SetField(this);
+    }
+
+    public Boolean CheckStepOn(){
+        logger.Enter(this, "CheckStepOn", "");
+        Boolean check= true;
+        logger.Exit(this,"CheckStepOn",String.valueOf(check));
+        return check;
     }
 
 

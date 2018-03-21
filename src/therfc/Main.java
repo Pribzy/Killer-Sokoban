@@ -7,10 +7,81 @@ import java.io.InputStreamReader;
 public class Main {
 
     public static void main(String[] args) {
-       Menu();
+      // Menu(); //Szkeleton menü
+        LoadLevel();
+
     }
 
+    private static void LoadLevel(){
+        Warehouse wh = new Warehouse();
+        Wall wall_1= new Wall();
+        Wall wall_2= new Wall();
+        Wall wall_3= new Wall();
+        Wall wall_4= new Wall();
+        Wall wall_5= new Wall();
+        Wall wall_6= new Wall();
+        Wall wall_7= new Wall();
+        Wall wall_8= new Wall();
+        Wall wall_9= new Wall();
+        Wall wall_10= new Wall();
+        Wall wall_11= new Wall();
+        Wall wall_12= new Wall();
+        Wall wall_13= new Wall();
+        Wall wall_14= new Wall();
+        SteppableField s_1 = new SteppableField();
+        SteppableField s_2 = new SteppableField();
+        SteppableField s_3 = new SteppableField();
+        SteppableField s_4 = new SteppableField();
+        wall_1.SetNeighbor(wall_2,Direction.Right); wall_1.SetNeighbor(wall_14,Direction.Down);
+        wall_2.SetNeighbor(wall_3,Direction.Right); wall_2.SetNeighbor(wall_1,Direction.Left);
+        wall_3.SetNeighbor(wall_4,Direction.Right); wall_3.SetNeighbor(wall_2,Direction.Left);
+        wall_4.SetNeighbor(wall_5,Direction.Right); wall_4.SetNeighbor(wall_3,Direction.Left);
+        wall_5.SetNeighbor(wall_6,Direction.Right); wall_5.SetNeighbor(wall_4,Direction.Left);
+        wall_6.SetNeighbor(wall_7,Direction.Down); wall_6.SetNeighbor(wall_5,Direction.Left);
+        wall_7.SetNeighbor(wall_8,Direction.Down); wall_7.SetNeighbor(wall_6,Direction.Up);
+        wall_8.SetNeighbor(wall_7,Direction.Up); wall_8.SetNeighbor(wall_9,Direction.Left);
+        wall_9.SetNeighbor(wall_8,Direction.Right); wall_9.SetNeighbor(wall_10,Direction.Left);
+        wall_10.SetNeighbor(wall_9,Direction.Right); wall_10.SetNeighbor(wall_11,Direction.Left);
+        wall_11.SetNeighbor(wall_10,Direction.Right); wall_11.SetNeighbor(wall_12,Direction.Left);
+        wall_12.SetNeighbor(wall_11,Direction.Right); wall_12.SetNeighbor(wall_13,Direction.Left);
+        wall_13.SetNeighbor(wall_12,Direction.Right); wall_13.SetNeighbor(wall_14,Direction.Up);
+        wall_14.SetNeighbor(wall_1,Direction.Up); wall_14.SetNeighbor(wall_13,Direction.Down);
+        s_1.SetNeighbor(wall_2,Direction.Up);s_1.SetNeighbor(wall_12,Direction.Down);s_1.SetNeighbor(wall_14,Direction.Left);s_1.SetNeighbor(s_2,Direction.Right);
+        s_2.SetNeighbor(wall_3,Direction.Up);s_2.SetNeighbor(wall_11,Direction.Down);s_2.SetNeighbor(s_1,Direction.Left);s_2.SetNeighbor(s_3,Direction.Right);
+        s_3.SetNeighbor(wall_4,Direction.Up);s_3.SetNeighbor(wall_10,Direction.Down);s_3.SetNeighbor(s_2,Direction.Left);s_3.SetNeighbor(s_4,Direction.Right);
+        s_4.SetNeighbor(wall_5,Direction.Up);s_4.SetNeighbor(wall_9,Direction.Down);s_4.SetNeighbor(s_3,Direction.Left);s_4.SetNeighbor(wall_7,Direction.Right);
 
+        Worker w = new Worker();
+        Box b = new Box();
+        s_2.AddMoveable(w);
+        s_3.AddMoveable(b);
+        wh.AddBox(b); wh.AddWorker(w);
+        wh.AddField(wall_1);
+        wh.AddField(wall_2);
+        wh.AddField(wall_3);
+        wh.AddField(wall_4);
+        wh.AddField(wall_5);
+        wh.AddField(wall_6);
+        wh.AddField(wall_7);
+        wh.AddField(wall_8);
+        wh.AddField(wall_9);
+        wh.AddField(wall_10);
+        wh.AddField(wall_11);
+        wh.AddField(wall_12);
+        wh.AddField(wall_13);
+        wh.AddField(wall_14);
+        wh.AddField(s_1);
+        wh.AddField(s_2);
+        wh.AddField(s_3);
+        wh.AddField(s_4);
+        Game game = Game.getInstance();
+        game.SetWarehouse(wh);
+        w.Move(Direction.Right);
+
+
+    }
+
+//Szkeleton 'minipályák'-----------------------------------------------------
     private static void Menu() { //menürendszer
         System.out.println("Tesztesetek:");
         System.out.println("=======================");
@@ -79,7 +150,6 @@ public class Main {
 
     }
 
-
     private static void WorkerPushBoxToSteppableFieldWithOil() {
         System.out.println("Worker Push Box To SteppableField:");
         System.out.println("\tinit:--------------------------------------");
@@ -133,8 +203,6 @@ public class Main {
         w.Move(Direction.Right);
         System.out.println();
     }
-
-
 
     private static void WorkerPushBoxAndWorkerAndBoxToSteppableField() {
         System.out.println("Worker Push Box And Worker And Box To SteppableField:");
@@ -255,8 +323,6 @@ public class Main {
         w.Move(Direction.Right);
         System.out.println();
     }
-
-
 
     //11.
     private static void WorkerPushBoxToOpenHole() {
@@ -382,7 +448,7 @@ public class Main {
         b2.SetTraction(2);
         b3.SetTraction(1);
         Oil oil = new Oil();
-        w.SetPower(2);
+        w.SetPower(3);
         f3.AddTrap(oil);
         f1.SetNeighbor(f2, Direction.Right);
         f2.SetNeighbor(f3, Direction.Right);
@@ -620,6 +686,8 @@ public class Main {
         Warehouse wh = new Warehouse();
         Worker w = new Worker();
         Worker w2= new Worker();
+        SteppableField f3 = new SteppableField();
+        f3.AddMoveable(w2);
         SteppableField f1 = new SteppableField();
         Hole f2 = new Hole();
         f2.SetOpen(true);
@@ -628,7 +696,7 @@ public class Main {
         f1.AddMoveable(w);
         wh.AddWorker(w);
         wh.AddWorker(w2);
-        wh.AddField(f1); wh.AddField(f2);
+        wh.AddField(f1); wh.AddField(f2);wh.AddField(f3);
         System.out.println("\t-------------------------------------------");
         w.Move(Direction.Right);
         System.out.println();
@@ -700,4 +768,5 @@ public class Main {
         w.Move(Direction.Right);
         System.out.println();
     }
+
 }
