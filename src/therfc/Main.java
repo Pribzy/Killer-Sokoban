@@ -8,11 +8,11 @@ public class Main {
 
     public static void main(String[] args) {
       // Menu(); //Szkeleton menü
-        LoadLevel();
+        TestLevel();
 
     }
 
-    private static void LoadLevel(){
+    private static void TestLevel(){
         Warehouse wh = new Warehouse();
         Wall wall_1= new Wall();
         Wall wall_2= new Wall();
