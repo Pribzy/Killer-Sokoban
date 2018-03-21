@@ -53,8 +53,15 @@ public class Main {
 
         Worker w = new Worker();
         Box b = new Box();
+
+        w.SetPower(3);
+        b.SetTraction(4);
+
+        Oil oil = new Oil();
         s_2.AddMoveable(w);
+        s_3.AddTrap(oil);
         s_3.AddMoveable(b);
+
         wh.AddBox(b); wh.AddWorker(w);
         wh.AddField(wall_1);
         wh.AddField(wall_2);
@@ -77,6 +84,7 @@ public class Main {
         Game game = Game.getInstance();
         game.SetWarehouse(wh);
         w.Move(Direction.Right);
+
 
 
     }
