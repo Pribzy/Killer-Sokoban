@@ -50,13 +50,7 @@ public class Box extends Moveable {
         else if(right&&down){ stuck=true; }
         else if(down&&left){ stuck=true; }
         else if(left&&up){ stuck=true; }
-        else if(up&&right&&down){ stuck=true; }
-        else if(right&&down&&left){ stuck=true; }
-        else if(down&&left&&up){ stuck=true; }
-        else if(left&&up&&right){ stuck=true; }
-        else if(left&&up&&right&&down){stuck=true;}
-         else{stuck=false;}
-
+        else{stuck=false;}
         logger.Exit(this,"IsStuck",String.valueOf(stuck));
         return stuck;
 
