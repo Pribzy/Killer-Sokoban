@@ -146,6 +146,22 @@ public class Worker extends Moveable {
         return traction;
     }
 
+    public void AddHoney(){
+        logger.Enter(this, "AddHoney","");
+        Honey honey = new Honey();
+        this.GetField().AddTrap(honey);
+        logger.Exit(this, "AddHoney", logger.GetObjectName(honey);
+
+    }
+
+    public void AddOil(){
+        logger.Enter(this, "AddOil","");
+        Oil oil = new Oil();
+        this.GetField().AddTrap(oil);
+        logger.Exit(this, "AddOil", logger.GetObjectName(oil);
+
+    }
+
     @Override
     public void ChangeTraction(int t) { //ez a függvény igazából nem csinál semmit
 
