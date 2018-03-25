@@ -150,7 +150,7 @@ public class Worker extends Moveable {
         logger.Enter(this, "AddHoney","");
         Honey honey = new Honey();
         this.GetField().AddTrap(honey);
-        logger.Exit(this, "AddHoney", logger.GetObjectName(honey);
+        logger.Exit(this, "AddHoney", logger.GetObjectName(honey));
 
     }
 
@@ -158,7 +158,7 @@ public class Worker extends Moveable {
         logger.Enter(this, "AddOil","");
         Oil oil = new Oil();
         this.GetField().AddTrap(oil);
-        logger.Exit(this, "AddOil", logger.GetObjectName(oil);
+        logger.Exit(this, "AddOil", logger.GetObjectName(oil));
 
     }
 
