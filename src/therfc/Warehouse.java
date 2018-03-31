@@ -54,7 +54,7 @@ public class Warehouse {
                 }
             }
             if (allStucked) {
-                Game game = Game.getInstance();
+                Game game = Game.GetInstance();
                 game.EndGame();
             }
         }
@@ -73,7 +73,7 @@ public class Warehouse {
                 }
             }
             if (allStucked) {
-                Game game = Game.getInstance();
+                Game game = Game.GetInstance();
                 game.EndGame();
             }
 
@@ -97,7 +97,7 @@ public class Warehouse {
             }
         }
         if(allInActive){
-            Game game = Game.getInstance();
+            Game game = Game.GetInstance();
             game.EndGame();
         }
 
@@ -136,7 +136,7 @@ public class Warehouse {
         boxes.remove(b);
         boxNumber--;
         if (boxNumber==0){
-            Game game = Game.getInstance();
+            Game game = Game.GetInstance();
             game.EndGame();
         }
         logger.Exit(this,"RemoveBox",logger.GetObjectName(b)+" removed from Warehouse");
@@ -146,7 +146,7 @@ public class Warehouse {
         //players.remove(w);
         workerNumber--;
         if (workerNumber==0){
-            Game game = Game.getInstance();
+            Game game = Game.GetInstance();
             game.EndGame();
         }
         logger.Exit(this,"RemoveWorker",logger.GetObjectName(w)+" removed from Warehouse");

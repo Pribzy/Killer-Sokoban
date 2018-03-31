@@ -17,7 +17,7 @@ public class Game {
 
     //függvények
     /* Static 'instance' method */
-    public static Game getInstance( ) {
+    public static Game GetInstance( ) {
         return game;
     }
 

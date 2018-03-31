@@ -59,7 +59,7 @@ public class Box extends Moveable {
 
 
 
-    public void SetWorker(Worker w) { //beállítja azt a munkást,amelyik tolja
+    private void SetWorker(Worker w) { //beállítja azt a munkást,amelyik tolja
         logger.Enter(this,"SetWorker","w");
         this.pushWorker=w;
         logger.Exit(this,"SetWorker","pushWorker setted to 'w' ");

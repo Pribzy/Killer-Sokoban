@@ -81,7 +81,7 @@ public class Main {
         wh.AddField(s_2);
         wh.AddField(s_3);
         wh.AddField(s_4);
-        Game game = Game.getInstance();
+        Game game = Game.GetInstance();
         game.SetWarehouse(wh);
         w.Move(Direction.Right);
 
@@ -278,7 +278,7 @@ public class Main {
         wh.AddBox(b);
         wh.AddBox(b2);
         wh.AddField(f1); wh.AddField(f2); wh.AddField(f3);
-        Game game = Game.getInstance();
+        Game game = Game.GetInstance();
         game.SetWarehouse(wh);
         System.out.println("\t-------------------------------------------");
         w.Move(Direction.Right);
@@ -304,7 +304,7 @@ public class Main {
         f2.AddMoveable(b);
         wh.AddWorker(w);
         wh.AddBox(b);
-        Game game = Game.getInstance();
+        Game game = Game.GetInstance();
         game.SetWarehouse(wh);
         wh.AddField(f1); wh.AddField(f2); wh.AddField(f3);
         System.out.println("\t-------------------------------------------");
@@ -324,7 +324,7 @@ public class Main {
         f2.SetNeighbor(f1, Direction.Left);
         f1.AddMoveable(w);
         wh.AddWorker(w);
-        Game game = Game.getInstance();
+        Game game = Game.GetInstance();
         game.SetWarehouse(wh);
         wh.AddField(f1); wh.AddField(f2);
         System.out.println("\t-------------------------------------------");

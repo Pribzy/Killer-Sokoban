@@ -19,7 +19,7 @@ public abstract class Moveable {
     public abstract void Push(Worker w, Direction d); //eltolódás függvénye
 
 
-    public abstract Boolean IsStuck(); //beragadást ellenőrző függvény
+    public abstract Boolean IsStuck(); //beragadást ellenőrző függvény a mezőn lévő mozgatható dologra
 
 
     public abstract Boolean CanPushToWall(); //a rajta lévő mozgatható dolog fel tudja-e tolni a munkást a falra,vagy sem
@@ -55,7 +55,7 @@ public abstract class Moveable {
         return wareHouse;
     }
 
-    //stuck függvények:
+    //stuck függvény:
     public Boolean CheckStuckInDirection(Direction d){ //rekurzívan leellenőrzi, hogy d irányba beragadt-e a Moveable
         logger.Enter(this,"CheckStuckInDirection",String.valueOf(d));
         Boolean stuckInDirection=false;
