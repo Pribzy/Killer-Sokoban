@@ -14,7 +14,7 @@ public class Wall extends Field {
 
     //függvények
     public void StepOn(Worker w, Direction d) { // Ez történik Ha egy munkés Wall-re lép
-        logger.Enter(this, "StepOn", "w,d");
+        //logger.Enter(this, "StepOn", "w,d");
         Boolean pushed = w.GetPushed();
         if (pushed) {
             Field previousField =  neighbors.get(d.OppositeDirection()).GetPreviousField(d);
@@ -23,20 +23,20 @@ public class Wall extends Field {
                 w.Die();
             }
         }
-        logger.Exit(this, "StepOn", "w tried to step on wall");
+        //logger.Exit(this, "StepOn", "w tried to step on wall");
     }
 
     public void StepOn(Box b, Direction d) { // Ez történik Ha egy doboz Wall-re lép
-        logger.Enter(this, "StepOn", "b,d");
+       // logger.Enter(this, "StepOn", "b,d");
         //itt semmit nem csinál
-        logger.Exit(this, "StepOn", "b stepped on wall");
+       // logger.Exit(this, "StepOn", "b stepped on wall");
     }
 
     @Override
     public Boolean CheckStepOn() {
-        logger.Enter(this, "CheckStepOn", "");
+       // logger.Enter(this, "CheckStepOn", "");
         Boolean check= false;
-        logger.Exit(this,"CheckStepOn",String.valueOf(check));
+        //logger.Exit(this,"CheckStepOn",String.valueOf(check));
         return check;
     }
 

@@ -34,16 +34,16 @@ public abstract class Moveable {
 
 
     public void SetWarehouse(Warehouse wh) { //beállítja a hozzá tartozó Warehouse-t
-        logger.Enter(this,"SetWarehouse",logger.GetObjectName(wh));
+        //logger.Enter(this,"SetWarehouse",logger.GetObjectName(wh));
         this.wareHouse=wh;
-        logger.Exit(this,"SetWarehouse","warehouse setted to :"+logger.GetObjectName(wh));
+       // logger.Exit(this,"SetWarehouse","warehouse setted to :"+logger.GetObjectName(wh));
     }
 
 
     public void SetField(Field f) { //beállítja a hozzá tartozó Field-et
-        logger.Enter(this,"SetField",logger.GetObjectName(f));
+        //logger.Enter(this,"SetField",logger.GetObjectName(f));
         this.field=f;
-        logger.Exit(this,"SetField","field setted to :"+logger.GetObjectName(f));
+       // logger.Exit(this,"SetField","field setted to :"+logger.GetObjectName(f));
     }
 
     public Field GetField(){
@@ -57,7 +57,7 @@ public abstract class Moveable {
 
     //stuck függvény:
     public Boolean CheckStuckInDirection(Direction d){ //rekurzívan leellenőrzi, hogy d irányba beragadt-e a Moveable
-        logger.Enter(this,"CheckStuckInDirection",String.valueOf(d));
+       // logger.Enter(this,"CheckStuckInDirection",String.valueOf(d));
         Boolean stuckInDirection=false;
         Field NextField = this.GetField().GetNextField(d);
         if(NextField.GetMoveable()!=null){
@@ -68,7 +68,7 @@ public abstract class Moveable {
         else {
             stuckInDirection=!NextField.CheckStepOn();
         }
-        logger.Exit(this,"CheckStuckInDirection",String.valueOf(stuckInDirection));
+       // logger.Exit(this,"CheckStuckInDirection",String.valueOf(stuckInDirection));
         return stuckInDirection;
     }
 

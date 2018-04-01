@@ -24,53 +24,53 @@ public abstract class Field {
 
     public void AddMoveable(Moveable m) {
 
-        logger.Enter(this,"AddMoveable",logger.GetObjectName(m));
+        //logger.Enter(this,"AddMoveable",logger.GetObjectName(m));
         this.moveable=m;
         m.SetField(this);
         if(trap!=null) {
           trap.ChangeTractionWhenStepOn(m);
         }
-        logger.Exit(this,"AddMoveable",logger.GetObjectName(m)+" added to "+logger.GetObjectName(this));
+       // logger.Exit(this,"AddMoveable",logger.GetObjectName(m)+" added to "+logger.GetObjectName(this));
     }
 
 
     public void RemoveMoveable(Moveable m) {
-        logger.Enter(this,"RemoveMoveable",logger.GetObjectName(m));
+       // logger.Enter(this,"RemoveMoveable",logger.GetObjectName(m));
         if(trap!=null) {
             trap.ChangeTractionWhenStepOff(m);
         }
         this.moveable=null;
 
-        logger.Exit(this,"RemoveMoveable",logger.GetObjectName(m)+" removed from "+logger.GetObjectName(this));
+       // logger.Exit(this,"RemoveMoveable",logger.GetObjectName(m)+" removed from "+logger.GetObjectName(this));
     }
 
 
     public Field GetNextField(Direction d) {
-        logger.Enter(this,"GetNextField",String.valueOf(d));
+       // logger.Enter(this,"GetNextField",String.valueOf(d));
         Field nextField=neighbors.get(d);
-        logger.Exit(this,"GetNextField",logger.GetObjectName(nextField));
+       // logger.Exit(this,"GetNextField",logger.GetObjectName(nextField));
         return nextField;
     }
 
 
     public Field GetPreviousField(Direction d) {
-        logger.Enter(this,"GetPreviousField","d");
-        logger.Exit(this,"GetPreviousField","previous field from the opposite of d direction");
+        //logger.Enter(this,"GetPreviousField","d");
+        //logger.Exit(this,"GetPreviousField","previous field from the opposite of d direction");
         return neighbors.get(d.OppositeDirection());
     }
 
 
     public void SetNeighbor(Field f, Direction d) {
-        logger.Enter(this,"SetNeighbor","w,d");
+        //logger.Enter(this,"SetNeighbor","w,"+String.valueOf(d));
         this.neighbors.put(d,f);
-        logger.Exit(this,"SetNeighbor","neighbor setted");
+        //logger.Exit(this,"SetNeighbor",String.valueOf(logger.GetObjectName(f)));
     }
 
 
     public Boolean GetMoveablePushedToWall() { //a rajta lévő mozgatható dolog fel tudja-e tolni a munkást a falra,vagy sem
-        logger.Enter(this,"GetMoveablePushedToWall","");
+       // logger.Enter(this,"GetMoveablePushedToWall","");
         Boolean canPushedTowall= moveable.CanPushToWall();
-        logger.Exit(this,"GetMoveablePushedToWall",String.valueOf(canPushedTowall));
+        //logger.Exit(this,"GetMoveablePushedToWall",String.valueOf(canPushedTowall));
         return canPushedTowall;
 
     }
@@ -85,11 +85,12 @@ public abstract class Field {
     }
 
     public Boolean CheckStepOn(){
-        logger.Enter(this, "CheckStepOn", "");
+        //logger.Enter(this, "CheckStepOn", "");
         Boolean check= true;
-        logger.Exit(this,"CheckStepOn",String.valueOf(check));
+        //logger.Exit(this,"CheckStepOn",String.valueOf(check));
         return check;
     }
+
 
 
 

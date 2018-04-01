@@ -8,7 +8,14 @@ public class Main {
 
     public static void main(String[] args) {
       // Menu(); //Szkeleton menü
-        TestLevel();
+        //TestLevel();
+        Game game=Game.GetInstance();
+        try {
+            game.StartGame();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
 
     }
 

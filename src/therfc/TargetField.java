@@ -17,7 +17,7 @@ public class TargetField extends Field {
 
     //függvények
     public void StepOn(Worker w, Direction d) { // Ez történik Ha egy munkás Targetfield-re lép
-        logger.Enter(this,"StepOn","w,d");
+        //logger.Enter(this,"StepOn","w,d");
         Moveable moveable = this.GetMoveable();
         Field previousField = neighbors.get(d.OppositeDirection());
         if (moveable != null) {
@@ -30,12 +30,12 @@ public class TargetField extends Field {
             previousField.RemoveMoveable(w);
             this.AddMoveable(w);
         }
-        logger.Exit(this,"StepOn","Worker stepped on targetField");
+        //logger.Exit(this,"StepOn","Worker stepped on targetField");
     }
 
 
     public void StepOn(Box b, Direction d) {// Ez történik Ha egy doboz TargetField-re lép
-        logger.Enter(this,"StepOn","b,d");
+       // logger.Enter(this,"StepOn","b,d");
         Worker worker = b.GetWorker();
         Moveable moveable = this.GetMoveable();
         Field previousField = neighbors.get(d.OppositeDirection());
@@ -66,22 +66,22 @@ public class TargetField extends Field {
 
             }
         }
-        logger.Exit(this,"StepOn","Box stepped on targetField");
+        //logger.Exit(this,"StepOn","Box stepped on targetField");
     }
 
 
 
     public Boolean GetActive() {
-        logger.Enter(this,"GetActive","");
+        //logger.Enter(this,"GetActive","");
         Boolean getActive= active;
-        logger.Exit(this,"GetActive",String.valueOf(getActive));
+       // logger.Exit(this,"GetActive",String.valueOf(getActive));
         return getActive;
     }
 
     public void SetActive(Boolean a) {
-        logger.Enter(this,"SetActive","a");
+       // logger.Enter(this,"SetActive","a");
         this.active=a;
-        logger.Exit(this,"SetActive","set "+String.valueOf(a));
+       // logger.Exit(this,"SetActive","set "+String.valueOf(a));
 
     }
 

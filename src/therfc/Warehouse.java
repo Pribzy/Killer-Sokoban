@@ -24,7 +24,7 @@ public class Warehouse {
 
 
     public Worker GetMaxPointPlayer() { //visszaadja a legnagyobb ponttal rendelkező játékost
-        logger.Enter(this, "GetMaxPointPlayer", "");
+        //logger.Enter(this, "GetMaxPointPlayer", "");
         if(players.isEmpty()){
             Worker nullWorker=new Worker(0);
             logger.Exit(this, "GetMaxPointPlayer", "All player is dead");
@@ -38,14 +38,14 @@ public class Warehouse {
                 if (players.get(i).GetPoints() > max.GetPoints())
                     max = players.get(i);
             }
-            logger.Exit(this, "GetMaxPointPlayer", logger.GetObjectName(max));
+           // logger.Exit(this, "GetMaxPointPlayer", logger.GetObjectName(max));
             return max;
         }
     }
 
 
     public void CheckStuckedWorkers() { //leellenőrzi az összes munkást,hogy beragadt-e
-        logger.Enter(this, "CheckStuckedWorkers", "");
+       // logger.Enter(this, "CheckStuckedWorkers", "");
         boolean allStucked = true;
         if(!players.isEmpty()) {
             for (Worker player : players) {
@@ -58,13 +58,13 @@ public class Warehouse {
                 game.EndGame();
             }
         }
-        logger.Exit(this, "CheckStuckedWorkers", "Checked workers");
+        //logger.Exit(this, "CheckStuckedWorkers", "Checked workers");
 
     }
 
 
     public void CheckStuckedBoxes() {//leelenőrzi az összes doboz,hogy beragadt-e
-        logger.Enter(this, "CheckStuckedBoxes", "");
+        //logger.Enter(this, "CheckStuckedBoxes", "");
         boolean allStucked = true;
         if(!boxes.isEmpty()) {
             for (Box box : boxes) {
@@ -78,12 +78,12 @@ public class Warehouse {
             }
 
         }
-        logger.Exit(this, "CheckStuckedBoxes", "Checked boxes");
+       // logger.Exit(this, "CheckStuckedBoxes", "Checked boxes");
     }
 
 
     public void CheckTargetFields() {//leelenőrzi az összes TargetField-et, hogy active-e, ha za összes inaktív,akkor vége a játéknak
-        logger.Enter(this, "CheckTargetFields", "");
+       // logger.Enter(this, "CheckTargetFields", "");
         boolean allInActive = true;
         List<TargetField> targetfields = new ArrayList<>();
         for (Field field : fields) {
@@ -102,7 +102,7 @@ public class Warehouse {
         }
 
 
-        logger.Exit(this, "CheckTargetFields", "Checked TargetFields");
+       // logger.Exit(this, "CheckTargetFields", "Checked TargetFields");
 
     }
 
@@ -111,46 +111,56 @@ public class Warehouse {
 
 
     public void AddWorker(Worker w) {
-        logger.Enter(this,"AddWorker",logger.GetObjectName(w));
+       // logger.Enter(this,"AddWorker",logger.GetObjectName(w));
         players.add(w);
         workerNumber++;
         w.SetWarehouse(this);
-        logger.Exit(this,"AddWorker",logger.GetObjectName(w)+" added to warehouse");
+      //  logger.Exit(this,"AddWorker",logger.GetObjectName(w)+" added to warehouse");
     }
 
     public void AddField(Field f) {
-        logger.Enter(this,"AddField",logger.GetObjectName(f));
+      //  logger.Enter(this,"AddField",logger.GetObjectName(f));
         fields.add(f);
-        logger.Exit(this,"AddField",logger.GetObjectName(f)+" added to warehouse");
+       // logger.Exit(this,"AddField",logger.GetObjectName(f)+" added to warehouse");
     }
 
     public void AddBox(Box b) {
-        logger.Enter(this,"AddBox",logger.GetObjectName(b));
+       // logger.Enter(this,"AddBox",logger.GetObjectName(b));
         boxes.add(b);
         boxNumber++;
         b.SetWarehouse(this);
-        logger.Exit(this,"AddBox",logger.GetObjectName(b)+" added to Warehouse");
+       // logger.Exit(this,"AddBox",logger.GetObjectName(b)+" added to Warehouse");
     }
     public void RemoveBox(Box b){
-        logger.Enter(this,"RemoveBox",logger.GetObjectName(b));
+        //logger.Enter(this,"RemoveBox",logger.GetObjectName(b));
         boxes.remove(b);
         boxNumber--;
         if (boxNumber==0){
             Game game = Game.GetInstance();
             game.EndGame();
         }
-        logger.Exit(this,"RemoveBox",logger.GetObjectName(b)+" removed from Warehouse");
+       // logger.Exit(this,"RemoveBox",logger.GetObjectName(b)+" removed from Warehouse");
     }
     public void RemoveWorker(Worker w){
-        logger.Enter(this,"RemoveWorker",logger.GetObjectName(w));
+        //logger.Enter(this,"RemoveWorker",logger.GetObjectName(w));
         //players.remove(w);
         workerNumber--;
         if (workerNumber==0){
             Game game = Game.GetInstance();
             game.EndGame();
         }
-        logger.Exit(this,"RemoveWorker",logger.GetObjectName(w)+" removed from Warehouse");
+       // logger.Exit(this,"RemoveWorker",logger.GetObjectName(w)+" removed from Warehouse");
     }
 
+    public Field GetFieldFromIndex(int i){ //visszaadja az i-edik mezőt a raktárból
+        return fields.get(i);
+    }
 
+    public List<Field> GetFields(){ //visszaadja a mezők listáját
+        return fields;
+    }
+
+    public Worker GetWorkerFromIndex(int i){ //visszaadja az i-edik mezőt a raktárból
+        return players.get(i);
+    }
 }

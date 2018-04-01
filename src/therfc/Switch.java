@@ -17,7 +17,7 @@ public class Switch extends Field {
 
    //függvények
     public void StepOn(Worker w, Direction d) {// Ez történik Ha egy munkás Switchre lép
-        logger.Enter(this, "StepOn", "w,d");
+       // logger.Enter(this, "StepOn", "w,d");
         Field previousField =  neighbors.get(d.OppositeDirection());
         if (this.GetMoveable() != null) {
             this.GetMoveable().Push(w, d);
@@ -29,12 +29,12 @@ public class Switch extends Field {
             previousField.RemoveMoveable(w);
             this.AddMoveable(w);
         }
-        logger.Exit(this, "StepOn", "w stepped on switch");
+       // logger.Exit(this, "StepOn", "w stepped on switch");
     }
 
 
     public void StepOn(Box b, Direction d) {// Ez történik Ha egy doboz Sitch-re lép
-        logger.Enter(this, "StepOn", "b,d");
+        //logger.Enter(this, "StepOn", "b,d");
         Field previousField =  neighbors.get(d.OppositeDirection());
         if (this.GetMoveable() != null) {
             Worker pushWorker = b.GetWorker();
@@ -49,7 +49,7 @@ public class Switch extends Field {
             this.AddMoveable(b);
             hole.SetOpen(true);
         }
-        logger.Exit(this, "StepOn", "b stepped on switch");
+        //logger.Exit(this, "StepOn", "b stepped on switch");
     }
 
 
@@ -60,10 +60,10 @@ public class Switch extends Field {
 
     @Override
     public void RemoveMoveable(Moveable m){
-        logger.Enter(this,"RemoveMoveable",logger.GetObjectName(m));
+        //logger.Enter(this,"RemoveMoveable",logger.GetObjectName(m));
         this.moveable=null;
         hole.SetOpen(false);
-        logger.Exit(this,"RemoveMoveable",logger.GetObjectName(m)+" removed from "+logger.GetObjectName(this));
+       // logger.Exit(this,"RemoveMoveable",logger.GetObjectName(m)+" removed from "+logger.GetObjectName(this));
 
     }
 

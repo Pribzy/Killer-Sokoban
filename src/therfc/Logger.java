@@ -53,4 +53,72 @@ public class Logger {
             System.out.print("\t\t");
         }
     }
+    public void DrawWarehoouse(Warehouse wh){
+        for (int i = 0; i <wh.GetFields().size() ; i++) {
+
+            if(GetObjectName(wh.GetFieldFromIndex(i))=="Wall"){
+               System.out.print("#");
+            }
+            else  if(GetObjectName(wh.GetFieldFromIndex(i))=="TargetField"){
+                if(wh.GetFieldFromIndex(i).GetMoveable()!=null) {
+                    if (wh.GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
+                        System.out.print("B");
+                    } else if (!wh.GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
+                        System.out.print("W");
+                    }
+                }
+                else if(wh.GetFieldFromIndex(i).GetMoveable()==null){
+                    System.out.print("T");
+                }
+
+            }
+            else  if(GetObjectName(wh.GetFieldFromIndex(i))=="SteppableField"){
+                if(wh.GetFieldFromIndex(i).GetMoveable()!=null) {
+                    if (wh.GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
+                        System.out.print("B");
+                    } else if (!wh.GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
+                        System.out.print("W");
+                    }
+                }
+                else if(wh.GetFieldFromIndex(i).GetMoveable()==null){
+                    System.out.print("_");
+                }
+            }
+            else  if(GetObjectName(wh.GetFieldFromIndex(i))=="Hole"){
+                if(wh.GetFieldFromIndex(i).GetMoveable()!=null) {
+                    if (wh.GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
+                        System.out.print("B");
+                    } else if (!wh.GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
+                        System.out.print("W");
+                    }
+                }
+                else if(wh.GetFieldFromIndex(i).GetMoveable()==null){
+                    Hole hole =(Hole) wh.GetFieldFromIndex(i);
+                    if(hole.GetOpen()) {
+                        System.out.print("H");
+                    }
+                    else if(!hole.GetOpen()) {
+                        System.out.print("C");
+                    }
+                }
+            }
+            else  if(GetObjectName(wh.GetFieldFromIndex(i))=="Switch"){
+                if(wh.GetFieldFromIndex(i).GetMoveable()!=null) {
+                    if (wh.GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
+                        System.out.print("B");
+                    } else if (!wh.GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
+                        System.out.print("W");
+                    }
+                }
+                else if(wh.GetFieldFromIndex(i).GetMoveable()==null){
+                    System.out.print("S");
+                }
+            }
+            if(i%20==19){
+                System.out.println();
+            }
+
+        }
+
+    }
 }
