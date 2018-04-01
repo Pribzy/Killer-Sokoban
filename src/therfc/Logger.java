@@ -22,7 +22,7 @@ public class Logger {
         objects.put("therfc.Game", "Game");
         objects.put("therfc.Honey", "Honey");
         objects.put("therfc.Oil", "Oil");
-
+        objects.put("null", " ");
     }
 
     //konstruktor
@@ -32,7 +32,11 @@ public class Logger {
 
     //függvények
     public String GetObjectName(Object o) { //visszaadja az obejtum nevét
-        return objects.get(o.getClass().getName());
+        if(o==null){
+            return " ";
+        } else {
+            return objects.get(o.getClass().getName());
+        }
     }
 
     public void Enter(Object o, String fv_name, String parameters) {
@@ -54,6 +58,7 @@ public class Logger {
         }
     }
     public void DrawWarehoouse(Warehouse wh){
+        System.out.println();
         for (int i = 0; i <wh.GetFields().size() ; i++) {
 
             if(GetObjectName(wh.GetFieldFromIndex(i))=="Wall"){
@@ -67,8 +72,10 @@ public class Logger {
                         System.out.print("W");
                     }
                 }
-                else if(wh.GetFieldFromIndex(i).GetMoveable()==null){
-                    System.out.print("T");
+                else if(wh.GetFieldFromIndex(i).GetMoveable()==null) {
+
+                        System.out.print("T");
+
                 }
 
             }
@@ -81,7 +88,11 @@ public class Logger {
                     }
                 }
                 else if(wh.GetFieldFromIndex(i).GetMoveable()==null){
-                    System.out.print("_");
+
+                        System.out.print("_");
+
+
+
                 }
             }
             else  if(GetObjectName(wh.GetFieldFromIndex(i))=="Hole"){
@@ -93,13 +104,16 @@ public class Logger {
                     }
                 }
                 else if(wh.GetFieldFromIndex(i).GetMoveable()==null){
-                    Hole hole =(Hole) wh.GetFieldFromIndex(i);
-                    if(hole.GetOpen()) {
-                        System.out.print("H");
-                    }
-                    else if(!hole.GetOpen()) {
-                        System.out.print("C");
-                    }
+
+                        Hole hole =(Hole) wh.GetFieldFromIndex(i);
+                        if(hole.GetOpen()) {
+                            System.out.print("H");
+                        }
+                        else if(!hole.GetOpen()) {
+                            System.out.print("C");
+                        }
+
+
                 }
             }
             else  if(GetObjectName(wh.GetFieldFromIndex(i))=="Switch"){
@@ -111,7 +125,10 @@ public class Logger {
                     }
                 }
                 else if(wh.GetFieldFromIndex(i).GetMoveable()==null){
-                    System.out.print("S");
+
+                        System.out.print("S");
+
+
                 }
             }
             if(i%20==19){
@@ -119,6 +136,7 @@ public class Logger {
             }
 
         }
+        System.out.println();
 
     }
 }

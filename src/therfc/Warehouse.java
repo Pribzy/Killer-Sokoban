@@ -13,6 +13,7 @@ public class Warehouse {
     private List<Field> fields = new ArrayList<>();
     private List<Worker> players= new ArrayList<>();
     private List<Box> boxes= new ArrayList<>();
+
     private Logger logger = new Logger();
 
     //konstruktor
@@ -160,7 +161,18 @@ public class Warehouse {
         return fields;
     }
 
-    public Worker GetWorkerFromIndex(int i){ //visszaadja az i-edik mezőt a raktárból
+    public Worker GetWorkerFromIndex(int i){ //visszaadja az i-edik munkást a raktárból
         return players.get(i);
     }
+    public List<Worker> GetWorkers(){ //visszaadja a munkások listáját
+        return players;
+    }
+    public List<Box> GetBoxes(){ //visszaadja a dobozok listáját
+        return boxes;
+    }
+    public Box GetBoxFromIndex(int i){ //visszaadja az i-edik munkást a raktárból
+        return boxes.get(i);
+    }
+
+
 }

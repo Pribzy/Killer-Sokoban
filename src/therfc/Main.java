@@ -9,93 +9,244 @@ public class Main {
     public static void main(String[] args) {
       // Menu(); //Szkeleton menü
         //TestLevel();
+        prototypeCommands();
+
+
+
+    }
+//Prototípus---------------------------------
+    private static void prototypeCommands(){
         Game game=Game.GetInstance();
+        System.out.print("Command: ");
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String command = null;
+        try {
+            command = br.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        switch (command){
+            case "start": start(game); prototypeCommands();
+            case "addworker": addworker(game); prototypeCommands();
+            case "drawmap": drawmap(game); prototypeCommands();
+            case "addbox": addbox(game);prototypeCommands();
+            case "selectworker": selectworker(game);prototypeCommands();
+            case "trapslocation": trapslocation(game);prototypeCommands();
+            case "workerslocation": workerslocation(game);prototypeCommands();
+            case "boxeslocation": boxeslocation(game);prototypeCommands();
+            case "getworkerneighbors": getworkerneighbors(game);prototypeCommands();
+            default:
+                System.out.println("");prototypeCommands();
+
+        }
+    }
+
+    private static void getworkerneighbors(Game game) {
+        Logger logger = new Logger();
+        for (int i = 0; i <game.GetWarehouse().GetWorkers().size() ; i++) {
+            System.out.println("w"+(i+1)+":");
+            Field field = game.GetWarehouse().GetWorkerFromIndex(i).GetField().GetNextField(Direction.Up);
+            Trap trap =game.GetWarehouse().GetWorkerFromIndex(i).GetField().GetNextField(Direction.Up).GetTrap();
+            Moveable  moveable =game.GetWarehouse().GetWorkerFromIndex(i).GetField().GetNextField(Direction.Up).GetMoveable();
+
+
+            System.out.println("Up: "+logger.GetObjectName(field)+"{"+logger.GetObjectName(moveable)+","+logger.GetObjectName(trap)+"}");
+
+            field = game.GetWarehouse().GetWorkerFromIndex(i).GetField().GetNextField(Direction.Down);
+            trap =game.GetWarehouse().GetWorkerFromIndex(i).GetField().GetNextField(Direction.Down).GetTrap();
+            moveable =game.GetWarehouse().GetWorkerFromIndex(i).GetField().GetNextField(Direction.Down).GetMoveable();
+
+            System.out.println("Down: "+logger.GetObjectName(field)+"{"+logger.GetObjectName(moveable)+","+logger.GetObjectName(trap)+"}");
+
+            field = game.GetWarehouse().GetWorkerFromIndex(i).GetField().GetNextField(Direction.Left);
+            trap =game.GetWarehouse().GetWorkerFromIndex(i).GetField().GetNextField(Direction.Left).GetTrap();
+            moveable =game.GetWarehouse().GetWorkerFromIndex(i).GetField().GetNextField(Direction.Left).GetMoveable();
+
+            System.out.println("Left: "+logger.GetObjectName(field)+"{"+logger.GetObjectName(moveable)+","+logger.GetObjectName(trap)+"}");
+
+            field = game.GetWarehouse().GetWorkerFromIndex(i).GetField().GetNextField(Direction.Right);
+            trap =game.GetWarehouse().GetWorkerFromIndex(i).GetField().GetNextField(Direction.Right).GetTrap();
+            moveable =game.GetWarehouse().GetWorkerFromIndex(i).GetField().GetNextField(Direction.Right).GetMoveable();
+
+            System.out.println("Right: "+logger.GetObjectName(field)+"{"+logger.GetObjectName(moveable)+","+logger.GetObjectName(trap)+"}");
+        }
+    }
+
+    private static void trapslocation(Game game) {
+        for (int i = 0; i <game.GetWarehouse().GetFields().size() ; i++) {
+            Logger logger = new Logger();
+            if(game.GetWarehouse().GetFieldFromIndex(i).GetTrap()!=null){
+                int y= i/20;
+                int x = i-((i/20)*y);
+
+                System.out.println(logger.GetObjectName(game.GetWarehouse().GetFieldFromIndex(i).GetTrap())+" - X:"
+                +x+", Y:"+y);
+            }
+        }
+    }
+    private static void boxeslocation(Game game) {
+        for (int i = 0; i <game.GetWarehouse().GetBoxes().size() ; i++) {
+
+            int y= (game.GetWarehouse().GetFields().indexOf(game.GetWarehouse().GetBoxFromIndex(i).GetField()))/20;
+            int x = (game.GetWarehouse().GetFields().indexOf(game.GetWarehouse().GetBoxFromIndex(i).GetField())- 20*y);
+
+                System.out.println("b"+(i+1)+" - X:"
+                        +x+", Y:"+y);
+
+        }
+    }
+    //54 -> x=14, y=2
+    private static void workerslocation(Game game){
+        for (int i = 0; i <game.GetWarehouse().GetWorkers().size() ; i++) {
+            int y= (game.GetWarehouse().GetFields().indexOf(game.GetWarehouse().GetWorkerFromIndex(i).GetField()))/20;
+            int x = (game.GetWarehouse().GetFields().indexOf(game.GetWarehouse().GetWorkerFromIndex(i).GetField())- 20*y);
+
+            System.out.println("w"+(i+1)+" - X:"
+                    +x+", Y:"+y);
+        }
+    }
+
+    private static void selectworker(Game game) {
+
+        for (int i = 0; i <game.GetWarehouse().GetWorkers().size() ; i++) {
+            int y= (game.GetWarehouse().GetFields().indexOf(game.GetWarehouse().GetWorkerFromIndex(i).GetField()))/20;
+            int x = (game.GetWarehouse().GetFields().indexOf(game.GetWarehouse().GetWorkerFromIndex(i).GetField())- 20*y);
+
+            System.out.println((i+1)+": w"+(i+1)+" [X: "+x+" , Y: "+y+" , Power: "+game.GetWarehouse().GetWorkerFromIndex(i).GetPower()+"]");
+        }
+        System.out.print("Selected Worker: ");
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String wNumber = null;
+        try {
+            wNumber = br.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Integer workerNumber = (Integer.parseInt(wNumber))-1;
+        System.out.print("Command to w"+(workerNumber+1)+": ");
+
+        String command = null;
+        try {
+            command = br.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if(command.equals("move 1")){
+            move(game,Direction.Up,game.GetWarehouse().GetWorkerFromIndex(workerNumber));
+        }
+        else  if(command.equals("move 2")){
+            move(game,Direction.Down,game.GetWarehouse().GetWorkerFromIndex(workerNumber));
+        }
+        else  if(command.equals("move 3")){
+            move(game,Direction.Left,game.GetWarehouse().GetWorkerFromIndex(workerNumber));
+        }
+       else  if(command.equals("move 4")){
+            move(game,Direction.Right,game.GetWarehouse().GetWorkerFromIndex(workerNumber));
+        }
+        else  if(command.equals("addtrap 1")){
+            addtrap(game, game.GetWarehouse().GetWorkerFromIndex(workerNumber),1);
+        }
+        else  if(command.equals("addtrap 2")){
+           addtrap(game, game.GetWarehouse().GetWorkerFromIndex(workerNumber),2);
+        }
+
+
+
+
+    }
+    private static void move(Game game,Direction d,Worker w){
+        int y= (game.GetWarehouse().GetFields().indexOf(w.GetField()))/20;
+        int x = (game.GetWarehouse().GetFields().indexOf(w.GetField())-20*y);
+
+        System.out.print("Previous X: "+x+", " + "Y: "+y+"\n");
+        w.Move(d);
+         y= (game.GetWarehouse().GetFields().indexOf(w.GetField()))/20;
+         x = (game.GetWarehouse().GetFields().indexOf(w.GetField())-20*y);
+        System.out.print("Current X: "+x+", " + "Y: "+y+"\n");
+    }
+    public static void addtrap(Game game,Worker w,Integer trap){
+        int y= (game.GetWarehouse().GetFields().indexOf(w.GetField()))/20;
+        int x = (game.GetWarehouse().GetFields().indexOf(w.GetField())-20*y);
+        if(trap==1){
+            w.AddHoney();
+            System.out.println("Added Honey To X: "+x+", Y: "+y);
+        }
+        else if(trap==2){
+            w.AddOil();
+            System.out.println("Added Oil To X: "+x+", Y: "+y);
+        }
+    }
+
+    private static void addbox(Game game) {
+        System.out.print("X: ");
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String xCoord = null;
+        try {
+            xCoord = br.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Integer x = Integer.parseInt(xCoord);
+        System.out.print("Y: ");
+        String yCoord = null;
+        try {
+            yCoord = br.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Integer y = Integer.parseInt(yCoord);
+        System.out.print("Traction: ");
+        String traction = null;
+        try {
+            traction = br.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Integer t = Integer.parseInt(traction);
+        game.AddBox(x,y,t);
+    }
+
+    private static void drawmap(Game game) {
+        game.DrawMap();
+    }
+
+    private static void addworker(Game game) {
+        System.out.print("X: ");
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String xCoord = null;
+        try {
+            xCoord = br.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Integer x = Integer.parseInt(xCoord);
+        System.out.print("Y: ");
+        String yCoord = null;
+        try {
+            yCoord = br.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Integer y = Integer.parseInt(yCoord);
+        System.out.print("Power: ");
+        String power = null;
+        try {
+            power = br.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Integer p = Integer.parseInt(power);
+        game.AddWorker(x,y,p);
+    }
+
+
+    private static void start(Game game){
         try {
             game.StartGame();
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
     }
-
-    private static void TestLevel(){
-        Warehouse wh = new Warehouse();
-        Wall wall_1= new Wall();
-        Wall wall_2= new Wall();
-        Wall wall_3= new Wall();
-        Wall wall_4= new Wall();
-        Wall wall_5= new Wall();
-        Wall wall_6= new Wall();
-        Wall wall_7= new Wall();
-        Wall wall_8= new Wall();
-        Wall wall_9= new Wall();
-        Wall wall_10= new Wall();
-        Wall wall_11= new Wall();
-        Wall wall_12= new Wall();
-        Wall wall_13= new Wall();
-        Wall wall_14= new Wall();
-        SteppableField s_1 = new SteppableField();
-        SteppableField s_2 = new SteppableField();
-        SteppableField s_3 = new SteppableField();
-        SteppableField s_4 = new SteppableField();
-        wall_1.SetNeighbor(wall_2,Direction.Right); wall_1.SetNeighbor(wall_14,Direction.Down);
-        wall_2.SetNeighbor(wall_3,Direction.Right); wall_2.SetNeighbor(wall_1,Direction.Left);
-        wall_3.SetNeighbor(wall_4,Direction.Right); wall_3.SetNeighbor(wall_2,Direction.Left);
-        wall_4.SetNeighbor(wall_5,Direction.Right); wall_4.SetNeighbor(wall_3,Direction.Left);
-        wall_5.SetNeighbor(wall_6,Direction.Right); wall_5.SetNeighbor(wall_4,Direction.Left);
-        wall_6.SetNeighbor(wall_7,Direction.Down); wall_6.SetNeighbor(wall_5,Direction.Left);
-        wall_7.SetNeighbor(wall_8,Direction.Down); wall_7.SetNeighbor(wall_6,Direction.Up);
-        wall_8.SetNeighbor(wall_7,Direction.Up); wall_8.SetNeighbor(wall_9,Direction.Left);
-        wall_9.SetNeighbor(wall_8,Direction.Right); wall_9.SetNeighbor(wall_10,Direction.Left);
-        wall_10.SetNeighbor(wall_9,Direction.Right); wall_10.SetNeighbor(wall_11,Direction.Left);
-        wall_11.SetNeighbor(wall_10,Direction.Right); wall_11.SetNeighbor(wall_12,Direction.Left);
-        wall_12.SetNeighbor(wall_11,Direction.Right); wall_12.SetNeighbor(wall_13,Direction.Left);
-        wall_13.SetNeighbor(wall_12,Direction.Right); wall_13.SetNeighbor(wall_14,Direction.Up);
-        wall_14.SetNeighbor(wall_1,Direction.Up); wall_14.SetNeighbor(wall_13,Direction.Down);
-        s_1.SetNeighbor(wall_2,Direction.Up);s_1.SetNeighbor(wall_12,Direction.Down);s_1.SetNeighbor(wall_14,Direction.Left);s_1.SetNeighbor(s_2,Direction.Right);
-        s_2.SetNeighbor(wall_3,Direction.Up);s_2.SetNeighbor(wall_11,Direction.Down);s_2.SetNeighbor(s_1,Direction.Left);s_2.SetNeighbor(s_3,Direction.Right);
-        s_3.SetNeighbor(wall_4,Direction.Up);s_3.SetNeighbor(wall_10,Direction.Down);s_3.SetNeighbor(s_2,Direction.Left);s_3.SetNeighbor(s_4,Direction.Right);
-        s_4.SetNeighbor(wall_5,Direction.Up);s_4.SetNeighbor(wall_9,Direction.Down);s_4.SetNeighbor(s_3,Direction.Left);s_4.SetNeighbor(wall_7,Direction.Right);
-
-        Worker w = new Worker();
-        Box b = new Box();
-
-        w.SetPower(3);
-        b.SetTraction(4);
-
-        Oil oil = new Oil();
-        s_2.AddMoveable(w);
-        s_3.AddTrap(oil);
-        s_3.AddMoveable(b);
-
-        wh.AddBox(b); wh.AddWorker(w);
-        wh.AddField(wall_1);
-        wh.AddField(wall_2);
-        wh.AddField(wall_3);
-        wh.AddField(wall_4);
-        wh.AddField(wall_5);
-        wh.AddField(wall_6);
-        wh.AddField(wall_7);
-        wh.AddField(wall_8);
-        wh.AddField(wall_9);
-        wh.AddField(wall_10);
-        wh.AddField(wall_11);
-        wh.AddField(wall_12);
-        wh.AddField(wall_13);
-        wh.AddField(wall_14);
-        wh.AddField(s_1);
-        wh.AddField(s_2);
-        wh.AddField(s_3);
-        wh.AddField(s_4);
-        Game game = Game.GetInstance();
-        game.SetWarehouse(wh);
-        w.Move(Direction.Right);
-
-
-
-    }
-
 //Szkeleton 'minipályák'-----------------------------------------------------
     private static void Menu() { //menürendszer
         System.out.println("Tesztesetek:");

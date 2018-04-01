@@ -24,33 +24,46 @@ public class Game {
     }
 
 
-
+//szkeleton függvények
     public  void StartGame( ) throws Exception {
-
 
         level = SetWarehouseFromFile(new File("trial.txt"));
         SetNeighBors(level);
         logger.DrawWarehoouse(level);
-        AddWorker(7,14);
-        AddBox(8,14);
-        logger.DrawWarehoouse(level);
-        level.GetWorkerFromIndex(0).Move(Direction.Right);
-        logger.DrawWarehoouse(level);
-
-
     }
 
-    public void AddWorker(int x,int y){
+    public void AddWorker(int x,int y,int power){
         Worker w = new Worker();
-        level.AddWorker(w);
-        level.GetFieldFromIndex(x+(y*20)).AddMoveable(w);
+        w.SetPower(power);
+        if(level.GetFieldFromIndex(x+(y*20)).GetMoveable()!=null){
+            System.out.println("Failed to add worker to this field, because it's not empty!");
+        }
+        else {
+            level.AddWorker(w);
+            level.GetFieldFromIndex(x + (y * 20)).AddMoveable(w);
+            System.out.println("Succes added to X: "+x+", Y: "+y);
+        }
     }
-    public void AddBox(int x,int y){
+    public void AddBox(int x,int y,int traction){
         Box b = new Box();
-        level.AddBox(b);
-        level.GetFieldFromIndex(x+(y*20)).AddMoveable(b);
+        b.SetTraction(traction);
+        if(level.GetFieldFromIndex(x+(y*20)).GetMoveable()!=null){
+            System.out.println("Failed to add box to this field, because it's not empty!");
+        }
+        else {
+            level.AddBox(b);
+            level.GetFieldFromIndex(x + (y * 20)).AddMoveable(b);
+            System.out.println("Succes added to X: "+x+", Y: "+y);
+        }
     }
+    public void DrawMap(){
+        logger.DrawWarehoouse(level);
+    }
+    public void SelectWorker(){
 
+
+    }
+//-------------------------------------
     public void SetNeighBors(Warehouse wh){
         for (int i = 0; i <wh.GetFields().size() ; i++) {
             if(i<20){
@@ -243,14 +256,13 @@ public class Game {
         logger.Exit(this,"EndGame","max point player");
     }
 
+
+
     public void SetWarehouse(Warehouse wh){
         this.level=wh;
     }
 
-
-
-
-
-
-
+    public Warehouse GetWarehouse() {
+        return level;
+    }
 }

@@ -7,7 +7,7 @@ import java.util.*;
 public abstract class Field {
 
     //attribútumok
-    protected Map<Direction,Field> neighbors = new HashMap<>(); //szeirntetek ez így jó lehet?
+    protected Map<Direction,Field> neighbors = new HashMap<>();
     protected Moveable moveable;
     private Trap trap;
     private Logger logger = new Logger();
@@ -82,6 +82,7 @@ public abstract class Field {
     public void AddTrap(Trap t){
         this.trap=t;
         t.SetField(this);
+
     }
 
     public Boolean CheckStepOn(){
@@ -91,7 +92,9 @@ public abstract class Field {
         return check;
     }
 
-
+    public Trap GetTrap(){
+        return trap;
+    }
 
 
 }

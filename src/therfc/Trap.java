@@ -3,6 +3,7 @@ package therfc;
 public abstract class Trap {
     //attribútumok
    private Field field;
+
     //konstruktor
 
     //függvények
@@ -16,4 +17,6 @@ public abstract class Trap {
     public Field GetField(){
         return field;
     }
+
+
 }
