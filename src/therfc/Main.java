@@ -77,7 +77,7 @@ public class Main {
             Logger logger = new Logger();
             if(game.GetWarehouse().GetFieldFromIndex(i).GetTrap()!=null){
                 int y= i/20;
-                int x = i-((i/20)*y);
+                int x = i-20*y;
 
                 System.out.println(logger.GetObjectName(game.GetWarehouse().GetFieldFromIndex(i).GetTrap())+" - X:"
                 +x+", Y:"+y);
