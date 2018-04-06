@@ -253,11 +253,11 @@ public class Game {
     }
 
     public  void EndGame( ) { //ha vége a játéknak,ez a függvény hívódik meg
-        logger.Enter(this,"EndGame","");
+        //logger.Enter(this,"EndGame","");
         Worker yourWinner=level.GetMaxPointPlayer(); //visszaadja a legnagyobb pontú játékost ami eddig történt
         System.out.println("Your Winner! Your points: "+yourWinner.GetPoints());
         //a szekvenciadiagramokban nincs benne a GetPoints() függvény, mivel azt csak a kiiratáshoz használjuk
-        logger.Exit(this,"EndGame","max point player");
+        //logger.Exit(this,"EndGame","max point player");
     }
 
 
