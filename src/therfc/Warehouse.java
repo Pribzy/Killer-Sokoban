@@ -28,7 +28,7 @@ public class Warehouse {
         //logger.Enter(this, "GetMaxPointPlayer", "");
         if(players.isEmpty()){
             Worker nullWorker=new Worker(0);
-            logger.Exit(this, "GetMaxPointPlayer", "All player is dead");
+            //logger.Exit(this, "GetMaxPointPlayer", "All player is dead");
             return nullWorker;
 
         }
@@ -144,6 +144,7 @@ public class Warehouse {
     }
     public void RemoveWorker(Worker w){
         //logger.Enter(this,"RemoveWorker",logger.GetObjectName(w));
+        System.out.println(players.indexOf(w)+1+". worker die");
         players.remove(w);
         workerNumber--;
         if (workerNumber==0){
