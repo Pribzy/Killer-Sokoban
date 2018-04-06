@@ -144,7 +144,7 @@ public class Warehouse {
     }
     public void RemoveWorker(Worker w){
         //logger.Enter(this,"RemoveWorker",logger.GetObjectName(w));
-        //players.remove(w);
+        players.remove(w);
         workerNumber--;
         if (workerNumber==0){
             Game game = Game.GetInstance();
