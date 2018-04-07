@@ -13,6 +13,7 @@ public class TargetField extends Field {
 
     //konstruktor
     public TargetField() {
+        active = true;
     }
 
     //függvények
