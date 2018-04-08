@@ -250,7 +250,16 @@ public class IO {
     }
 
     public String LoadTest(File test) throws IOException {
-            WriteToFileByLine("$");
+        try(FileWriter fw = new FileWriter("test.txt", true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter out = new PrintWriter(bw))
+        {
+            out.println("$");
+            //more code
+
+        } catch (IOException e) {
+            //exception handling left as an exercise for the reader
+        }
             BufferedReader br = new BufferedReader(new FileReader(test));
             String[] level = new String[LineCounter(test)];
 

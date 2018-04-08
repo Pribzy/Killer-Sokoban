@@ -21,5 +21,3 @@
 
 
 Worker added to X: 1, Y: 1
-$
-$

@@ -19,6 +19,7 @@ public class Main {
         System.out.println("=======================");
         System.out.println("1. Palya betoltese");
         System.out.println("2. Jatekos hozzadasa");
+        System.out.println("3. Doboz elhelyezese a palyan");
         System.out.println("=======================\n");
         System.out.print("Selected Test Case: ");
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -32,6 +33,7 @@ public class Main {
         switch (command){
             case "1": prototypeCommands(1); tests();
             case "2": prototypeCommands(2); tests();
+            case "3": prototypeCommands(3); tests();
 
             default:
                 System.out.println("");
@@ -122,11 +124,44 @@ public class Main {
                     "####################" +
                     "" +
                     "Worker added to X: 5, Y: 5" +
-                    "Failed to add box to this field, because it's not empty!" +
+                    "Failed to add worker to this field, because this field is a wall!" +
                     "w1 - X:5, Y:5, Power:1, Stuck:false" +
                     "";
-            System.out.println(game.GetIO().LoadTest(new File("test.txt")));
+
             if (str_1.equals(game.GetIO().LoadTest(new File("test.txt")))) {
+                System.out.println("Succes Test!\n");
+            } else {
+                System.out.println("Failed Test!\n");
+            }
+        }
+        if (num==3) {
+            String str_2 = "####################" +
+                    "#__________###_____#" +
+                    "#T_____S___HT______#" +
+                    "#_________________##" +
+                    "#________________###" +
+                    "#___C_____T______###" +
+                    "##_____T__________##" +
+                    "#________#_________#" +
+                    "#_H______#_________#" +
+                    "#__________________#" +
+                    "#_S__________T_____#" +
+                    "#_________HHHCHH___#" +
+                    "#__________________#" +
+                    "#__________________#" +
+                    "####_____S_________#" +
+                    "#______________H___#" +
+                    "###__________C_____#" +
+                    "#_____T____________#" +
+                    "#___________H______#" +
+                    "####################" +
+                    "" +
+                    "Box added to X: 4, Y: 5" +
+                    "Failed to add worker to this field, because this field is a wall!" +
+                    "b1 - X:4, Y:5, Traction:1, Stuck:false" +
+                    "";
+
+            if (str_2.equals(game.GetIO().LoadTest(new File("test.txt")))) {
                 System.out.println("Succes Test!\n");
             } else {
                 System.out.println("Failed Test!\n");
@@ -228,6 +263,7 @@ public class Main {
 
             System.out.println((i+1)+": w"+(i+1)+" [X: "+x+" , Y: "+y+" , Power: "+game.GetWarehouse().GetWorkerFromIndex(i).GetPower()+"]");
         }
+        System.out.println();
         System.out.print("Selected Worker: ");
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String wNumber = null;
@@ -237,8 +273,9 @@ public class Main {
             e.printStackTrace();
         }
         assert wNumber != null;
-        Integer workerNumber = (Integer.parseInt(wNumber))-1;
 
+        Integer workerNumber = (Integer.parseInt(wNumber))-1;
+        System.out.println();
         System.out.print("Command to w"+(workerNumber+1)+": ");
 
         String command = null;
@@ -331,20 +368,20 @@ public class Main {
         }
         Integer t = Integer.parseInt(traction);
 
-
+        System.out.println();
         Box b = new Box();
         b.SetTraction(t);
         if(game.GetWarehouse().GetFieldFromIndex(x+(y*20)).GetMoveable()!=null){
-            System.out.println("Failed to add box to this field, because it's not empty!");
+            System.out.println("Failed to add box to this field, because it's not empty!\n");
             game.GetIO().WriteToFileByLine("Failed to add box to this field, because it's not empty!");
         } else if (!game.GetWarehouse().GetFieldFromIndex(x+(y*20)).CheckStepOn()){
-            System.out.println("Failed to add box to this field, because this field is a wall!");
-            game.GetIO().WriteToFileByLine("Failed to add box to this field, because it's not empty!");
+            System.out.println("Failed to add box to this field, because this field is a wall!\n");
+            game.GetIO().WriteToFileByLine("Failed to add worker to this field, because this field is a wall!");
         }
         else {
             game.GetWarehouse().AddBox(b);
             game.GetWarehouse().GetFieldFromIndex(x + (y * 20)).AddMoveable(b);
-            System.out.println("Box added to X: "+x+", Y: "+y);
+            System.out.println("Box added to X: "+x+", Y: "+y+"\n");
             game.GetIO().WriteToFileByLine("Box added to X: "+x+", Y: "+y+"\n");
         }
     }
@@ -380,6 +417,7 @@ public class Main {
         }
         Integer p = Integer.parseInt(power);
 
+        System.out.println();
         Worker w = new Worker();
         w.SetPower(p);
         if(game.GetWarehouse().GetFieldFromIndex(x+(y*20)).GetMoveable()!=null){
@@ -387,7 +425,7 @@ public class Main {
             game.GetIO().WriteToFileByLine("Failed to add box to this field, because it's not empty!");
         } else if (!game.GetWarehouse().GetFieldFromIndex(x+(y*20)).CheckStepOn()){
             System.out.println("Failed to add worker to this field, because this field is a wall!\n");
-            game.GetIO().WriteToFileByLine("Failed to add box to this field, because it's not empty!");
+            game.GetIO().WriteToFileByLine("Failed to add worker to this field, because this field is a wall!");
         }
         else {
             game.GetWarehouse().AddWorker(w);
