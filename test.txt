@@ -20,11 +20,11 @@
 ####################
 
 
-Box added to X: 2, Y: 1
-
-Worker added to X: 3, Y: 1
-Previous Field: X: 3, Y: 1
+Worker added to X: 1, Y: 1
+Worker added to X: 2, Y: 1
+Previous Field: X: 2, Y: 1
 Current Field: X: 2, Y: 1
-b1 - X:1, Y:1, Traction:1, Stuck:true
+w1 - X:1, Y:1, Power:1, Stuck:false
+w2 - X:2, Y:1, Power:1, Stuck:false
 
 

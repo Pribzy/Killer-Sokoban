@@ -29,6 +29,11 @@ public class IO {
 
 
             }
+            if(i==20){
+                wh.GetFieldFromIndex(i).SetNeighbor(wh.GetFieldFromIndex(i + 1), Direction.Right);
+                wh.GetFieldFromIndex(i).SetNeighbor(wh.GetFieldFromIndex(i + 20), Direction.Down);
+                wh.GetFieldFromIndex(i).SetNeighbor(wh.GetFieldFromIndex(i - 20), Direction.Up);
+            }
             if(i>20 && i<380) {
                 if(i%20!=0 && i%20!=19) {
                     wh.GetFieldFromIndex(i).SetNeighbor(wh.GetFieldFromIndex(i + 1), Direction.Right);
