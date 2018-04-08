@@ -1,6 +1,7 @@
 package therfc;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
@@ -17,6 +18,7 @@ public class Main {
 //Prototípus---------------------------------
     private static void prototypeCommands(){
         Game game=Game.GetInstance();
+
         System.out.print("Command: ");
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String command = null;
@@ -25,6 +27,7 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        System.out.println();
         switch (command){
             case "start": start(game); prototypeCommands();
             case "addworker": addworker(game); prototypeCommands();
@@ -35,40 +38,52 @@ public class Main {
             case "workerslocation": workerslocation(game);prototypeCommands();
             case "boxeslocation": boxeslocation(game);prototypeCommands();
             case "getworkerneighbors": getworkerneighbors(game);prototypeCommands();
+            case "check": check(game);prototypeCommands();
             default:
                 System.out.println("");prototypeCommands();
 
         }
     }
 
+    private static void check(Game game) {
+    }
+
     private static void getworkerneighbors(Game game) {
         Logger logger = new Logger();
         for (int i = 0; i <game.GetWarehouse().GetWorkers().size() ; i++) {
             System.out.println("w"+(i+1)+":");
+            game.GetIO().WriteToFileByLine("w"+(i+1)+":");
             Field field = game.GetWarehouse().GetWorkerFromIndex(i).GetField().GetNextField(Direction.Up);
             Trap trap =game.GetWarehouse().GetWorkerFromIndex(i).GetField().GetNextField(Direction.Up).GetTrap();
             Moveable  moveable =game.GetWarehouse().GetWorkerFromIndex(i).GetField().GetNextField(Direction.Up).GetMoveable();
 
 
             System.out.println("Up: "+logger.GetObjectName(field)+"{"+logger.GetObjectName(moveable)+","+logger.GetObjectName(trap)+"}");
+            game.GetIO().WriteToFileByLine("Up: "+logger.GetObjectName(field)+"{"+logger.GetObjectName(moveable)+","+logger.GetObjectName(trap)+"}");
 
             field = game.GetWarehouse().GetWorkerFromIndex(i).GetField().GetNextField(Direction.Down);
             trap =game.GetWarehouse().GetWorkerFromIndex(i).GetField().GetNextField(Direction.Down).GetTrap();
             moveable =game.GetWarehouse().GetWorkerFromIndex(i).GetField().GetNextField(Direction.Down).GetMoveable();
 
             System.out.println("Down: "+logger.GetObjectName(field)+"{"+logger.GetObjectName(moveable)+","+logger.GetObjectName(trap)+"}");
+            game.GetIO().WriteToFileByLine("Down: "+logger.GetObjectName(field)+"{"+logger.GetObjectName(moveable)+","+logger.GetObjectName(trap)+"}");
 
             field = game.GetWarehouse().GetWorkerFromIndex(i).GetField().GetNextField(Direction.Left);
             trap =game.GetWarehouse().GetWorkerFromIndex(i).GetField().GetNextField(Direction.Left).GetTrap();
             moveable =game.GetWarehouse().GetWorkerFromIndex(i).GetField().GetNextField(Direction.Left).GetMoveable();
 
             System.out.println("Left: "+logger.GetObjectName(field)+"{"+logger.GetObjectName(moveable)+","+logger.GetObjectName(trap)+"}");
+            game.GetIO().WriteToFileByLine("Left: "+logger.GetObjectName(field)+"{"+logger.GetObjectName(moveable)+","+logger.GetObjectName(trap)+"}");
 
             field = game.GetWarehouse().GetWorkerFromIndex(i).GetField().GetNextField(Direction.Right);
             trap =game.GetWarehouse().GetWorkerFromIndex(i).GetField().GetNextField(Direction.Right).GetTrap();
             moveable =game.GetWarehouse().GetWorkerFromIndex(i).GetField().GetNextField(Direction.Right).GetMoveable();
 
-            System.out.println("Right: "+logger.GetObjectName(field)+"{"+logger.GetObjectName(moveable)+","+logger.GetObjectName(trap)+"}");
+            System.out.println("Right: "+logger.GetObjectName(field)+"{"+logger.GetObjectName(moveable)+","+logger.GetObjectName(trap)+"}"+"\n");
+            game.GetIO().WriteToFileByLine("Right: "+logger.GetObjectName(field)+"{"+logger.GetObjectName(moveable)+","+logger.GetObjectName(trap)+"}"+"\n");
+
+
+
         }
     }
 
@@ -80,7 +95,9 @@ public class Main {
                 int x = i-20*y;
 
                 System.out.println(logger.GetObjectName(game.GetWarehouse().GetFieldFromIndex(i).GetTrap())+" - X:"
-                +x+", Y:"+y);
+                +x+", Y:"+y+"\n");
+                game.GetIO().WriteToFileByLine(logger.GetObjectName(game.GetWarehouse().GetFieldFromIndex(i).GetTrap())+" - X:"
+                        +x+", Y:"+y+"\n");
             }
         }
     }
@@ -91,9 +108,13 @@ public class Main {
             int x = (game.GetWarehouse().GetFields().indexOf(game.GetWarehouse().GetBoxFromIndex(i).GetField())- 20*y);
             int traction = game.GetWarehouse().GetBoxFromIndex(i).GetTraction();
             System.out.println("b"+(i+1)+" - X:"
-                    +x+", Y:"+y+", Traction:"+traction);
+                    +x+", Y:"+y+", Traction:"+traction+", Stuck:"+game.GetWarehouse().GetBoxFromIndex(i).IsStuck());
+            game.GetIO().WriteToFileByLine("b"+(i+1)+" - X:"
+                    +x+", Y:"+y+", Traction:"+traction+", Stuck:"+game.GetWarehouse().GetBoxFromIndex(i).IsStuck());
 
         }
+        System.out.println();
+        game.GetIO().WriteToFileByLine("\n");
     }
     //54 -> x=14, y=2
     private static void workerslocation(Game game){
@@ -102,8 +123,12 @@ public class Main {
             int x = (game.GetWarehouse().GetFields().indexOf(game.GetWarehouse().GetWorkerFromIndex(i).GetField())- 20*y);
             int power = game.GetWarehouse().GetWorkerFromIndex(i).GetPower();
             System.out.println("w"+(i+1)+" - X:"
-                    +x+", Y:"+y+", Power:"+power);
+                    +x+", Y:"+y+", Power:"+power+", Stuck:"+game.GetWarehouse().GetWorkerFromIndex(i).IsStuck());
+            game.GetIO().WriteToFileByLine("w"+(i+1)+" - X:"
+                    +x+", Y:"+y+", Power:"+power+", Stuck:"+game.GetWarehouse().GetWorkerFromIndex(i).IsStuck());
         }
+        System.out.println();
+        game.GetIO().WriteToFileByLine("\n");
     }
 
     private static void selectworker(Game game) {
@@ -159,16 +184,18 @@ public class Main {
     private static void move(Game game,Direction d,Worker w){
         int y= (game.GetWarehouse().GetFields().indexOf(w.GetField()))/20;
         int x = (game.GetWarehouse().GetFields().indexOf(w.GetField())-20*y);
-
-        System.out.print("Previous X: "+x+", " + "Y: "+y+"\n");
+        String outPrevious ="Previous Field: X: "+x+", " + "Y: "+y+"\n";
+        System.out.print(outPrevious);
+        game.GetIO().WriteToFileByLine(outPrevious);
 
 
 
         w.Move(d);
          y= (game.GetWarehouse().GetFields().indexOf(w.GetField()))/20;
          x = (game.GetWarehouse().GetFields().indexOf(w.GetField())-20*y);
-
-            System.out.print("Current X: " + x + ", " + "Y: " + y + "\n");
+        String outCurrent ="Current Field: X: " + x + ", " + "Y: " + y + "\n";
+        System.out.print(outCurrent);
+        game.GetIO().WriteToFileByLine(outCurrent);
 
 
 
@@ -178,11 +205,13 @@ public class Main {
         int x = (game.GetWarehouse().GetFields().indexOf(w.GetField())-20*y);
         if(trap==1){
             w.AddHoney();
-            System.out.println("Added Honey To X: "+x+", Y: "+y);
+            System.out.println("Added Honey To X: "+x+", Y: "+y+"\n");
+            game.GetIO().WriteToFileByLine("Added Honey To X: "+x+", Y: "+y+"\n");
         }
         else if(trap==2){
             w.AddOil();
-            System.out.println("Added Oil To X: "+x+", Y: "+y);
+            System.out.println("Added Oil To X: "+x+", Y: "+y+"\n");
+            game.GetIO().WriteToFileByLine("Added Oil To X: "+x+", Y: "+y+"\n");
         }
     }
 
@@ -212,7 +241,23 @@ public class Main {
             e.printStackTrace();
         }
         Integer t = Integer.parseInt(traction);
-        game.AddBox(x,y,t);
+
+
+        Box b = new Box();
+        b.SetTraction(t);
+        if(game.GetWarehouse().GetFieldFromIndex(x+(y*20)).GetMoveable()!=null){
+            System.out.println("Failed to add box to this field, because it's not empty!"+"\n");
+            game.GetIO().WriteToFileByLine("Failed to add box to this field, because it's not empty!"+"\n");
+        } else if (!game.GetWarehouse().GetFieldFromIndex(x+(y*20)).CheckStepOn()){
+            System.out.println("Failed to add box to this field, because this field is a wall!"+"\n");
+            game.GetIO().WriteToFileByLine("Failed to add box to this field, because it's not empty!"+"\n");
+        }
+        else {
+            game.GetWarehouse().AddBox(b);
+            game.GetWarehouse().GetFieldFromIndex(x + (y * 20)).AddMoveable(b);
+            System.out.println("Box added to X: "+x+", Y: "+y+"\n");
+            game.GetIO().WriteToFileByLine("Box added to X: "+x+", Y: "+y+"\n");
+        }
     }
 
     private static void drawmap(Game game) {
@@ -245,13 +290,31 @@ public class Main {
             e.printStackTrace();
         }
         Integer p = Integer.parseInt(power);
-        game.AddWorker(x,y,p);
+
+        Worker w = new Worker();
+        w.SetPower(p);
+        if(game.GetWarehouse().GetFieldFromIndex(x+(y*20)).GetMoveable()!=null){
+            System.out.println("Failed to add worker to this field, because it's not empty!"+"\n");
+            game.GetIO().WriteToFileByLine("Failed to add box to this field, because it's not empty!"+"\n");
+        } else if (!game.GetWarehouse().GetFieldFromIndex(x+(y*20)).CheckStepOn()){
+            System.out.println("Failed to add worker to this field, because this field is a wall!"+"\n");
+            game.GetIO().WriteToFileByLine("Failed to add box to this field, because it's not empty!"+"\n");
+        }
+        else {
+            game.GetWarehouse().AddWorker(w);
+            game.GetWarehouse().GetFieldFromIndex(x + (y * 20)).AddMoveable(w);
+            System.out.println("Worker added to X: "+x+", Y: "+y+"\n");
+            game.GetIO().WriteToFileByLine("Worker added to X: "+x+", Y: "+y+"\n");
+        }
+
     }
 
 
     private static void start(Game game){
         try {
+            game.GetIO().DeleteTestFile();
             game.StartGame();
+
         } catch (Exception e) {
             e.printStackTrace();
         }

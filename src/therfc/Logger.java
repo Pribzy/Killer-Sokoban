@@ -57,24 +57,27 @@ public class Logger {
             System.out.print("\t\t");
         }
     }
-    public void DrawWarehoouse(Warehouse wh){
-        System.out.println();
+    public void DrawWarehoouse(Warehouse wh,Game game){
         for (int i = 0; i <wh.GetFields().size() ; i++) {
 
             if(GetObjectName(wh.GetFieldFromIndex(i))=="Wall"){
                System.out.print("#");
+               game.GetIO().WriteToFileByCharacter("#");
             }
             else  if(GetObjectName(wh.GetFieldFromIndex(i))=="TargetField"){
                 if(wh.GetFieldFromIndex(i).GetMoveable()!=null) {
                     if (wh.GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
                         System.out.print("B");
+                        game.GetIO().WriteToFileByCharacter("B");
                     } else if (!wh.GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
                         System.out.print("W");
+                        game.GetIO().WriteToFileByCharacter("W");
                     }
                 }
                 else if(wh.GetFieldFromIndex(i).GetMoveable()==null) {
 
                         System.out.print("T");
+                    game.GetIO().WriteToFileByCharacter("T");
 
                 }
 
@@ -83,13 +86,16 @@ public class Logger {
                 if(wh.GetFieldFromIndex(i).GetMoveable()!=null) {
                     if (wh.GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
                         System.out.print("B");
+                        game.GetIO().WriteToFileByCharacter("B");
                     } else if (!wh.GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
                         System.out.print("W");
+                        game.GetIO().WriteToFileByCharacter("W");
                     }
                 }
                 else if(wh.GetFieldFromIndex(i).GetMoveable()==null){
 
                         System.out.print("_");
+                    game.GetIO().WriteToFileByCharacter("_");
 
 
 
@@ -99,8 +105,10 @@ public class Logger {
                 if(wh.GetFieldFromIndex(i).GetMoveable()!=null) {
                     if (wh.GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
                         System.out.print("B");
+                        game.GetIO().WriteToFileByCharacter("B");
                     } else if (!wh.GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
                         System.out.print("W");
+                        game.GetIO().WriteToFileByCharacter("W");
                     }
                 }
                 else if(wh.GetFieldFromIndex(i).GetMoveable()==null){
@@ -108,9 +116,11 @@ public class Logger {
                         Hole hole =(Hole) wh.GetFieldFromIndex(i);
                         if(hole.GetOpen()) {
                             System.out.print("H");
+                            game.GetIO().WriteToFileByCharacter("H");
                         }
                         else if(!hole.GetOpen()) {
                             System.out.print("C");
+                            game.GetIO().WriteToFileByCharacter("C");
                         }
 
 
@@ -120,23 +130,28 @@ public class Logger {
                 if(wh.GetFieldFromIndex(i).GetMoveable()!=null) {
                     if (wh.GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
                         System.out.print("B");
+                        game.GetIO().WriteToFileByCharacter("B");
                     } else if (!wh.GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
                         System.out.print("W");
+                        game.GetIO().WriteToFileByCharacter("W");
                     }
                 }
                 else if(wh.GetFieldFromIndex(i).GetMoveable()==null){
 
                         System.out.print("S");
+                    game.GetIO().WriteToFileByCharacter("S");
 
 
                 }
             }
             if(i%20==19){
                 System.out.println();
+                game.GetIO().WriteToFileByCharacter("\n");
             }
 
         }
         System.out.println();
+        game.GetIO().WriteToFileByCharacter("\n");
 
     }
 }

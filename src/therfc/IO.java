@@ -1,15 +1,13 @@
 package therfc;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
+import java.io.*;
 
 public class IO {
 
     public IO() {
     }
 
-    public void SetNeighBors(Warehouse wh){
+    public void SetNeighBors(Warehouse wh){ //beállítja a szomszédokat
         for (int i = 0; i <wh.GetFields().size() ; i++) {
             if(i<20){
 
@@ -70,7 +68,7 @@ public class IO {
 
     }
 
-    public Warehouse SetWarehouseFromFile(File level)throws Exception{
+    public Warehouse SetWarehouseFromFile(File level)throws Exception{ //beállítja a raktárat a fájlból
         Warehouse newWarehouse= new Warehouse();
         Hole hole;
         for (int k = 0; k < LoadLevel(level).length; k++) {
@@ -205,5 +203,36 @@ public class IO {
         }
         br.close();
         return count;
+    }
+
+    public void WriteToFileByLine(String str){
+        try(FileWriter fw = new FileWriter("test.txt", true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter out = new PrintWriter(bw))
+        {
+            out.println(str);
+            //more code
+
+        } catch (IOException e) {
+            //exception handling left as an exercise for the reader
+        }
+    }
+    public void WriteToFileByCharacter(String str){
+        try(FileWriter fw = new FileWriter("test.txt", true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter out = new PrintWriter(bw))
+        {
+            out.print(str);
+            //more code
+
+        } catch (IOException e) {
+            //exception handling left as an exercise for the reader
+        }
+    }
+    public void DeleteTestFile() throws FileNotFoundException {
+        File out = new File("test.txt");
+        PrintWriter writer = new PrintWriter(out);
+        writer.print("");
+        writer.close();
     }
 }
