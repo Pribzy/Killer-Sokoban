@@ -205,6 +205,19 @@ public class IO {
         return count;
     }
 
+    public int LineCounter(File f) throws IOException {
+        BufferedReader br=new BufferedReader(new FileReader(f));
+        int count=0;
+        while(true){
+            String line=br.readLine();
+            if(line.equals("$"))
+                break;
+            count++;
+        }
+        br.close();
+        return count;
+    }
+
     public void WriteToFileByLine(String str){
         try(FileWriter fw = new FileWriter("test.txt", true);
             BufferedWriter bw = new BufferedWriter(fw);
@@ -235,4 +248,24 @@ public class IO {
         writer.print("");
         writer.close();
     }
+
+    public String LoadTest(File test) throws IOException {
+            WriteToFileByLine("$");
+            BufferedReader br = new BufferedReader(new FileReader(test));
+            String[] level = new String[LineCounter(test)];
+
+            int i = 0;
+
+            while (i < LineCounter(test)) {
+                level[i] = br.readLine();
+                if (level[i] == null) {
+                    break;
+                }
+                i++;
+
+            }
+            String str = String.join("", level);
+            return str;
+        }
+
 }

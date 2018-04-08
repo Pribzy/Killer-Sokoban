@@ -1,22 +1,48 @@
 package therfc;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
       // Menu(); //Szkeleton menü
         //TestLevel();
-        prototypeCommands();
+       tests();
 
 
 
     }
 //Prototípus---------------------------------
-    private static void prototypeCommands(){
+
+    private static void tests() throws Exception {
+        System.out.println("Test Cases:");
+        System.out.println("=======================");
+        System.out.println("1. Palya betoltese");
+        System.out.println("2. Jatekos hozzadasa");
+        System.out.println("=======================\n");
+        System.out.print("Selected Test Case: ");
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String command = null;
+        try {
+            command = br.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println();
+        switch (command){
+            case "1": prototypeCommands(1); tests();
+            case "2": prototypeCommands(2); tests();
+
+            default:
+                System.out.println("");
+
+        }
+
+    }
+
+
+
+    private static void prototypeCommands(int testNumber) throws Exception {
         Game game=Game.GetInstance();
 
         System.out.print("Command: ");
@@ -29,23 +55,86 @@ public class Main {
         }
         System.out.println();
         switch (command){
-            case "start": start(game); prototypeCommands();
-            case "addworker": addworker(game); prototypeCommands();
-            case "drawmap": drawmap(game); prototypeCommands();
-            case "addbox": addbox(game);prototypeCommands();
-            case "selectworker": selectworker(game);prototypeCommands();
-            case "trapslocation": trapslocation(game);prototypeCommands();
-            case "workerslocation": workerslocation(game);prototypeCommands();
-            case "boxeslocation": boxeslocation(game);prototypeCommands();
-            case "getworkerneighbors": getworkerneighbors(game);prototypeCommands();
-            case "check": check(game);prototypeCommands();
+            case "start": start(game); prototypeCommands(testNumber);
+            case "addworker": addworker(game); prototypeCommands(testNumber);
+            case "drawmap": drawmap(game); prototypeCommands(testNumber);
+            case "addbox": addbox(game);prototypeCommands(testNumber);
+            case "selectworker": selectworker(game);prototypeCommands(testNumber);
+            case "trapslocation": trapslocation(game);prototypeCommands(testNumber);
+            case "workerslocation": workerslocation(game);prototypeCommands(testNumber);
+            case "boxeslocation": boxeslocation(game);prototypeCommands(testNumber);
+            case "getworkerneighbors": getworkerneighbors(game);prototypeCommands(testNumber);
+            case "check": check(game,testNumber);tests();
             default:
-                System.out.println("");prototypeCommands();
+                System.out.println("");prototypeCommands(testNumber);
 
         }
     }
 
-    private static void check(Game game) {
+    private static void check(Game game,int num) throws Exception {
+
+       if(num==1) {
+           String str = "####################" +
+                   "#__________###_____#" +
+                   "#T_____S___HT______#" +
+                   "#_________________##" +
+                   "#________________###" +
+                   "#___C_____T______###" +
+                   "##_____T__________##" +
+                   "#________#_________#" +
+                   "#_H______#_________#" +
+                   "#__________________#" +
+                   "#_S__________T_____#" +
+                   "#_________HHHCHH___#" +
+                   "#__________________#" +
+                   "#__________________#" +
+                   "####_____S_________#" +
+                   "#______________H___#" +
+                   "###__________C_____#" +
+                   "#_____T____________#" +
+                   "#___________H______#" +
+                   "####################" +
+                   "";
+           if (str.equals(game.GetIO().LoadTest(new File("test.txt")))) {
+               System.out.println("Succes Test!\n");
+           } else System.out.println("Failed Test!\n");
+       }
+        if (num==2) {
+            String str_1 = "####################" +
+                    "#__________###_____#" +
+                    "#T_____S___HT______#" +
+                    "#_________________##" +
+                    "#________________###" +
+                    "#___C_____T______###" +
+                    "##_____T__________##" +
+                    "#________#_________#" +
+                    "#_H______#_________#" +
+                    "#__________________#" +
+                    "#_S__________T_____#" +
+                    "#_________HHHCHH___#" +
+                    "#__________________#" +
+                    "#__________________#" +
+                    "####_____S_________#" +
+                    "#______________H___#" +
+                    "###__________C_____#" +
+                    "#_____T____________#" +
+                    "#___________H______#" +
+                    "####################" +
+                    "" +
+                    "Worker added to X: 5, Y: 5" +
+                    "Failed to add box to this field, because it's not empty!" +
+                    "w1 - X:5, Y:5, Power:1, Stuck:false" +
+                    "";
+            System.out.println(game.GetIO().LoadTest(new File("test.txt")));
+            if (str_1.equals(game.GetIO().LoadTest(new File("test.txt")))) {
+                System.out.println("Succes Test!\n");
+            } else {
+                System.out.println("Failed Test!\n");
+            }
+        }
+
+
+
     }
 
     private static void getworkerneighbors(Game game) {
@@ -95,9 +184,9 @@ public class Main {
                 int x = i-20*y;
 
                 System.out.println(logger.GetObjectName(game.GetWarehouse().GetFieldFromIndex(i).GetTrap())+" - X:"
-                +x+", Y:"+y+"\n");
+                +x+", Y:"+y);
                 game.GetIO().WriteToFileByLine(logger.GetObjectName(game.GetWarehouse().GetFieldFromIndex(i).GetTrap())+" - X:"
-                        +x+", Y:"+y+"\n");
+                        +x+", Y:"+y);
             }
         }
     }
@@ -184,8 +273,8 @@ public class Main {
     private static void move(Game game,Direction d,Worker w){
         int y= (game.GetWarehouse().GetFields().indexOf(w.GetField()))/20;
         int x = (game.GetWarehouse().GetFields().indexOf(w.GetField())-20*y);
-        String outPrevious ="Previous Field: X: "+x+", " + "Y: "+y+"\n";
-        System.out.print(outPrevious);
+        String outPrevious ="Previous Field: X: "+x+", " + "Y: "+y;
+        System.out.print(outPrevious+"\n");
         game.GetIO().WriteToFileByLine(outPrevious);
 
 
@@ -193,8 +282,8 @@ public class Main {
         w.Move(d);
          y= (game.GetWarehouse().GetFields().indexOf(w.GetField()))/20;
          x = (game.GetWarehouse().GetFields().indexOf(w.GetField())-20*y);
-        String outCurrent ="Current Field: X: " + x + ", " + "Y: " + y + "\n";
-        System.out.print(outCurrent);
+        String outCurrent ="Current Field: X: " + x + ", " + "Y: " + y;
+        System.out.print(outCurrent+"\n");
         game.GetIO().WriteToFileByLine(outCurrent);
 
 
@@ -205,13 +294,13 @@ public class Main {
         int x = (game.GetWarehouse().GetFields().indexOf(w.GetField())-20*y);
         if(trap==1){
             w.AddHoney();
-            System.out.println("Added Honey To X: "+x+", Y: "+y+"\n");
-            game.GetIO().WriteToFileByLine("Added Honey To X: "+x+", Y: "+y+"\n");
+            System.out.println("Added Honey To X: "+x+", Y: "+y);
+            game.GetIO().WriteToFileByLine("Added Honey To X: "+x+", Y: "+y);
         }
         else if(trap==2){
             w.AddOil();
-            System.out.println("Added Oil To X: "+x+", Y: "+y+"\n");
-            game.GetIO().WriteToFileByLine("Added Oil To X: "+x+", Y: "+y+"\n");
+            System.out.println("Added Oil To X: "+x+", Y: "+y);
+            game.GetIO().WriteToFileByLine("Added Oil To X: "+x+", Y: "+y);
         }
     }
 
@@ -246,16 +335,16 @@ public class Main {
         Box b = new Box();
         b.SetTraction(t);
         if(game.GetWarehouse().GetFieldFromIndex(x+(y*20)).GetMoveable()!=null){
-            System.out.println("Failed to add box to this field, because it's not empty!"+"\n");
-            game.GetIO().WriteToFileByLine("Failed to add box to this field, because it's not empty!"+"\n");
+            System.out.println("Failed to add box to this field, because it's not empty!");
+            game.GetIO().WriteToFileByLine("Failed to add box to this field, because it's not empty!");
         } else if (!game.GetWarehouse().GetFieldFromIndex(x+(y*20)).CheckStepOn()){
-            System.out.println("Failed to add box to this field, because this field is a wall!"+"\n");
-            game.GetIO().WriteToFileByLine("Failed to add box to this field, because it's not empty!"+"\n");
+            System.out.println("Failed to add box to this field, because this field is a wall!");
+            game.GetIO().WriteToFileByLine("Failed to add box to this field, because it's not empty!");
         }
         else {
             game.GetWarehouse().AddBox(b);
             game.GetWarehouse().GetFieldFromIndex(x + (y * 20)).AddMoveable(b);
-            System.out.println("Box added to X: "+x+", Y: "+y+"\n");
+            System.out.println("Box added to X: "+x+", Y: "+y);
             game.GetIO().WriteToFileByLine("Box added to X: "+x+", Y: "+y+"\n");
         }
     }
@@ -294,17 +383,17 @@ public class Main {
         Worker w = new Worker();
         w.SetPower(p);
         if(game.GetWarehouse().GetFieldFromIndex(x+(y*20)).GetMoveable()!=null){
-            System.out.println("Failed to add worker to this field, because it's not empty!"+"\n");
-            game.GetIO().WriteToFileByLine("Failed to add box to this field, because it's not empty!"+"\n");
+            System.out.println("Failed to add worker to this field, because it's not empty!\n");
+            game.GetIO().WriteToFileByLine("Failed to add box to this field, because it's not empty!");
         } else if (!game.GetWarehouse().GetFieldFromIndex(x+(y*20)).CheckStepOn()){
-            System.out.println("Failed to add worker to this field, because this field is a wall!"+"\n");
-            game.GetIO().WriteToFileByLine("Failed to add box to this field, because it's not empty!"+"\n");
+            System.out.println("Failed to add worker to this field, because this field is a wall!\n");
+            game.GetIO().WriteToFileByLine("Failed to add box to this field, because it's not empty!");
         }
         else {
             game.GetWarehouse().AddWorker(w);
             game.GetWarehouse().GetFieldFromIndex(x + (y * 20)).AddMoveable(w);
             System.out.println("Worker added to X: "+x+", Y: "+y+"\n");
-            game.GetIO().WriteToFileByLine("Worker added to X: "+x+", Y: "+y+"\n");
+            game.GetIO().WriteToFileByLine("Worker added to X: "+x+", Y: "+y);
         }
 
     }

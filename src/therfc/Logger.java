@@ -146,12 +146,12 @@ public class Logger {
             }
             if(i%20==19){
                 System.out.println();
-                game.GetIO().WriteToFileByCharacter("\n");
+                game.GetIO().WriteToFileByLine("");
             }
 
         }
         System.out.println();
-        game.GetIO().WriteToFileByCharacter("\n");
+        game.GetIO().WriteToFileByLine("\n");
 
     }
 }
