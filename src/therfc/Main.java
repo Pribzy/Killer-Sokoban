@@ -1,9 +1,12 @@
 package therfc;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
 
+    private static Logger logger = new Logger();
     public static void main(String[] args) throws Exception {
       // Menu(); //Szkeleton menü
         //TestLevel();
@@ -67,11 +70,35 @@ public class Main {
             case "workerslocation": workerslocation(game);prototypeCommands(testNumber);
             case "boxeslocation": boxeslocation(game);prototypeCommands(testNumber);
             case "getworkerneighbors": getworkerneighbors(game);prototypeCommands(testNumber);
+            case "targetfielddetails": targetfielddetails(game);prototypeCommands(testNumber);
             case "check": check(game,testNumber);tests();
             default:
                 System.out.println("");prototypeCommands(testNumber);
 
         }
+    }
+
+    private static void targetfielddetails(Game game) {
+        List<TargetField> targetfields = new ArrayList<>();
+        for (Field field : game.GetWarehouse().GetFields()) {
+            if (logger.GetObjectName(field).compareTo("TargetField")==0) {
+                targetfields.add((TargetField) field);
+            }
+        }
+        for (int i = 0; i <targetfields.size() ; i++) {
+
+            int y= (game.GetWarehouse().GetFields().indexOf(targetfields.get(i)))/20;
+            int x = (game.GetWarehouse().GetFields().indexOf(targetfields.get(i))- 20*y);
+
+            boolean active = targetfields.get(i).GetActive();
+            System.out.println("t"+(i+1)+" - X:"
+                    +x+", Y:"+y+",\t Active:"+active);
+            game.GetIO().WriteToFileByLine("t"+(i+1)+" - X:"
+                    +x+", Y:"+y+",\t Active:"+active);
+
+        }
+        System.out.println();
+        game.GetIO().WriteToFileByLine("\n");
     }
 
     private static void check(Game game,int num) throws Exception {
