@@ -265,7 +265,7 @@ public class Game {
         br.close();
         return count;
     }
-
+//-----------------------------------------------------------------------------------------------------------------------------------
     public  void EndGame( ) { //ha vége a játéknak,ez a függvény hívódik meg
         //logger.Enter(this,"EndGame","");
         Worker yourWinner=level.GetMaxPointPlayer(); //visszaadja a legnagyobb pontú játékost ami eddig történt
