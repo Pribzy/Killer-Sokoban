@@ -89,9 +89,9 @@ public class Main {
 
             int y= (game.GetWarehouse().GetFields().indexOf(game.GetWarehouse().GetBoxFromIndex(i).GetField()))/20;
             int x = (game.GetWarehouse().GetFields().indexOf(game.GetWarehouse().GetBoxFromIndex(i).GetField())- 20*y);
-
-                System.out.println("b"+(i+1)+" - X:"
-                        +x+", Y:"+y);
+            int traction = game.GetWarehouse().GetBoxFromIndex(i).GetTraction();
+            System.out.println("w"+(i+1)+" - X:"
+                    +x+", Y:"+y+", Power:"+traction);
 
         }
     }
@@ -100,9 +100,9 @@ public class Main {
         for (int i = 0; i <game.GetWarehouse().GetWorkers().size() ; i++) {
             int y= (game.GetWarehouse().GetFields().indexOf(game.GetWarehouse().GetWorkerFromIndex(i).GetField()))/20;
             int x = (game.GetWarehouse().GetFields().indexOf(game.GetWarehouse().GetWorkerFromIndex(i).GetField())- 20*y);
-
+            int power = game.GetWarehouse().GetWorkerFromIndex(i).GetPower();
             System.out.println("w"+(i+1)+" - X:"
-                    +x+", Y:"+y);
+                    +x+", Y:"+y+", Power:"+power);
         }
     }
 
@@ -159,10 +159,18 @@ public class Main {
         int x = (game.GetWarehouse().GetFields().indexOf(w.GetField())-20*y);
 
         System.out.print("Previous X: "+x+", " + "Y: "+y+"\n");
+        Hole hole;
+        hole = (Hole)(w.GetField().GetNextField(d));
+
         w.Move(d);
          y= (game.GetWarehouse().GetFields().indexOf(w.GetField()))/20;
          x = (game.GetWarehouse().GetFields().indexOf(w.GetField())-20*y);
-        System.out.print("Current X: "+x+", " + "Y: "+y+"\n");
+        if(!hole.GetOpen()) {
+            System.out.print("Current X: " + x + ", " + "Y: " + y + "\n");
+        } else if(hole.GetOpen()){
+
+        }
+
     }
     public static void addtrap(Game game,Worker w,Integer trap){
         int y= (game.GetWarehouse().GetFields().indexOf(w.GetField()))/20;
