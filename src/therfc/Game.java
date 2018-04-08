@@ -37,7 +37,7 @@ public class Game {
         w.SetPower(power);
         if(level.GetFieldFromIndex(x+(y*20)).GetMoveable()!=null){
             System.out.println("Failed to add worker to this field, because it's not empty!");
-        } else if (level.GetFieldFromIndex(x+(y*20)) instanceof Wall){ //jól van ez így?
+        } else if (!level.GetFieldFromIndex(x+(y*20)).CheckStepOn()){
             System.out.println("Failed to add worker to this field, because this field is a wall!");
         }
         else {
@@ -51,7 +51,7 @@ public class Game {
         b.SetTraction(traction);
         if(level.GetFieldFromIndex(x+(y*20)).GetMoveable()!=null){
             System.out.println("Failed to add box to this field, because it's not empty!");
-        } else if (level.GetFieldFromIndex(x+(y*20)) instanceof Wall){ //jól van ez így?
+        } else if (!level.GetFieldFromIndex(x+(y*20)).CheckStepOn()){
             System.out.println("Failed to add box to this field, because this field is a wall!");
         }
         else {
