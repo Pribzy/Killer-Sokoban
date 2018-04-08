@@ -71,14 +71,24 @@ public class Game {
     public void SetNeighBors(Warehouse wh){
         for (int i = 0; i <wh.GetFields().size() ; i++) {
             if(i<20){
+
                if(i==0){
                    wh.GetFieldFromIndex(i).SetNeighbor(wh.GetFieldFromIndex(i + 1), Direction.Right);
                    wh.GetFieldFromIndex(i).SetNeighbor(wh.GetFieldFromIndex(i + 20), Direction.Down);
+               }
+               if(i!= 0 && i!=19) {
+                   wh.GetFieldFromIndex(i).SetNeighbor(wh.GetFieldFromIndex(i + 20), Direction.Down);
+                   wh.GetFieldFromIndex(i).SetNeighbor(wh.GetFieldFromIndex(i - 1), Direction.Left);
+                   wh.GetFieldFromIndex(i).SetNeighbor(wh.GetFieldFromIndex(i + 1), Direction.Right);
                }
                if(i==19){
                    wh.GetFieldFromIndex(i).SetNeighbor(wh.GetFieldFromIndex(i + 20), Direction.Down);
                    wh.GetFieldFromIndex(i).SetNeighbor(wh.GetFieldFromIndex(i - 1), Direction.Left);
                }
+
+
+
+
             }
             if(i>20 && i<380) {
                 if(i%20!=0 && i%20!=19) {
@@ -104,15 +114,19 @@ public class Game {
                     wh.GetFieldFromIndex(i).SetNeighbor(wh.GetFieldFromIndex(i + 1), Direction.Right);
                     wh.GetFieldFromIndex(i).SetNeighbor(wh.GetFieldFromIndex(i - 20), Direction.Up);
                 }
-                if(i==400){
+                if(i!= 380 && i!=399) {
+                    wh.GetFieldFromIndex(i).SetNeighbor(wh.GetFieldFromIndex(i - 20), Direction.Up);
+                    wh.GetFieldFromIndex(i).SetNeighbor(wh.GetFieldFromIndex(i - 1), Direction.Left);
+                    wh.GetFieldFromIndex(i).SetNeighbor(wh.GetFieldFromIndex(i + 1), Direction.Right);
+                }
+                if(i==399){
                     wh.GetFieldFromIndex(i).SetNeighbor(wh.GetFieldFromIndex(i - 20), Direction.Up);
                     wh.GetFieldFromIndex(i).SetNeighbor(wh.GetFieldFromIndex(i - 1), Direction.Left);
                 }
+
             }
         }
-        for (int i = 20; i <wh.GetFields().size() ; i=i+20) {
 
-        }
     }
 
     public Warehouse SetWarehouseFromFile(File level)throws Exception{

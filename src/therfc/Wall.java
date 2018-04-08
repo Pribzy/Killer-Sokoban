@@ -17,6 +17,7 @@ public class Wall extends Field {
         //logger.Enter(this, "StepOn", "w,d");
         Boolean pushed = w.GetPushed();
         if (pushed) {
+
             Field previousField =  neighbors.get(d.OppositeDirection()).GetPreviousField(d);
             Boolean canPushToWall =previousField.GetMoveablePushedToWall();
             if (canPushToWall) {
