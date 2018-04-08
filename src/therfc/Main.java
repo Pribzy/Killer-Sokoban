@@ -20,6 +20,7 @@ public class Main {
         System.out.println("1. Palya betoltese");
         System.out.println("2. Jatekos hozzadasa");
         System.out.println("3. Doboz elhelyezese a palyan");
+        System.out.println("4. Csapda lerakasa");
         System.out.println("=======================\n");
         System.out.print("Selected Test Case: ");
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
