@@ -19,21 +19,4 @@
 #___________H______#
 ####################
 
-Worker added to X: 1, Y: 2
-
 Worker added to X: 3, Y: 4
-
-w1 - X:1, Y:2, Power:3, Stuck:false
-w2 - X:3, Y:4, Power:2, Stuck:false
-w1:
-Up: SteppableField{ , }
-Down: SteppableField{ , }
-Left: Wall{ , }
-Right: SteppableField{ , }
-
-w2:
-Up: SteppableField{ , }
-Down: SteppableField{ , }
-Left: SteppableField{ , }
-Right: SteppableField{ , }
-
