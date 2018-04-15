@@ -43,11 +43,17 @@ public class Switch extends Field {
                 previousField.RemoveMoveable(b);
                 this.AddMoveable(b);
                 hole.SetOpen(true);
+                Game game=Game.GetInstance();
+                System.out.println("Switch On");
+                game.GetIO().WriteToFileByLine("Switch On");
             }
         } else {
             previousField.RemoveMoveable(b);
             this.AddMoveable(b);
             hole.SetOpen(true);
+            Game game=Game.GetInstance();
+            System.out.println("Switch On");
+            game.GetIO().WriteToFileByLine("Switch On");
         }
         //logger.Exit(this, "StepOn", "b stepped on switch");
     }
@@ -63,6 +69,9 @@ public class Switch extends Field {
         //logger.Enter(this,"RemoveMoveable",logger.GetObjectName(m));
         this.moveable=null;
         hole.SetOpen(false);
+        Game game=Game.GetInstance();
+        System.out.println("Switch Off");
+        game.GetIO().WriteToFileByLine("Switch Off");
        // logger.Exit(this,"RemoveMoveable",logger.GetObjectName(m)+" removed from "+logger.GetObjectName(this));
 
     }
