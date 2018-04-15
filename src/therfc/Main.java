@@ -24,6 +24,12 @@ public class Main {
         System.out.println("2. Jatekos hozzadasa");
         System.out.println("3. Doboz elhelyezese a palyan");
         System.out.println("4. Csapda lerakasa");
+        System.out.println("5. Jatekos lep");
+        System.out.println("6. Dobozt tolunk");
+        System.out.println("7. Jatekos tolodik");
+        System.out.println("8. Jatek veget er, amikor az osszes jatekos meghal");
+        System.out.println("9. Jatek veget er, amikor az osszes doboz beragad");
+        System.out.println("10. Jatek veget er, amikor minden doboz kijelolt helyre kerul");
         System.out.println("=======================\n");
         System.out.print("Selected Test Case: ");
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -38,7 +44,86 @@ public class Main {
             case "1": prototypeCommands(1); tests();
             case "2": prototypeCommands(2); tests();
             case "3": prototypeCommands(3); tests();
+            case "4": prototypeCommands(4); tests();
+            case "5": {
+                System.out.println("Test Subcases for \"Jatekos lep\": ");
+                System.out.println("1. Jatekos Wall-ra (falra) lep");
+                System.out.println("2. Jatekos TargetFieldre lep");
+                System.out.println("3. Jatekos Switch-re lep");
+                System.out.println("4. Jatekos SteppableField-re (lepheto mezore) lep");
+                System.out.println("5. Jatekos csukott Hole-ra (lyukra) lep");
+                System.out.println("6. Jatekos nyitott Hole-ra (lyukra) lep");
+                System.out.print("Selected Test Subcase for \"Jatekos lep\": ");
 
+                try {
+                    command = br.readLine();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                System.out.println();
+                switch (command){
+                    case "1": prototypeCommands(501); tests();
+                    case "2": prototypeCommands(502); tests();
+                    case "3": prototypeCommands(503); tests();
+                    case "4": prototypeCommands(504); tests();
+                    case "5": prototypeCommands(505); tests();
+                    case "6": prototypeCommands(506); tests();
+                }
+            }
+            case "6": {
+                System.out.println("Test Subcases for \"Dobozt tolunk\": ");
+                System.out.println("1. Tobb dobozt tolunk");
+                System.out.println("2. Nem tudjuk tolni, mert nem eleg a jatekos ereje");
+                System.out.println("3. Falnak tolna, ezert nem tolodik");
+                System.out.println("4. Aktiv kijelolt helyre toljuk, majd inaktivra tolunk\n" +
+                                "egyet (az elsonel megsemmisul, és inaktivva valik, a masodiknal siman ratolodik)");
+                System.out.println("5. Lyukra toljuk, és megsemmisul");
+                System.out.println("6. Kapcsolora toljuk, és a kapcsolo beallitodik");
+                System.out.println("7. Mez miatt nem tudjuk tolni");
+                System.out.println("8. Olaj miatt tudjuk tolni");
+                System.out.print("Selected Test Subcase for \"Dobozt tolunk\": ");
+
+                try {
+                    command = br.readLine();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                System.out.println();
+                switch (command){
+                    case "1": prototypeCommands(601); tests();
+                    case "2": prototypeCommands(602); tests();
+                    case "3": prototypeCommands(603); tests();
+                    case "4": prototypeCommands(604); tests();
+                    case "5": prototypeCommands(605); tests();
+                    case "6": prototypeCommands(606); tests();
+                    case "7": prototypeCommands(605); tests();
+                    case "8": prototypeCommands(606); tests();
+                }
+            }
+            case "7": {
+                System.out.println("Test Subcases for \"Jatekos tolodik\": ");
+                System.out.println("1. Jatekos jatekost tol nem falra");
+                System.out.println("2. Jatekos jatekost tol falra");
+                System.out.println("3. Jatekos kozvetlenul tol jatekost falra");
+                System.out.println("4. Jatekos lyukra tolodik");
+                System.out.print("Selected Test Subcase for \"Jatekos tolodik\": ");
+
+                try {
+                    command = br.readLine();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                System.out.println();
+                switch (command){
+                    case "1": prototypeCommands(701); tests();
+                    case "2": prototypeCommands(702); tests();
+                    case "3": prototypeCommands(703); tests();
+                    case "4": prototypeCommands(704); tests();
+                }
+            }
+            case "8": prototypeCommands(8); tests();
+            case "9": prototypeCommands(9); tests();
+            case "10": prototypeCommands(10); tests();
             default:
                 System.out.println("");
 
@@ -103,54 +188,86 @@ public class Main {
 
     private static void check(Game game,int num) throws Exception {
 
+        String basicmap = "####################" +
+                "#__________###_____#" +
+                "#T_____S___HT______#" +
+                "#_________________##" +
+                "#________________###" +
+                "#___C_____T______###" +
+                "##_____T__________##" +
+                "#________#_________#" +
+                "#_H______#_________#" +
+                "#__________________#" +
+                "#_S__________T_____#" +
+                "#_________HHHCHH___#" +
+                "#__________________#" +
+                "#__________________#" +
+                "####_____S_________#" +
+                "#______________H___#" +
+                "###__________C_____#" +
+                "#_____T____________#" +
+                "#___________H______#" +
+                "####################" +
+                "";
+
+        String basicforplayersteps = basicmap +
+                "Worker added to X: 1, Y: 1" +
+                "Worker added to X: 8, Y: 2" +
+                "Worker added to X: 5, Y: 5" +
+                "Worker added to X: 11, Y: 3" +
+                "####################" +
+                "#W_________###_____#" +
+                "#T_____SW__HT______#" +
+                "#__________W______##" +
+                "#________________###" +
+                "#___CW____T______###" +
+                "##_____T__________##" +
+                "#________#_________#" +
+                "#_H______#_________#" +
+                "#__________________#" +
+                "#_S__________T_____#" +
+                "#_________HHHCHH___#" +
+                "#__________________#" +
+                "#__________________#" +
+                "####_____S_________#" +
+                "#______________H___#" +
+                "###__________C_____#" +
+                "#_____T____________#" +
+                "#___________H______#" +
+                "####################" +
+                "w1:" +
+                "Up: Wall{ , }" +
+                "Down: TargetField{ , }" +
+                "Left: Wall{ , }" +
+                "Right: SteppableField{ , }" +
+                "w2:" +
+                "Up: SteppableField{ , }" +
+                "Down: SteppableField{ , }" +
+                "Left: Switch{ , }" +
+                "Right: SteppableField{ , }" +
+                "w3:" +
+                "Up: SteppableField{ , }" +
+                "Down: SteppableField{ , }" +
+                "Left: Hole{ , }" +
+                "Right: SteppableField{ , }" +
+                "w4:" +
+                "Up: Hole{ , }" +
+                "Down: SteppableField{ , }" +
+                "Left: SteppableField{ , }" +
+                "Right: SteppableField{ , }" +
+                "1: w1 [X: 1 , Y: 1 , Power: 1]" +
+                "2: w2 [X: 8 , Y: 2 , Power: 1]" +
+                "3: w3 [X: 5 , Y: 5 , Power: 1]" +
+                "4: w4 [X: 11 , Y: 3 , Power: 1]";
+
        if(num==1) {
-           String str = "####################" +
-                   "#__________###_____#" +
-                   "#T_____S___HT______#" +
-                   "#_________________##" +
-                   "#________________###" +
-                   "#___C_____T______###" +
-                   "##_____T__________##" +
-                   "#________#_________#" +
-                   "#_H______#_________#" +
-                   "#__________________#" +
-                   "#_S__________T_____#" +
-                   "#_________HHHCHH___#" +
-                   "#__________________#" +
-                   "#__________________#" +
-                   "####_____S_________#" +
-                   "#______________H___#" +
-                   "###__________C_____#" +
-                   "#_____T____________#" +
-                   "#___________H______#" +
-                   "####################" +
-                   "";
+           String str = basicmap;
            if (str.equals(game.GetIO().LoadTest(new File("test.txt")))) {
                System.out.println("Succes Test!\n");
            } else System.out.println("Failed Test!\n");
        }
         if (num==2) {
-            String str_1 = "####################" +
-                    "#__________###_____#" +
-                    "#T_____S___HT______#" +
-                    "#_________________##" +
-                    "#________________###" +
-                    "#___C_____T______###" +
-                    "##_____T__________##" +
-                    "#________#_________#" +
-                    "#_H______#_________#" +
-                    "#__________________#" +
-                    "#_S__________T_____#" +
-                    "#_________HHHCHH___#" +
-                    "#__________________#" +
-                    "#__________________#" +
-                    "####_____S_________#" +
-                    "#______________H___#" +
-                    "###__________C_____#" +
-                    "#_____T____________#" +
-                    "#___________H______#" +
-                    "####################" +
-                    "" +
+            String str_1 = basicmap +
                     "Worker added to X: 5, Y: 5" +
                     "Failed to add worker to this field, because this field is a wall!" +
                     "w1 - X:5, Y:5, Power:1, Stuck:false" +
@@ -163,10 +280,285 @@ public class Main {
             }
         }
         if (num==3) {
-            String str_2 = "####################" +
-                    "#__________###_____#" +
-                    "#T_____S___HT______#" +
-                    "#_________________##" +
+            String str_2 = basicmap +
+                    "Box added to X: 4, Y: 5" +
+                    "Failed to add worker to this field, because this field is a wall!" +
+                    "b1 - X:4, Y:5, Traction:1, Stuck:false" +
+                    "";
+
+            if (str_2.equals(game.GetIO().LoadTest(new File("test.txt")))) {
+                System.out.println("Succes Test!\n");
+            } else {
+                System.out.println("Failed Test!\n");
+            }
+        }
+        if (num==4) {
+            String str_3 = basicmap +
+                    "Worker added to X: 5, Y: 5" +
+                    "Worker added to X: 5, Y: 6" +
+                    "1: w1 [X: 5 , Y: 5 , Power: 2]" +
+                    "2: w2 [X: 5 , Y: 6 , Power: 3]" +
+                    "Added Honey To X: 5, Y: 5" +
+                    "1: w1 [X: 5 , Y: 5 , Power: 2]" +
+                    "2: w2 [X: 5 , Y: 6 , Power: 3]" +
+                    "Added Oil To X: 5, Y: 6" +
+                    "Honey - X:5, Y:5" +
+                    "Oil - X:5, Y:6" +
+                    "";
+
+            if (str_3.equals(game.GetIO().LoadTest(new File("test.txt")))) {
+                System.out.println("Succes Test!\n");
+            } else {
+                System.out.println("Failed Test!\n");
+            }
+        }
+        if (num==501) {
+            String str_501 = basicforplayersteps +
+                    "Previous X: 1, Y: 1" +
+                    "Current X: 1, Y: 1" +
+                    "";
+
+            if (str_501.equals(game.GetIO().LoadTest(new File("test.txt")))) {
+                System.out.println("Succes Test!\n");
+            } else {
+                System.out.println("Failed Test!\n");
+            }
+        }
+        if (num==502) {
+            String str_502 = basicforplayersteps +
+                    "Previous X: 1, Y: 1" +
+                    "Current X: 1, Y: 2" +
+                    "";
+
+            if (str_502.equals(game.GetIO().LoadTest(new File("test.txt")))) {
+                System.out.println("Succes Test!\n");
+            } else {
+                System.out.println("Failed Test!\n");
+            }
+        }
+        if (num==503) {
+            String str_503 = basicforplayersteps +
+                    "Previous X: 8, Y: 2" +
+                    "Current X: 7, Y: 2" +
+                    "";
+
+            if (str_503.equals(game.GetIO().LoadTest(new File("test.txt")))) {
+                System.out.println("Succes Test!\n");
+            } else {
+                System.out.println("Failed Test!\n");
+            }
+        }
+        if (num==504) {
+            String str_504 = basicforplayersteps +
+                    "Previous X: 7, Y: 2" +
+                    "Current X: 8, Y: 2" +
+                    "";
+
+            if (str_504.equals(game.GetIO().LoadTest(new File("test.txt")))) {
+                System.out.println("Succes Test!\n");
+            } else {
+                System.out.println("Failed Test!\n");
+            }
+        }
+        if (num==505) {
+            String str_505 = basicforplayersteps +
+                    "Previous X: 5, Y: 5" +
+                    "Current X: 4, Y: 5" +
+                    "";
+
+            if (str_505.equals(game.GetIO().LoadTest(new File("test.txt")))) {
+                System.out.println("Succes Test!\n");
+            } else {
+                System.out.println("Failed Test!\n");
+            }
+        }
+        if (num==506) {
+            String str_506 = basicforplayersteps +
+                    "Previous X: 11, Y: 3" +
+                    "4. worker die" +
+                    "w1 - X:1, Y:2, Power: 1" +
+                    "w2 - X:8, Y:2, Power: 1" +
+                    "w3 - X:4, Y:5, Power: 1" +
+                    "";
+
+            if (str_506.equals(game.GetIO().LoadTest(new File("test.txt")))) {
+                System.out.println("Succes Test!\n");
+            } else {
+                System.out.println("Failed Test!\n");
+            }
+        }
+        if (num==601) {
+            String str_601 = basicmap +
+                    "Worker added to X: 7, Y: 4" +
+                    "Box added to X: 6, Y: 4" +
+                    "Box added to X: 5, Y: 4" +
+                    "1: w1 [X: 7 , Y: 4 , Power: 5]" +
+                    "Previous X: 7, Y: 4" +
+                    "Current X: 6, Y: 4" +
+                    "";
+
+            if (str_601.equals(game.GetIO().LoadTest(new File("test.txt")))) {
+                System.out.println("Succes Test!\n");
+            } else {
+                System.out.println("Failed Test!\n");
+            }
+        }
+        if (num==602) {
+            String str_602 = basicmap +
+                    "Worker added to X: 5, Y: 3" +
+                    "Box added to X: 4, Y: 3" +
+                    "Box added to X: 3, Y: 3" +
+                    "1: w1 [X: 5 , Y: 3 , Power: 3]" +
+                    "Previous X: 5, Y: 3" +
+                    "Current X: 5, Y: 3" +
+                    "";
+
+            if (str_602.equals(game.GetIO().LoadTest(new File("test.txt")))) {
+                System.out.println("Succes Test!\n");
+            } else {
+                System.out.println("Failed Test!\n");
+            }
+        }
+        if (num==603) {
+            String str_603 = basicmap +
+                    "Worker added to X: 3, Y: 9" +
+                    "Box added to X: 2, Y: 9" +
+                    "Box added to X: 1, Y: 9" +
+                    "1: w1 [X: 3 , Y: 9 , Power: 5]" +
+                    "Previous X: 3, Y: 9" +
+                    "Current X: 3, Y: 9" +
+                    "";
+
+            if (str_603.equals(game.GetIO().LoadTest(new File("test.txt")))) {
+                System.out.println("Succes Test!\n");
+            } else {
+                System.out.println("Failed Test!\n");
+            }
+        }
+        if (num==604) {
+            String str_604 = basicmap +
+                    "Worker added to X: 10, Y: 8" +
+                    "Box added to X: 10, Y: 7" +
+                    "Box added to X: 10, Y: 6" +
+                    "1: w1 [X: 10 , Y: 8 , Power: 5]" +
+                    "Previous X: 10, Y: 8" +
+                    "TargetField activated" +
+                    "Current X: 10, Y: 7" +
+                    "1: w1 [X: 10 , Y: 7 , Power: 5]" +
+                    "Previous X: 10, Y: 7" +
+                    "Current X: 10, Y: 6" +
+                    "";
+
+            if (str_604.equals(game.GetIO().LoadTest(new File("test.txt")))) {
+                System.out.println("Succes Test!\n");
+            } else {
+                System.out.println("Failed Test!\n");
+            }
+        }
+        if (num==605) {
+            String str_605 = basicmap +
+                    "Worker added to X: 9, Y: 2" +
+                    "Box added to X: 10, Y: 2" +
+                    "Box added to X: 10, Y: 7" +
+                    "1: w1 [X: 9 , Y: 2 , Power: 5]" +
+                    "Previous X: 9, Y: 2" +
+                    "Current X: 10, Y: 2" +
+                    "b1 - X:10, Y:7, Traction: 2" +
+                    "";
+
+            if (str_605.equals(game.GetIO().LoadTest(new File("test.txt")))) {
+                System.out.println("Succes Test!\n");
+            } else {
+                System.out.println("Failed Test!\n");
+            }
+        }
+        if (num==606) {
+            String str_606 = basicmap +
+                    "Worker added to X: 9, Y: 12" +
+                    "Box added to X: 9, Y: 13" +
+                    "1: w1 [X: 9 , Y: 12 , Power: 5]" +
+                    "Previous X: 9, Y: 12" +
+                    "Switch On" +
+                    "Current X: 9, Y: 13" +
+                    "1: w1 [X: 9 , Y: 13 , Power: 5]" +
+                    "Previous X: 9, Y: 13" +
+                    "Switch Off" +
+                    "Current X: 9, Y: 14" +
+                    "";
+
+            if (str_606.equals(game.GetIO().LoadTest(new File("test.txt")))) {
+                System.out.println("Succes Test!\n");
+            } else {
+                System.out.println("Failed Test!\n");
+            }
+        }
+        if (num==607) {
+            String str_607 = basicmap +
+                    "Worker added to X: 7, Y: 15" +
+                    "1: w1 [X: 7 , Y: 15 , Power: 2]" +
+                    "Added Honey To X: 7, Y: 15" +
+                    "1: w1 [X: 7 , Y: 15 , Power: 2]" +
+                    "Previous X: 7, Y: 15" +
+                    "Current X: 6, Y: 15" +
+                    "Box added to X: 7, Y: 15" +
+                    "1: w1 [X: 6 , Y: 15 , Power: 2]" +
+                    "Previous X: 6, Y: 15" +
+                    "Current X: 6, Y: 15" +
+                    "";
+
+            if (str_607.equals(game.GetIO().LoadTest(new File("test.txt")))) {
+                System.out.println("Succes Test!\n");
+            } else {
+                System.out.println("Failed Test!\n");
+            }
+        }
+        if (num==608) {
+            String str_608 = basicmap +
+                    "Worker added to X: 7, Y: 16" +
+                    "1: w1 [X: 7 , Y: 16 , Power: 2]" +
+                    "Added Oil To X: 7, Y: 16" +
+                    "1: w1 [X: 7 , Y: 16 , Power: 2]" +
+                    "Previous X: 7, Y: 16" +
+                    "Current X: 6, Y: 16" +
+                    "Box added to X: 7, Y: 16" +
+                    "1: w1 [X: 6 , Y: 16 , Power: 2]" +
+                    "Previous X: 6, Y: 16" +
+                    "Current X: 7, Y: 16" +
+                    "";
+
+            if (str_608.equals(game.GetIO().LoadTest(new File("test.txt")))) {
+                System.out.println("Succes Test!\n");
+            } else {
+                System.out.println("Failed Test!\n");
+            }
+        }
+        if (num==701) {
+            String str_701 = basicmap +
+                    "Worker added to X: 1, Y: 1" +
+                    "Worker added to X: 2, Y: 1" +
+                    "1: w1 [X: 1 , Y: 1 , Power: 1]" +
+                    "2: w2 [X: 2 , Y: 1 , Power: 1]" +
+                    "Previous X: 1, Y: 1" +
+                    "Current X: 2, Y: 1" +
+                    "w1 - X:2, Y:1, Power:1, Stuck:false" +
+                    "w2 - X:3, Y:1, Power:1, Stuck:false" +
+                    "";
+
+            if (str_701.equals(game.GetIO().LoadTest(new File("test.txt")))) {
+                System.out.println("Succes Test!\n");
+            } else {
+                System.out.println("Failed Test!\n");
+            }
+        }
+        if (num==702) {
+            String str_702 = basicmap +
+                    "Worker added to X: 2, Y: 1" +
+                    "Box added to X: 2, Y: 2" +
+                    "Worker added to X: 2, Y: 3" +
+                    "####################" +
+                    "#_W________###_____#" +
+                    "#TB____S___HT______#" +
+                    "#_W_______________##" +
                     "#________________###" +
                     "#___C_____T______###" +
                     "##_____T__________##" +
@@ -184,18 +576,220 @@ public class Main {
                     "#___________H______#" +
                     "####################" +
                     "" +
-                    "Box added to X: 4, Y: 5" +
-                    "Failed to add worker to this field, because this field is a wall!" +
-                    "b1 - X:4, Y:5, Traction:1, Stuck:false" +
+                    "1: w1 [X: 2 , Y: 1 , Power: 1]" +
+                    "2: w2 [X: 2 , Y: 3 , Power: 4]" +
+                    "Previous Field: X: 2, Y: 3" +
+                    "w1.  Worker Die" + //Ezt itt nem írja, ki, kezelni kellene valahol!!!
+                    "Current Field: X: 2, Y: 2" +
+                    "w1 - X:2, Y:2, Power:4, Stuck:false" +
                     "";
 
-            if (str_2.equals(game.GetIO().LoadTest(new File("test.txt")))) {
+            if (str_702.equals(game.GetIO().LoadTest(new File("test.txt")))) {
                 System.out.println("Succes Test!\n");
             } else {
                 System.out.println("Failed Test!\n");
             }
         }
+        if (num==703) {
+            String str_703 = basicmap +
+                    "Worker added to X: 1, Y: 1" +
+                    "Worker added to X: 2, Y: 1" +
+                    "1: w1 [X: 1 , Y: 1 , Power: 1]" +
+                    "2: w2 [X: 2 , Y: 1 , Power: 1]" +
+                    "Previous X: 2, Y: 1" +
+                    "Current X: 2, Y: 1" +
+                    "w1 - X:1, Y:1, Power:1, Stuck:false" +
+                    "w2 - X:2, Y:1, Power:1, Stuck:false" +
+                    "";
 
+            if (str_703.equals(game.GetIO().LoadTest(new File("test.txt")))) {
+                System.out.println("Succes Test!\n");
+            } else {
+                System.out.println("Failed Test!\n");
+            }
+        }
+        if (num==704) {
+            String str_704 = basicmap +
+                    "Worker added to X: 10, Y: 2" +
+                    "Worker added to X: 9, Y: 2" +
+                    "####################" +
+                    "#__________###_____#" +
+                    "#T_____S_WWHT______#" +
+                    "#_________________##" +
+                    "#________________###" +
+                    "#___C_____T______###" +
+                    "##_____T__________##" +
+                    "#________#_________#" +
+                    "#_H______#_________#" +
+                    "#__________________#" +
+                    "#_S__________T_____#" +
+                    "#_________HHHCHH___#" +
+                    "#__________________#" +
+                    "#__________________#" +
+                    "####_____S_________#" +
+                    "#______________H___#" +
+                    "###__________C_____#" +
+                    "#_____T____________#" +
+                    "#___________H______#" +
+                    "####################" +
+                    "1: w1 [X: 10 , Y: 2 , Power: 1]" +
+                    "2: w2 [X: 9 , Y: 2 , Power: 1]" +
+                    "Previous Field: X: 9, Y: 2" +
+                    "w1. Worker Die" +
+                    "Current Field: X: 10, Y: 2" +
+                    "w1 - X:10, Y:2, Power:1, Stuck:false" +
+                    "";
+
+            if (str_704.equals(game.GetIO().LoadTest(new File("test.txt")))) {
+                System.out.println("Succes Test!\n");
+            } else {
+                System.out.println("Failed Test!\n");
+            }
+        }
+        if (num==8) {
+            String str_8 = basicmap +
+                    "Worker added to X: 11, Y: 3" +
+                    "Worker added to X: 11, Y: 4" +
+                    "1: w1 [X: 11 , Y: 3 , Power: 1]" +
+                    "2: w2 [X: 11 , Y: 4 , Power: 1]" +
+                    "Previous X: 11, Y: 4" +
+                    "1. worker die" + //Ez nem kerül a fájlba
+                    "Current X: 11, Y: 3" +
+                    "1: w1 [X: 11 , Y: 3 , Power: 1]" +
+                    "Previous X: 11, Y: 3" +
+                    "w1.  Worker Die" + //ez sem
+                    "GAME OVER" + // ez sem
+                    "Max Point Player: w0" + //és ez sem
+                    // viszont ide berak egy Current pozíciót, amit a doksi szerint már nem kellene
+                    "Points: 0" +
+                    "";
+
+            if (str_8.equals(game.GetIO().LoadTest(new File("test.txt")))) {
+                System.out.println("Succes Test!\n");
+            } else {
+                System.out.println("Failed Test!\n");
+            }
+        }
+        if (num==9) {
+            String str_9 = basicmap +
+                    "Box added to X: 2, Y: 1" +
+                    "Worker added to X: 3, Y: 1" +
+                    "1: w1 [X: 3 , Y: 1 , Power: 1]" +
+                    "Previous X: 3, Y: 1" +
+                    "GAME OVER" + //Ezt még mindig nem írja bele
+                    "Max Point Player: w1" + //és ezt sem
+                    "Points: 0" + //meg ezt sem
+                    "Current X: 2, Y: 1" +
+                    "b1 - X:1, Y:1, Traction:1, Stuck:true" +
+                    "";
+
+            if (str_9.equals(game.GetIO().LoadTest(new File("test.txt")))) {
+                System.out.println("Succes Test!\n");
+            } else {
+                System.out.println("Failed Test!\n");
+            }
+        }
+        if (num==10) {
+            String str_10 = basicmap +
+                    "Worker added to X: 3, Y: 2" +
+                    "Worker added to X: 14, Y: 2" +
+                    "Worker added to X: 12, Y: 5" +
+                    "Worker added to X: 9, Y: 6" +
+                    "Worker added to X: 15, Y: 10" +
+                    "Worker added to X: 8, Y: 17" +
+                    "Box added to X: 2, Y: 2" +
+                    "Box added to X: 13, Y: 2" +
+                    "Box added to X: 11, Y: 5" +
+                    "Box added to X: 8, Y: 6" +
+                    "Box added to X: 14, Y: 10" +
+                    "Box added to X: 7, Y: 17" +
+                    "####################" +
+                    "#__________###_____#" +
+                    "#TBW___S___HTBW____#" +
+                    "#_________________##" +
+                    "#________________###" +
+                    "#___C_____TBW____###" +
+                    "##_____TBW________##" +
+                    "#________#_________#" +
+                    "#_H______#_________#" +
+                    "#__________________#" +
+                    "#_S__________TBW___#" +
+                    "#_________HHHCHH___#" +
+                    "#__________________#" +
+                    "#__________________#" +
+                    "####_____S_________#" +
+                    "#______________H___#" +
+                    "###__________C_____#" +
+                    "#_____TBW__________#" +
+                    "#___________H______#" +
+                    "####################" +
+                    "" +
+                    "1: w1 [X: 3 , Y: 2 , Power: 1]" +
+                    "2: w2 [X: 14 , Y: 2 , Power: 1]" +
+                    "3: w3 [X: 12 , Y: 5 , Power: 1]" +
+                    "4: w4 [X: 9 , Y: 6 , Power: 1]" +
+                    "5: w5 [X: 15 , Y: 10 , Power: 1]" +
+                    "6: w6 [X: 8 , Y: 17 , Power: 1]" +
+                    "Previous X: 3, Y: 2" +
+                    "Current X: 2, Y: 2" +
+                    "1: w1 [X: 2 , Y: 2 , Power: 1]" +
+                    "2: w2 [X: 14 , Y: 2 , Power: 1]" +
+                    "3: w3 [X: 12 , Y: 5 , Power: 1]" +
+                    "4: w4 [X: 9 , Y: 6 , Power: 1]" +
+                    "5: w5 [X: 15 , Y: 10 , Power: 1]" +
+                    "6: w6 [X: 8 , Y: 17 , Power: 1]" +
+                    "Previous X: 14, Y: 2" +
+                    "Current X: 13, Y: 2" +
+                    "1: w1 [X: 2 , Y: 2 , Power: 1]" +
+                    "2: w2 [X: 13 , Y: 2 , Power: 1]" +
+                    "3: w3 [X: 12 , Y: 5 , Power: 1]" +
+                    "4: w4 [X: 9 , Y: 6 , Power: 1]" +
+                    "5: w5 [X: 15 , Y: 10 , Power: 1]" +
+                    "6: w6 [X: 8 , Y: 17 , Power: 1]" +
+                    "Previous X: 12, Y: 5" +
+                    "Current X: 11, Y: 5" +
+                    "1: w1 [X: 2 , Y: 2 , Power: 1]" +
+                    "2: w2 [X: 13 , Y: 2 , Power: 1]" +
+                    "3: w3 [X: 11 , Y: 5 , Power: 1]" +
+                    "4: w4 [X: 9 , Y: 6 , Power: 1]" +
+                    "5: w5 [X: 15 , Y: 10 , Power: 1]" +
+                    "6: w6 [X: 8 , Y: 17 , Power: 1]" +
+                    "Previous X: 9, Y: 6" +
+                    "Current X: 8, Y: 6" +
+                    "1: w1 [X: 2 , Y: 2 , Power: 1]" +
+                    "2: w2 [X: 13 , Y: 2 , Power: 1]" +
+                    "3: w3 [X: 11 , Y: 5 , Power: 1]" +
+                    "4: w4 [X: 8 , Y: 6 , Power: 1]" +
+                    "5: w5 [X: 15 , Y: 10 , Power: 1]" +
+                    "6: w6 [X: 8 , Y: 17 , Power: 1]" +
+                    "Previous X: 15, Y: 10" +
+                    "Current X: 14, Y: 10" +
+                    "1: w1 [X: 2 , Y: 2 , Power: 1]" +
+                    "2: w2 [X: 13 , Y: 2 , Power: 1]" +
+                    "3: w3 [X: 11 , Y: 5 , Power: 1]" +
+                    "4: w4 [X: 8 , Y: 6 , Power: 1]" +
+                    "5: w5 [X: 14 , Y: 10 , Power: 1]" +
+                    "6: w6 [X: 8 , Y: 17 , Power: 1]" +
+                    "Previous X: 8, Y: 17" +
+                    "GAME OVER" + //Ez hiányzik (ennél az esetnél a program egyébként 2x írja ki a GAME OVER-t)
+                    "Max Point Player: w1" + //és ez is
+                    "Points: 1" + //meg ez is
+                    "Current X: 7, Y: 17" +
+                    "t1 - X:1, Y:2, \tActive:false" +
+                    "t2 - X:12, Y:2, \tActive:false" +
+                    "t3 - X:10, Y:5, \tActive:false" +
+                    "t4 - X:7, Y:6, \tActive:false" +
+                    "t5 - X:13, Y:10,\tActive:false" +
+                    "t6 - X:6, Y:17, \tActive:false" +
+                    "";
+
+
+            if (str_10.equals(game.GetIO().LoadTest(new File("test.txt")))) {
+                System.out.println("Succes Test!\n");
+            } else {
+                System.out.println("Failed Test!\n");
+            }
+        }
 
 
     }
@@ -290,6 +884,7 @@ public class Main {
             int x = (game.GetWarehouse().GetFields().indexOf(game.GetWarehouse().GetWorkerFromIndex(i).GetField())- 20*y);
 
             System.out.println((i+1)+": w"+(i+1)+" [X: "+x+" , Y: "+y+" , Power: "+game.GetWarehouse().GetWorkerFromIndex(i).GetPower()+"]");
+            game.GetIO().WriteToFileByLine((i+1)+": w"+(i+1)+" [X: "+x+" , Y: "+y+" , Power: "+game.GetWarehouse().GetWorkerFromIndex(i).GetPower()+"]");
         }
         System.out.println();
         System.out.print("Selected Worker: ");
@@ -338,7 +933,7 @@ public class Main {
     private static void move(Game game,Direction d,Worker w){
         int y= (game.GetWarehouse().GetFields().indexOf(w.GetField()))/20;
         int x = (game.GetWarehouse().GetFields().indexOf(w.GetField())-20*y);
-        String outPrevious ="Previous Field: X: "+x+", " + "Y: "+y;
+        String outPrevious ="Previous X: "+x+", " + "Y: "+y;
         System.out.print(outPrevious+"\n");
         game.GetIO().WriteToFileByLine(outPrevious);
 
@@ -347,7 +942,7 @@ public class Main {
         w.Move(d);
          y= (game.GetWarehouse().GetFields().indexOf(w.GetField()))/20;
          x = (game.GetWarehouse().GetFields().indexOf(w.GetField())-20*y);
-        String outCurrent ="Current Field: X: " + x + ", " + "Y: " + y;
+        String outCurrent ="Current X: " + x + ", " + "Y: " + y;
         System.out.print(outCurrent+"\n");
         game.GetIO().WriteToFileByLine(outCurrent);
 
