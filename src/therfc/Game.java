@@ -40,8 +40,11 @@ public class Game {
     public  void EndGame( ) { //ha vége a játéknak,ez a függvény hívódik meg
         //logger.Enter(this,"EndGame","");
         Worker yourWinner=level.GetMaxPointPlayer(); //visszaadja a legnagyobb pontú játékost ami eddig történt
-        System.out.println("\n GAME OVER\n " +
+        System.out.println("\nGAME OVER\n" +
                 "Max Point Player: w" +(level.GetWorkers().indexOf(yourWinner)+1)+"\nPoints: "+yourWinner.GetPoints()+"\n");
+        game.GetIO().WriteToFileByLine("\nGAME OVER\n");
+        game.GetIO().WriteToFileByLine( "Max Point Player: w" +(level.GetWorkers().indexOf(yourWinner)+1));
+        game.GetIO().WriteToFileByLine("\nPoints: "+yourWinner.GetPoints()+"\n");
         //a szekvenciadiagramokban nincs benne a GetPoints() függvény, mivel azt csak a kiiratáshoz használjuk
         //logger.Exit(this,"EndGame","max point player");
     }

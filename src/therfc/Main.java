@@ -579,7 +579,7 @@ public class Main {
                     "1: w1 [X: 2 , Y: 1 , Power: 1]" +
                     "2: w2 [X: 2 , Y: 3 , Power: 4]" +
                     "Previous Field: X: 2, Y: 3" +
-                    "w1.  Worker Die" + //Ezt itt nem írja, ki, kezelni kellene valahol!!!
+                    "1. Worker Die" +
                     "Current Field: X: 2, Y: 2" +
                     "w1 - X:2, Y:2, Power:4, Stuck:false" +
                     "";
@@ -635,7 +635,7 @@ public class Main {
                     "1: w1 [X: 10 , Y: 2 , Power: 1]" +
                     "2: w2 [X: 9 , Y: 2 , Power: 1]" +
                     "Previous Field: X: 9, Y: 2" +
-                    "w1. Worker Die" +
+                    "1. Worker Die" +
                     "Current Field: X: 10, Y: 2" +
                     "w1 - X:10, Y:2, Power:1, Stuck:false" +
                     "";
@@ -653,15 +653,15 @@ public class Main {
                     "1: w1 [X: 11 , Y: 3 , Power: 1]" +
                     "2: w2 [X: 11 , Y: 4 , Power: 1]" +
                     "Previous X: 11, Y: 4" +
-                    "1. worker die" + //Ez nem kerül a fájlba
+                    "1. worker die" +
                     "Current X: 11, Y: 3" +
                     "1: w1 [X: 11 , Y: 3 , Power: 1]" +
                     "Previous X: 11, Y: 3" +
-                    "w1.  Worker Die" + //ez sem
-                    "GAME OVER" + // ez sem
-                    "Max Point Player: w0" + //és ez sem
-                    // viszont ide berak egy Current pozíciót, amit a doksi szerint már nem kellene
+                    "1. Worker Die" +
+                    "GAME OVER" +
+                    "Max Point Player: w0" +
                     "Points: 0" +
+                    //ide berak egy Current pozíciót, amit a doksi szerint már nem kellene
                     "";
 
             if (str_8.equals(game.GetIO().LoadTest(new File("test.txt")))) {
@@ -676,9 +676,11 @@ public class Main {
                     "Worker added to X: 3, Y: 1" +
                     "1: w1 [X: 3 , Y: 1 , Power: 1]" +
                     "Previous X: 3, Y: 1" +
-                    "GAME OVER" + //Ezt még mindig nem írja bele
-                    "Max Point Player: w1" + //és ezt sem
-                    "Points: 0" + //meg ezt sem
+                    "" +
+                    "GAME OVER" +
+                    "Max Point Player: w1" +
+                    "Points: 0" +
+                    "" +
                     "Current X: 2, Y: 1" +
                     "b1 - X:1, Y:1, Traction:1, Stuck:true" +
                     "";
@@ -771,9 +773,11 @@ public class Main {
                     "5: w5 [X: 14 , Y: 10 , Power: 1]" +
                     "6: w6 [X: 8 , Y: 17 , Power: 1]" +
                     "Previous X: 8, Y: 17" +
-                    "GAME OVER" + //Ez hiányzik (ennél az esetnél a program egyébként 2x írja ki a GAME OVER-t)
-                    "Max Point Player: w1" + //és ez is
-                    "Points: 1" + //meg ez is
+                    "" +
+                    "GAME OVER" + //ennél az esetnél a program 2x írja ki a GAME OVER-t
+                    "Max Point Player: w1" +
+                    "Points: 1" +
+                    "" +
                     "Current X: 7, Y: 17" +
                     "t1 - X:1, Y:2, \tActive:false" +
                     "t2 - X:12, Y:2, \tActive:false" +

@@ -143,12 +143,13 @@ public class Warehouse {
        // logger.Exit(this,"RemoveBox",logger.GetObjectName(b)+" removed from Warehouse");
     }
     public void RemoveWorker(Worker w){
+        Game game=Game.GetInstance();
         //logger.Enter(this,"RemoveWorker",logger.GetObjectName(w));
         System.out.println(players.indexOf(w)+1+". worker die");
+        game.GetIO().WriteToFileByLine(players.indexOf(w)+1+". worker die");
         players.remove(w);
         workerNumber--;
         if (workerNumber==0){
-            Game game = Game.GetInstance();
             game.EndGame();
         }
        // logger.Exit(this,"RemoveWorker",logger.GetObjectName(w)+" removed from Warehouse");
