@@ -17,6 +17,11 @@ public class Box extends Moveable {
 
     }
 
+    /**
+     *
+     * @param w Munkás, ami tolja a dobozt
+     * @param d Melyik irányba tolódik a doboz
+     */
     //függvények
     public void Push(Worker w, Direction d) { //ha tolják,ez a függvény hívódik meg
         //logger.Enter(this,"Push","w,d");
@@ -28,14 +33,20 @@ public class Box extends Moveable {
 
     }
 
-
+    /**
+     *
+     * @return
+     */
     public Worker GetWorker() {
         //logger.Enter(this,"GetWorker","");
        // logger.Exit(this,"GetWorker","w");
         return pushWorker;
     }
 
-
+    /**
+     *
+     * @return
+     */
     public Boolean IsStuck() { // ez a függvény nézi meg,hogy beszorult-e a doboz
         //logger.Enter(this,"IsStuck","");
         Boolean stuck;
@@ -57,15 +68,20 @@ public class Box extends Moveable {
     }
 
 
-
-
+    /**
+     *
+     * @param w
+     */
     private void SetWorker(Worker w) { //beállítja azt a munkást,amelyik tolja
         //logger.Enter(this,"SetWorker","w");
         this.pushWorker=w;
         //logger.Exit(this,"SetWorker","pushWorker setted to 'w' ");
     }
 
-
+    /**
+     *
+     * @return
+     */
     public Boolean CanPushToWall() { //azt adja vissza, hogy fel tudja-e tolni a munkást (igaz)
        // logger.Enter(this,"CanPushToWall","");
         Boolean canPush=true;
@@ -73,6 +89,10 @@ public class Box extends Moveable {
        return canPush;
 
     }
+
+    /**
+     *
+     */
     public void Die() {
         //logger.Enter(this,"Die","");
         this.GetField().RemoveMoveable(this);
@@ -80,6 +100,12 @@ public class Box extends Moveable {
        // logger.Exit(this,"Die","this moveable died");
 
     }
+
+    /**
+     *
+     * @param d
+     * @return
+     */
     public int GetAllTraction(Direction d){
         //logger.Enter(this,"GetAllTraction","d");
         Field nextField = this.GetField().GetNextField(d);
@@ -93,6 +119,10 @@ public class Box extends Moveable {
         return myTraction;
     }
 
+    /**
+     *
+     * @param t
+     */
     @Override
     public void ChangeTraction(int t) { //hozzáadja az aktuális tapadásához a paraméterként kapott tapadást
         int oldTraction=traction;
@@ -102,11 +132,18 @@ public class Box extends Moveable {
 
     }
 
-
+    /**
+     *
+     * @param i
+     */
      public void SetTraction(int i){
         this.traction=i;
      }
 
+    /**
+     *
+     * @return
+     */
     public int GetTraction(){
         return traction;
     }
