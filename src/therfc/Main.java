@@ -958,12 +958,12 @@ public class Main {
         int x = (game.GetWarehouse().GetFields().indexOf(w.GetField())-20*y);
         if(trap==1){
             w.AddHoney();
-            System.out.println("Added Honey To X: "+x+", Y: "+y);
+            System.out.println("\nAdded Honey To X: "+x+", Y: "+y+"\n");
             game.GetIO().WriteToFileByLine("Added Honey To X: "+x+", Y: "+y);
         }
         else if(trap==2){
             w.AddOil();
-            System.out.println("Added Oil To X: "+x+", Y: "+y);
+            System.out.println("\nAdded Oil To X: "+x+", Y: "+y+"\n");
             game.GetIO().WriteToFileByLine("Added Oil To X: "+x+", Y: "+y);
         }
     }
