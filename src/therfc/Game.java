@@ -70,7 +70,7 @@ public class Game {
     public Warehouse GetWarehouse() {
         return level;
     }
-    //teszteléshez használt függvények
+    //teszteléshez használt függvények, ezek nincsenek benne a dokumentumban
     public IO GetIO(){
         return io;
     }
