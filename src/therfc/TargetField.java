@@ -50,16 +50,19 @@ public class TargetField extends Field {
         Worker worker = b.GetWorker();
         Moveable moveable = this.GetMoveable();
         Field previousField = neighbors.get(d.OppositeDirection());
+        IO io = new IO();
         if (!active){
             if (moveable != null) {
                 moveable.Push(worker,d);
                 if (this.GetMoveable() == null){
                     previousField.RemoveMoveable(b);
                     this.AddMoveable(b);
+
                 }
             } else {
                 previousField.RemoveMoveable(b);
                 this.AddMoveable(b);
+
             }
         } else {
             if (moveable != null) {
@@ -67,12 +70,16 @@ public class TargetField extends Field {
                 if (this.GetMoveable() == null){
                     this.SetActive(false);
                     worker.AddPoint();
+                    System.out.println("TargetField activated");
+                    io.WriteToFileByLine("TargetField activated");
                     b.Die();
 
                 }
             } else {
                 this.SetActive(false);
                 worker.AddPoint();
+                System.out.println("TargetField activated");
+                io.WriteToFileByLine("TargetField activated");
                 b.Die();
 
             }

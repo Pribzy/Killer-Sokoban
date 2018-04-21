@@ -96,8 +96,8 @@ public class Main {
                     case "4": prototypeCommands(604); tests();
                     case "5": prototypeCommands(605); tests();
                     case "6": prototypeCommands(606); tests();
-                    case "7": prototypeCommands(605); tests();
-                    case "8": prototypeCommands(606); tests();
+                    case "7": prototypeCommands(607); tests();
+                    case "8": prototypeCommands(608); tests();
                 }
             }
             case "7": {
@@ -426,8 +426,9 @@ public class Main {
                     "1: w1 [X: 9 , Y: 2 , Power: 5]" +
                     "Previous X: 9, Y: 2" +
                     "Current X: 10, Y: 2" +
-                    "b1 - X:10, Y:7, Traction: 2" +
+                    "b1 - X:10, Y:7, Traction:2, Stuck:false" +
                     "";
+
 
             if (str_605.equals(game.GetIO().LoadTest(new File("test.txt")))) {
                 System.out.println("Succes Test!\n");
@@ -488,6 +489,8 @@ public class Main {
                     "Previous X: 6, Y: 16" +
                     "Current X: 7, Y: 16" +
                     "";
+
+
 
             if (str_608.equals(game.GetIO().LoadTest(new File("test.txt")))) {
                 System.out.println("Succes Test!\n");
@@ -617,14 +620,14 @@ public class Main {
                     "2: w2 [X: 11 , Y: 4 , Power: 1]" +
                     "Previous X: 11, Y: 4" +
                     "1. worker die" +
-                    "Current X: 11, Y: 3" +
+
                     "1: w1 [X: 11 , Y: 3 , Power: 1]" +
                     "Previous X: 11, Y: 3" +
-                    "1. Worker Die" +
+                    "1. worker die" +
                     "GAME OVER" +
                     "Max Point Player: w0" +
                     "Points: 0" +
-                    //ide berak egy Current pozíciót, amit a doksi szerint már nem kellene
+
                     "";
 
             if (str_8.equals(game.GetIO().LoadTest(new File("test.txt")))) {
