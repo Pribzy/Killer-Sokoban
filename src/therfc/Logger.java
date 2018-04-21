@@ -47,9 +47,9 @@ public class Logger {
 
     /**
      *
-     * @param o
-     * @param fv_name
-     * @param parameters
+     * @param o Megkapja paraméterként a kívánt objektumot
+     * @param fv_name Megkapja paraméterként a kívánt függvénynevet
+     * @param parameters Megkapja paraméterként a kívánt paramétereket
      */
     public void Enter(Object o, String fv_name, String parameters) {
         WriteTab();
@@ -57,6 +57,12 @@ public class Logger {
         tabNumber++;
     }
 
+    /**
+     *
+     * @param o Megkapja paraméterként a kívánt objektumot
+     * @param fv_name Megkapja paraméterként a kívánt függvénynevet
+     * @param returnValue Megkapja paraméterként a kívánt visszatérési értéket
+     */
     public void Exit(Object o, String fv_name, String returnValue) {
         tabNumber--;
         WriteTab();
@@ -64,11 +70,20 @@ public class Logger {
 
     }
 
+    /**
+     *
+     */
     public void WriteTab() { //tabulátorok kiiírása
         for (int i = 0; i <= tabNumber; i++) {
             System.out.print("\t\t");
         }
     }
+
+    /**
+     *
+     * @param wh Megkapja paraméterként a kirajzolandó Raktárt
+     * @param game Megkapja paraméterként az aktuális játékot
+     */
     public void DrawWarehoouse(Warehouse wh,Game game){
         for (int i = 0; i <wh.GetFields().size() ; i++) {
 

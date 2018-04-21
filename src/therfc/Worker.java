@@ -24,6 +24,10 @@ public class Worker extends Moveable {
 
     //függvények
 
+    /**
+     *
+     * @return Visszaadja a játékos pontszámát
+     */
     public int GetPoints() {
        // logger.Enter(this, "GetPoints", "");
         int points = point;
@@ -32,6 +36,10 @@ public class Worker extends Moveable {
 
     }
 
+    /**
+     *
+     * @param d A paraméterben átadott irányba mozgatja a játékost
+     */
     public void Move(Direction d) { //a játékos önszántából lép
        // logger.Enter(this, "Move", String.valueOf(d));
 
@@ -52,6 +60,11 @@ public class Worker extends Moveable {
         //logger.Exit(this, "Move", "worker moved to next field to d direction");
     }
 
+    /**
+     *
+     * @param w Átadja paraméterként, hogy melyik munkás tol
+     * @param d Átadja paraméterként, hogy melyik irányba lesz tolva
+     */
     public void Push(Worker w, Direction d) { //a játékost tolják d irányba
         //logger.Enter(this, "Push", "w,d");
         SetPushed(true);
@@ -62,6 +75,10 @@ public class Worker extends Moveable {
 
     }
 
+    /**
+     *
+     * @return Visszaadja, hogy a játékost tolták-e
+     */
     public Boolean GetPushed() {
        // logger.Enter(this, "GetPushed", "p");
         Boolean push = pushed;
@@ -69,6 +86,10 @@ public class Worker extends Moveable {
         return push;
     }
 
+    /**
+     *
+     * @param p Beállítja a paraméterben átadott értékre a játékos tolását
+     */
     private void SetPushed(Boolean p) {
         //logger.Enter(this, "SetPushed", String.valueOf(p));
         this.pushed = p;
@@ -76,6 +97,9 @@ public class Worker extends Moveable {
 
     }
 
+    /**
+     *
+     */
     public void AddPoint() {
        // logger.Enter(this, "AddPoint", "");
         point++;
@@ -84,7 +108,10 @@ public class Worker extends Moveable {
 
     }
 
-
+    /**
+     *
+     * @return Visszatér, hogy a játékos beszorult-e
+     */
     public Boolean IsStuck() { // ez a függvény nézi meg,hogy beszorult-e a doboz
        // logger.Enter(this,"IsStuck","");
         Boolean stuck;
@@ -104,6 +131,10 @@ public class Worker extends Moveable {
 
     }
 
+    /**
+     *
+     * @return Visszaadja, hogy fel tudje-e tolni a munkást. Játékosnál ez hamis
+     */
     public Boolean CanPushToWall() { //ez adja vissza, hogy fel tud-e munkást tolni a falra (false)
         //logger.Enter(this, "CanPushToWall", "");
         Boolean canPush = false;
@@ -111,6 +142,9 @@ public class Worker extends Moveable {
         return canPush;
     }
 
+    /**
+     *
+     */
     public void Die() {//ez hívódik meg,hogyha meghal a munkás
       //  logger.Enter(this, "Die", "");
         this.GetField().RemoveMoveable(this);
@@ -119,6 +153,10 @@ public class Worker extends Moveable {
 
     }
 
+    /**
+     *
+     * @param p Beállítja a játékos erejét a paraméterben megkapott értékre
+     */
     public void SetPower(int p) {
         //logger.Enter(this, "SetPower", String.valueOf(p));
         this.power = p;
@@ -126,6 +164,10 @@ public class Worker extends Moveable {
 
     }
 
+    /**
+     *
+     * @return Visszaadja a játékos erejét
+     */
     public int GetPower() {
       //  logger.Enter(this, "GetPower", "");
         int getPower = power;
@@ -133,6 +175,11 @@ public class Worker extends Moveable {
         return power;
     }
 
+    /**
+     *
+     * @param d Átadja paraméterben az irányt, ahonnan az erőket számoljuk össze
+     * @return Visszaadja az összes tapadás értékét
+     */
     public int GetAllTraction(Direction d) {
        // logger.Enter(this, "GetAllTraction", "d");
         int traction = 0;
@@ -146,6 +193,9 @@ public class Worker extends Moveable {
         return traction;
     }
 
+    /**
+     *
+     */
     public void AddHoney(){
        // logger.Enter(this, "AddHoney","");
         Honey honey = new Honey();
@@ -154,6 +204,9 @@ public class Worker extends Moveable {
 
     }
 
+    /**
+     *
+     */
     public void AddOil(){
        // logger.Enter(this, "AddOil","");
         Oil oil = new Oil();
@@ -162,6 +215,10 @@ public class Worker extends Moveable {
 
     }
 
+    /**
+     * 
+     * @param t Hozzáadja az aktuális tapadáshoz a kapott tapadást
+     */
     @Override
     public void ChangeTraction(int t) { //ez a függvény igazából nem csinál semmit
 

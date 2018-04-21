@@ -17,6 +17,12 @@ public class TargetField extends Field {
     }
 
     //függvények
+
+    /**
+     *
+     * @param w Megkapja paraméterként a munkást, amit majd a következő mezőre fog tenni
+     * @param d Megkapja paraméterként a d irányt, amerre a munkást fogja tenni
+     */
     public void StepOn(Worker w, Direction d) { // Ez történik Ha egy munkás Targetfield-re lép
         //logger.Enter(this,"StepOn","w,d");
         Moveable moveable = this.GetMoveable();
@@ -34,7 +40,11 @@ public class TargetField extends Field {
         //logger.Exit(this,"StepOn","Worker stepped on targetField");
     }
 
-
+    /**
+     *
+     * @param b Megkapja paraméterként a dobozt, amit majd a következő mezőre fog tenni
+     * @param d Megkapja paraméterként a d irányt, amerre a dobozt foja tenni
+     */
     public void StepOn(Box b, Direction d) {// Ez történik Ha egy doboz TargetField-re lép
        // logger.Enter(this,"StepOn","b,d");
         Worker worker = b.GetWorker();
@@ -71,7 +81,10 @@ public class TargetField extends Field {
     }
 
 
-
+    /**
+     *
+     * @return Visszatér a TargetField állapotával
+     */
     public Boolean GetActive() {
         //logger.Enter(this,"GetActive","");
         Boolean getActive= active;
@@ -79,6 +92,10 @@ public class TargetField extends Field {
         return getActive;
     }
 
+    /**
+     *
+     * @param a Beállítja a TargetField állapotát a paraméterként megkapott értékre
+     */
     public void SetActive(Boolean a) {
        // logger.Enter(this,"SetActive","a");
         this.active=a;

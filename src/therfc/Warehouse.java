@@ -23,7 +23,10 @@ public class Warehouse {
 
     //függvények
 
-
+    /**
+     *
+     * @return Visszaadja a legtöbb ponttal rendelkező játékost
+     */
     public Worker GetMaxPointPlayer() { //visszaadja a legnagyobb ponttal rendelkező játékost
         //logger.Enter(this, "GetMaxPointPlayer", "");
         if(players.isEmpty()){
@@ -44,7 +47,9 @@ public class Warehouse {
         }
     }
 
-
+    /**
+     *
+     */
     public void CheckStuckedWorkers() { //leellenőrzi az összes munkást,hogy beragadt-e
        // logger.Enter(this, "CheckStuckedWorkers", "");
         boolean allStucked = true;
@@ -63,7 +68,9 @@ public class Warehouse {
 
     }
 
-
+    /**
+     *
+     */
     public void CheckStuckedBoxes() {//leelenőrzi az összes doboz,hogy beragadt-e
         //logger.Enter(this, "CheckStuckedBoxes", "");
         boolean allStucked = true;
@@ -82,7 +89,9 @@ public class Warehouse {
        // logger.Exit(this, "CheckStuckedBoxes", "Checked boxes");
     }
 
-
+    /**
+     *
+     */
     public void CheckTargetFields() {//leelenőrzi az összes TargetField-et, hogy active-e, ha za összes inaktív,akkor vége a játéknak
        // logger.Enter(this, "CheckTargetFields", "");
         boolean allInActive = true;
@@ -108,9 +117,10 @@ public class Warehouse {
     }
 
 
-
-
-
+    /**
+     *
+     * @param w Hozzáadja a játékhoz a paraméterként átadott játékost
+     */
     public void AddWorker(Worker w) {
        // logger.Enter(this,"AddWorker",logger.GetObjectName(w));
         players.add(w);
@@ -119,12 +129,20 @@ public class Warehouse {
       //  logger.Exit(this,"AddWorker",logger.GetObjectName(w)+" added to warehouse");
     }
 
+    /**
+     *
+     * @param f Hozzáadja a játékhoz a paraméterként átadott mezőt
+     */
     public void AddField(Field f) {
       //  logger.Enter(this,"AddField",logger.GetObjectName(f));
         fields.add(f);
        // logger.Exit(this,"AddField",logger.GetObjectName(f)+" added to warehouse");
     }
 
+    /**
+     *
+     * @param b Hozzáadja a játékhoz a paraméterként átadott dobozt
+     */
     public void AddBox(Box b) {
        // logger.Enter(this,"AddBox",logger.GetObjectName(b));
         boxes.add(b);
@@ -132,6 +150,11 @@ public class Warehouse {
         b.SetWarehouse(this);
        // logger.Exit(this,"AddBox",logger.GetObjectName(b)+" added to Warehouse");
     }
+
+    /**
+     *
+     * @param b Törli a játékból a paraméterként átadott dobozt
+     */
     public void RemoveBox(Box b){
         //logger.Enter(this,"RemoveBox",logger.GetObjectName(b));
         boxes.remove(b);
@@ -142,6 +165,11 @@ public class Warehouse {
         }
        // logger.Exit(this,"RemoveBox",logger.GetObjectName(b)+" removed from Warehouse");
     }
+
+    /**
+     *
+     * @param w Törli a játékból a paraméterként átadott játékost
+     */
     public void RemoveWorker(Worker w){
         Game game=Game.GetInstance();
         //logger.Enter(this,"RemoveWorker",logger.GetObjectName(w));
@@ -155,23 +183,53 @@ public class Warehouse {
        // logger.Exit(this,"RemoveWorker",logger.GetObjectName(w)+" removed from Warehouse");
     }
 
+    /**
+     *
+     * @param i A paraméterben átadott számú mezőt szeretnénk visszakapni
+     * @return Visszaadja a paraméterben átadott számú mezőt
+     */
     public Field GetFieldFromIndex(int i){ //visszaadja az i-edik mezőt a raktárból
         return fields.get(i);
     }
 
+    /**
+     *
+     * @return Visszaadja a mezők listáját
+     */
     public List<Field> GetFields(){ //visszaadja a mezők listáját
         return fields;
     }
 
+    /**
+     *
+     * @param i A paraméterben átadott számú játékost szeretnénk visszakapni
+     * @return Visszaadja a paraméterben átadott számú játékost
+     */
     public Worker GetWorkerFromIndex(int i){ //visszaadja az i-edik munkást a raktárból
         return players.get(i);
     }
+
+    /**
+     *
+     * @return Visszaadja a játékosok listáját
+     */
     public List<Worker> GetWorkers(){ //visszaadja a munkások listáját
         return players;
     }
+
+    /**
+     *
+     * @return Visszaadja a dobozok listáját
+     */
     public List<Box> GetBoxes(){ //visszaadja a dobozok listáját
         return boxes;
     }
+
+    /**
+     *
+     * @param i A paraméterben átadott számú dobozt szeretnénk visszakapni
+     * @return Visszaadja a paraméterben átadott számú dobozt
+     */
     public Box GetBoxFromIndex(int i){ //visszaadja az i-edik munkást a raktárból
         return boxes.get(i);
     }

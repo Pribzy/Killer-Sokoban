@@ -15,6 +15,12 @@ public class SteppableField extends Field {
     }
 
     //függvények
+
+    /**
+     *
+     * @param w Megkapja paraméterként a munkást, amit majd a következő mezőre fog tenni
+     * @param d Megkapja paraméterként a d irányt, amerre a munkást fogja tenni
+     */
     public void StepOn(Worker w, Direction d) {// Ez történik Ha egy munkás a SteppableFIeld-re lép
        // logger.Enter(this, "StepOn", "w,d");
 
@@ -33,6 +39,11 @@ public class SteppableField extends Field {
         //logger.Exit(this, "StepOn", "w stepped on this field");
     }
 
+    /**
+     *
+     * @param b Megkapja paraméterként a dobozt, amit majd a következő mezőre fog tenni
+     * @param d Megkapja paraméterként a d irányt, amerre a dobozt foja tenni
+     */
     public void StepOn(Box b, Direction d) {// Ez történik Ha egy doboz a SteppableFIeld-re lép
        // logger.Enter(this, "StepOn", "b,d");
         Field previousField = neighbors.get(d.OppositeDirection());
