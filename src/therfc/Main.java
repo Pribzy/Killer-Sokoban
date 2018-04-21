@@ -177,9 +177,9 @@ public class Main {
 
             boolean active = targetfields.get(i).GetActive();
             System.out.println("t"+(i+1)+" - X:"
-                    +x+", Y:"+y+",\tActive:"+active);
+                    +x+", Y:"+y+", Active:"+active);
             game.GetIO().WriteToFileByLine("t"+(i+1)+" - X:"
-                    +x+", Y:"+y+",\tActive:"+active);
+                    +x+", Y:"+y+", Active:"+active);
 
         }
         System.out.println();
@@ -688,15 +688,16 @@ public class Main {
                     "Points: 1" +
                     "TargetField activated" +
                     "Current X: 7, Y: 17" +
-                    "t1 - X:1, Y:2, \tActive:false" +
-                    "t2 - X:12, Y:2, \tActive:false" +
-                    "t3 - X:10, Y:5, \tActive:false" +
-                    "t4 - X:7, Y:6, \tActive:false" +
-                    "t5 - X:13, Y:10,\tActive:false" +
-                    "t6 - X:6, Y:17, \tActive:false" +
+                    "t1 - X:1, Y:2, Active:false" +
+                    "t2 - X:12, Y:2, Active:false" +
+                    "t3 - X:10, Y:5, Active:false" +
+                    "t4 - X:7, Y:6, Active:false" +
+                    "t5 - X:13, Y:10,Active:false" +
+                    "t6 - X:6, Y:17, Active:false" +
                     "";
 
-
+            System.out.println(str_10);
+            System.out.println(game.GetIO().LoadTest(new File("test.txt")));
             if (str_10.equals(game.GetIO().LoadTest(new File("test.txt")))) {
                 System.out.println("Succes Test!\n");
             } else {
