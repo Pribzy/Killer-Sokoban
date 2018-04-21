@@ -31,6 +31,12 @@ public class Logger {
     }
 
     //függvények
+
+    /**
+     *
+     * @param o Paraméterben megkap egy objektumot, aminek a nevére vagyunk kíváncsiak
+     * @return Visszaadja a paraméterben kapott objektum nevét
+     */
     public String GetObjectName(Object o) { //visszaadja az obejtum nevét
         if(o==null){
             return " ";
@@ -39,6 +45,12 @@ public class Logger {
         }
     }
 
+    /**
+     *
+     * @param o
+     * @param fv_name
+     * @param parameters
+     */
     public void Enter(Object o, String fv_name, String parameters) {
         WriteTab();
         System.out.println("-> [" + GetObjectName(o) + ":] " + fv_name + "(" + parameters + ")");

@@ -26,6 +26,11 @@ public class Game {
 
 
 //szkeleton függvények
+
+    /**
+     *
+     * @throws Exception
+     */
     public  void StartGame( ) throws Exception {
 
         level = io.SetWarehouseFromFile(new File("trial.txt"));
@@ -34,9 +39,9 @@ public class Game {
     }
 
 
-
-
-    
+    /**
+     *
+     */
     public  void EndGame( ) { //ha vége a játéknak,ez a függvény hívódik meg
         //logger.Enter(this,"EndGame","");
         Worker yourWinner=level.GetMaxPointPlayer(); //visszaadja a legnagyobb pontú játékost ami eddig történt
@@ -50,11 +55,18 @@ public class Game {
     }
 
 
-
+    /**
+     *
+     * @param wh Beállítja magának a paraméterként átadott Raktárt
+     */
     public void SetWarehouse(Warehouse wh){
         this.level=wh;
     }
 
+    /**
+     *
+     * @return Visszatér az aktuális Raktárral
+     */
     public Warehouse GetWarehouse() {
         return level;
     }

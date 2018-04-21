@@ -35,7 +35,7 @@ public class Box extends Moveable {
 
     /**
      *
-     * @return
+     * @return Visszaadja, hogy melyik játékos tolta a dobozt
      */
     public Worker GetWorker() {
         //logger.Enter(this,"GetWorker","");
@@ -45,7 +45,7 @@ public class Box extends Moveable {
 
     /**
      *
-     * @return
+     * @return Visszaadja, hogy a doboz beragadt-e
      */
     public Boolean IsStuck() { // ez a függvény nézi meg,hogy beszorult-e a doboz
         //logger.Enter(this,"IsStuck","");
@@ -70,7 +70,7 @@ public class Box extends Moveable {
 
     /**
      *
-     * @param w
+     * @param w Beállítja azt a munkást, amelyik tolja a dobozt
      */
     private void SetWorker(Worker w) { //beállítja azt a munkást,amelyik tolja
         //logger.Enter(this,"SetWorker","w");
@@ -80,7 +80,7 @@ public class Box extends Moveable {
 
     /**
      *
-     * @return
+     * @return Visszaadja, hogy fel tudje-e tolni a munkást. Doboznál ez igaz
      */
     public Boolean CanPushToWall() { //azt adja vissza, hogy fel tudja-e tolni a munkást (igaz)
        // logger.Enter(this,"CanPushToWall","");
@@ -103,8 +103,8 @@ public class Box extends Moveable {
 
     /**
      *
-     * @param d
-     * @return
+     * @param d Átadja paraméterben az irányt, ahonnan az erőket számoljuk össze
+     * @return Visszatér a d irányban lévő erők összegével
      */
     public int GetAllTraction(Direction d){
         //logger.Enter(this,"GetAllTraction","d");
@@ -121,7 +121,7 @@ public class Box extends Moveable {
 
     /**
      *
-     * @param t
+     * @param t Hozzáadja az aktuális tapadáshoz a kapott tapadást
      */
     @Override
     public void ChangeTraction(int t) { //hozzáadja az aktuális tapadásához a paraméterként kapott tapadást
@@ -134,7 +134,7 @@ public class Box extends Moveable {
 
     /**
      *
-     * @param i
+     * @param i Beállítja a paraméterként kapott tapadást
      */
      public void SetTraction(int i){
         this.traction=i;
@@ -142,7 +142,7 @@ public class Box extends Moveable {
 
     /**
      *
-     * @return
+     * @return Visszaadja a doboz tapadását
      */
     public int GetTraction(){
         return traction;

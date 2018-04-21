@@ -7,6 +7,10 @@ public class IO {
     public IO() {
     }
 
+    /**
+     *
+     * @param wh Beállítja a szomszédokat a paraméterben kapott Raktárban
+     */
     public void SetNeighBors(Warehouse wh){ //beállítja a szomszédokat
         for (int i = 0; i <wh.GetFields().size() ; i++) {
             if(i<20){
@@ -73,6 +77,12 @@ public class IO {
 
     }
 
+    /**
+     *
+     * @param level Megkapja paraméterként az előre elkészített Raktárt
+     * @return Visszatér a Raktárral
+     * @throws Exception
+     */
     public Warehouse SetWarehouseFromFile(File level)throws Exception{ //beállítja a raktárat a fájlból
         Warehouse newWarehouse= new Warehouse();
         Hole hole;
@@ -110,6 +120,13 @@ public class IO {
 
         return newWarehouse;
     }
+
+    /**
+     *
+     * @param level Megkapja paraméterként az előre elkészített Raktárt
+     * @param wh Megkapja paraméterként a Raktárt, ahol a lyukakat hozzárendeli a váltókhoz
+     * @throws Exception
+     */
     public void SetSwitchToHole(File level,Warehouse wh)throws Exception{ //Hozzárendeli a váltókhoz a lyukakat
         String s[]=LoadSwitchToHole(level);
         for (int i = 0; i <SwitchAndHoleCounter(level) ; i++) {
@@ -132,7 +149,12 @@ public class IO {
 
     }
 
-
+    /**
+     *
+     * @param level Megkapja paraméterként az előre elkészített Raktárt
+     * @return Visszatér a pályával
+     * @throws Exception
+     */
     public String[] LoadLevel(File level) throws Exception{ //a txt-ből beolvassa a pálya részt
         BufferedReader br=new BufferedReader(new FileReader(level));
         String[] switchToHole= new String[SwitchAndHoleCounter(level)];
@@ -196,6 +218,12 @@ public class IO {
         return switchToHole;
     }
 
+    /**
+     *
+     * @param f Megkapja paraméterként az előre elkészített Raktárt txt fájlban
+     * @return Visszatér az összekapcsolások számával
+     * @throws Exception
+     */
     public int SwitchAndHoleCounter(File f) throws Exception{ //megszámolja a paraméterül kapott fájlban azokat a sorokat,
         // ahol a switchek ás lyukak összekapcsolása van
         BufferedReader br=new BufferedReader(new FileReader(f));
@@ -210,6 +238,12 @@ public class IO {
         return count;
     }
 
+    /**
+     *
+     * @param f Megkapja paraméterként az előre elkészített Raktárt txt fájlban
+     * @return Visszatér a sorok számával
+     * @throws IOException
+     */
     public int LineCounter(File f) throws IOException {
         BufferedReader br=new BufferedReader(new FileReader(f));
         int count=0;
@@ -223,6 +257,10 @@ public class IO {
         return count;
     }
 
+    /**
+     *
+     * @param str Paraméterként kapott stringet beleírja fájlba
+     */
     public void WriteToFileByLine(String str){
         try(FileWriter fw = new FileWriter("test.txt", true);
             BufferedWriter bw = new BufferedWriter(fw);
@@ -235,6 +273,11 @@ public class IO {
             //exception handling left as an exercise for the reader
         }
     }
+
+    /**
+     *
+     * @param str Paraméterként kapott stringet beleírja fájlba
+     */
     public void WriteToFileByCharacter(String str){
         try(FileWriter fw = new FileWriter("test.txt", true);
             BufferedWriter bw = new BufferedWriter(fw);
@@ -247,6 +290,11 @@ public class IO {
             //exception handling left as an exercise for the reader
         }
     }
+
+    /**
+     *
+     * @throws FileNotFoundException
+     */
     public void DeleteTestFile() throws FileNotFoundException {
         File out = new File("test.txt");
         PrintWriter writer = new PrintWriter(out);
@@ -254,6 +302,12 @@ public class IO {
         writer.close();
     }
 
+    /**
+     *
+     * @param test Betölti a paraméterként kapott fájlt
+     * @return
+     * @throws IOException
+     */
     public String LoadTest(File test) throws IOException {
         try(FileWriter fw = new FileWriter("test.txt", true);
             BufferedWriter bw = new BufferedWriter(fw);
