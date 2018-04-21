@@ -36,7 +36,7 @@ public class Game {
      */
     public  void StartGame( ) throws Exception {
 
-        level = io.SetWarehouseFromFile(new File("trial.txt"));
+        level = io.SetWarehouseFromFile(new File("src/therfc/levels/trial.txt"));
         io.SetNeighBors(level);
        DrawMap();
     }

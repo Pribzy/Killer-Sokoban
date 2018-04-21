@@ -699,8 +699,6 @@ public class Main {
                     "t6 - X:6, Y:17, Active:false" +
                     "";
 
-            System.out.println(str_10);
-            System.out.println(game.GetIO().LoadTest(new File("test.txt")));
             if (str_10.equals(game.GetIO().LoadTest(new File("test.txt")))) {
                 System.out.println("Succes Test!\n");
             } else {
