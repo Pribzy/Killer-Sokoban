@@ -1,5 +1,6 @@
 *.class
 .idea/workspace.xml
+test.txt
 out/production/Killer-Sokoban/therfc/Worker.class
 out/production/Killer-Sokoban/therfc/Warehouse.class
 out/production/Killer-Sokoban/therfc/Wall.class
@@ -15,4 +16,3 @@ out/production/Killer-Sokoban/therfc/Main.class
 out/production/Killer-Sokoban/therfc/Moveable.class
 out/production/Killer-Sokoban/therfc/SteppableField.class
 out/production/Killer-Sokoban/therfc/Switch.class
-/test.txt

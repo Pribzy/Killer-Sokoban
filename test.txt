@@ -20,4 +20,8 @@
 ####################
 
 
+Worker added to X: 6, Y: 6
+1: w1 [X: 6 , Y: 6 , Power: 6]
+Previous X: 6, Y: 6
+Current X: 6, Y: 7
 $
