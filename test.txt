@@ -20,11 +20,8 @@
 ####################
 
 
-t1 - X:1, Y:2, Active:true
-t2 - X:12, Y:2, Active:true
-t3 - X:10, Y:5, Active:true
-t4 - X:7, Y:6, Active:true
-t5 - X:13, Y:10, Active:true
-t6 - X:6, Y:17, Active:true
-
-
+Worker added to X: 7, Y: 2
+1: w1 [X: 7 , Y: 2 , Power: 1]
+Previous X: 7, Y: 2
+Current X: 8, Y: 2
+$

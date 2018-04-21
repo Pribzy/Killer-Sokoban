@@ -16,7 +16,7 @@ public class Honey extends Trap {
 
     /**
      *
-     * @param m A paraméterként megkapott Moveable objektum tapadását megnöveli amikor lelép a mezőre
+     * @param m A paraméterként megkapott Moveable objektum tapadását csökkenti amikor lelép a mezőre
      */
     @Override
     public  void  ChangeTractionWhenStepOff(Moveable m) {//ez történik a paraméterként kapott Moveable tapadásával ha lelép a csapdáról

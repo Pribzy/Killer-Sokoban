@@ -210,55 +210,7 @@ public class Main {
                 "####################" +
                 "";
 
-        String basicforplayersteps = basicmap +
-                "Worker added to X: 1, Y: 1" +
-                "Worker added to X: 8, Y: 2" +
-                "Worker added to X: 5, Y: 5" +
-                "Worker added to X: 11, Y: 3" +
-                "####################" +
-                "#W_________###_____#" +
-                "#T_____SW__HT______#" +
-                "#__________W______##" +
-                "#________________###" +
-                "#___CW____T______###" +
-                "##_____T__________##" +
-                "#________#_________#" +
-                "#_H______#_________#" +
-                "#__________________#" +
-                "#_S__________T_____#" +
-                "#_________HHHCHH___#" +
-                "#__________________#" +
-                "#__________________#" +
-                "####_____S_________#" +
-                "#______________H___#" +
-                "###__________C_____#" +
-                "#_____T____________#" +
-                "#___________H______#" +
-                "####################" +
-                "w1:" +
-                "Up: Wall{ , }" +
-                "Down: TargetField{ , }" +
-                "Left: Wall{ , }" +
-                "Right: SteppableField{ , }" +
-                "w2:" +
-                "Up: SteppableField{ , }" +
-                "Down: SteppableField{ , }" +
-                "Left: Switch{ , }" +
-                "Right: SteppableField{ , }" +
-                "w3:" +
-                "Up: SteppableField{ , }" +
-                "Down: SteppableField{ , }" +
-                "Left: Hole{ , }" +
-                "Right: SteppableField{ , }" +
-                "w4:" +
-                "Up: Hole{ , }" +
-                "Down: SteppableField{ , }" +
-                "Left: SteppableField{ , }" +
-                "Right: SteppableField{ , }" +
-                "1: w1 [X: 1 , Y: 1 , Power: 1]" +
-                "2: w2 [X: 8 , Y: 2 , Power: 1]" +
-                "3: w3 [X: 5 , Y: 5 , Power: 1]" +
-                "4: w4 [X: 11 , Y: 3 , Power: 1]";
+
 
        if(num==1) {
            String str = basicmap;
@@ -313,7 +265,9 @@ public class Main {
             }
         }
         if (num==501) {
-            String str_501 = basicforplayersteps +
+            String str_501 = basicmap +
+                    "Worker added to X: 1, Y: 1"+"" +
+                    "1: w1 [X: 1 , Y: 1 , Power: 1]"+
                     "Previous X: 1, Y: 1" +
                     "Current X: 1, Y: 1" +
                     "";
@@ -325,7 +279,9 @@ public class Main {
             }
         }
         if (num==502) {
-            String str_502 = basicforplayersteps +
+            String str_502 =  basicmap +
+                    "Worker added to X: 1, Y: 1"+"" +
+                    "1: w1 [X: 1 , Y: 1 , Power: 1]"+
                     "Previous X: 1, Y: 1" +
                     "Current X: 1, Y: 2" +
                     "";
@@ -337,7 +293,9 @@ public class Main {
             }
         }
         if (num==503) {
-            String str_503 = basicforplayersteps +
+            String str_503 =  basicmap +
+                    "Worker added to X: 8, Y: 2"+"" +
+                    "1: w1 [X: 8 , Y: 2 , Power: 1]"+
                     "Previous X: 8, Y: 2" +
                     "Current X: 7, Y: 2" +
                     "";
@@ -349,7 +307,9 @@ public class Main {
             }
         }
         if (num==504) {
-            String str_504 = basicforplayersteps +
+            String str_504 =  basicmap +
+                    "Worker added to X: 7, Y: 2"+"" +
+                    "1: w1 [X: 7 , Y: 2 , Power: 1]"+
                     "Previous X: 7, Y: 2" +
                     "Current X: 8, Y: 2" +
                     "";
@@ -361,7 +321,9 @@ public class Main {
             }
         }
         if (num==505) {
-            String str_505 = basicforplayersteps +
+            String str_505 =  basicmap +
+                    "Worker added to X: 5, Y: 5"+"" +
+                    "1: w1 [X: 5 , Y: 5 , Power: 1]"+
                     "Previous X: 5, Y: 5" +
                     "Current X: 4, Y: 5" +
                     "";
@@ -373,12 +335,11 @@ public class Main {
             }
         }
         if (num==506) {
-            String str_506 = basicforplayersteps +
+            String str_506 = basicmap +
+                    "Worker added to X: 11, Y: 3"+"" +
+                    "1: w1 [X: 11 , Y: 3 , Power: 1]"+
                     "Previous X: 11, Y: 3" +
                     "4. worker die" +
-                    "w1 - X:1, Y:2, Power: 1" +
-                    "w2 - X:8, Y:2, Power: 1" +
-                    "w3 - X:4, Y:5, Power: 1" +
                     "";
 
             if (str_506.equals(game.GetIO().LoadTest(new File("test.txt")))) {
@@ -937,6 +898,7 @@ public class Main {
     private static void move(Game game,Direction d,Worker w){
         int y= (game.GetWarehouse().GetFields().indexOf(w.GetField()))/20;
         int x = (game.GetWarehouse().GetFields().indexOf(w.GetField())-20*y);
+        System.out.println( );
         String outPrevious ="Previous X: "+x+", " + "Y: "+y;
         System.out.print(outPrevious+"\n");
         game.GetIO().WriteToFileByLine(outPrevious);
@@ -948,6 +910,7 @@ public class Main {
          x = (game.GetWarehouse().GetFields().indexOf(w.GetField())-20*y);
         String outCurrent ="Current X: " + x + ", " + "Y: " + y;
         System.out.print(outCurrent+"\n");
+        System.out.println( );
         game.GetIO().WriteToFileByLine(outCurrent);
 
 
