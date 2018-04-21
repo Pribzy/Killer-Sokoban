@@ -1,1 +1,1 @@
-javac -d out src\therfc\*.java
+javac -encoding utf8 -d out src\therfc\data\*.java src\therfc\IO\*.java src\therfc\main\*.java
