@@ -1,5 +1,4 @@
-package therfc;
-import java.util.*;
+package therfc.data;
 
 
 public enum  Direction {

@@ -1,4 +1,8 @@
-package therfc;
+package therfc.main;
+
+import therfc.data.Game;
+import therfc.data.Hole;
+import therfc.data.Warehouse;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,17 +15,17 @@ public class Logger {
 
     static {
         objects = new HashMap<String, String>();
-        objects.put("therfc.Worker", "Worker");
-        objects.put("therfc.Box", "Box");
-        objects.put("therfc.SteppableField", "SteppableField");
-        objects.put("therfc.TargetField", "TargetField");
-        objects.put("therfc.Switch", "Switch");
-        objects.put("therfc.Hole", "Hole");
-        objects.put("therfc.Wall", "Wall");
-        objects.put("therfc.Warehouse", "Warehouse");
-        objects.put("therfc.Game", "Game");
-        objects.put("therfc.Honey", "Honey");
-        objects.put("therfc.Oil", "Oil");
+        objects.put("therfc.data.Worker", "Worker");
+        objects.put("therfc.data.Box", "Box");
+        objects.put("therfc.data.SteppableField", "SteppableField");
+        objects.put("therfc.data.TargetField", "TargetField");
+        objects.put("therfc.data.Switch", "Switch");
+        objects.put("therfc.data.Hole", "Hole");
+        objects.put("therfc.data.Wall", "Wall");
+        objects.put("therfc.data.Warehouse", "Warehouse");
+        objects.put("therfc.data.Game", "Game");
+        objects.put("therfc.data.Honey", "Honey");
+        objects.put("therfc.data.Oil", "Oil");
         objects.put("null", " ");
     }
 
@@ -84,7 +88,7 @@ public class Logger {
      * @param wh Megkapja paraméterként a kirajzolandó Raktárt
      * @param game Megkapja paraméterként az aktuális játékot
      */
-    public void DrawWarehoouse(Warehouse wh,Game game){
+    public void DrawWarehoouse(Warehouse wh, Game game){
         for (int i = 0; i <wh.GetFields().size() ; i++) {
 
             if(GetObjectName(wh.GetFieldFromIndex(i))=="Wall"){

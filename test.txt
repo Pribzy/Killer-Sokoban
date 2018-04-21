@@ -99,12 +99,12 @@ Points: 1
 
 TargetField activated
 Current X: 7, Y: 17
-t1 - X:1, Y:2,	Active:false
-t2 - X:12, Y:2,	Active:false
-t3 - X:10, Y:5,	Active:false
-t4 - X:7, Y:6,	Active:false
-t5 - X:13, Y:10,	Active:false
-t6 - X:6, Y:17,	Active:false
+t1 - X:1, Y:2, Active:false
+t2 - X:12, Y:2, Active:false
+t3 - X:10, Y:5, Active:false
+t4 - X:7, Y:6, Active:false
+t5 - X:13, Y:10, Active:false
+t6 - X:6, Y:17, Active:false
 
 
 $

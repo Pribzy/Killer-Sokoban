@@ -1,4 +1,4 @@
-package therfc;
+package therfc.data;
 
 public abstract class Trap {
     //attribútumok

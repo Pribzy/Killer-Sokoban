@@ -1,6 +1,6 @@
-package therfc;
+package therfc.data;
 
-import java.util.*;
+import therfc.main.Logger;
 
 /**
  *

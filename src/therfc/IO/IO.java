@@ -1,4 +1,6 @@
-package therfc;
+package therfc.IO;
+
+import therfc.data.*;
 
 import java.io.*;
 

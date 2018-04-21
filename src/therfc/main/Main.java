@@ -1,4 +1,7 @@
-package therfc;
+package therfc.main;
+
+import therfc.data.*;
+import therfc.main.Logger;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -692,7 +695,7 @@ public class Main {
                     "t2 - X:12, Y:2, Active:false" +
                     "t3 - X:10, Y:5, Active:false" +
                     "t4 - X:7, Y:6, Active:false" +
-                    "t5 - X:13, Y:10,Active:false" +
+                    "t5 - X:13, Y:10, Active:false" +
                     "t6 - X:6, Y:17, Active:false" +
                     "";
 
@@ -715,7 +718,7 @@ public class Main {
             game.GetIO().WriteToFileByLine("w"+(i+1)+":");
             Field field = game.GetWarehouse().GetWorkerFromIndex(i).GetField().GetNextField(Direction.Up);
             Trap trap =game.GetWarehouse().GetWorkerFromIndex(i).GetField().GetNextField(Direction.Up).GetTrap();
-            Moveable  moveable =game.GetWarehouse().GetWorkerFromIndex(i).GetField().GetNextField(Direction.Up).GetMoveable();
+            Moveable moveable =game.GetWarehouse().GetWorkerFromIndex(i).GetField().GetNextField(Direction.Up).GetMoveable();
 
 
             System.out.println("Up: "+logger.GetObjectName(field)+"{"+logger.GetObjectName(moveable)+","+logger.GetObjectName(trap)+"}");

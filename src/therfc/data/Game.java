@@ -1,7 +1,8 @@
-package therfc;
-import java.io.BufferedReader;
+package therfc.data;
+import therfc.IO.IO;
+import therfc.main.Logger;
+
 import java.io.File;
-import java.io.FileReader;
 
 /**
  * 

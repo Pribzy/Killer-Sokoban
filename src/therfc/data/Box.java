@@ -1,4 +1,6 @@
-package therfc;
+package therfc.data;
+
+import therfc.main.Logger;
 
 /**
  * 

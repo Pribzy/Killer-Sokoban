@@ -1,4 +1,6 @@
-package therfc;
+package therfc.data;
+
+import therfc.main.Logger;
 
 public class Honey extends Trap {
     private Logger logger = new Logger();
