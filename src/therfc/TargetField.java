@@ -70,7 +70,9 @@ public class TargetField extends Field {
                 if (this.GetMoveable() == null){
                     this.SetActive(false);
                     worker.AddPoint();
-                    System.out.println("TargetField activated");
+
+                    System.out.println("TargetField deactivated");
+
                     io.WriteToFileByLine("TargetField activated");
                     b.Die();
 
@@ -78,7 +80,7 @@ public class TargetField extends Field {
             } else {
                 this.SetActive(false);
                 worker.AddPoint();
-                System.out.println("TargetField activated");
+                System.out.println("TargetField deactivated");
                 io.WriteToFileByLine("TargetField activated");
                 b.Die();
 

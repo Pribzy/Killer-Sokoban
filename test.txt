@@ -20,15 +20,14 @@
 ####################
 
 
-Worker added to X: 7, Y: 16
-1: w1 [X: 7 , Y: 16 , Power: 2]
-Added Oil To X: 7, Y: 16
-1: w1 [X: 7 , Y: 16 , Power: 2]
-Previous X: 7, Y: 16
-Current X: 6, Y: 16
-Box added to X: 7, Y: 16
-
-1: w1 [X: 6 , Y: 16 , Power: 2]
-Previous X: 6, Y: 16
-Current X: 7, Y: 16
+Worker added to X: 5, Y: 5
+Worker added to X: 5, Y: 6
+1: w1 [X: 5 , Y: 5 , Power: 2]
+2: w2 [X: 5 , Y: 6 , Power: 3]
+Added Honey To X: 5, Y: 5
+1: w1 [X: 5 , Y: 5 , Power: 2]
+2: w2 [X: 5 , Y: 6 , Power: 3]
+Added Oil To X: 5, Y: 6
+Honey - X:5, Y:5
+Oil - X:5, Y:6
 $

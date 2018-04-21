@@ -103,7 +103,7 @@ public class Main {
             case "7": {
                 System.out.println("Test Subcases for \"Jatekos tolodik\": ");
                 System.out.println("1. Jatekos jatekost tol nem falra");
-                System.out.println("2. Jatekos jatekost tol falra");
+                System.out.println("2. Jatekos dobozzal jatekost tol falra");
                 System.out.println("3. Jatekos kozvetlenul tol jatekost falra");
                 System.out.println("4. Jatekos lyukra tolodik");
                 System.out.print("Selected Test Subcase for \"Jatekos tolodik\": ");
@@ -177,9 +177,9 @@ public class Main {
 
             boolean active = targetfields.get(i).GetActive();
             System.out.println("t"+(i+1)+" - X:"
-                    +x+", Y:"+y+",\t Active:"+active);
+                    +x+", Y:"+y+",\tActive:"+active);
             game.GetIO().WriteToFileByLine("t"+(i+1)+" - X:"
-                    +x+", Y:"+y+",\t Active:"+active);
+                    +x+", Y:"+y+",\tActive:"+active);
 
         }
         System.out.println();
@@ -521,32 +521,11 @@ public class Main {
                     "Worker added to X: 2, Y: 1" +
                     "Box added to X: 2, Y: 2" +
                     "Worker added to X: 2, Y: 3" +
-                    "####################" +
-                    "#_W________###_____#" +
-                    "#TB____S___HT______#" +
-                    "#_W_______________##" +
-                    "#________________###" +
-                    "#___C_____T______###" +
-                    "##_____T__________##" +
-                    "#________#_________#" +
-                    "#_H______#_________#" +
-                    "#__________________#" +
-                    "#_S__________T_____#" +
-                    "#_________HHHCHH___#" +
-                    "#__________________#" +
-                    "#__________________#" +
-                    "####_____S_________#" +
-                    "#______________H___#" +
-                    "###__________C_____#" +
-                    "#_____T____________#" +
-                    "#___________H______#" +
-                    "####################" +
-                    "" +
-                    "1: w1 [X: 2 , Y: 1 , Power: 1]" +
+                    "1: w1 [X: 2 , Y: 1 , Power: 2]" +
                     "2: w2 [X: 2 , Y: 3 , Power: 4]" +
-                    "Previous Field: X: 2, Y: 3" +
-                    "1. Worker Die" +
-                    "Current Field: X: 2, Y: 2" +
+                    "Previous X: 2, Y: 3" +
+                    "1. worker die" +
+                    "Current X: 2, Y: 2" +
                     "w1 - X:2, Y:2, Power:4, Stuck:false" +
                     "";
 
@@ -578,31 +557,12 @@ public class Main {
             String str_704 = basicmap +
                     "Worker added to X: 10, Y: 2" +
                     "Worker added to X: 9, Y: 2" +
-                    "####################" +
-                    "#__________###_____#" +
-                    "#T_____S_WWHT______#" +
-                    "#_________________##" +
-                    "#________________###" +
-                    "#___C_____T______###" +
-                    "##_____T__________##" +
-                    "#________#_________#" +
-                    "#_H______#_________#" +
-                    "#__________________#" +
-                    "#_S__________T_____#" +
-                    "#_________HHHCHH___#" +
-                    "#__________________#" +
-                    "#__________________#" +
-                    "####_____S_________#" +
-                    "#______________H___#" +
-                    "###__________C_____#" +
-                    "#_____T____________#" +
-                    "#___________H______#" +
-                    "####################" +
+
                     "1: w1 [X: 10 , Y: 2 , Power: 1]" +
                     "2: w2 [X: 9 , Y: 2 , Power: 1]" +
-                    "Previous Field: X: 9, Y: 2" +
-                    "1. Worker Die" +
-                    "Current Field: X: 10, Y: 2" +
+                    "Previous X: 9, Y: 2" +
+                    "1. worker die" +
+                    "Current X: 10, Y: 2" +
                     "w1 - X:10, Y:2, Power:1, Stuck:false" +
                     "";
 
@@ -671,27 +631,6 @@ public class Main {
                     "Box added to X: 8, Y: 6" +
                     "Box added to X: 14, Y: 10" +
                     "Box added to X: 7, Y: 17" +
-                    "####################" +
-                    "#__________###_____#" +
-                    "#TBW___S___HTBW____#" +
-                    "#_________________##" +
-                    "#________________###" +
-                    "#___C_____TBW____###" +
-                    "##_____TBW________##" +
-                    "#________#_________#" +
-                    "#_H______#_________#" +
-                    "#__________________#" +
-                    "#_S__________TBW___#" +
-                    "#_________HHHCHH___#" +
-                    "#__________________#" +
-                    "#__________________#" +
-                    "####_____S_________#" +
-                    "#______________H___#" +
-                    "###__________C_____#" +
-                    "#_____TBW__________#" +
-                    "#___________H______#" +
-                    "####################" +
-                    "" +
                     "1: w1 [X: 3 , Y: 2 , Power: 1]" +
                     "2: w2 [X: 14 , Y: 2 , Power: 1]" +
                     "3: w3 [X: 12 , Y: 5 , Power: 1]" +
@@ -699,6 +638,7 @@ public class Main {
                     "5: w5 [X: 15 , Y: 10 , Power: 1]" +
                     "6: w6 [X: 8 , Y: 17 , Power: 1]" +
                     "Previous X: 3, Y: 2" +
+                    "TargetField activated" +
                     "Current X: 2, Y: 2" +
                     "1: w1 [X: 2 , Y: 2 , Power: 1]" +
                     "2: w2 [X: 14 , Y: 2 , Power: 1]" +
@@ -707,6 +647,7 @@ public class Main {
                     "5: w5 [X: 15 , Y: 10 , Power: 1]" +
                     "6: w6 [X: 8 , Y: 17 , Power: 1]" +
                     "Previous X: 14, Y: 2" +
+                    "TargetField activated" +
                     "Current X: 13, Y: 2" +
                     "1: w1 [X: 2 , Y: 2 , Power: 1]" +
                     "2: w2 [X: 13 , Y: 2 , Power: 1]" +
@@ -715,6 +656,7 @@ public class Main {
                     "5: w5 [X: 15 , Y: 10 , Power: 1]" +
                     "6: w6 [X: 8 , Y: 17 , Power: 1]" +
                     "Previous X: 12, Y: 5" +
+                    "TargetField activated" +
                     "Current X: 11, Y: 5" +
                     "1: w1 [X: 2 , Y: 2 , Power: 1]" +
                     "2: w2 [X: 13 , Y: 2 , Power: 1]" +
@@ -723,6 +665,7 @@ public class Main {
                     "5: w5 [X: 15 , Y: 10 , Power: 1]" +
                     "6: w6 [X: 8 , Y: 17 , Power: 1]" +
                     "Previous X: 9, Y: 6" +
+                    "TargetField activated" +
                     "Current X: 8, Y: 6" +
                     "1: w1 [X: 2 , Y: 2 , Power: 1]" +
                     "2: w2 [X: 13 , Y: 2 , Power: 1]" +
@@ -731,6 +674,7 @@ public class Main {
                     "5: w5 [X: 15 , Y: 10 , Power: 1]" +
                     "6: w6 [X: 8 , Y: 17 , Power: 1]" +
                     "Previous X: 15, Y: 10" +
+                    "TargetField activated" +
                     "Current X: 14, Y: 10" +
                     "1: w1 [X: 2 , Y: 2 , Power: 1]" +
                     "2: w2 [X: 13 , Y: 2 , Power: 1]" +
@@ -739,11 +683,10 @@ public class Main {
                     "5: w5 [X: 14 , Y: 10 , Power: 1]" +
                     "6: w6 [X: 8 , Y: 17 , Power: 1]" +
                     "Previous X: 8, Y: 17" +
-                    "" +
-                    "GAME OVER" + //ennél az esetnél a program 2x írja ki a GAME OVER-t
+                    "GAME OVER" +
                     "Max Point Player: w1" +
                     "Points: 1" +
-                    "" +
+                    "TargetField activated" +
                     "Current X: 7, Y: 17" +
                     "t1 - X:1, Y:2, \tActive:false" +
                     "t2 - X:12, Y:2, \tActive:false" +
@@ -901,7 +844,7 @@ public class Main {
 
     }
     private static void move(Game game,Direction d,Worker w){
-        int workerNumber= game.GetWarehouse().GetWorkers().size();
+
         int y= (game.GetWarehouse().GetFields().indexOf(w.GetField()))/20;
         int x = (game.GetWarehouse().GetFields().indexOf(w.GetField())-20*y);
         System.out.println( );
@@ -915,9 +858,9 @@ public class Main {
         w.Move(d);
          y= (game.GetWarehouse().GetFields().indexOf(w.GetField()))/20;
          x = (game.GetWarehouse().GetFields().indexOf(w.GetField())-20*y);
-         if(workerNumber==game.GetWarehouse().GetWorkers().size()) {
+         if(game.GetWarehouse().GetWorkers().indexOf(w)!=-1) {
              outCurrent = "Current X: " + x + ", " + "Y: " + y;
-             System.out.print(outCurrent+"\n");
+             System.out.print(outCurrent + "\n");
              game.GetIO().WriteToFileByLine(outCurrent);
          }
 
@@ -988,7 +931,101 @@ public class Main {
     }
 
     private static void drawmap(Game game) {
-        game.DrawMap();
+        Logger logger = new Logger();
+        for (int i = 0; i <game.GetWarehouse().GetFields().size() ; i++) {
+
+            if(logger.GetObjectName(game.GetWarehouse().GetFieldFromIndex(i))=="Wall"){
+                System.out.print("#");
+
+            }
+            else  if(logger.GetObjectName(game.GetWarehouse().GetFieldFromIndex(i))=="TargetField"){
+                if(game.GetWarehouse().GetFieldFromIndex(i).GetMoveable()!=null) {
+                    if (game.GetWarehouse().GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
+                        System.out.print("B");
+
+                    } else if (!game.GetWarehouse().GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
+                        System.out.print("W");
+
+                    }
+                }
+                else if(game.GetWarehouse().GetFieldFromIndex(i).GetMoveable()==null) {
+
+                    System.out.print("T");
+
+
+                }
+
+            }
+            else  if(logger.GetObjectName(game.GetWarehouse().GetFieldFromIndex(i))=="SteppableField"){
+                if(game.GetWarehouse().GetFieldFromIndex(i).GetMoveable()!=null) {
+                    if (game.GetWarehouse().GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
+                        System.out.print("B");
+
+                    } else if (!game.GetWarehouse().GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
+                        System.out.print("W");
+
+                    }
+                }
+                else if(game.GetWarehouse().GetFieldFromIndex(i).GetMoveable()==null){
+
+                    System.out.print("_");
+
+
+
+
+                }
+            }
+            else  if(logger.GetObjectName(game.GetWarehouse().GetFieldFromIndex(i))=="Hole"){
+                if(game.GetWarehouse().GetFieldFromIndex(i).GetMoveable()!=null) {
+                    if (game.GetWarehouse().GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
+                        System.out.print("B");
+
+                    } else if (!game.GetWarehouse().GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
+                        System.out.print("W");
+
+                    }
+                }
+                else if(game.GetWarehouse().GetFieldFromIndex(i).GetMoveable()==null){
+
+                    Hole hole =(Hole) game.GetWarehouse().GetFieldFromIndex(i);
+                    if(hole.GetOpen()) {
+                        System.out.print("H");
+
+                    }
+                    else if(!hole.GetOpen()) {
+                        System.out.print("C");
+
+                    }
+
+
+                }
+            }
+            else  if(logger.GetObjectName(game.GetWarehouse().GetFieldFromIndex(i))=="Switch"){
+                if(game.GetWarehouse().GetFieldFromIndex(i).GetMoveable()!=null) {
+                    if (game.GetWarehouse().GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
+                        System.out.print("B");
+
+                    } else if (!game.GetWarehouse().GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
+                        System.out.print("W");
+
+                    }
+                }
+                else if(game.GetWarehouse().GetFieldFromIndex(i).GetMoveable()==null){
+
+                    System.out.print("S");
+
+
+
+                }
+            }
+            if(i%20==19){
+                System.out.println();
+
+            }
+
+        }
+        System.out.println();
+
     }
 
     private static void addworker(Game game) {
