@@ -20,8 +20,10 @@
 ####################
 
 
-Worker added to X: 7, Y: 2
-1: w1 [X: 7 , Y: 2 , Power: 1]
-Previous X: 7, Y: 2
-Current X: 8, Y: 2
+Worker added to X: 11, Y: 3
+Worker added to X: 1, Y: 1
+1: w1 [X: 11 , Y: 3 , Power: 1]
+2: w2 [X: 1 , Y: 1 , Power: 1]
+Previous X: 11, Y: 3
+1. worker die
 $

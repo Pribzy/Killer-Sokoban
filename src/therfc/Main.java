@@ -336,10 +336,12 @@ public class Main {
         }
         if (num==506) {
             String str_506 = basicmap +
-                    "Worker added to X: 11, Y: 3"+"" +
+                    "Worker added to X: 11, Y: 3"+
+                    "Worker added to X: 1, Y: 1" +
                     "1: w1 [X: 11 , Y: 3 , Power: 1]"+
+                    "2: w2 [X: 1 , Y: 1 , Power: 1]"+
                     "Previous X: 11, Y: 3" +
-                    "4. worker die" +
+                    "1. worker die" +
                     "";
 
             if (str_506.equals(game.GetIO().LoadTest(new File("test.txt")))) {
@@ -896,9 +898,11 @@ public class Main {
 
     }
     private static void move(Game game,Direction d,Worker w){
+        int workerNumber= game.GetWarehouse().GetWorkers().size();
         int y= (game.GetWarehouse().GetFields().indexOf(w.GetField()))/20;
         int x = (game.GetWarehouse().GetFields().indexOf(w.GetField())-20*y);
         System.out.println( );
+        String outCurrent="";
         String outPrevious ="Previous X: "+x+", " + "Y: "+y;
         System.out.print(outPrevious+"\n");
         game.GetIO().WriteToFileByLine(outPrevious);
@@ -908,10 +912,14 @@ public class Main {
         w.Move(d);
          y= (game.GetWarehouse().GetFields().indexOf(w.GetField()))/20;
          x = (game.GetWarehouse().GetFields().indexOf(w.GetField())-20*y);
-        String outCurrent ="Current X: " + x + ", " + "Y: " + y;
-        System.out.print(outCurrent+"\n");
+         if(workerNumber==game.GetWarehouse().GetWorkers().size()) {
+             outCurrent = "Current X: " + x + ", " + "Y: " + y;
+             System.out.print(outCurrent+"\n");
+             game.GetIO().WriteToFileByLine(outCurrent);
+         }
+
         System.out.println( );
-        game.GetIO().WriteToFileByLine(outCurrent);
+
 
 
 
