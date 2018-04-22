@@ -1090,12 +1090,12 @@ public class Main {
     private static void Menu() { //menürendszer
         System.out.println("Tesztesetek:");
         System.out.println("=======================");
-        System.out.println("1. Worker Move To SteppableField");
-        System.out.println("2. Worker Move To Switch");
-        System.out.println("3. Worker Move To Open Hole");
-        System.out.println("4. Worker Move To Close Hole");
-        System.out.println("5. Worker Move To TargetField");
-        System.out.println("6. Worker Move To Wall");
+        System.out.println("1. Worker Refresh To SteppableField");
+        System.out.println("2. Worker Refresh To Switch");
+        System.out.println("3. Worker Refresh To Open Hole");
+        System.out.println("4. Worker Refresh To Close Hole");
+        System.out.println("5. Worker Refresh To TargetField");
+        System.out.println("6. Worker Refresh To Wall");
         System.out.println("7. Worker Push Box To SteppableField");
         System.out.println("8. Worker Push Box To Switch");
         System.out.println("9. Worker Push Box To TargetField");
@@ -1629,7 +1629,7 @@ public class Main {
 
     //4.
     private static void WorkerMoveToCloseHole() {
-        System.out.println("Worker Move To Close Hole:");
+        System.out.println("Worker Refresh To Close Hole:");
         System.out.println("\tinit:--------------------------------------");
         Warehouse wh = new Warehouse();
         Worker w = new Worker();
@@ -1648,7 +1648,7 @@ public class Main {
 
     //5.
     private static void WorkerMoveToTargetField() {
-        System.out.println("Worker Move To TargetField:");
+        System.out.println("Worker Refresh To TargetField:");
         System.out.println("\tinit:--------------------------------------");
         Warehouse wh = new Warehouse();
         Worker w = new Worker();
@@ -1668,7 +1668,7 @@ public class Main {
 
     // ez a 6.
     private static void WorkerMoveToWall() {
-        System.out.println("Worker Move To Wall:");
+        System.out.println("Worker Refresh To Wall:");
         System.out.println("\tinit:--------------------------------------");
         Warehouse wh = new Warehouse();
         Worker w = new Worker();
@@ -1686,7 +1686,7 @@ public class Main {
 
     //3.
     private static void WorkerMoveToOpenHole() {
-        System.out.println("Worker Move To Open Hole:");
+        System.out.println("Worker Refresh To Open Hole:");
         System.out.println("\tinit:--------------------------------------");
         Warehouse wh = new Warehouse();
         Worker w = new Worker();
@@ -1709,7 +1709,7 @@ public class Main {
 
     //2.
     private static void WorkerMoveToSwitch() {
-        System.out.println("Worker Move To Switch:");
+        System.out.println("Worker Refresh To Switch:");
         System.out.println("\tinit:--------------------------------------");
         Warehouse wh = new Warehouse();
         Worker w = new Worker();
@@ -1758,7 +1758,7 @@ public class Main {
 
     //ez a 1.
     private static void WorkerMoveToSteppableField() {
-        System.out.println("Worker Move To SteppableField:");
+        System.out.println("Worker Refresh To SteppableField:");
         System.out.println("\tinit:--------------------------------------");
         Warehouse wh = new Warehouse();
         Worker w = new Worker();

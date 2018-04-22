@@ -37,8 +37,8 @@ public class Resources {
         WorkerImage= ImageIO.read(new File("src\\therfc\\res\\images\\worker.png"));
         WallImage= ImageIO.read(new File("src\\therfc\\res\\images\\wall.png"));
         SteppableFieldImage= ImageIO.read(new File("src\\therfc\\res\\images\\steppablefield.png"));
-        HoneyImage= ImageIO.read(new File("src\\therfc\\res\\images\\steppablefield.png"));
-        OilImage= ImageIO.read(new File("src\\therfc\\res\\images\\steppablefield.png"));
+        HoneyImage= ImageIO.read(new File("src\\therfc\\res\\images\\honey.png"));
+        OilImage= ImageIO.read(new File("src\\therfc\\res\\images\\oil.png"));
         ActiveTargetFieldImage= ImageIO.read(new File("src\\therfc\\res\\images\\activetargetfield.png"));
         InActiveTargetFieldImage= ImageIO.read(new File("src\\therfc\\res\\images\\inactivetargetfield.png"));
         OpenHoleImage= ImageIO.read(new File("src\\therfc\\res\\images\\openhole.png"));

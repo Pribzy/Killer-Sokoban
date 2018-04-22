@@ -41,7 +41,7 @@ public class Worker extends Moveable {
      * @param d A paraméterben átadott irányba mozgatja a játékost
      */
     public void Move(Direction d) { //a játékos önszántából lép
-       // logger.Enter(this, "Move", String.valueOf(d));
+       // logger.Enter(this, "Refresh", String.valueOf(d));
 
         SetPushed(false);
         Field nextField = this.GetField().GetNextField(d);
@@ -57,7 +57,7 @@ public class Worker extends Moveable {
             }
             this.GetWarehouse().CheckStuckedWorkers();
         }
-        //logger.Exit(this, "Move", "worker moved to next field to d direction");
+        //logger.Exit(this, "Refresh", "worker moved to next field to d direction");
     }
 
     /**

@@ -1,21 +1,20 @@
 package therfc.bin.UI.model_elements;
 
 import therfc.bin.data.SteppableField;
-import therfc.bin.data.Switch;
 import therfc.res.Resources;
 
 import java.awt.*;
 
-public class GraphicSwitch extends GraphicObject {
+public class GSteppableField extends GObject {
 
-    private Switch myswitch;
+    private SteppableField steppableField;
 
-    public GraphicSwitch(Switch s){
-        this.myswitch=s;
-        z_index=1;
-        img= Resources.SwitchImage;
+    public GSteppableField(SteppableField s){
+        this.steppableField=s;
+        img= Resources.SteppableFieldImage;
 
     }
+
 
     @Override
     public void DrawGraphic(Graphics g) {

@@ -1,18 +1,16 @@
 package therfc.bin.UI.model_elements;
 
 import therfc.bin.data.TargetField;
-import therfc.bin.data.Wall;
 import therfc.res.Resources;
 
 import java.awt.*;
 
-public class GraphicTargetField extends GraphicObject {
+public class GTargetField extends GObject {
 
     private TargetField targetfield;
 
-    public GraphicTargetField(TargetField t){
+    public GTargetField(TargetField t){
         this.targetfield=t;
-        z_index=1;
         if(t.GetActive()) {
             img = Resources.ActiveTargetFieldImage;
         }

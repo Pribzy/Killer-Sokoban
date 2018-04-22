@@ -2,7 +2,6 @@ package therfc.bin.UI.components;
 
 import therfc.bin.UI.model_elements.*;
 import therfc.bin.data.*;
-import therfc.bin.data.Box;
 import therfc.bin.main.Logger;
 
 import java.awt.*;
@@ -12,194 +11,313 @@ import java.util.List;
 
 public class GridComponent extends GraphicComponent {
 
-    private List<GraphicPanel> graphicPanels= new ArrayList<GraphicPanel>();
+    private List<GPanel> panels;
 
 
     public GridComponent(Game g, Warehouse wh) {
+        panels=new ArrayList<GPanel>();
 
-        Refresh(wh);
-        System.out.println(graphicPanels.size());
-        this.setLayout(new GridLayout(20, 20));
+        FillPanels(wh);
+
+        this.setLayout(new GridLayout(20, 20,0,0));
+
         this.setVisible(true);
 
     }
 
-    @Override
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        for (GraphicPanel dr : graphicPanels)
-            dr.Draw(g);
 
-
-    }
 
     @Override
     public void Refresh(Warehouse wh) {
-
-        graphicPanels.clear();
-
+        List<GObject> list;
         Logger logger = new Logger();
-        GraphicPanel newPanel;
-
-        for (int i = 0; i < wh.GetFields().size(); i++) {
-
+        for (int i = 0; i <panels.size() ; i++) {
             if (logger.GetObjectName(wh.GetFieldFromIndex(i)) == "Wall") {
-                Wall w = (Wall) wh.GetFields().get(i);
-                GraphicWall g = new GraphicWall(w);
-                newPanel = new GraphicPanel();
-                newPanel.AddGraphicObject(g);
-                graphicPanels.add(newPanel);
-            } else if (logger.GetObjectName(wh.GetFieldFromIndex(i)) == "TargetField") {
+               list = new ArrayList<GObject>();
+               list.add(new GWall(new Wall()));
+               panels.get(i).Refresh(list);
+            }
+            if (logger.GetObjectName(wh.GetFieldFromIndex(i)) == "SteppableField") {
+                if (wh.GetFieldFromIndex(i).GetMoveable() != null) {
+                    if (wh.GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
+                        SteppableField s = (SteppableField) wh.GetFieldFromIndex(i);
+                        GSteppableField gs = new GSteppableField(s);
+                        Box w = (Box) wh.GetFieldFromIndex(i).GetMoveable();
+                        GBox g = new GBox(w);
+                        list = new ArrayList<GObject>();
+                        list.add(gs);
+                        if(wh.GetFieldFromIndex(i).GetTrap()!=null){
+                            if(logger.GetObjectName(wh.GetFieldFromIndex(i).GetTrap())=="Honey") {
+                                GHoney t = new GHoney(new Honey());
+                                list.add(t);
+                            }
+                            if(logger.GetObjectName(wh.GetFieldFromIndex(i).GetTrap())=="Oil") {
+                                GOil t = new GOil(new Oil());
+                                list.add(t);
+                            }
+                        }
+
+
+                        list.add(g);
+                        panels.get(i).Refresh(list);
+
+                    } else if (!wh.GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
+                        SteppableField s = (SteppableField) wh.GetFieldFromIndex(i);
+                        GSteppableField gs = new GSteppableField(s);
+
+                        Worker w = (Worker) wh.GetFieldFromIndex(i).GetMoveable();
+                        GWorker g = new GWorker(w);
+
+                        list = new ArrayList<GObject>();
+                        list.add(gs);
+                        if(wh.GetFieldFromIndex(i).GetTrap()!=null){
+                            if(logger.GetObjectName(wh.GetFieldFromIndex(i).GetTrap())=="Honey") {
+                                GHoney t = new GHoney(new Honey());
+                                list.add(t);
+                            }
+                            if(logger.GetObjectName(wh.GetFieldFromIndex(i).GetTrap())=="Oil") {
+                                GOil t = new GOil(new Oil());
+                                list.add(t);
+                            }
+                        }
+                        list.add(g);
+                        panels.get(i).Refresh(list);
+                    }
+                } else if (wh.GetFieldFromIndex(i).GetMoveable() == null) {
+
+                    SteppableField w = (SteppableField) wh.GetFieldFromIndex(i);
+                    GSteppableField g = new GSteppableField(w);
+                    list = new ArrayList<GObject>();
+                    list.add(g);
+                    if(wh.GetFieldFromIndex(i).GetTrap()!=null){
+                        if(logger.GetObjectName(wh.GetFieldFromIndex(i).GetTrap())=="Honey") {
+                            GHoney t = new GHoney(new Honey());
+                            list.add(t);
+                        }
+                        if(logger.GetObjectName(wh.GetFieldFromIndex(i).GetTrap())=="Oil") {
+                            GOil t = new GOil(new Oil());
+                            list.add(t);
+                        }
+                    }
+                    panels.get(i).Refresh(list);
+
+
+                }
+            }
+            if (logger.GetObjectName(wh.GetFieldFromIndex(i)) == "TargetField") {
                 if (wh.GetFieldFromIndex(i).GetMoveable() != null) {
                     if (wh.GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
 
                         TargetField s = (TargetField) wh.GetFields().get(i);
-                        GraphicTargetField gs = new GraphicTargetField(s);
-                        newPanel = new GraphicPanel();
-                        newPanel.AddGraphicObject(gs);
+                        GTargetField gs = new GTargetField(s);
+
 
                         Box w = (Box) wh.GetFieldFromIndex(i).GetMoveable();
-                        GraphicBox g = new GraphicBox(w);
-                        newPanel = new GraphicPanel();
-                        newPanel.AddGraphicObject(g);
-                        graphicPanels.add(newPanel);
+                        GBox g = new GBox(w);
+                        list = new ArrayList<GObject>();
+                        list.add(gs);
+                        if(wh.GetFieldFromIndex(i).GetTrap()!=null){
+                            if(logger.GetObjectName(wh.GetFieldFromIndex(i).GetTrap())=="Honey") {
+                                GHoney t = new GHoney(new Honey());
+                                list.add(t);
+                            }
+                            if(logger.GetObjectName(wh.GetFieldFromIndex(i).GetTrap())=="Oil") {
+                                GOil t = new GOil(new Oil());
+                                list.add(t);
+                            }
+                        }
+                        list.add(g);
+                        panels.get(i).Refresh(list);
+
 
                     } else if (!wh.GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
 
                         TargetField s = (TargetField) wh.GetFieldFromIndex(i);
-                        GraphicTargetField gs = new GraphicTargetField(s);
-                        newPanel = new GraphicPanel();
-                        newPanel.AddGraphicObject(gs);
+                        GTargetField gs = new GTargetField(s);
+
 
                         Worker w = (Worker) wh.GetFieldFromIndex(i).GetMoveable();
-                        GraphicWorker g = new GraphicWorker(w);
-                        newPanel.AddGraphicObject(g);
-                        graphicPanels.add(newPanel);
+                        GWorker g = new GWorker(w);
+                        list = new ArrayList<GObject>();
+                        list.add(gs);
+                        if(wh.GetFieldFromIndex(i).GetTrap()!=null){
+                            if(logger.GetObjectName(wh.GetFieldFromIndex(i).GetTrap())=="Honey") {
+                                GHoney t = new GHoney(new Honey());
+                                list.add(t);
+                            }
+                            if(logger.GetObjectName(wh.GetFieldFromIndex(i).GetTrap())=="Oil") {
+                                GOil t = new GOil(new Oil());
+                                list.add(t);
+                            }
+                        }
+                        list.add(g);
+                        panels.get(i).Refresh(list);
+
 
                     }
                 } else if (wh.GetFieldFromIndex(i).GetMoveable() == null) {
 
                     TargetField s = (TargetField) wh.GetFieldFromIndex(i);
-                    GraphicTargetField gs = new GraphicTargetField(s);
-                    newPanel = new GraphicPanel();
-                    newPanel.AddGraphicObject(gs);
-                    graphicPanels.add(newPanel);
+                    GTargetField gs = new GTargetField(s);
+                    list = new ArrayList<GObject>();
+                    list.add(gs);
+                    if(wh.GetFieldFromIndex(i).GetTrap()!=null){
+                        if(logger.GetObjectName(wh.GetFieldFromIndex(i).GetTrap())=="Honey") {
+                            GHoney t = new GHoney(new Honey());
+                            list.add(t);
+                        }
+                        if(logger.GetObjectName(wh.GetFieldFromIndex(i).GetTrap())=="Oil") {
+                            GOil t = new GOil(new Oil());
+                            list.add(t);
+                        }
+                    }
+                    panels.get(i).Refresh(list);
                 }
 
             }
-
-            if (logger.GetObjectName(wh.GetFieldFromIndex(i)) == "SteppableField") {
-                if (wh.GetFieldFromIndex(i).GetMoveable() != null) {
-                    if (wh.GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
-                        SteppableField s = (SteppableField) wh.GetFieldFromIndex(i);
-                        GraphicSteppableField gs = new GraphicSteppableField(s);
-                        newPanel = new GraphicPanel();
-                        newPanel.AddGraphicObject(gs);
-                        Box w = (Box) wh.GetFieldFromIndex(i).GetMoveable();
-                        GraphicBox g = new GraphicBox(w);
-                        newPanel = new GraphicPanel();
-                        newPanel.AddGraphicObject(g);
-                        graphicPanels.add(newPanel);
-
-                    } else if (!wh.GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
-                        SteppableField s = (SteppableField) wh.GetFieldFromIndex(i);
-                        GraphicSteppableField gs = new GraphicSteppableField(s);
-                        newPanel = new GraphicPanel();
-                        newPanel.AddGraphicObject(gs);
-                        Worker w = (Worker) wh.GetFieldFromIndex(i).GetMoveable();
-                        GraphicWorker g = new GraphicWorker(w);
-                        newPanel.AddGraphicObject(g);
-                        graphicPanels.add(newPanel);
-                    }
-                } else if (wh.GetFieldFromIndex(i).GetMoveable() == null) {
-
-                    SteppableField w = (SteppableField) wh.GetFieldFromIndex(i);
-                    GraphicSteppableField g = new GraphicSteppableField(w);
-                    newPanel = new GraphicPanel();
-                    newPanel.AddGraphicObject(g);
-                    graphicPanels.add(newPanel);
-
-
-                }
-            } else if (logger.GetObjectName(wh.GetFieldFromIndex(i)) == "Hole") {
+            if (logger.GetObjectName(wh.GetFieldFromIndex(i)) == "Hole") {
                 if (wh.GetFieldFromIndex(i).GetMoveable() != null) {
                     if (wh.GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
                         Hole s = new Hole();
-                        GraphicHole gs = new GraphicHole(s);
-                        newPanel = new GraphicPanel();
-                        newPanel.AddGraphicObject(gs);
+                        GHole gs = new GHole(s);
+
 
                         Box w = (Box) wh.GetFieldFromIndex(i).GetMoveable();
-                        GraphicBox g = new GraphicBox(w);
-                        newPanel = new GraphicPanel();
-                        newPanel.AddGraphicObject(g);
-                        graphicPanels.add(newPanel);
+                        GBox g = new GBox(w);
+                        list = new ArrayList<GObject>();
+                        list.add(gs);
+                        if(wh.GetFieldFromIndex(i).GetTrap()!=null){
+                            if(logger.GetObjectName(wh.GetFieldFromIndex(i).GetTrap())=="Honey") {
+                                GHoney t = new GHoney(new Honey());
+                                list.add(t);
+                            }
+                            if(logger.GetObjectName(wh.GetFieldFromIndex(i).GetTrap())=="Oil") {
+                                GOil t = new GOil(new Oil());
+                                list.add(t);
+                            }
+                        }
+                        list.add(g);
+                        panels.get(i).Refresh(list);
+
 
                     } else if (!wh.GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
 
                         Hole s = (Hole) wh.GetFieldFromIndex(i);
-                        GraphicHole gs = new GraphicHole(s);
-                        newPanel = new GraphicPanel();
-                        newPanel.AddGraphicObject(gs);
+                        GHole gs = new GHole(s);
+
 
                         Worker w = (Worker) wh.GetFieldFromIndex(i).GetMoveable();
-                        GraphicWorker g = new GraphicWorker(w);
-                        newPanel.AddGraphicObject(g);
-                        graphicPanels.add(newPanel);
+                        GWorker g = new GWorker(w);
+                        list = new ArrayList<GObject>();
+                        list.add(gs);
+                        if(wh.GetFieldFromIndex(i).GetTrap()!=null){
+                            if(logger.GetObjectName(wh.GetFieldFromIndex(i).GetTrap())=="Honey") {
+                                GHoney t = new GHoney(new Honey());
+                                list.add(t);
+                            }
+                            if(logger.GetObjectName(wh.GetFieldFromIndex(i).GetTrap())=="Oil") {
+                                GOil t = new GOil(new Oil());
+                                list.add(t);
+                            }
+                        }
+                        list.add(g);
+                        panels.get(i).Refresh(list);
+
                     }
                 } else if (wh.GetFieldFromIndex(i).GetMoveable() == null) {
 
                     Hole s = (Hole) wh.GetFieldFromIndex(i);
+                    GHole gs = new GHole(s);
+                    list = new ArrayList<GObject>();
+                    list.add(gs);
+                    if(wh.GetFieldFromIndex(i).GetTrap()!=null){
+                        if(logger.GetObjectName(wh.GetFieldFromIndex(i).GetTrap())=="Honey") {
+                            GHoney t = new GHoney(new Honey());
+                            list.add(t);
+                        }
+                        if(logger.GetObjectName(wh.GetFieldFromIndex(i).GetTrap())=="Oil") {
+                            GOil t = new GOil(new Oil());
+                            list.add(t);
+                        }
+                    }
+                    panels.get(i).Refresh(list);
 
-                    GraphicHole gs = new GraphicHole(s);
-                    newPanel = new GraphicPanel();
-                    newPanel.AddGraphicObject(gs);
-                    graphicPanels.add(newPanel);
 
 
                 }
-            } else if (logger.GetObjectName(wh.GetFieldFromIndex(i)) == "Switch") {
+            }
+            if (logger.GetObjectName(wh.GetFieldFromIndex(i)) == "Switch") {
                 if (wh.GetFieldFromIndex(i).GetMoveable() != null) {
                     if (wh.GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
                         Switch s = new Switch();
-                        GraphicSwitch gs = new GraphicSwitch(s);
-                        newPanel = new GraphicPanel();
-                        newPanel.AddGraphicObject(gs);
-
+                        GSwitch gs = new GSwitch(s);
                         Box w = (Box) wh.GetFieldFromIndex(i).GetMoveable();
-                        GraphicBox g = new GraphicBox(w);
-                        newPanel = new GraphicPanel();
-                        newPanel.AddGraphicObject(g);
-                        graphicPanels.add(newPanel);
+                        GBox g = new GBox(w);
+                        list = new ArrayList<GObject>();
+                        list.add(gs);
+                        if(wh.GetFieldFromIndex(i).GetTrap()!=null){
+                            if(logger.GetObjectName(wh.GetFieldFromIndex(i).GetTrap())=="Honey") {
+                                GHoney t = new GHoney(new Honey());
+                                list.add(t);
+                            }
+                            if(logger.GetObjectName(wh.GetFieldFromIndex(i).GetTrap())=="Oil") {
+                                GOil t = new GOil(new Oil());
+                                list.add(t);
+                            }
+                        }
+                        list.add(g);
+                        panels.get(i).Refresh(list);
+
                     } else if (!wh.GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
                         Switch s = (Switch) wh.GetFieldFromIndex(i);
 
-                        GraphicSwitch gs = new GraphicSwitch(s);
-                        newPanel = new GraphicPanel();
-                        newPanel.AddGraphicObject(gs);
+                        GSwitch gs = new GSwitch(s);
+
 
                         Worker w = (Worker) wh.GetFieldFromIndex(i).GetMoveable();
-                        GraphicWorker g = new GraphicWorker(w);
-                        newPanel.AddGraphicObject(g);
-                        graphicPanels.add(newPanel);
+                        GWorker g = new GWorker(w);
+                        list = new ArrayList<GObject>();
+                        list.add(gs);
+                        if(wh.GetFieldFromIndex(i).GetTrap()!=null){
+                            if(logger.GetObjectName(wh.GetFieldFromIndex(i).GetTrap())=="Honey") {
+                                GHoney t = new GHoney(new Honey());
+                                list.add(t);
+                            }
+                            if(logger.GetObjectName(wh.GetFieldFromIndex(i).GetTrap())=="Oil") {
+                                GOil t = new GOil(new Oil());
+                                list.add(t);
+                            }
+                        }
+                        list.add(g);
+                        panels.get(i).Refresh(list);
+
                     }
                 } else if (wh.GetFieldFromIndex(i).GetMoveable() == null) {
 
                     Switch s = (Switch) wh.GetFieldFromIndex(i);
-                    GraphicSwitch gs = new GraphicSwitch(s);
-                    newPanel = new GraphicPanel();
-                    newPanel.AddGraphicObject(gs);
-                    graphicPanels.add(newPanel);
+                    GSwitch gs = new GSwitch(s);
+                    list = new ArrayList<GObject>();
+                    list.add(gs);
+                    if(wh.GetFieldFromIndex(i).GetTrap()!=null){
+                        if(logger.GetObjectName(wh.GetFieldFromIndex(i).GetTrap())=="Honey") {
+                            GHoney t = new GHoney(new Honey());
+                            list.add(t);
+                        }
+                        if(logger.GetObjectName(wh.GetFieldFromIndex(i).GetTrap())=="Oil") {
+                            GOil t = new GOil(new Oil());
+                            list.add(t);
+                        }
+                    }
+                    panels.get(i).Refresh(list);
+
 
                 }
             }
+        }
 
-        this.repaint();
-        }
-        for (int i = 0; i < 400; i++) {
-            this.add(graphicPanels.get(i));
-            graphicPanels.get(i).repaint();
-        }
+
+
+
 
 
 
@@ -209,10 +327,175 @@ public class GridComponent extends GraphicComponent {
 
 
     public void FillPanels(Warehouse wh) {
-        Refresh(wh);
+        Logger logger = new Logger();
+        GPanel newPanel;
+
+        for (int i = 0; i < wh.GetFields().size(); i++) {
+
+            if (logger.GetObjectName(wh.GetFieldFromIndex(i)) == "Wall") {
+                Wall w = (Wall) wh.GetFields().get(i);
+                GWall g = new GWall(w);
+                newPanel = new GPanel();
+                newPanel.AddGObject(g);
+                panels.add(newPanel);
+            } else if (logger.GetObjectName(wh.GetFieldFromIndex(i)) == "TargetField") {
+                if (wh.GetFieldFromIndex(i).GetMoveable() != null) {
+                    if (wh.GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
+
+                        TargetField s = (TargetField) wh.GetFields().get(i);
+                        GTargetField gs = new GTargetField(s);
+                        newPanel = new GPanel();
+                        newPanel.AddGObject(gs);
+
+                        Box w = (Box) wh.GetFieldFromIndex(i).GetMoveable();
+                        GBox g = new GBox(w);
+                        newPanel = new GPanel();
+                        newPanel.AddGObject(g);
+                        panels.add(newPanel);
+
+                    } else if (!wh.GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
+
+                        TargetField s = (TargetField) wh.GetFieldFromIndex(i);
+                        GTargetField gs = new GTargetField(s);
+                        newPanel = new GPanel();
+                        newPanel.AddGObject(gs);
+
+                        Worker w = (Worker) wh.GetFieldFromIndex(i).GetMoveable();
+                        GWorker g = new GWorker(w);
+                        newPanel.AddGObject(g);
+                        panels.add(newPanel);
+
+                    }
+                } else if (wh.GetFieldFromIndex(i).GetMoveable() == null) {
+
+                    TargetField s = (TargetField) wh.GetFieldFromIndex(i);
+                    GTargetField gs = new GTargetField(s);
+                    newPanel = new GPanel();
+                    newPanel.AddGObject(gs);
+                    panels.add(newPanel);
+                }
+
+            }
+
+            if (logger.GetObjectName(wh.GetFieldFromIndex(i)) == "SteppableField") {
+                if (wh.GetFieldFromIndex(i).GetMoveable() != null) {
+                    if (wh.GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
+                        SteppableField s = (SteppableField) wh.GetFieldFromIndex(i);
+                        GSteppableField gs = new GSteppableField(s);
+                        newPanel = new GPanel();
+                        newPanel.AddGObject(gs);
+                        Box w = (Box) wh.GetFieldFromIndex(i).GetMoveable();
+                        GBox g = new GBox(w);
+                        newPanel = new GPanel();
+                        newPanel.AddGObject(g);
+                        panels.add(newPanel);
+
+                    } else if (!wh.GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
+                        SteppableField s = (SteppableField) wh.GetFieldFromIndex(i);
+                        GSteppableField gs = new GSteppableField(s);
+                        newPanel = new GPanel();
+                        newPanel.AddGObject(gs);
+                        Worker w = (Worker) wh.GetFieldFromIndex(i).GetMoveable();
+                        GWorker g = new GWorker(w);
+                        newPanel.AddGObject(g);
+                        panels.add(newPanel);
+                    }
+                } else if (wh.GetFieldFromIndex(i).GetMoveable() == null) {
+
+                    SteppableField w = (SteppableField) wh.GetFieldFromIndex(i);
+                    GSteppableField g = new GSteppableField(w);
+                    newPanel = new GPanel();
+                    newPanel.AddGObject(g);
+                    panels.add(newPanel);
+
+
+                }
+            } else if (logger.GetObjectName(wh.GetFieldFromIndex(i)) == "Hole") {
+                if (wh.GetFieldFromIndex(i).GetMoveable() != null) {
+                    if (wh.GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
+                        Hole s = new Hole();
+                        GHole gs = new GHole(s);
+                        newPanel = new GPanel();
+                        newPanel.AddGObject(gs);
+
+                        Box w = (Box) wh.GetFieldFromIndex(i).GetMoveable();
+                        GBox g = new GBox(w);
+                        newPanel = new GPanel();
+                        newPanel.AddGObject(g);
+                        panels.add(newPanel);
+
+                    } else if (!wh.GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
+
+                        Hole s = (Hole) wh.GetFieldFromIndex(i);
+                        GHole gs = new GHole(s);
+                        newPanel = new GPanel();
+                        newPanel.AddGObject(gs);
+
+                        Worker w = (Worker) wh.GetFieldFromIndex(i).GetMoveable();
+                        GWorker g = new GWorker(w);
+                        newPanel.AddGObject(g);
+                        panels.add(newPanel);
+                    }
+                } else if (wh.GetFieldFromIndex(i).GetMoveable() == null) {
+
+                    Hole s = (Hole) wh.GetFieldFromIndex(i);
+
+                    GHole gs = new GHole(s);
+                    newPanel = new GPanel();
+                    newPanel.AddGObject(gs);
+                    panels.add(newPanel);
+
+
+                }
+            } else if (logger.GetObjectName(wh.GetFieldFromIndex(i)) == "Switch") {
+                if (wh.GetFieldFromIndex(i).GetMoveable() != null) {
+                    if (wh.GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
+                        Switch s = new Switch();
+                        GSwitch gs = new GSwitch(s);
+                        newPanel = new GPanel();
+                        newPanel.AddGObject(gs);
+
+                        Box w = (Box) wh.GetFieldFromIndex(i).GetMoveable();
+                        GBox g = new GBox(w);
+                        newPanel = new GPanel();
+                        newPanel.AddGObject(g);
+                        panels.add(newPanel);
+                    } else if (!wh.GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
+                        Switch s = (Switch) wh.GetFieldFromIndex(i);
+
+                        GSwitch gs = new GSwitch(s);
+                        newPanel = new GPanel();
+                        newPanel.AddGObject(gs);
+
+                        Worker w = (Worker) wh.GetFieldFromIndex(i).GetMoveable();
+                        GWorker g = new GWorker(w);
+                        newPanel.AddGObject(g);
+                        panels.add(newPanel);
+                    }
+                } else if (wh.GetFieldFromIndex(i).GetMoveable() == null) {
+
+                    Switch s = (Switch) wh.GetFieldFromIndex(i);
+                    GSwitch gs = new GSwitch(s);
+                    newPanel = new GPanel();
+                    newPanel.AddGObject(gs);
+                    panels.add(newPanel);
+
+                }
+            }
+
+            this.repaint();
+        }
+        for (int i = 0; i < 400; i++) {
+            this.add(panels.get(i));
+            panels.get(i).repaint();
+        }
     }
 
-    public List<GraphicPanel> GetGraphicPanels() {
-        return graphicPanels;
+    public void SetPanels(List<GPanel> panels) {
+        this.panels = panels;
+    }
+
+    public List<GPanel> GetPanels() {
+        return panels;
     }
 }

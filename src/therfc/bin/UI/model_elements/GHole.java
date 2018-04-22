@@ -5,13 +5,12 @@ import therfc.res.Resources;
 
 import java.awt.*;
 
-public class GraphicHole extends GraphicObject {
+public class GHole extends GObject {
 
     private Hole hole;
 
-    public GraphicHole(Hole h){
+    public GHole(Hole h){
         this.hole=h;
-        z_index=1;
         if(h.GetOpen()) {
             img = Resources.OpenHoleImage;
         }
