@@ -1,1 +1,1 @@
-java -cp out therfc.main.Main
+java -cp out therfc.bin.main.Main
