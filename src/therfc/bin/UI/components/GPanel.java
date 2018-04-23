@@ -21,8 +21,8 @@ public class GPanel extends JPanel {
 
     }
 
-    public void Refresh(List<GObject> newObject){
-        this.gObjects=newObject;
+    public void Refresh(List<GObject> refreshedObject){
+        this.gObjects=refreshedObject;
         repaint();
     }
 

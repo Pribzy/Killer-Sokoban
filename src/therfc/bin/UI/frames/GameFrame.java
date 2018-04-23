@@ -20,17 +20,12 @@ public class GameFrame extends JFrame {
         final Controller c = new Controller(2);
         this.addKeyListener(c);
 
-        grid = new GridComponent(g,g.GetWarehouse());
-
+        grid = new GridComponent();
 
         this.setLayout(new BorderLayout());
         this.add(grid);
         this.setResizable(false);
         grid.setPreferredSize(new Dimension(600,600));
-
-
-
-
         this.setVisible(true);
     }
 
@@ -38,7 +33,5 @@ public class GameFrame extends JFrame {
         return grid;
     }
 
-    public void SetGrid(GridComponent grid) {
-        this.grid = grid;
-    }
+
 }

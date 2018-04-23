@@ -2,22 +2,24 @@ package therfc.bin.UI.components;
 
 import therfc.bin.UI.model_elements.*;
 import therfc.bin.data.*;
+import therfc.bin.data.Box;
 import therfc.bin.main.Logger;
 
+import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
 import java.util.List;
 
-public class GridComponent extends GraphicComponent {
+public class GridComponent extends JPanel {
 
     private List<GPanel> panels;
+    private Game game = Game.GetInstance();
 
-
-    public GridComponent(Game g, Warehouse wh) {
+    public GridComponent() {
         panels=new ArrayList<GPanel>();
 
-        FillPanels(wh);
+        FillPanels(game.GetWarehouse());
 
         this.setLayout(new GridLayout(20, 20,0,0));
 
@@ -27,7 +29,7 @@ public class GridComponent extends GraphicComponent {
 
 
 
-    @Override
+
     public void Refresh(Warehouse wh) {
         List<GObject> list;
         Logger logger = new Logger();

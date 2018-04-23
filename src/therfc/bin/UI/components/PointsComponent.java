@@ -2,10 +2,12 @@ package therfc.bin.UI.components;
 
 import therfc.bin.data.Warehouse;
 
-public class PointsComponent extends GraphicComponent {
+import javax.swing.*;
+
+public class PointsComponent extends JPanel {
 
 
-    @Override
+
     public void Refresh(Warehouse wh) {
 
     }
