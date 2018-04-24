@@ -17,3 +17,5 @@ out/production/Killer-Sokoban/therfc/Moveable.class
 out/production/Killer-Sokoban/therfc/SteppableField.class
 out/production/Killer-Sokoban/therfc/Switch.class
 test.txt
+*.xml___jb_tmp___
+test.txt
