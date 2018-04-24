@@ -11,7 +11,7 @@ public class GBox extends GObject {
    public GBox(Box b){
        this.box=b;
        img= Resources.BoxImage;
-
+       this.z_index=3;
    }
 
 

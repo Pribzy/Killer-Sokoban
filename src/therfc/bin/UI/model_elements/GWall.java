@@ -11,7 +11,7 @@ public class GWall extends GObject {
     public GWall(Wall w){
         this.wall=w;
         img= Resources.WallImage;
-
+        this.z_index=1;
     }
 
     @Override

@@ -49,10 +49,10 @@ public class Controller extends KeyAdapter {
         if (evt.getKeyCode() == KeyEvent.VK_A) { w0.Move(Direction.Left); grid.Refresh(game.GetWarehouse());
 
         }
-        if (evt.getKeyCode() == KeyEvent.VK_E) { w0.AddHoney(); grid.Refresh(game.GetWarehouse());
+        if (evt.getKeyCode() == KeyEvent.VK_E) { w0.AddHoney(); grid.AddTrap();
 
         }
-        if (evt.getKeyCode() == KeyEvent.VK_Q) { w0.AddOil(); grid.Refresh(game.GetWarehouse());
+        if (evt.getKeyCode() == KeyEvent.VK_Q) { w0.AddOil(); grid.AddTrap();
 
         }
         if (evt.getKeyCode() == KeyEvent.VK_UP) { w1.Move(Direction.Up);grid.Refresh(game.GetWarehouse());

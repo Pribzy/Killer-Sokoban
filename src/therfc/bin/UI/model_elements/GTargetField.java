@@ -17,6 +17,7 @@ public class GTargetField extends GObject {
         else if(!t.GetActive()){
             img = Resources.InActiveTargetFieldImage;
         }
+        this.z_index=1;
 
     }
 

@@ -28,9 +28,29 @@ public class GridComponent extends JPanel {
     }
 
 
+    public void AddTrap(){
+        Logger logger = new Logger();
+        List<GObject> list= new ArrayList<GObject>();
+        for (int i = 0; i <panels.size() ; i++) {
 
+            if (game.GetWarehouse().GetFieldFromIndex(i).GetTrap() != null) {
+                if (logger.GetObjectName(game.GetWarehouse().GetFieldFromIndex(i).GetTrap()) == "Honey") {
+                    GHoney t = new GHoney(new Honey());
+                    list.add(t);
+                    panels.get(i).AddGObject(t);
+                }
+                if (logger.GetObjectName(game.GetWarehouse().GetFieldFromIndex(i).GetTrap()) == "Oil") {
+                    GOil t = new GOil(new Oil());
+                    list.add(t);
+                    panels.get(i).AddGObject(t);
+                }
+            }
+
+        }
+    }
 
     public void Refresh(Warehouse wh) {
+        /*
         List<GObject> list;
         Logger logger = new Logger();
         for (int i = 0; i <panels.size() ; i++) {
@@ -48,16 +68,7 @@ public class GridComponent extends JPanel {
                         GBox g = new GBox(w);
                         list = new ArrayList<GObject>();
                         list.add(gs);
-                        if(wh.GetFieldFromIndex(i).GetTrap()!=null){
-                            if(logger.GetObjectName(wh.GetFieldFromIndex(i).GetTrap())=="Honey") {
-                                GHoney t = new GHoney(new Honey());
-                                list.add(t);
-                            }
-                            if(logger.GetObjectName(wh.GetFieldFromIndex(i).GetTrap())=="Oil") {
-                                GOil t = new GOil(new Oil());
-                                list.add(t);
-                            }
-                        }
+
 
 
                         list.add(g);
@@ -323,7 +334,7 @@ public class GridComponent extends JPanel {
 
 
 
-
+*/
     }
 
 

@@ -13,6 +13,7 @@ public class GHoney extends GObject {
     public GHoney(Honey s){
         this.honey=s;
         img= Resources.HoneyImage;
+        this.z_index=2;
 
     }
 

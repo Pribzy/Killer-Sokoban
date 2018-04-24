@@ -14,6 +14,7 @@ public class GOil extends GObject {
     public GOil(Oil s){
         this.oil=s;
         img= Resources.OilImage;
+        this.z_index=2;
 
     }
 

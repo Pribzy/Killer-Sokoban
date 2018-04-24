@@ -12,7 +12,7 @@ public class GSwitch extends GObject {
     public GSwitch(Switch s){
         this.myswitch=s;
         img= Resources.SwitchImage;
-
+        this.z_index=1;
     }
 
     @Override

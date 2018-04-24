@@ -17,7 +17,7 @@ public class GHole extends GObject {
         else if(!h.GetOpen()){
             img = Resources.CloseHoleImage;
         }
-
+        this. z_index=1;
     }
 
 

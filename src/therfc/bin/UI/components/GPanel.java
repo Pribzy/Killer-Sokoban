@@ -1,7 +1,9 @@
 package therfc.bin.UI.components;
 
 import jdk.nashorn.api.tree.GotoTree;
+import therfc.bin.UI.model_elements.GHole;
 import therfc.bin.UI.model_elements.GObject;
+import therfc.bin.data.Hole;
 import therfc.res.Resources;
 
 import javax.swing.*;
@@ -16,13 +18,15 @@ public class GPanel extends JPanel {
     public GPanel(){
 
         this.setPreferredSize(new Dimension(24,24));
-        this.gObjects = new ArrayList<GObject>();
+        this.gObjects = new ArrayList<GObject>(3);
+        this.gObjects.add(null);
+        this.gObjects.add(null);
+        this.gObjects.add(null);
         this.setVisible(true);
 
     }
 
-    public void Refresh(List<GObject> refreshedObject){
-        this.gObjects=refreshedObject;
+    public void Refresh(){
         repaint();
     }
 
@@ -30,12 +34,29 @@ public class GPanel extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         for (int i = 0; i <gObjects.size() ; i++) {
-            gObjects.get(i).DrawGraphic(g);
+            if(gObjects.get(i)==null){}
+            else {
+                gObjects.get(i).DrawGraphic(g);
+            }
         }
     }
 
     public void AddGObject(GObject o){
-        gObjects.add(o);
+        gObjects.set(o.GetZIndex()-1,o);
+        Refresh();
+
+    }
+    public void ReplaceGObject(GObject o){
+
+
+        Refresh();
+
+    }
+
+    public void SetPanel(List<GObject> refreshedObject){
+
+    }
+    public void SortPanel(){
 
     }
 

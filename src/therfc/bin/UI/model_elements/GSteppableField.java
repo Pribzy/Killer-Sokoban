@@ -12,7 +12,7 @@ public class GSteppableField extends GObject {
     public GSteppableField(SteppableField s){
         this.steppableField=s;
         img= Resources.SteppableFieldImage;
-
+        this. z_index=1;
     }
 
 

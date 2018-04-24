@@ -12,7 +12,7 @@ public class GWorker extends GObject {
     public GWorker(Worker w){
         this.worker=w;
         img= Resources.WorkerImage;
-
+        this. z_index=3;
     }
 
     @Override
