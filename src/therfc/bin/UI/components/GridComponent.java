@@ -48,7 +48,63 @@ public class GridComponent extends JPanel {
 
         }
     }
+    public void MovePlayer() {
+        for (int i = 0; i < panels.size(); i++) {
+            if (game.GetWarehouse().GetFieldFromIndex(i).GetMoveable() != null) {
+                if (game.GetWarehouse().GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
+                    Box w = (Box) game.GetWarehouse().GetFieldFromIndex(i).GetMoveable();
+                    GBox gb = new GBox(w);
+                    panels.get(i).AddGObject(gb);
 
+                } else if (!game.GetWarehouse().GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
+
+
+                    Worker w = (Worker) game.GetWarehouse().GetFieldFromIndex(i).GetMoveable();
+                    GWorker gw = new GWorker(w);
+
+                    panels.get(i).AddGObject(gw);
+                }
+            }
+
+        }
+    }
+    public void RefreshFields(){
+        Logger logger = new Logger();
+        for (int i = 0; i < panels.size(); i++) {
+            if (game.GetWarehouse().GetFieldFromIndex(i).GetMoveable() == null) {
+                panels.get(i).GetGObjects().set(2,null);
+                if (logger.GetObjectName(game.GetWarehouse().GetFieldFromIndex(i)) == "SteppableField") {
+                    SteppableField s = (SteppableField) game.GetWarehouse().GetFieldFromIndex(i);
+                    GSteppableField gs = new GSteppableField(s);
+                    panels.get(i).AddGObject(gs);
+
+                }
+                if (logger.GetObjectName(game.GetWarehouse().GetFieldFromIndex(i)) == "Wall") {
+                    Wall s = (Wall) game.GetWarehouse().GetFieldFromIndex(i);
+                    GWall gs = new GWall(s);
+                    panels.get(i).AddGObject(gs);
+                }
+                if (logger.GetObjectName(game.GetWarehouse().GetFieldFromIndex(i)) == "TargetField") {
+                    TargetField s = (TargetField) game.GetWarehouse().GetFieldFromIndex(i);
+                    GTargetField gs = new GTargetField(s);
+                    panels.get(i).AddGObject(gs);
+                }
+                if (logger.GetObjectName(game.GetWarehouse().GetFieldFromIndex(i)) == "Switch") {
+                    Switch s = (Switch) game.GetWarehouse().GetFieldFromIndex(i);
+                    GSwitch gs = new GSwitch(s);
+                    panels.get(i).AddGObject(gs);
+                }
+                if (logger.GetObjectName(game.GetWarehouse().GetFieldFromIndex(i)) == "Hole") {
+                    Hole s = (Hole) game.GetWarehouse().GetFieldFromIndex(i);
+                    GHole gs = new GHole(s);
+                    panels.get(i).AddGObject(gs);
+                }
+
+
+
+            }
+        }
+    }
     public void Refresh(Warehouse wh) {
         /*
         List<GObject> list;
@@ -352,17 +408,19 @@ public class GridComponent extends JPanel {
                 newPanel.AddGObject(g);
                 panels.add(newPanel);
             } else if (logger.GetObjectName(wh.GetFieldFromIndex(i)) == "TargetField") {
+                newPanel = new GPanel();
                 if (wh.GetFieldFromIndex(i).GetMoveable() != null) {
+
                     if (wh.GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
 
                         TargetField s = (TargetField) wh.GetFields().get(i);
                         GTargetField gs = new GTargetField(s);
-                        newPanel = new GPanel();
+
                         newPanel.AddGObject(gs);
 
                         Box w = (Box) wh.GetFieldFromIndex(i).GetMoveable();
                         GBox g = new GBox(w);
-                        newPanel = new GPanel();
+
                         newPanel.AddGObject(g);
                         panels.add(newPanel);
 
@@ -370,7 +428,7 @@ public class GridComponent extends JPanel {
 
                         TargetField s = (TargetField) wh.GetFieldFromIndex(i);
                         GTargetField gs = new GTargetField(s);
-                        newPanel = new GPanel();
+
                         newPanel.AddGObject(gs);
 
                         Worker w = (Worker) wh.GetFieldFromIndex(i).GetMoveable();
@@ -383,7 +441,7 @@ public class GridComponent extends JPanel {
 
                     TargetField s = (TargetField) wh.GetFieldFromIndex(i);
                     GTargetField gs = new GTargetField(s);
-                    newPanel = new GPanel();
+
                     newPanel.AddGObject(gs);
                     panels.add(newPanel);
                 }
@@ -391,22 +449,23 @@ public class GridComponent extends JPanel {
             }
 
             if (logger.GetObjectName(wh.GetFieldFromIndex(i)) == "SteppableField") {
+                newPanel = new GPanel();
                 if (wh.GetFieldFromIndex(i).GetMoveable() != null) {
                     if (wh.GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
                         SteppableField s = (SteppableField) wh.GetFieldFromIndex(i);
                         GSteppableField gs = new GSteppableField(s);
-                        newPanel = new GPanel();
+                       // newPanel = new GPanel();
                         newPanel.AddGObject(gs);
                         Box w = (Box) wh.GetFieldFromIndex(i).GetMoveable();
                         GBox g = new GBox(w);
-                        newPanel = new GPanel();
+                        //newPanel = new GPanel();
                         newPanel.AddGObject(g);
                         panels.add(newPanel);
 
                     } else if (!wh.GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
                         SteppableField s = (SteppableField) wh.GetFieldFromIndex(i);
                         GSteppableField gs = new GSteppableField(s);
-                        newPanel = new GPanel();
+                        //newPanel = new GPanel();
                         newPanel.AddGObject(gs);
                         Worker w = (Worker) wh.GetFieldFromIndex(i).GetMoveable();
                         GWorker g = new GWorker(w);
@@ -417,23 +476,24 @@ public class GridComponent extends JPanel {
 
                     SteppableField w = (SteppableField) wh.GetFieldFromIndex(i);
                     GSteppableField g = new GSteppableField(w);
-                    newPanel = new GPanel();
+                    //newPanel = new GPanel();
                     newPanel.AddGObject(g);
                     panels.add(newPanel);
 
 
                 }
             } else if (logger.GetObjectName(wh.GetFieldFromIndex(i)) == "Hole") {
+                newPanel = new GPanel();
                 if (wh.GetFieldFromIndex(i).GetMoveable() != null) {
                     if (wh.GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
                         Hole s = new Hole();
                         GHole gs = new GHole(s);
-                        newPanel = new GPanel();
+                        //newPanel = new GPanel();
                         newPanel.AddGObject(gs);
 
                         Box w = (Box) wh.GetFieldFromIndex(i).GetMoveable();
                         GBox g = new GBox(w);
-                        newPanel = new GPanel();
+                        //newPanel = new GPanel();
                         newPanel.AddGObject(g);
                         panels.add(newPanel);
 
@@ -441,7 +501,7 @@ public class GridComponent extends JPanel {
 
                         Hole s = (Hole) wh.GetFieldFromIndex(i);
                         GHole gs = new GHole(s);
-                        newPanel = new GPanel();
+                        //newPanel = new GPanel();
                         newPanel.AddGObject(gs);
 
                         Worker w = (Worker) wh.GetFieldFromIndex(i).GetMoveable();
@@ -454,30 +514,31 @@ public class GridComponent extends JPanel {
                     Hole s = (Hole) wh.GetFieldFromIndex(i);
 
                     GHole gs = new GHole(s);
-                    newPanel = new GPanel();
+                    //newPanel = new GPanel();
                     newPanel.AddGObject(gs);
                     panels.add(newPanel);
 
 
                 }
             } else if (logger.GetObjectName(wh.GetFieldFromIndex(i)) == "Switch") {
+                newPanel = new GPanel();
                 if (wh.GetFieldFromIndex(i).GetMoveable() != null) {
                     if (wh.GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
                         Switch s = new Switch();
                         GSwitch gs = new GSwitch(s);
-                        newPanel = new GPanel();
+                        //newPanel = new GPanel();
                         newPanel.AddGObject(gs);
 
                         Box w = (Box) wh.GetFieldFromIndex(i).GetMoveable();
                         GBox g = new GBox(w);
-                        newPanel = new GPanel();
+                        //newPanel = new GPanel();
                         newPanel.AddGObject(g);
                         panels.add(newPanel);
                     } else if (!wh.GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
                         Switch s = (Switch) wh.GetFieldFromIndex(i);
 
                         GSwitch gs = new GSwitch(s);
-                        newPanel = new GPanel();
+                        //newPanel = new GPanel();
                         newPanel.AddGObject(gs);
 
                         Worker w = (Worker) wh.GetFieldFromIndex(i).GetMoveable();
@@ -489,7 +550,7 @@ public class GridComponent extends JPanel {
 
                     Switch s = (Switch) wh.GetFieldFromIndex(i);
                     GSwitch gs = new GSwitch(s);
-                    newPanel = new GPanel();
+                    //newPanel = new GPanel();
                     newPanel.AddGObject(gs);
                     panels.add(newPanel);
 

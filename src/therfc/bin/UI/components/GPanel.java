@@ -42,22 +42,16 @@ public class GPanel extends JPanel {
     }
 
     public void AddGObject(GObject o){
+        Refresh();
         gObjects.set(o.GetZIndex()-1,o);
         Refresh();
 
     }
-    public void ReplaceGObject(GObject o){
 
 
-        Refresh();
 
-    }
-
-    public void SetPanel(List<GObject> refreshedObject){
-
-    }
-    public void SortPanel(){
-
+    public List<GObject> GetGObjects(){
+        return gObjects;
     }
 
 

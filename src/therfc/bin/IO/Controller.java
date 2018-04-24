@@ -36,17 +36,18 @@ public class Controller extends KeyAdapter {
        if (evt.getKeyCode() == KeyEvent.VK_W) {
 
            w0.Move(Direction.Up);
-           grid.Refresh(game.GetWarehouse());
+           grid.MovePlayer();
+           grid.RefreshFields();
 
 
         }
-        if (evt.getKeyCode() == KeyEvent.VK_S) { w0.Move(Direction.Down); grid.Refresh(game.GetWarehouse());
+        if (evt.getKeyCode() == KeyEvent.VK_S) { w0.Move(Direction.Down); grid.MovePlayer();grid.RefreshFields();
 
         }
-        if (evt.getKeyCode() == KeyEvent.VK_D) { w0.Move(Direction.Right); grid.Refresh(game.GetWarehouse());
+        if (evt.getKeyCode() == KeyEvent.VK_D) { w0.Move(Direction.Right); grid.MovePlayer();grid.RefreshFields();
 
         }
-        if (evt.getKeyCode() == KeyEvent.VK_A) { w0.Move(Direction.Left); grid.Refresh(game.GetWarehouse());
+        if (evt.getKeyCode() == KeyEvent.VK_A) { w0.Move(Direction.Left); grid.MovePlayer();grid.RefreshFields();
 
         }
         if (evt.getKeyCode() == KeyEvent.VK_E) { w0.AddHoney(); grid.AddTrap();
