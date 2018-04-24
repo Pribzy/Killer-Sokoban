@@ -33,10 +33,10 @@ public class GPanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        for (int i = 0; i <gObjects.size() ; i++) {
-            if(gObjects.get(i)==null){}
-            else {
-                gObjects.get(i).DrawGraphic(g);
+        for (GObject gObject : gObjects) {
+            if (gObject == null) {
+            } else {
+                gObject.DrawGraphic(g);
             }
         }
     }

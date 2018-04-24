@@ -17,7 +17,6 @@ public class GWorker extends GObject {
 
     @Override
     public void DrawGraphic(Graphics g) {
-
         g.drawImage(img, 0,0,null);
     }
 }
