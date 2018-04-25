@@ -9,6 +9,7 @@ public class Worker extends Moveable {
 
 
     //attribútumok
+    private boolean dead;
     private int point;
     private Boolean pushed; //annak eldöntésére,hogy önszántából lépett-e,vagy tolták(ha ==true, akkor tolták,ha false, akkor lépett)
     private int power;
@@ -16,10 +17,12 @@ public class Worker extends Moveable {
 
     //konstruktor
     public Worker() {
+        this.dead=false;
     }
 
     public Worker(int p) {
         this.power = p;
+        this.dead=false;
     }
 
     //függvények
@@ -149,6 +152,7 @@ public class Worker extends Moveable {
       //  logger.Enter(this, "Die", "");
         this.GetField().RemoveMoveable(this);
         this.GetWarehouse().RemoveWorker(this);
+        this.dead=true;
        // logger.Exit(this, "Die", "this moveable died");
 
     }
@@ -224,4 +228,7 @@ public class Worker extends Moveable {
 
     }
 
+    public boolean GetDeadState() {
+        return dead;
+    }
 }

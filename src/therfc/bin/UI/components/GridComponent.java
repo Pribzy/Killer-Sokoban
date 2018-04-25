@@ -21,7 +21,7 @@ public class GridComponent extends JPanel {
         FillPanels();
 
         this.setLayout(new GridLayout(20, 20,0,0));
-
+        this.setPreferredSize(new Dimension(480,480));
         this.setVisible(true);
 
     }

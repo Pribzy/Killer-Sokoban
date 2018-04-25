@@ -2,6 +2,7 @@ package therfc.bin.data;
 
 import therfc.bin.main.Logger;
 
+import javax.swing.*;
 import java.util.*;
 
 /**
@@ -13,15 +14,19 @@ public class Warehouse {
     private int boxNumber;
     private int workerNumber;
     private List<Field> fields = new ArrayList<>();
-    private List<Worker> players= new ArrayList<>();
+    private List<Worker> players;
     private List<Box> boxes= new ArrayList<>();
 
     private Logger logger = new Logger();
 
     //konstruktor
     public Warehouse() {
+        this.boxNumber=0;
+        this.players = new ArrayList<Worker>();
+        this.fields = new ArrayList<Field>();
+        this.boxes = new ArrayList<Box>();
+        this.workerNumber=0;
     }
-
 
     //függvények
 
@@ -32,9 +37,8 @@ public class Warehouse {
     public Worker GetMaxPointPlayer() { //visszaadja a legnagyobb ponttal rendelkező játékost
         //logger.Enter(this, "GetMaxPointPlayer", "");
         if(players.isEmpty()){
-            Worker nullWorker=new Worker(0);
             //logger.Exit(this, "GetMaxPointPlayer", "All player is dead");
-            return nullWorker;
+            return new Worker(0);
 
         }
         else {
@@ -63,7 +67,7 @@ public class Warehouse {
             }
             if (allStucked) {
                 Game game = Game.GetInstance();
-                game.EndGame();
+                game.EndGame("All workers stucked!");
             }
         }
         //logger.Exit(this, "CheckStuckedWorkers", "Checked workers");
@@ -84,7 +88,7 @@ public class Warehouse {
             }
             if (allStucked) {
                 Game game = Game.GetInstance();
-                game.EndGame();
+                game.EndGame("All boxes stucked!");
             }
 
         }
@@ -110,7 +114,7 @@ public class Warehouse {
         }
         if(allInActive){
             Game game = Game.GetInstance();
-            game.EndGame();
+            game.EndGame("All box pushed to TargetFields!");
         }
 
 
@@ -163,7 +167,8 @@ public class Warehouse {
         boxNumber--;
         if (boxNumber==0){
             Game game = Game.GetInstance();
-            game.EndGame();
+            game.EndGame("All boxes destroyed!");
+
         }
        // logger.Exit(this,"RemoveBox",logger.GetObjectName(b)+" removed from Warehouse");
     }
@@ -179,10 +184,10 @@ public class Warehouse {
         System.out.println(players.indexOf(w)+1+". worker die");
         System.out.println();
         game.GetIO().WriteToFileByLine(players.indexOf(w)+1+". worker die");
-        players.remove(w);
+        //players.remove(w);
         workerNumber--;
         if (workerNumber==0){
-            game.EndGame();
+            game.EndGame("All workers dead!");
         }
        // logger.Exit(this,"RemoveWorker",logger.GetObjectName(w)+" removed from Warehouse");
     }

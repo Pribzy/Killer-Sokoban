@@ -54,12 +54,14 @@ public class Game {
 
 
     }
-
+     public void RestartGame(){
+        game=new Game();
+     }
 
     /**
      *
      */
-    public  void EndGame( ) { //ha vége a játéknak,ez a függvény hívódik meg
+    public  void EndGame(String message ) { //ha vége a játéknak,ez a függvény hívódik meg
         //logger.Enter(this,"EndGame","");
 
 
@@ -70,6 +72,13 @@ public class Game {
             game.GetIO().WriteToFileByLine("\nGAME OVER\n");
             game.GetIO().WriteToFileByLine("Max Point Player: w" + (level.GetWorkers().indexOf(yourWinner) + 1));
             game.GetIO().WriteToFileByLine("\nPoints: " + yourWinner.GetPoints() + "\n");
+           this.gameFrame.EndGameMessage(message,yourWinner );
+
+            try {
+                //StartGame();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
         //a szekvenciadiagramokban nincs benne a GetPoints() függvény, mivel azt csak a kiiratáshoz használjuk
         //logger.Exit(this,"EndGame","max point player");
