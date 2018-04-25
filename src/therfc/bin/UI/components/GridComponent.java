@@ -27,23 +27,22 @@ public class GridComponent extends JPanel {
     }
 
 
-    public void AddTrap(){
+    public void RefreshTrap(){
         Logger logger = new Logger();
-        List<GObject> list= new ArrayList<GObject>();
-        for (int i = 0; i <panels.size() ; i++) {
 
+        for (int i = 0; i <panels.size() ; i++) {
             if (game.GetWarehouse().GetFieldFromIndex(i).GetTrap() != null) {
                 if (logger.GetObjectName(game.GetWarehouse().GetFieldFromIndex(i).GetTrap()) == "Honey") {
                     GHoney t = new GHoney(new Honey());
-                    list.add(t);
                     panels.get(i).AddGObject(t);
                 }
                 if (logger.GetObjectName(game.GetWarehouse().GetFieldFromIndex(i).GetTrap()) == "Oil") {
                     GOil t = new GOil(new Oil());
-                    list.add(t);
                     panels.get(i).AddGObject(t);
                 }
             }
+
+
 
         }
     }
@@ -71,6 +70,10 @@ public class GridComponent extends JPanel {
         Logger logger = new Logger();
         for (int i = 0; i < panels.size(); i++) {
             if (game.GetWarehouse().GetFieldFromIndex(i).GetMoveable() == null) {
+
+                if (game.GetWarehouse().GetFieldFromIndex(i).GetTrap() == null) { //csapdák leellenőrzése
+                    panels.get(i).GetGObjects().set(1,null); }
+
                 panels.get(i).GetGObjects().set(2,null);
                 if (logger.GetObjectName(game.GetWarehouse().GetFieldFromIndex(i)) == "SteppableField") {
                     SteppableField s = (SteppableField) game.GetWarehouse().GetFieldFromIndex(i);

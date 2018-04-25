@@ -126,6 +126,10 @@ public abstract class Field {
         t.SetField(this);
 
     }
+    public void RemoveTrap(){
+        trap=null;
+
+    }
 
     /**
      *

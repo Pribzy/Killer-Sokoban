@@ -66,23 +66,14 @@ public class Game {
 
 
         Worker yourWinner=level.GetMaxPointPlayer(); //visszaadja a legnagyobb pontú játékost ami eddig történt
-        if(!end) {
-            System.out.println("\nGAME OVER\n" +
-                    "Max Point Player: w" + (level.GetWorkers().indexOf(yourWinner) + 1) + "\nPoints: " + yourWinner.GetPoints() + "\n");
-            game.GetIO().WriteToFileByLine("\nGAME OVER\n");
-            game.GetIO().WriteToFileByLine("Max Point Player: w" + (level.GetWorkers().indexOf(yourWinner) + 1));
-            game.GetIO().WriteToFileByLine("\nPoints: " + yourWinner.GetPoints() + "\n");
+
            this.gameFrame.EndGameMessage(message,yourWinner );
 
-            try {
-                //StartGame();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        //a szekvenciadiagramokban nincs benne a GetPoints() függvény, mivel azt csak a kiiratáshoz használjuk
+
+
+
         //logger.Exit(this,"EndGame","max point player");
-        end=true; //csak, hogy egyszer hívódjon meg a játék vége függvény.
+
     }
 
 

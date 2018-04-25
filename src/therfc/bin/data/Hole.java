@@ -79,6 +79,12 @@ public class Hole extends Field {
      */
     public void SetOpen(Boolean o) { //beállítja a lyukát nyitottra (true), vagy zártra (false)
         //logger.Enter(this, "SetOpen", String.valueOf(o));
+        if(o) {
+            if (this.GetMoveable() != null) {
+                this.GetMoveable().Die();
+            }
+            this.RemoveTrap();
+        }
         this.open = o;
         //logger.Exit(this, "SetOpen", "hole set to " + String.valueOf(o));
     }

@@ -58,12 +58,12 @@ public class Controller extends KeyAdapter {
              }
              if (evt.getKeyCode() == KeyEvent.VK_E) {
                  w0.AddHoney();
-                 grid.AddTrap();
+                 grid.RefreshTrap();
                  points.RefreshPoints();
              }
              if (evt.getKeyCode() == KeyEvent.VK_Q) {
                  w0.AddOil();
-                 grid.AddTrap();
+                 grid.RefreshTrap();
                  points.RefreshPoints();
              }
          }
@@ -94,12 +94,12 @@ public class Controller extends KeyAdapter {
             }
             if (evt.getKeyCode() == KeyEvent.VK_DELETE) {
                 w1.AddOil();
-                grid.AddTrap();
+                grid.RefreshTrap();
                 points.RefreshPoints();
             }
             if (evt.getKeyCode() == KeyEvent.VK_PAGE_DOWN) {
                 w1.AddHoney();
-                grid.AddTrap();
+                grid.RefreshTrap();
                 points.RefreshPoints();
             }
         }
@@ -133,12 +133,12 @@ public class Controller extends KeyAdapter {
                 }
                 if (evt.getKeyCode() == KeyEvent.VK_U) {
                     w2.AddOil();
-                    grid.AddTrap();
+                    grid.RefreshTrap();
                     points.RefreshPoints();
                 }
                 if (evt.getKeyCode() == KeyEvent.VK_O) {
                     w2.AddHoney();
-                    grid.AddTrap();
+                    grid.RefreshTrap();
                     points.RefreshPoints();
                 }
             }
@@ -171,12 +171,12 @@ public class Controller extends KeyAdapter {
                     }
                     if (evt.getKeyCode() == KeyEvent.VK_R) {
                         w3.AddOil();
-                        grid.AddTrap();
+                        grid.RefreshTrap();
                         points.RefreshPoints();
                     }
                     if (evt.getKeyCode() == KeyEvent.VK_Z) {
                         w3.AddHoney();
-                        grid.AddTrap();
+                        grid.RefreshTrap();
                         points.RefreshPoints();
                     }
                 }
