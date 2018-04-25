@@ -163,7 +163,7 @@ public class Controller extends KeyAdapter {
                         grid.RefreshFields();
                         points.RefreshPoints();
                     }
-                    if (evt.getKeyCode() == KeyEvent.VK_B) {
+                    if (evt.getKeyCode() == KeyEvent.VK_F) {
                         w3.Move(Direction.Left);
                         grid.MoveObjects();
                         grid.RefreshFields();

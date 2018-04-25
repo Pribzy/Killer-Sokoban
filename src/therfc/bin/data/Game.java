@@ -2,10 +2,12 @@ package therfc.bin.data;
 import therfc.bin.IO.Controller;
 import therfc.bin.IO.IO;
 import therfc.bin.UI.frames.GameFrame;
+import therfc.bin.UI.frames.MenuFrame;
 import therfc.bin.main.Logger;
 import therfc.res.Resources;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.File;
@@ -22,6 +24,7 @@ public class Game {
     private Logger logger = new Logger();
     private IO io =new IO();
     private GameFrame gameFrame;
+    private MenuFrame menuFrame;
 
 
 
@@ -46,17 +49,12 @@ public class Game {
      */
     public  void StartGame( ) throws Exception {
 
-        level = io.SetWarehouseFromFile(Resources.Player_2);
-        io.SetNeighBors(level);
-        DrawMap();
-        gameFrame= new GameFrame(this);
 
+        gameFrame = new GameFrame(this);
 
+       // DrawMap();
 
     }
-     public void RestartGame(){
-        game=new Game();
-     }
 
     /**
      *
@@ -71,7 +69,6 @@ public class Game {
 
 
 
-
         //logger.Exit(this,"EndGame","max point player");
 
     }
@@ -79,6 +76,9 @@ public class Game {
 
     public GameFrame GetGameFrame() {
         return gameFrame;
+    }
+    public void SetGameFrame(GameFrame gf) {
+        this.gameFrame=gf;
     }
 
     /**

@@ -12,7 +12,10 @@ import java.net.URL;
 public class Resources {
     //képek
     public static Image BoxImage;
-    public static Image WorkerImage;
+    public static Image WorkerImage_Player1;
+    public static Image WorkerImage_Player2;
+    public static Image WorkerImage_Player3;
+    public static Image WorkerImage_Player4;
     public static Image HoneyImage;
     public static Image OilImage;
     public static Image SteppableFieldImage;
@@ -34,7 +37,11 @@ public class Resources {
     public static  void load() throws IOException, UnsupportedAudioFileException {
         //képek
        BoxImage= ImageIO.read(new File("src\\therfc\\res\\images\\box.png"));
-        WorkerImage= ImageIO.read(new File("src\\therfc\\res\\images\\worker.png"));
+        WorkerImage_Player1= ImageIO.read(new File("src\\therfc\\res\\images\\worker_1.png"));
+        WorkerImage_Player2= ImageIO.read(new File("src\\therfc\\res\\images\\worker_2.png"));
+        WorkerImage_Player3= ImageIO.read(new File("src\\therfc\\res\\images\\worker_3.png"));
+        WorkerImage_Player4= ImageIO.read(new File("src\\therfc\\res\\images\\worker_4.png"));
+
         WallImage= ImageIO.read(new File("src\\therfc\\res\\images\\wall.png"));
         SteppableFieldImage= ImageIO.read(new File("src\\therfc\\res\\images\\steppablefield.png"));
         HoneyImage= ImageIO.read(new File("src\\therfc\\res\\images\\honey.png"));
@@ -49,6 +56,8 @@ public class Resources {
 //        WorkerDiedInHoleSound = AudioSystem.getAudioInputStream(Resources.class.getResource("res/sounds/puthoney.wav"));
         //pályák
         Player_2 = new File("src\\therfc\\res\\levels\\level_p2.txt");
+        Player_3 = new File("src\\therfc\\res\\levels\\level_p3.txt");
+        Player_4 = new File("src\\therfc\\res\\levels\\level_p4.txt");
         test = new File("src\\therfc\\res\\levels\\level_test.txt");
     }
 

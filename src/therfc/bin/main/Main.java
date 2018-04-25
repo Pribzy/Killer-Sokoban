@@ -1,5 +1,6 @@
 package therfc.bin.main;
 
+import therfc.bin.UI.frames.MenuFrame;
 import therfc.bin.data.*;
 import therfc.bin.data.Box;
 import therfc.res.Resources;
@@ -14,8 +15,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
       // Menu(); //Szkeleton menü
         Resources.load();
-        Game game = Game.GetInstance();
-        game.StartGame();
+        MenuFrame newGame = new MenuFrame();
 
 
 

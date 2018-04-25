@@ -18,11 +18,10 @@ public class GameFrame extends JFrame {
         Container pane = this.getContentPane();
         this.setBounds(0,0,750, 480);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        final Controller c = new Controller(2);
+        final Controller c = new Controller(g.GetWarehouse().GetWorkers().size());
         this.addKeyListener(c);
 
-        this.setTitle("Killer Sokoban");
+        this.setTitle("Killer Sokoban - Game");
 
         grid = new GridComponent();
         points = new PointsComponent();
@@ -30,9 +29,7 @@ public class GameFrame extends JFrame {
 
         pane.add(grid,BorderLayout.LINE_START);
         pane.add(points,BorderLayout.LINE_END);
-
         this.setResizable(false);
-
         this.setVisible(true);
     }
 

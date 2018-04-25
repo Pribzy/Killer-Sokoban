@@ -70,7 +70,7 @@ public class Box extends Moveable {
         } else {
             stuck = false;
         }
-        logger.Exit(this,"IsStuck",String.valueOf(stuck));
+        //logger.Exit(this,"IsStuck",String.valueOf(stuck));
         return stuck;
 
     }

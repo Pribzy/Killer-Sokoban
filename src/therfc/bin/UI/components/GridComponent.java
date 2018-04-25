@@ -29,14 +29,13 @@ public class GridComponent extends JPanel {
 
     public void RefreshTrap(){
         Logger logger = new Logger();
-
         for (int i = 0; i <panels.size() ; i++) {
             if (game.GetWarehouse().GetFieldFromIndex(i).GetTrap() != null) {
-                if (logger.GetObjectName(game.GetWarehouse().GetFieldFromIndex(i).GetTrap()) == "Honey") {
+                if (logger.GetObjectName(game.GetWarehouse().GetFieldFromIndex(i).GetTrap()).equals("Honey")) {
                     GHoney t = new GHoney(new Honey());
                     panels.get(i).AddGObject(t);
                 }
-                if (logger.GetObjectName(game.GetWarehouse().GetFieldFromIndex(i).GetTrap()) == "Oil") {
+                if (logger.GetObjectName(game.GetWarehouse().GetFieldFromIndex(i).GetTrap()).equals("Oil")) {
                     GOil t = new GOil(new Oil());
                     panels.get(i).AddGObject(t);
                 }
@@ -69,34 +68,38 @@ public class GridComponent extends JPanel {
     public void RefreshFields(){
         Logger logger = new Logger();
         for (int i = 0; i < panels.size(); i++) {
+
+
+                if (game.GetWarehouse().GetFieldFromIndex(i).GetTrap() == null) {
+                    panels.get(i).GetGObjects().set(1,null);
+                }
+
+
             if (game.GetWarehouse().GetFieldFromIndex(i).GetMoveable() == null) {
 
-                if (game.GetWarehouse().GetFieldFromIndex(i).GetTrap() == null) { //csapdák leellenőrzése
-                    panels.get(i).GetGObjects().set(1,null); }
-
                 panels.get(i).GetGObjects().set(2,null);
-                if (logger.GetObjectName(game.GetWarehouse().GetFieldFromIndex(i)) == "SteppableField") {
+                if (logger.GetObjectName(game.GetWarehouse().GetFieldFromIndex(i)).equals("SteppableField")) {
                     SteppableField s = (SteppableField) game.GetWarehouse().GetFieldFromIndex(i);
                     GSteppableField gs = new GSteppableField(s);
                     panels.get(i).AddGObject(gs);
 
                 }
-                if (logger.GetObjectName(game.GetWarehouse().GetFieldFromIndex(i)) == "Wall") {
+                if (logger.GetObjectName(game.GetWarehouse().GetFieldFromIndex(i)).equals("Wall")) {
                     Wall s = (Wall) game.GetWarehouse().GetFieldFromIndex(i);
                     GWall gs = new GWall(s);
                     panels.get(i).AddGObject(gs);
                 }
-                if (logger.GetObjectName(game.GetWarehouse().GetFieldFromIndex(i)) == "TargetField") {
+                if (logger.GetObjectName(game.GetWarehouse().GetFieldFromIndex(i)).equals("TargetField")) {
                     TargetField s = (TargetField) game.GetWarehouse().GetFieldFromIndex(i);
                     GTargetField gs = new GTargetField(s);
                     panels.get(i).AddGObject(gs);
                 }
-                if (logger.GetObjectName(game.GetWarehouse().GetFieldFromIndex(i)) == "Switch") {
+                if (logger.GetObjectName(game.GetWarehouse().GetFieldFromIndex(i)).equals("Switch")) {
                     Switch s = (Switch) game.GetWarehouse().GetFieldFromIndex(i);
                     GSwitch gs = new GSwitch(s);
                     panels.get(i).AddGObject(gs);
                 }
-                if (logger.GetObjectName(game.GetWarehouse().GetFieldFromIndex(i)) == "Hole") {
+                if (logger.GetObjectName(game.GetWarehouse().GetFieldFromIndex(i)).equals("Hole")) {
                     Hole s = (Hole) game.GetWarehouse().GetFieldFromIndex(i);
                     GHole gs = new GHole(s);
                     panels.get(i).AddGObject(gs);

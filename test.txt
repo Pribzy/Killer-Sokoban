@@ -37523,3 +37523,73 @@ Switch Off
 
 
 Switch Off
+####################
+#__________###_____#
+#T_____S___HT_B____#
+#_________________##
+#_____W_______B__###
+#___C_____T______###
+##_____T__________##
+#________#_________#
+#_H______#____B____#
+#__________________#
+#_S__________T_____#
+#___B_____HHHCHH___#
+#__________________#
+#______B________W__#
+####_____S_________#
+#______B_______H___#
+###__________C_____#
+#_____T____________#
+#___________H______#
+####################
+
+
+####################
+#__________###_____#
+#T_____S___HT_B____#
+#_________________##
+#_____W_______B__###
+#___C_____T______###
+##_____T__________##
+#________#_________#
+#_H______#____B____#
+#__________________#
+#_S__________T_____#
+#___B_____HHHCHH___#
+#__________________#
+#______B________W__#
+####_____S_________#
+#______B_______H___#
+###__________C_____#
+#_____T____________#
+#___________H______#
+####################
+
+
+Switch Off
+2. worker die
+Switch Off
+Switch Off
+Switch Off
+Switch Off
+2. worker die
+1. worker die
+Switch Off
+Switch Off
+3. worker die
+2. worker die
+1. worker die
+4. worker die
+TargetField activated
+3. worker die
+1. worker die
+2. worker die
+1. worker die
+2. worker die
+4. worker die
+TargetField activated
+TargetField activated
+TargetField activated
+TargetField activated
+TargetField activated
