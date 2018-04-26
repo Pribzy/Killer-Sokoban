@@ -180,10 +180,6 @@ public class Warehouse {
     public void RemoveWorker(Worker w){
         Game game=Game.GetInstance();
         //logger.Enter(this,"RemoveWorker",logger.GetObjectName(w));
-        System.out.println();
-        System.out.println(players.indexOf(w)+1+". worker die");
-        System.out.println();
-        game.GetIO().WriteToFileByLine(players.indexOf(w)+1+". worker die");
         //players.remove(w);
         workerNumber--;
         if (workerNumber==0){

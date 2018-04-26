@@ -37610,3 +37610,11 @@ TargetField activated
 Switch Off
 1. worker die
 2. worker die
+TargetField activated
+Switch Off
+2. worker die
+TargetField activated
+1. worker die
+TargetField activated
+Switch Off
+3. worker die

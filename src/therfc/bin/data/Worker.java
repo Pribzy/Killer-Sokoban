@@ -209,7 +209,7 @@ public class Worker extends Moveable {
     }
     public void RemoveTrap(){
         // logger.Enter(this, "AddHoney","");
-        this.GetField().RemoveTrap();
+        GetField().RemoveTrap();
         // logger.Exit(this, "AddHoney", logger.GetObjectName(honey));
 
     }
