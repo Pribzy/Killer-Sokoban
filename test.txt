@@ -37593,3 +37593,20 @@ TargetField activated
 TargetField activated
 TargetField activated
 TargetField activated
+TargetField activated
+TargetField activated
+TargetField activated
+TargetField activated
+2. worker die
+1. worker die
+TargetField activated
+4. worker die
+TargetField activated
+3. worker die
+1. worker die
+TargetField activated
+TargetField activated
+TargetField activated
+Switch Off
+1. worker die
+2. worker die

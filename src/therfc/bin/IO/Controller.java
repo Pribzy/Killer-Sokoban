@@ -57,12 +57,18 @@ public class Controller extends KeyAdapter {
                  points.RefreshPoints();
              }
              if (evt.getKeyCode() == KeyEvent.VK_E) {
-                 w0.AddHoney();
+                 grid.RefreshTrap();
+                 if(game.GetWarehouse().GetFieldFromIndex(game.GetWarehouse().GetFields().indexOf(w0.GetField())).GetTrap()==null) {
+                     w0.AddHoney();
+                 } else {w0.RemoveTrap();}
                  grid.RefreshTrap();
                  points.RefreshPoints();
              }
              if (evt.getKeyCode() == KeyEvent.VK_Q) {
-                 w0.AddOil();
+                 grid.RefreshTrap();
+                 if(game.GetWarehouse().GetFieldFromIndex(game.GetWarehouse().GetFields().indexOf(w0.GetField())).GetTrap()==null) {
+                     w0.AddOil();
+                 } else {w0.RemoveTrap();}
                  grid.RefreshTrap();
                  points.RefreshPoints();
              }
@@ -93,12 +99,18 @@ public class Controller extends KeyAdapter {
                 points.RefreshPoints();
             }
             if (evt.getKeyCode() == KeyEvent.VK_DELETE) {
-                w1.AddOil();
+                grid.RefreshTrap();
+                if(game.GetWarehouse().GetFieldFromIndex(game.GetWarehouse().GetFields().indexOf(w1.GetField())).GetTrap()==null) {
+                    w1.AddOil();
+                } else {w1.RemoveTrap();}
                 grid.RefreshTrap();
                 points.RefreshPoints();
             }
             if (evt.getKeyCode() == KeyEvent.VK_PAGE_DOWN) {
-                w1.AddHoney();
+                grid.RefreshTrap();
+                if(game.GetWarehouse().GetFieldFromIndex(game.GetWarehouse().GetFields().indexOf(w1.GetField())).GetTrap()==null) {
+                    w1.AddHoney();
+                } else {w1.RemoveTrap();}
                 grid.RefreshTrap();
                 points.RefreshPoints();
             }
@@ -132,12 +144,18 @@ public class Controller extends KeyAdapter {
                     points.RefreshPoints();
                 }
                 if (evt.getKeyCode() == KeyEvent.VK_U) {
-                    w2.AddOil();
+                    grid.RefreshTrap();
+                    if(game.GetWarehouse().GetFieldFromIndex(game.GetWarehouse().GetFields().indexOf(w1.GetField())).GetTrap()==null) {
+                        w2.AddOil();
+                    } else {w2.RemoveTrap();}
                     grid.RefreshTrap();
                     points.RefreshPoints();
                 }
                 if (evt.getKeyCode() == KeyEvent.VK_O) {
-                    w2.AddHoney();
+                    grid.RefreshTrap();
+                    if(game.GetWarehouse().GetFieldFromIndex(game.GetWarehouse().GetFields().indexOf(w1.GetField())).GetTrap()==null) {
+                        w2.AddHoney();
+                    } else {w2.RemoveTrap();}
                     grid.RefreshTrap();
                     points.RefreshPoints();
                 }
@@ -170,12 +188,18 @@ public class Controller extends KeyAdapter {
                         points.RefreshPoints();
                     }
                     if (evt.getKeyCode() == KeyEvent.VK_R) {
-                        w3.AddOil();
+                        grid.RefreshTrap();
+                        if(game.GetWarehouse().GetFieldFromIndex(game.GetWarehouse().GetFields().indexOf(w3.GetField())).GetTrap()==null) {
+                            w3.AddOil();
+                        } else {w3.RemoveTrap();}
                         grid.RefreshTrap();
                         points.RefreshPoints();
                     }
                     if (evt.getKeyCode() == KeyEvent.VK_Z) {
-                        w3.AddHoney();
+                        grid.RefreshTrap();
+                        if(game.GetWarehouse().GetFieldFromIndex(game.GetWarehouse().GetFields().indexOf(w3.GetField())).GetTrap()==null) {
+                            w3.AddHoney();
+                        } else {w3.RemoveTrap();}
                         grid.RefreshTrap();
                         points.RefreshPoints();
                     }

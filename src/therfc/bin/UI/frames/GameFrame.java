@@ -16,7 +16,7 @@ public class GameFrame extends JFrame {
 
     public GameFrame(Game g){
         Container pane = this.getContentPane();
-        this.setBounds(0,0,750, 480);
+        this.setBounds(0,0,480, 560);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         final Controller c = new Controller(g.GetWarehouse().GetWorkers().size());
         this.addKeyListener(c);
@@ -27,8 +27,8 @@ public class GameFrame extends JFrame {
         points = new PointsComponent();
 
 
-        pane.add(grid,BorderLayout.LINE_START);
-        pane.add(points,BorderLayout.LINE_END);
+        pane.add(grid,BorderLayout.SOUTH);
+        pane.add(points,BorderLayout.NORTH);
         this.setResizable(false);
         this.setVisible(true);
     }

@@ -2,12 +2,10 @@ package therfc.res;
 
 import javax.imageio.ImageIO;
 import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 
 public class Resources {
     //képek
@@ -25,6 +23,20 @@ public class Resources {
     public static Image CloseHoleImage;
     public static Image SwitchImage;
     public static Image WallImage;
+
+    public static Image ZeroImage_Blue;
+    public static Image OneImage_Blue;
+    public static Image TwoImage_Blue;
+    public static Image ThreeImage_Blue;
+    public static Image FourImage_Blue;
+    public static Image FiveImage_Blue;
+
+    public static Image OneImage_Red;
+    public static Image TwoImage_Red;
+    public static Image ThreeImage_Red;
+    public static Image FourImage_Red;
+
+
     //hangok
     public static AudioInputStream WorkerDiedInHoleSound;
 
@@ -52,6 +64,17 @@ public class Resources {
         CloseHoleImage= ImageIO.read(new File("src\\therfc\\res\\images\\closehole.png"));
         SwitchImage= ImageIO.read(new File("src\\therfc\\res\\images\\switch.png"));
 
+        OneImage_Blue = ImageIO.read(new File("src\\therfc\\res\\images\\one_blue.png"));
+        TwoImage_Blue = ImageIO.read(new File("src\\therfc\\res\\images\\two_blue.png"));
+        ThreeImage_Blue = ImageIO.read(new File("src\\therfc\\res\\images\\three_blue.png"));
+        FourImage_Blue = ImageIO.read(new File("src\\therfc\\res\\images\\four_blue.png"));
+        ZeroImage_Blue = ImageIO.read(new File("src\\therfc\\res\\images\\zero_blue.png"));
+        FiveImage_Blue = ImageIO.read(new File("src\\therfc\\res\\images\\five_blue.png"));
+
+        OneImage_Red = ImageIO.read(new File("src\\therfc\\res\\images\\one_red.png"));
+        TwoImage_Red = ImageIO.read(new File("src\\therfc\\res\\images\\two_red.png"));
+        ThreeImage_Red = ImageIO.read(new File("src\\therfc\\res\\images\\three_red.png"));
+        FourImage_Red = ImageIO.read(new File("src\\therfc\\res\\images\\four_red.png"));
         //hangok
 //        WorkerDiedInHoleSound = AudioSystem.getAudioInputStream(Resources.class.getResource("res/sounds/puthoney.wav"));
         //pályák

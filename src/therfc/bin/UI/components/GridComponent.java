@@ -30,6 +30,9 @@ public class GridComponent extends JPanel {
     public void RefreshTrap(){
         Logger logger = new Logger();
         for (int i = 0; i <panels.size() ; i++) {
+            if (game.GetWarehouse().GetFieldFromIndex(i).GetTrap() == null) {
+                panels.get(i).GetGObjects().set(1,null);
+            }
             if (game.GetWarehouse().GetFieldFromIndex(i).GetTrap() != null) {
                 if (logger.GetObjectName(game.GetWarehouse().GetFieldFromIndex(i).GetTrap()).equals("Honey")) {
                     GHoney t = new GHoney(new Honey());
@@ -40,6 +43,7 @@ public class GridComponent extends JPanel {
                     panels.get(i).AddGObject(t);
                 }
             }
+
 
 
 

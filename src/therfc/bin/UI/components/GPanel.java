@@ -18,7 +18,8 @@ public class GPanel extends JPanel {
     public GPanel(){
 
         this.setPreferredSize(new Dimension(24,24));
-        this.gObjects = new ArrayList<GObject>(3);
+        this.gObjects = new ArrayList<GObject>(4);
+        this.gObjects.add(null);
         this.gObjects.add(null);
         this.gObjects.add(null);
         this.gObjects.add(null);
@@ -45,6 +46,7 @@ public class GPanel extends JPanel {
         Refresh();
         gObjects.set(o.GetZIndex()-1,o);
         Refresh();
+
 
     }
 

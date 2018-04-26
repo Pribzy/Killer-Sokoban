@@ -8,6 +8,7 @@ import java.awt.*;
 public class GWorker extends GObject {
 
     private Worker worker;
+    private Image powerImage;
 
     public GWorker(Worker w){
         this.worker=w;
@@ -23,11 +24,24 @@ public class GWorker extends GObject {
         else if(w.GetWarehouse().GetWorkers().indexOf(w)==3) {
             img = Resources.WorkerImage_Player4;
         }
+        if(w.GetPower()==1){
+            powerImage=Resources.OneImage_Red;
+        }
+        else if(w.GetPower()==2){
+            powerImage=Resources.TwoImage_Red;
+        }
+        else if(w.GetPower()==3){
+            powerImage=Resources.ThreeImage_Red;
+        }
+        else if(w.GetPower()==4){
+            powerImage=Resources.FourImage_Red;
+        }
         this. z_index=3;
     }
 
     @Override
     public void DrawGraphic(Graphics g) {
         g.drawImage(img, 0,0,null);
+        g.drawImage(powerImage, 8,8,null );
     }
 }

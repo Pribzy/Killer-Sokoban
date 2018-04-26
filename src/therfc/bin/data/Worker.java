@@ -207,6 +207,12 @@ public class Worker extends Moveable {
        // logger.Exit(this, "AddHoney", logger.GetObjectName(honey));
 
     }
+    public void RemoveTrap(){
+        // logger.Enter(this, "AddHoney","");
+        this.GetField().RemoveTrap();
+        // logger.Exit(this, "AddHoney", logger.GetObjectName(honey));
+
+    }
 
     /**
      *
