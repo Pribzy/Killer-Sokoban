@@ -24,7 +24,6 @@ public class Game {
     private Logger logger = new Logger();
     private IO io =new IO();
     private GameFrame gameFrame;
-    private MenuFrame menuFrame;
 
 
 
@@ -50,7 +49,7 @@ public class Game {
     public  void StartGame( ) throws Exception {
 
 
-        gameFrame = new GameFrame(this);
+        gameFrame = new GameFrame();
 
        // DrawMap();
 

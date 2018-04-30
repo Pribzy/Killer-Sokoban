@@ -18,10 +18,16 @@ public class Controller extends KeyAdapter {
 
     private int playerNumber;
 
-    public Controller(int n) {
-        this.playerNumber = n;
+    public Controller() {
 
 
+
+    }
+
+
+
+    public void SetPlayerNumber(int playerNumber) {
+        this.playerNumber = playerNumber;
     }
 
     @Override
@@ -34,84 +40,76 @@ public class Controller extends KeyAdapter {
          if(!w0.GetDeadState()) {
              if (evt.getKeyCode() == KeyEvent.VK_W) {
                  w0.Move(Direction.Up);
-                 grid.MoveObjects();
-                 grid.RefreshFields();
+                grid.RefreshAllPanels();
                  points.RefreshPoints();
              }
              if (evt.getKeyCode() == KeyEvent.VK_S) {
                  w0.Move(Direction.Down);
-                 grid.MoveObjects();
-                 grid.RefreshFields();
+                 grid.RefreshAllPanels();
                  points.RefreshPoints();
              }
              if (evt.getKeyCode() == KeyEvent.VK_D) {
                  w0.Move(Direction.Right);
-                 grid.MoveObjects();
-                 grid.RefreshFields();
+                 grid.RefreshAllPanels();
                  points.RefreshPoints();
              }
              if (evt.getKeyCode() == KeyEvent.VK_A) {
                  w0.Move(Direction.Left);
-                 grid.MoveObjects();
-                 grid.RefreshFields();
+                 grid.RefreshAllPanels();
                  points.RefreshPoints();
              }
              if (evt.getKeyCode() == KeyEvent.VK_E) {
-                 grid.RefreshTrap();
+
                  if(game.GetWarehouse().GetFieldFromIndex(game.GetWarehouse().GetFields().indexOf(w0.GetField())).GetTrap()==null) {
                      w0.AddHoney();
                  } else {w0.RemoveTrap();}
-                 grid.RefreshTrap();
+                 grid.RefreshAllPanels();
                  points.RefreshPoints();
              }
              if (evt.getKeyCode() == KeyEvent.VK_Q) {
-                 grid.RefreshTrap();
+                ;
                  if(game.GetWarehouse().GetFieldFromIndex(game.GetWarehouse().GetFields().indexOf(w0.GetField())).GetTrap()==null) {
                      w0.AddOil();
                  } else {w0.RemoveTrap();}
-                 grid.RefreshTrap();
+                 grid.RefreshAllPanels();
                  points.RefreshPoints();
              }
          }
         if(!w1.GetDeadState()) {
             if (evt.getKeyCode() == KeyEvent.VK_UP) {
                 w1.Move(Direction.Up);
-                grid.MoveObjects();
-                grid.RefreshFields();
+                grid.RefreshAllPanels();
                 points.RefreshPoints();
             }
             if (evt.getKeyCode() == KeyEvent.VK_DOWN) {
                 w1.Move(Direction.Down);
-                grid.MoveObjects();
-                grid.RefreshFields();
+                grid.RefreshAllPanels();
                 points.RefreshPoints();
             }
             if (evt.getKeyCode() == KeyEvent.VK_RIGHT) {
                 w1.Move(Direction.Right);
-                grid.MoveObjects();
-                grid.RefreshFields();
+                grid.RefreshAllPanels();
                 points.RefreshPoints();
             }
             if (evt.getKeyCode() == KeyEvent.VK_LEFT) {
                 w1.Move(Direction.Left);
-                grid.MoveObjects();
-                grid.RefreshFields();
+                grid.RefreshAllPanels();
                 points.RefreshPoints();
             }
             if (evt.getKeyCode() == KeyEvent.VK_DELETE) {
-                grid.RefreshTrap();
+
                 if(game.GetWarehouse().GetFieldFromIndex(game.GetWarehouse().GetFields().indexOf(w1.GetField())).GetTrap()==null) {
                     w1.AddOil();
                 } else {w1.RemoveTrap();}
-                grid.RefreshTrap();
+                grid.RefreshAllPanels();
                 points.RefreshPoints();
             }
             if (evt.getKeyCode() == KeyEvent.VK_PAGE_DOWN) {
-                grid.RefreshTrap();
+
                 if(game.GetWarehouse().GetFieldFromIndex(game.GetWarehouse().GetFields().indexOf(w1.GetField())).GetTrap()==null) {
                     w1.AddHoney();
                 } else {w1.RemoveTrap();}
-                grid.RefreshTrap();
+                grid.RefreshAllPanels();
                 points.RefreshPoints();
             }
         }
@@ -121,42 +119,38 @@ public class Controller extends KeyAdapter {
             if(!w2.GetDeadState()) {
                 if (evt.getKeyCode() == KeyEvent.VK_I) {
                     w2.Move(Direction.Up);
-                    grid.MoveObjects();
-                    grid.RefreshFields();
+                    grid.RefreshAllPanels();
                     points.RefreshPoints();
                 }
                 if (evt.getKeyCode() == KeyEvent.VK_K) {
                     w2.Move(Direction.Down);
-                    grid.MoveObjects();
-                    grid.RefreshFields();
+                    grid.RefreshAllPanels();
                     points.RefreshPoints();
                 }
                 if (evt.getKeyCode() == KeyEvent.VK_L) {
                     w2.Move(Direction.Right);
-                    grid.MoveObjects();
-                    grid.RefreshFields();
+                    grid.RefreshAllPanels();
                     points.RefreshPoints();
                 }
                 if (evt.getKeyCode() == KeyEvent.VK_J) {
                     w2.Move(Direction.Left);
-                    grid.MoveObjects();
-                    grid.RefreshFields();
+                    grid.RefreshAllPanels();
                     points.RefreshPoints();
                 }
                 if (evt.getKeyCode() == KeyEvent.VK_U) {
-                    grid.RefreshTrap();
+
                     if(game.GetWarehouse().GetFieldFromIndex(game.GetWarehouse().GetFields().indexOf(w1.GetField())).GetTrap()==null) {
                         w2.AddOil();
                     } else {w2.RemoveTrap();}
-                    grid.RefreshTrap();
+                    grid.RefreshAllPanels();
                     points.RefreshPoints();
                 }
                 if (evt.getKeyCode() == KeyEvent.VK_O) {
-                    grid.RefreshTrap();
+
                     if(game.GetWarehouse().GetFieldFromIndex(game.GetWarehouse().GetFields().indexOf(w1.GetField())).GetTrap()==null) {
                         w2.AddHoney();
                     } else {w2.RemoveTrap();}
-                    grid.RefreshTrap();
+                    grid.RefreshAllPanels();
                     points.RefreshPoints();
                 }
             }
@@ -165,42 +159,38 @@ public class Controller extends KeyAdapter {
                 if(!w3.GetDeadState()) {
                     if (evt.getKeyCode() == KeyEvent.VK_T) {
                         w3.Move(Direction.Up);
-                        grid.MoveObjects();
-                        grid.RefreshFields();
+                        grid.RefreshAllPanels();
                         points.RefreshPoints();
                     }
                     if (evt.getKeyCode() == KeyEvent.VK_G) {
                         w3.Move(Direction.Down);
-                        grid.MoveObjects();
-                        grid.RefreshFields();
+                        grid.RefreshAllPanels();
                         points.RefreshPoints();
                     }
                     if (evt.getKeyCode() == KeyEvent.VK_H) {
                         w3.Move(Direction.Right);
-                        grid.MoveObjects();
-                        grid.RefreshFields();
+                        grid.RefreshAllPanels();
                         points.RefreshPoints();
                     }
                     if (evt.getKeyCode() == KeyEvent.VK_F) {
                         w3.Move(Direction.Left);
-                        grid.MoveObjects();
-                        grid.RefreshFields();
+                        grid.RefreshAllPanels();
                         points.RefreshPoints();
                     }
                     if (evt.getKeyCode() == KeyEvent.VK_R) {
-                        grid.RefreshTrap();
+
                         if(game.GetWarehouse().GetFieldFromIndex(game.GetWarehouse().GetFields().indexOf(w3.GetField())).GetTrap()==null) {
                             w3.AddOil();
                         } else {w3.RemoveTrap();}
-                        grid.RefreshTrap();
+                        grid.RefreshAllPanels();
                         points.RefreshPoints();
                     }
                     if (evt.getKeyCode() == KeyEvent.VK_Z) {
-                        grid.RefreshTrap();
+
                         if(game.GetWarehouse().GetFieldFromIndex(game.GetWarehouse().GetFields().indexOf(w3.GetField())).GetTrap()==null) {
                             w3.AddHoney();
                         } else {w3.RemoveTrap();}
-                        grid.RefreshTrap();
+                        grid.RefreshAllPanels();
                         points.RefreshPoints();
                     }
                 }

@@ -17,21 +17,187 @@ public class GridComponent extends JPanel {
     private Game game = Game.GetInstance();
 
     public GridComponent() {
-        panels=new ArrayList<GPanel>();
-        FillPanels();
+        panels = new ArrayList<GPanel>();
+        //Beállítja a pálya kezdeti állapotát
+        Logger logger = new Logger();
+        GPanel newPanel;
 
-        this.setLayout(new GridLayout(20, 20,0,0));
-        this.setPreferredSize(new Dimension(640,640));
+        for (int i = 0; i < game.GetWarehouse().GetFields().size(); i++) {
+
+            if (logger.GetObjectName(game.GetWarehouse().GetFieldFromIndex(i)) == "Wall") {
+                Wall w = (Wall) game.GetWarehouse().GetFields().get(i);
+                GWall g = new GWall(w);
+                newPanel = new GPanel();
+                newPanel.AddGObject(g);
+                AddPanel(newPanel);
+            } else if (logger.GetObjectName(game.GetWarehouse().GetFieldFromIndex(i)) == "TargetField") {
+                newPanel = new GPanel();
+                if (game.GetWarehouse().GetFieldFromIndex(i).GetMoveable() != null) {
+
+                    if (game.GetWarehouse().GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
+
+                        TargetField s = (TargetField) game.GetWarehouse().GetFields().get(i);
+                        GTargetField gs = new GTargetField(s);
+
+                        newPanel.AddGObject(gs);
+
+                        Box w = (Box) game.GetWarehouse().GetFieldFromIndex(i).GetMoveable();
+                        GBox g = new GBox(w);
+
+                        newPanel.AddGObject(g);
+                        AddPanel(newPanel);
+
+
+                    } else if (!game.GetWarehouse().GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
+
+                        TargetField s = (TargetField) game.GetWarehouse().GetFieldFromIndex(i);
+                        GTargetField gs = new GTargetField(s);
+
+                        newPanel.AddGObject(gs);
+
+                        Worker w = (Worker) game.GetWarehouse().GetFieldFromIndex(i).GetMoveable();
+                        GWorker g = new GWorker(w);
+                        newPanel.AddGObject(g);
+                        AddPanel(newPanel);
+
+                    }
+                } else if (game.GetWarehouse().GetFieldFromIndex(i).GetMoveable() == null) {
+
+                    TargetField s = (TargetField) game.GetWarehouse().GetFieldFromIndex(i);
+                    GTargetField gs = new GTargetField(s);
+
+                    newPanel.AddGObject(gs);
+                    AddPanel(newPanel);
+                }
+
+            }
+
+            if (logger.GetObjectName(game.GetWarehouse().GetFieldFromIndex(i)) == "SteppableField") {
+                newPanel = new GPanel();
+                if (game.GetWarehouse().GetFieldFromIndex(i).GetMoveable() != null) {
+                    if (game.GetWarehouse().GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
+                        SteppableField s = (SteppableField) game.GetWarehouse().GetFieldFromIndex(i);
+                        GSteppableField gs = new GSteppableField(s);
+                        // newPanel = new GPanel();
+                        newPanel.AddGObject(gs);
+                        Box w = (Box) game.GetWarehouse().GetFieldFromIndex(i).GetMoveable();
+                        GBox g = new GBox(w);
+                        //newPanel = new GPanel();
+                        newPanel.AddGObject(g);
+                        AddPanel(newPanel);
+
+                    } else if (!game.GetWarehouse().GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
+                        SteppableField s = (SteppableField) game.GetWarehouse().GetFieldFromIndex(i);
+                        GSteppableField gs = new GSteppableField(s);
+                        //newPanel = new GPanel();
+                        newPanel.AddGObject(gs);
+                        Worker w = (Worker) game.GetWarehouse().GetFieldFromIndex(i).GetMoveable();
+                        GWorker g = new GWorker(w);
+                        newPanel.AddGObject(g);
+                        AddPanel(newPanel);
+                    }
+                } else if (game.GetWarehouse().GetFieldFromIndex(i).GetMoveable() == null) {
+
+                    SteppableField w = (SteppableField) game.GetWarehouse().GetFieldFromIndex(i);
+                    GSteppableField g = new GSteppableField(w);
+                    //newPanel = new GPanel();
+                    newPanel.AddGObject(g);
+                    AddPanel(newPanel);
+
+
+                }
+            } else if (logger.GetObjectName(game.GetWarehouse().GetFieldFromIndex(i)) == "Hole") {
+                newPanel = new GPanel();
+                if (game.GetWarehouse().GetFieldFromIndex(i).GetMoveable() != null) {
+                    if (game.GetWarehouse().GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
+                        Hole s = new Hole();
+                        GHole gs = new GHole(s);
+                        //newPanel = new GPanel();
+                        newPanel.AddGObject(gs);
+
+                        Box w = (Box) game.GetWarehouse().GetFieldFromIndex(i).GetMoveable();
+                        GBox g = new GBox(w);
+                        //newPanel = new GPanel();
+                        newPanel.AddGObject(g);
+                        AddPanel(newPanel);
+
+                    } else if (!game.GetWarehouse().GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
+
+                        Hole s = (Hole) game.GetWarehouse().GetFieldFromIndex(i);
+                        GHole gs = new GHole(s);
+                        //newPanel = new GPanel();
+                        newPanel.AddGObject(gs);
+
+                        Worker w = (Worker) game.GetWarehouse().GetFieldFromIndex(i).GetMoveable();
+                        GWorker g = new GWorker(w);
+                        newPanel.AddGObject(g);
+                        AddPanel(newPanel);
+                    }
+                } else if (game.GetWarehouse().GetFieldFromIndex(i).GetMoveable() == null) {
+
+                    Hole s = (Hole) game.GetWarehouse().GetFieldFromIndex(i);
+
+                    GHole gs = new GHole(s);
+                    //newPanel = new GPanel();
+                    newPanel.AddGObject(gs);
+                    AddPanel(newPanel);
+
+
+                }
+            } else if (logger.GetObjectName(game.GetWarehouse().GetFieldFromIndex(i)) == "Switch") {
+                newPanel = new GPanel();
+                if (game.GetWarehouse().GetFieldFromIndex(i).GetMoveable() != null) {
+                    if (game.GetWarehouse().GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
+                        Switch s = new Switch();
+                        GSwitch gs = new GSwitch(s);
+                        //newPanel = new GPanel();
+                        newPanel.AddGObject(gs);
+
+                        Box w = (Box) game.GetWarehouse().GetFieldFromIndex(i).GetMoveable();
+                        GBox g = new GBox(w);
+                        //newPanel = new GPanel();
+                        newPanel.AddGObject(g);
+                        AddPanel(newPanel);
+                    } else if (!game.GetWarehouse().GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
+                        Switch s = (Switch) game.GetWarehouse().GetFieldFromIndex(i);
+
+                        GSwitch gs = new GSwitch(s);
+                        //newPanel = new GPanel();
+                        newPanel.AddGObject(gs);
+
+                        Worker w = (Worker) game.GetWarehouse().GetFieldFromIndex(i).GetMoveable();
+                        GWorker g = new GWorker(w);
+                        newPanel.AddGObject(g);
+                        AddPanel(newPanel);
+                    }
+                } else if (game.GetWarehouse().GetFieldFromIndex(i).GetMoveable() == null) {
+
+                    Switch s = (Switch) game.GetWarehouse().GetFieldFromIndex(i);
+                    GSwitch gs = new GSwitch(s);
+                    newPanel.AddGObject(gs);
+                    AddPanel(newPanel);
+
+                }
+            }
+
+            this.repaint();
+        }
+
+
+        this.setLayout(new GridLayout(20, 20, 0, 0));
+        this.setPreferredSize(new Dimension(640, 640));
         this.setVisible(true);
 
     }
 
 
-    public void RefreshTrap(){
+
+
+    public void RefreshAllPanels() {
         Logger logger = new Logger();
-        for (int i = 0; i <panels.size() ; i++) {
+        for (int i = 0; i < panels.size(); i++) {
             if (game.GetWarehouse().GetFieldFromIndex(i).GetTrap() == null) {
-                panels.get(i).GetGObjects().set(1,null);
+                panels.get(i).GetGObjects().set(1, null);
             }
             if (game.GetWarehouse().GetFieldFromIndex(i).GetTrap() != null) {
                 if (logger.GetObjectName(game.GetWarehouse().GetFieldFromIndex(i).GetTrap()).equals("Honey")) {
@@ -43,13 +209,7 @@ public class GridComponent extends JPanel {
                     panels.get(i).AddGObject(t);
                 }
             }
-
-
-
-
         }
-    }
-    public void MoveObjects() {
         for (int i = 0; i < panels.size(); i++) {
             if (game.GetWarehouse().GetFieldFromIndex(i).GetMoveable() != null) {
                 if (game.GetWarehouse().GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
@@ -68,20 +228,17 @@ public class GridComponent extends JPanel {
             }
 
         }
-    }
-    public void RefreshFields(){
-        Logger logger = new Logger();
         for (int i = 0; i < panels.size(); i++) {
 
 
-                if (game.GetWarehouse().GetFieldFromIndex(i).GetTrap() == null) {
-                    panels.get(i).GetGObjects().set(1,null);
-                }
+            if (game.GetWarehouse().GetFieldFromIndex(i).GetTrap() == null) {
+                panels.get(i).GetGObjects().set(1, null);
+            }
 
 
             if (game.GetWarehouse().GetFieldFromIndex(i).GetMoveable() == null) {
 
-                panels.get(i).GetGObjects().set(2,null);
+                panels.get(i).GetGObjects().set(2, null);
                 if (logger.GetObjectName(game.GetWarehouse().GetFieldFromIndex(i)).equals("SteppableField")) {
                     SteppableField s = (SteppableField) game.GetWarehouse().GetFieldFromIndex(i);
                     GSteppableField gs = new GSteppableField(s);
@@ -110,8 +267,10 @@ public class GridComponent extends JPanel {
                 }
 
 
-
             }
+        }
+        for (int i = 0; i < panels.size(); i++) {
+            panels.get(i).Refresh();
         }
     }
 
@@ -119,181 +278,11 @@ public class GridComponent extends JPanel {
 
 
 
-    public void FillPanels() {
-        Logger logger = new Logger();
-        GPanel newPanel;
-
-        for (int i = 0; i < game.GetWarehouse().GetFields().size(); i++) {
-
-            if (logger.GetObjectName(game.GetWarehouse().GetFieldFromIndex(i)) == "Wall") {
-                Wall w = (Wall) game.GetWarehouse().GetFields().get(i);
-                GWall g = new GWall(w);
-                newPanel = new GPanel();
-                newPanel.AddGObject(g);
-                panels.add(newPanel);
-            } else if (logger.GetObjectName(game.GetWarehouse().GetFieldFromIndex(i)) == "TargetField") {
-                newPanel = new GPanel();
-                if (game.GetWarehouse().GetFieldFromIndex(i).GetMoveable() != null) {
-
-                    if (game.GetWarehouse().GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
-
-                        TargetField s = (TargetField) game.GetWarehouse().GetFields().get(i);
-                        GTargetField gs = new GTargetField(s);
-
-                        newPanel.AddGObject(gs);
-
-                        Box w = (Box) game.GetWarehouse().GetFieldFromIndex(i).GetMoveable();
-                        GBox g = new GBox(w);
-
-                        newPanel.AddGObject(g);
-                        panels.add(newPanel);
-
-                    } else if (!game.GetWarehouse().GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
-
-                        TargetField s = (TargetField) game.GetWarehouse().GetFieldFromIndex(i);
-                        GTargetField gs = new GTargetField(s);
-
-                        newPanel.AddGObject(gs);
-
-                        Worker w = (Worker) game.GetWarehouse().GetFieldFromIndex(i).GetMoveable();
-                        GWorker g = new GWorker(w);
-                        newPanel.AddGObject(g);
-                        panels.add(newPanel);
-
-                    }
-                } else if (game.GetWarehouse().GetFieldFromIndex(i).GetMoveable() == null) {
-
-                    TargetField s = (TargetField) game.GetWarehouse().GetFieldFromIndex(i);
-                    GTargetField gs = new GTargetField(s);
-
-                    newPanel.AddGObject(gs);
-                    panels.add(newPanel);
-                }
-
-            }
-
-            if (logger.GetObjectName(game.GetWarehouse().GetFieldFromIndex(i)) == "SteppableField") {
-                newPanel = new GPanel();
-                if (game.GetWarehouse().GetFieldFromIndex(i).GetMoveable() != null) {
-                    if (game.GetWarehouse().GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
-                        SteppableField s = (SteppableField) game.GetWarehouse().GetFieldFromIndex(i);
-                        GSteppableField gs = new GSteppableField(s);
-                       // newPanel = new GPanel();
-                        newPanel.AddGObject(gs);
-                        Box w = (Box) game.GetWarehouse().GetFieldFromIndex(i).GetMoveable();
-                        GBox g = new GBox(w);
-                        //newPanel = new GPanel();
-                        newPanel.AddGObject(g);
-                        panels.add(newPanel);
-
-                    } else if (!game.GetWarehouse().GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
-                        SteppableField s = (SteppableField) game.GetWarehouse().GetFieldFromIndex(i);
-                        GSteppableField gs = new GSteppableField(s);
-                        //newPanel = new GPanel();
-                        newPanel.AddGObject(gs);
-                        Worker w = (Worker) game.GetWarehouse().GetFieldFromIndex(i).GetMoveable();
-                        GWorker g = new GWorker(w);
-                        newPanel.AddGObject(g);
-                        panels.add(newPanel);
-                    }
-                } else if (game.GetWarehouse().GetFieldFromIndex(i).GetMoveable() == null) {
-
-                    SteppableField w = (SteppableField) game.GetWarehouse().GetFieldFromIndex(i);
-                    GSteppableField g = new GSteppableField(w);
-                    //newPanel = new GPanel();
-                    newPanel.AddGObject(g);
-                    panels.add(newPanel);
 
 
-                }
-            } else if (logger.GetObjectName(game.GetWarehouse().GetFieldFromIndex(i)) == "Hole") {
-                newPanel = new GPanel();
-                if (game.GetWarehouse().GetFieldFromIndex(i).GetMoveable() != null) {
-                    if (game.GetWarehouse().GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
-                        Hole s = new Hole();
-                        GHole gs = new GHole(s);
-                        //newPanel = new GPanel();
-                        newPanel.AddGObject(gs);
 
-                        Box w = (Box) game.GetWarehouse().GetFieldFromIndex(i).GetMoveable();
-                        GBox g = new GBox(w);
-                        //newPanel = new GPanel();
-                        newPanel.AddGObject(g);
-                        panels.add(newPanel);
-
-                    } else if (!game.GetWarehouse().GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
-
-                        Hole s = (Hole) game.GetWarehouse().GetFieldFromIndex(i);
-                        GHole gs = new GHole(s);
-                        //newPanel = new GPanel();
-                        newPanel.AddGObject(gs);
-
-                        Worker w = (Worker) game.GetWarehouse().GetFieldFromIndex(i).GetMoveable();
-                        GWorker g = new GWorker(w);
-                        newPanel.AddGObject(g);
-                        panels.add(newPanel);
-                    }
-                } else if (game.GetWarehouse().GetFieldFromIndex(i).GetMoveable() == null) {
-
-                    Hole s = (Hole) game.GetWarehouse().GetFieldFromIndex(i);
-
-                    GHole gs = new GHole(s);
-                    //newPanel = new GPanel();
-                    newPanel.AddGObject(gs);
-                    panels.add(newPanel);
-
-
-                }
-            } else if (logger.GetObjectName(game.GetWarehouse().GetFieldFromIndex(i)) == "Switch") {
-                newPanel = new GPanel();
-                if (game.GetWarehouse().GetFieldFromIndex(i).GetMoveable() != null) {
-                    if (game.GetWarehouse().GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
-                        Switch s = new Switch();
-                        GSwitch gs = new GSwitch(s);
-                        //newPanel = new GPanel();
-                        newPanel.AddGObject(gs);
-
-                        Box w = (Box) game.GetWarehouse().GetFieldFromIndex(i).GetMoveable();
-                        GBox g = new GBox(w);
-                        //newPanel = new GPanel();
-                        newPanel.AddGObject(g);
-                        panels.add(newPanel);
-                    } else if (!game.GetWarehouse().GetFieldFromIndex(i).GetMoveable().CanPushToWall()) {
-                        Switch s = (Switch) game.GetWarehouse().GetFieldFromIndex(i);
-
-                        GSwitch gs = new GSwitch(s);
-                        //newPanel = new GPanel();
-                        newPanel.AddGObject(gs);
-
-                        Worker w = (Worker) game.GetWarehouse().GetFieldFromIndex(i).GetMoveable();
-                        GWorker g = new GWorker(w);
-                        newPanel.AddGObject(g);
-                        panels.add(newPanel);
-                    }
-                } else if (game.GetWarehouse().GetFieldFromIndex(i).GetMoveable() == null) {
-
-                    Switch s = (Switch) game.GetWarehouse().GetFieldFromIndex(i);
-                    GSwitch gs = new GSwitch(s);
-                    //newPanel = new GPanel();
-                    newPanel.AddGObject(gs);
-                    panels.add(newPanel);
-
-                }
-            }
-
-            this.repaint();
-        }
-        for (int i = 0; i < 400; i++) {
-            this.add(panels.get(i));
-            panels.get(i).repaint();
-        }
-    }
-
-    public void SetPanels(List<GPanel> panels) {
-        this.panels = panels;
-    }
-
-    public List<GPanel> GetPanels() {
-        return panels;
+    public void AddPanel(GPanel panel) {
+        this.panels.add(panel);
+        this.add(panel);
     }
 }

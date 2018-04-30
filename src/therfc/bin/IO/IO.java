@@ -85,7 +85,7 @@ public class IO {
      * @return Visszatér a Raktárral
      * @throws Exception
      */
-    public Warehouse SetWarehouseFromFile(File level)throws Exception{ //beállítja a raktárat a fájlból
+    public Warehouse GetWarehouseFromFile(File level)throws Exception{ //beállítja a raktárat a fájlból
         Warehouse newWarehouse= new Warehouse();
         Hole hole;
         for (int k = 0; k < LoadLevel(level).length; k++) {
@@ -133,7 +133,7 @@ public class IO {
             }
         }
         SetSwitchToHole(level,newWarehouse); //a váltók hozzárendelése a lyukakhoz
-
+        SetNeighBors(newWarehouse);
         return newWarehouse;
     }
 

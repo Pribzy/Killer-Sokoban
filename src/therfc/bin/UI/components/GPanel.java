@@ -28,6 +28,7 @@ public class GPanel extends JPanel {
     }
 
     public void Refresh(){
+
         repaint();
     }
 
@@ -43,9 +44,9 @@ public class GPanel extends JPanel {
     }
 
     public void AddGObject(GObject o){
-        Refresh();
+
         gObjects.set(o.GetZIndex()-1,o);
-        Refresh();
+
 
 
     }

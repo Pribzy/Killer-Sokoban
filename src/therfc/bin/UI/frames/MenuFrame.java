@@ -2,6 +2,7 @@ package therfc.bin.UI.frames;
 
 import javafx.beans.property.ListPropertyBase;
 import therfc.bin.IO.Controller;
+import therfc.bin.IO.IO;
 import therfc.bin.data.Game;
 import therfc.bin.data.Warehouse;
 import therfc.res.Resources;
@@ -102,11 +103,8 @@ public class MenuFrame extends JFrame {
     public void NewGame(){
         Warehouse newWarehouse;
         try {
-             newWarehouse=SelectLevel();
+            newWarehouse=SelectLevel();
             game.SetWarehouse(newWarehouse);
-            game.GetIO().SetNeighBors(newWarehouse);
-            GameFrame gf= new GameFrame(game);
-            game.SetGameFrame(gf);
             game.StartGame();
         } catch (Exception e) {
             e.printStackTrace();
@@ -115,10 +113,12 @@ public class MenuFrame extends JFrame {
     public void ExitGame(){
         System.exit(1);
     }
+
     public Warehouse SelectLevel(){
+        IO io = new IO();
         Warehouse result = new Warehouse();
         try {
-            result=game.GetIO().SetWarehouseFromFile(Resources.Player_4);
+            result=io.GetWarehouseFromFile(Resources.Player_4);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -14,23 +14,21 @@ import java.util.List;
 
 public class PointsComponent extends JPanel {
 
-    private List<Worker> workers = new ArrayList<Worker>();
+
     private List<JLabel> labels = new ArrayList<JLabel>();
-    private List<Image> images = new ArrayList<Image>();
+    private Game game = Game.GetInstance();
 
     public PointsComponent() {
         //init labels
-        Game game = Game.GetInstance();
-        for (int i = 0; i < game.GetWarehouse().GetWorkers().size() ; i++) {
-            workers.add(game.GetWarehouse().GetWorkerFromIndex(i));
-        }
 
-        for (int i = 0; i <workers.size() ; i++) {
 
-            labels.add(new JLabel("Point: "+workers.get(i).GetPoints()));
+
+        for (int i = 0; i <game.GetWarehouse().GetWorkers().size() ; i++) {
+
+            labels.add(new JLabel("Point: "+game.GetWarehouse().GetWorkers().get(i).GetPoints()));
             JPanel playerStaticsPanel = new JPanel();
             GPanel gPanel = new GPanel();
-            gPanel.AddGObject(new GWorker(workers.get(i)));
+            gPanel.AddGObject(new GWorker(game.GetWarehouse().GetWorkers().get(i)));
             gPanel.Refresh();
             playerStaticsPanel.add(gPanel,BorderLayout.LINE_START);
             playerStaticsPanel.add(labels.get(i),BorderLayout.LINE_END);
@@ -42,14 +40,14 @@ public class PointsComponent extends JPanel {
         }
 
         this.setPreferredSize(new Dimension(480,40));
-        this.setLayout(new GridLayout(1,workers.size(),0,0));
+        this.setLayout(new GridLayout(1,game.GetWarehouse().GetWorkers().size(),0,0));
         this.setVisible(true);
     }
 
     public void RefreshPoints() {
         repaint();
         for (int i = 0; i <labels.size() ; i++) {
-            labels.get(i).setText("Point: "+workers.get(i).GetPoints());
+            labels.get(i).setText("Point: "+game.GetWarehouse().GetWorkers().get(i).GetPoints());
         }
         repaint();
 

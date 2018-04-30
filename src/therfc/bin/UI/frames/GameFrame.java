@@ -14,11 +14,13 @@ public class GameFrame extends JFrame {
     private GridComponent grid;
     private PointsComponent points;
 
-    public GameFrame(Game g){
+    public GameFrame(){
+        Game g = Game.GetInstance();
         Container pane = this.getContentPane();
         this.setBounds(0,0,650, 780);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        final Controller c = new Controller(g.GetWarehouse().GetWorkers().size());
+        final Controller c = new Controller();
+        c.SetPlayerNumber(g.GetWarehouse().GetWorkers().size());
         this.addKeyListener(c);
 
         this.setTitle("Killer Sokoban - Game");
