@@ -17,7 +17,7 @@ public class GPanel extends JPanel {
 
     public GPanel(){
 
-        this.setPreferredSize(new Dimension(24,24));
+        this.setPreferredSize(new Dimension(32,32));
         this.gObjects = new ArrayList<GObject>(4);
         this.gObjects.add(null);
         this.gObjects.add(null);

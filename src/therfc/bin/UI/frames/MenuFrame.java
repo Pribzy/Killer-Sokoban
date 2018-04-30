@@ -19,18 +19,13 @@ public class MenuFrame extends JFrame {
     private Game game = Game.GetInstance();
 
     public MenuFrame() {
+
+
         Container pane = this.getContentPane();
         radioButtons = new ArrayList<JRadioButton>();
         this.setBounds(0, 0, 500, 500);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        JRadioButton b_1 = new JRadioButton("2");
-        JRadioButton b_2 = new JRadioButton("3");
-        JRadioButton b_3 = new JRadioButton("4");
 
-        b_1.setSelected(true);
-        radioButtons.add(b_1);
-        radioButtons.add(b_2);
-        radioButtons.add(b_3);
 
 
         this.setTitle("Killer Sokoban - Main Menu");
@@ -40,10 +35,37 @@ public class MenuFrame extends JFrame {
 
         JPanel selectWorkerNumber = new JPanel(new GridLayout(1,3,0,0));
 
-        selectWorkerNumber.add(b_1);
-        selectWorkerNumber.add(b_2);
-        selectWorkerNumber.add(b_3);
 
+
+
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(15,1));
+
+        this.add(panel);
+
+        JLabel lbl = new JLabel("Select level: ");
+        lbl.setVisible(true);
+
+        panel.add(lbl);
+
+        String[] levels = { "Level 1","Level 2", "Level 3","Level 4","Level 5","Level 6"};
+
+        final JComboBox<String> cb = new JComboBox<String>(levels);
+
+        cb.setVisible(true);
+        panel.add(cb);
+
+        JLabel lbl2 = new JLabel("Select player number:");
+        lbl2.setVisible(true);
+
+        panel.add(lbl2);
+
+        String[] choices = { "Players 2","Players 3","Players 4"};
+
+        final JComboBox<String> cb2 = new JComboBox<String>(choices);
+
+        cb2.setVisible(true);
+        panel.add(cb2);
 
         startGame.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
@@ -71,9 +93,9 @@ public class MenuFrame extends JFrame {
 
 
 
-        pane.add(startGame, BorderLayout.NORTH);
-        pane.add(exitGame, BorderLayout.SOUTH);
-        pane.add(selectWorkerNumber, BorderLayout.CENTER);
+        panel.add(startGame, BorderLayout.NORTH);
+        panel.add(exitGame, BorderLayout.SOUTH);
+        panel.add(selectWorkerNumber, BorderLayout.CENTER);
         this.setResizable(false);
         this.setVisible(true);
     }
@@ -95,7 +117,12 @@ public class MenuFrame extends JFrame {
     }
     public Warehouse SelectLevel(){
         Warehouse result = new Warehouse();
-
+        try {
+            result=game.GetIO().SetWarehouseFromFile(Resources.Player_4);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        /*
             if(radioButtons.get(0).isSelected()){
                 try {
                     result=game.GetIO().SetWarehouseFromFile(Resources.Player_2);
@@ -118,7 +145,7 @@ public class MenuFrame extends JFrame {
             }
         }
 
-
+        */
         return result;
     }
 

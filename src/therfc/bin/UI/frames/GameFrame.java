@@ -16,7 +16,7 @@ public class GameFrame extends JFrame {
 
     public GameFrame(Game g){
         Container pane = this.getContentPane();
-        this.setBounds(0,0,480, 560);
+        this.setBounds(0,0,650, 780);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         final Controller c = new Controller(g.GetWarehouse().GetWorkers().size());
         this.addKeyListener(c);
