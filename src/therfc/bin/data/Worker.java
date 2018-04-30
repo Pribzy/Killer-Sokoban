@@ -1,6 +1,7 @@
 package therfc.bin.data;
 
 import therfc.bin.main.Logger;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  *
@@ -21,7 +22,8 @@ public class Worker extends Moveable {
     }
 
     public Worker(int p) {
-        this.power = p;
+        //this.power = p;
+        this.power = ThreadLocalRandom.current().nextInt(2,5);
         this.dead=false;
     }
 

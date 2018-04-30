@@ -2,6 +2,8 @@ package therfc.bin.data;
 
 import therfc.bin.main.Logger;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 /**
  *
  */
@@ -19,7 +21,8 @@ public class Box extends Moveable {
     }
 
     public Box(int t) {
-        this.traction = t;
+        //this.traction = t;
+        this.traction = ThreadLocalRandom.current().nextInt(1,5);
     }
 
     /**
