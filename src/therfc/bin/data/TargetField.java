@@ -1,6 +1,13 @@
 package therfc.bin.data;
 import therfc.bin.IO.IO;
 import therfc.bin.main.Logger;
+import therfc.res.Sound;
+
+import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.File;
+import java.io.IOException;
+
+import static javax.sound.sampled.AudioSystem.getAudioInputStream;
 
 /**
  * 
@@ -58,11 +65,23 @@ public class TargetField extends Field {
                 if (this.GetMoveable() == null){
                     previousField.RemoveMoveable(b);
                     this.AddMoveable(b);
+                    try {
+                        Sound sound = new Sound(getAudioInputStream(new File("src\\therfc\\res\\sounds\\DobozSteppableFieldreTolodik.wav")));
+                        sound.Play();
+                    } catch (UnsupportedAudioFileException | IOException e) {
+                        e.printStackTrace();
+                    }
 
                 }
             } else {
                 previousField.RemoveMoveable(b);
                 this.AddMoveable(b);
+                try {
+                    Sound sound = new Sound(getAudioInputStream(new File("src\\therfc\\res\\sounds\\DobozSteppableFieldreTolodik.wav")));
+                    sound.Play();
+                } catch (UnsupportedAudioFileException | IOException e) {
+                    e.printStackTrace();
+                }
 
             }
         } else {
@@ -72,12 +91,24 @@ public class TargetField extends Field {
                     this.SetActive(false);
                     worker.AddPoint();
                     b.Die();
+                    try {
+                        Sound sound = new Sound(getAudioInputStream(new File("src\\therfc\\res\\sounds\\DobozTargetFieldreTolodik.wav")));
+                        sound.Play();
+                    } catch (UnsupportedAudioFileException | IOException e) {
+                        e.printStackTrace();
+                    }
 
                 }
             } else {
                 this.SetActive(false);
                 worker.AddPoint();
                 b.Die();
+                try {
+                    Sound sound = new Sound(getAudioInputStream(new File("src\\therfc\\res\\sounds\\DobozTargetFieldreTolodik.wav")));
+                    sound.Play();
+                } catch (UnsupportedAudioFileException | IOException e) {
+                    e.printStackTrace();
+                }
 
             }
         }

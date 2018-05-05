@@ -1,5 +1,12 @@
 package therfc.bin.data;
 import therfc.bin.main.Logger;
+import therfc.res.Sound;
+
+import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.File;
+import java.io.IOException;
+
+import static javax.sound.sampled.AudioSystem.getAudioInputStream;
 
 /**
  * 
@@ -40,7 +47,12 @@ public class Wall extends Field {
      */
     public void StepOn(Box b, Direction d) { // Ez történik Ha egy doboz Wall-re lép
        // logger.Enter(this, "StepOn", "b,d");
-        //itt semmit nem csinál
+        try {
+            Sound sound = new Sound(getAudioInputStream(new File("src\\therfc\\res\\sounds\\DobozFalraTolodik.wav")));
+            sound.Play();
+        } catch (UnsupportedAudioFileException | IOException e) {
+            e.printStackTrace();
+        }
        // logger.Exit(this, "StepOn", "b stepped on wall");
     }
 

@@ -1,6 +1,8 @@
 package therfc.bin.data;
 import therfc.bin.main.Logger;
 
+import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -24,7 +26,7 @@ public abstract class Field {
      * @param w Megkapja paraméterként a munkást, amit majd a következő mezőre fog tenni
      * @param d Megkapja paraméterként a d irányt, amerre a munkást fogja tenni
      */
-    public abstract void StepOn(Worker w, Direction d);// Ez történik Ha egy munkás  egy mezőre lép
+    public abstract void StepOn(Worker w, Direction d) ;// Ez történik Ha egy munkás  egy mezőre lép
 
     /**
      *

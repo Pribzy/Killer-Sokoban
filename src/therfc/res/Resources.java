@@ -1,11 +1,17 @@
 package therfc.res;
 
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+
 import javax.imageio.ImageIO;
 import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 
 public class Resources {
     //képek
@@ -37,8 +43,7 @@ public class Resources {
     public static Image FourImage_Red;
 
 
-    //hangok
-    public static AudioInputStream WorkerDiedInHoleSound;
+
 
     //pályák
     public static File Player_2;
@@ -75,13 +80,15 @@ public class Resources {
         TwoImage_Red = ImageIO.read(new File("src\\therfc\\res\\images\\two_red.png"));
         ThreeImage_Red = ImageIO.read(new File("src\\therfc\\res\\images\\three_red.png"));
         FourImage_Red = ImageIO.read(new File("src\\therfc\\res\\images\\four_red.png"));
-        //hangok
-//        WorkerDiedInHoleSound = AudioSystem.getAudioInputStream(Resources.class.getResource("res/sounds/puthoney.wav"));
+
+
         //pályák
         Player_2 = new File("src\\therfc\\res\\levels\\level_p2.txt");
         Player_3 = new File("src\\therfc\\res\\levels\\level_p3.txt");
         Player_4 = new File("src\\therfc\\res\\levels\\level_p4.txt");
         test = new File("src\\therfc\\res\\levels\\level_test.txt");
     }
+
+
 
 }

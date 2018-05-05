@@ -2,6 +2,15 @@ package therfc.bin.data;
 
 import therfc.bin.main.Logger;
 
+import therfc.res.Resources;
+import therfc.res.Sound;
+
+import javax.sound.sampled.*;
+import java.io.File;
+import java.io.IOException;
+
+import static javax.sound.sampled.AudioSystem.*;
+
 /**
  *
  */
@@ -35,13 +44,31 @@ public class Hole extends Field {
                 if (this.GetMoveable() == null) {
                     previousField.RemoveMoveable(b);
                     this.AddMoveable(b);
+                    try {
+                        Sound sound = new Sound(getAudioInputStream(new File("src\\therfc\\res\\sounds\\DobozSteppableFieldreTolodik.wav")));
+                        sound.Play();
+                    } catch (UnsupportedAudioFileException | IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             } else {
                 previousField.RemoveMoveable(b);
                 this.AddMoveable(b);
+                try {
+                    Sound sound = new Sound(getAudioInputStream(new File("src\\therfc\\res\\sounds\\DobozSteppableFieldreTolodik.wav")));
+                    sound.Play();
+                } catch (UnsupportedAudioFileException | IOException e) {
+                    e.printStackTrace();
+                }
             }
         } else {
             b.Die();
+            try {
+                Sound sound = new Sound(getAudioInputStream(new File("src\\therfc\\res\\sounds\\DobozLyukbaEsik.wav")));
+                sound.Play();
+            } catch (UnsupportedAudioFileException | IOException e) {
+                e.printStackTrace();
+            }
         }
         //logger.Exit(this, "StepOn", "b stepped on wall");
     }
@@ -69,6 +96,19 @@ public class Hole extends Field {
             }
         } else {
             w.Die();
+
+
+
+            try {
+                Sound sound = new Sound(getAudioInputStream(new File("src\\therfc\\res\\sounds\\WorkerDiedInHole.wav")));
+                sound.Play();
+            } catch (UnsupportedAudioFileException | IOException e) {
+                e.printStackTrace();
+            }
+
+
+
+
         }
        // logger.Exit(this, "StepOn", "w stepped on wall");
     }
