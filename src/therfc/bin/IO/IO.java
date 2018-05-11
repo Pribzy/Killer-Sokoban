@@ -3,6 +3,7 @@ package therfc.bin.IO;
 import therfc.bin.data.*;
 
 import java.io.*;
+import java.util.Random;
 
 public class IO {
 
@@ -85,7 +86,7 @@ public class IO {
      * @return Visszatér a Raktárral
      * @throws Exception
      */
-    public Warehouse GetWarehouseFromFile(File level)throws Exception{ //beállítja a raktárat a fájlból
+    public Warehouse GetWarehouseFromFile(File level, int workernumber)throws Exception{ //beállítja a raktárat a fájlból
         Warehouse newWarehouse= new Warehouse();
         Hole hole;
         for (int k = 0; k < LoadLevel(level).length; k++) {
@@ -117,9 +118,9 @@ public class IO {
                 }
                 else  if(LoadLevel(level)[k].charAt(l)=='W'){
                     SteppableField steppableField = new SteppableField();
-                    Worker w = new Worker(1);
-                    steppableField.AddMoveable(w);
-                    newWarehouse.AddWorker(w);
+                    //Worker w = new Worker(1);
+                    //steppableField.AddMoveable(w);
+                    //newWarehouse.AddWorker(w);
                     newWarehouse.AddField(steppableField);
                 }
                 else  if(LoadLevel(level)[k].charAt(l)=='B'){
@@ -129,8 +130,21 @@ public class IO {
                     newWarehouse.AddBox(b);
                     newWarehouse.AddField(steppableField);
                 }
-
             }
+
+        }
+
+        Random rand = new Random();
+
+        for(int i=0;i<workernumber;i++){
+            int index = rand.nextInt(400);
+            while(newWarehouse.GetFieldFromIndex(index).GetMoveable()!=null || !(newWarehouse.GetFieldFromIndex(index) instanceof SteppableField)){
+                index= rand.nextInt(400);
+            }
+            //System.out.println(index+ " "+ newWarehouse.GetFieldFromIndex(index).getClass().toString());
+            Worker w = new Worker(1);
+            newWarehouse.GetFieldFromIndex(index).AddMoveable(w);
+            newWarehouse.AddWorker(w);
         }
         SetSwitchToHole(level,newWarehouse); //a váltók hozzárendelése a lyukakhoz
         SetNeighBors(newWarehouse);

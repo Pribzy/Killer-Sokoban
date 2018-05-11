@@ -42,7 +42,7 @@ public class Resources {
     public static Image ThreeImage_Red;
     public static Image FourImage_Red;
 
-
+    public static Image Level1Pic;
 
 
     //pályák
@@ -80,6 +80,8 @@ public class Resources {
         TwoImage_Red = ImageIO.read(new File("src\\therfc\\res\\images\\two_red.png"));
         ThreeImage_Red = ImageIO.read(new File("src\\therfc\\res\\images\\three_red.png"));
         FourImage_Red = ImageIO.read(new File("src\\therfc\\res\\images\\four_red.png"));
+
+        Level1Pic = ImageIO.read(new File("src\\therfc\\res\\images\\level1.jpeg"));
 
 
         //pályák

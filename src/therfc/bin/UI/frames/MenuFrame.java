@@ -7,10 +7,17 @@ import therfc.bin.data.Game;
 import therfc.bin.data.Warehouse;
 import therfc.res.Resources;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.event.PopupMenuEvent;
+import javax.swing.event.PopupMenuListener;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +25,8 @@ public class MenuFrame extends JFrame {
 
     private List<JRadioButton> radioButtons;
     private Game game = Game.GetInstance();
+    private int playerIndex=2;
+    private JLabel picLabel;
 
     public MenuFrame() {
 
@@ -27,6 +36,7 @@ public class MenuFrame extends JFrame {
         this.setBounds(0, 0, 500, 500);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        picLabel = new JLabel(new ImageIcon(Resources.Level1Pic));
 
 
         this.setTitle("Killer Sokoban - Main Menu");
@@ -40,33 +50,79 @@ public class MenuFrame extends JFrame {
 
 
         JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(15,1));
+        JPanel felso = new JPanel();
+        felso.setLayout(new GridLayout(7,1));
+        panel.setLayout(new GridLayout(2,1));
 
         this.add(panel);
 
         JLabel lbl = new JLabel("Select level: ");
         lbl.setVisible(true);
 
-        panel.add(lbl);
+        felso.add(lbl);
 
         String[] levels = { "Level 1","Level 2", "Level 3","Level 4","Level 5","Level 6"};
 
         final JComboBox<String> cb = new JComboBox<String>(levels);
 
+        cb.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int c=cb.getSelectedIndex();
+                picLabel.removeAll();
+                switch(c){
+                    case 0:
+                        System.out.println("ittvagyok");
+                        picLabel.setIcon(new ImageIcon(Resources.CloseHoleImage));
+
+                        //picLabel = new JLabel(new ImageIcon(Resources.BoxImage));
+                        break;
+                    case 1:
+                        picLabel = new JLabel(new ImageIcon(Resources.OilImage));
+                        break;
+                    case 2:
+                        System.out.println("A kurva anyád");
+                        picLabel = new JLabel(new ImageIcon(Resources.InActiveTargetFieldImage));
+                        break;
+                    case 3:
+                        picLabel = new JLabel(new ImageIcon(Resources.HoneyImage));
+                        break;
+                    case 4:
+                        picLabel = new JLabel(new ImageIcon(Resources.Level1Pic));
+                        break;
+                    default:
+                        picLabel = new JLabel(new ImageIcon(Resources.WorkerImage_Player3));
+                        break;
+                }
+                //picLabel.repaint();
+
+
+            }
+        });
+
         cb.setVisible(true);
-        panel.add(cb);
+        felso.add(cb);
+
 
         JLabel lbl2 = new JLabel("Select player number:");
         lbl2.setVisible(true);
 
-        panel.add(lbl2);
+        felso.add(lbl2);
 
         String[] choices = { "Players 2","Players 3","Players 4"};
 
         final JComboBox<String> cb2 = new JComboBox<String>(choices);
 
+
+        cb2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                playerIndex=cb2.getSelectedIndex()+2;
+                System.out.println(playerIndex);
+            }
+        });
         cb2.setVisible(true);
-        panel.add(cb2);
+        felso.add(cb2);
 
         startGame.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
@@ -93,10 +149,12 @@ public class MenuFrame extends JFrame {
         }
 
 
-
-        panel.add(startGame, BorderLayout.NORTH);
-        panel.add(exitGame, BorderLayout.SOUTH);
-        panel.add(selectWorkerNumber, BorderLayout.CENTER);
+        felso.add(startGame, BorderLayout.NORTH);
+        felso.add(exitGame, BorderLayout.SOUTH);
+        felso.add(selectWorkerNumber, BorderLayout.CENTER);
+        panel.add(felso);
+        panel.add(picLabel);
+       // panel.add(new ImageIcon(img));
         this.setResizable(false);
         this.setVisible(true);
     }
@@ -118,7 +176,7 @@ public class MenuFrame extends JFrame {
         IO io = new IO();
         Warehouse result = new Warehouse();
         try {
-            result=io.GetWarehouseFromFile(Resources.Player_4);
+            result=io.GetWarehouseFromFile(Resources.Player_4,playerIndex);
         } catch (Exception e) {
             e.printStackTrace();
         }
