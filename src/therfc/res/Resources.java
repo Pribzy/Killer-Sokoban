@@ -1,17 +1,11 @@
 package therfc.res;
 
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-
 import javax.imageio.ImageIO;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 
 public class Resources {
     //képek
@@ -42,13 +36,16 @@ public class Resources {
     public static Image ThreeImage_Red;
     public static Image FourImage_Red;
 
-    public static Image Level1Pic;
+    public static BufferedImage Level1;
+    public static BufferedImage Level2;
+    public static BufferedImage Level3;
+
 
 
     //pályák
-    public static File Player_2;
-    public static File Player_3;
-    public static File Player_4;
+    public static File Level_1_map;
+    public static File Level_2_map;
+    public static File Level_3_map;
     public static File test;
 
     public static  void load() throws IOException, UnsupportedAudioFileException {
@@ -81,13 +78,15 @@ public class Resources {
         ThreeImage_Red = ImageIO.read(new File("src\\therfc\\res\\images\\three_red.png"));
         FourImage_Red = ImageIO.read(new File("src\\therfc\\res\\images\\four_red.png"));
 
-        Level1Pic = ImageIO.read(new File("src\\therfc\\res\\images\\level1.jpeg"));
+        Level1 = ImageIO.read(new File("src\\therfc\\res\\images\\level1.png"));
+        Level2 = ImageIO.read(new File("src\\therfc\\res\\images\\level2.png"));
+        Level3 = ImageIO.read(new File("src\\therfc\\res\\images\\level3.png"));
 
 
         //pályák
-        Player_2 = new File("src\\therfc\\res\\levels\\level_p2.txt");
-        Player_3 = new File("src\\therfc\\res\\levels\\level_p3.txt");
-        Player_4 = new File("src\\therfc\\res\\levels\\level_p4.txt");
+        Level_1_map = new File("src\\therfc\\res\\levels\\level1.txt");
+        Level_2_map = new File("src\\therfc\\res\\levels\\level2.txt");
+        Level_3_map = new File("src\\therfc\\res\\levels\\level3.txt");
         test = new File("src\\therfc\\res\\levels\\level_test.txt");
     }
 

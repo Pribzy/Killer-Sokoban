@@ -25,8 +25,10 @@ public class MenuFrame extends JFrame {
 
     private List<JRadioButton> radioButtons;
     private Game game = Game.GetInstance();
-    private int playerIndex=2;
-    private JLabel picLabel;
+    private int playerIndex=1;
+    private File level = Resources.Level_1_map;
+    private JPanel picLabel;
+    private BufferedImage img = Resources.Level1;
 
     public MenuFrame() {
 
@@ -35,8 +37,13 @@ public class MenuFrame extends JFrame {
         radioButtons = new ArrayList<JRadioButton>();
         this.setBounds(0, 0, 500, 500);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        picLabel = new JLabel(new ImageIcon(Resources.Level1Pic));
+        picLabel = new JPanel(){
+            @Override
+            protected  void paintComponent(Graphics g){
+                super.paintComponent(g);
+                g.drawImage(img,140,0,null);
+            }
+        };
 
 
         this.setTitle("Killer Sokoban - Main Menu");
@@ -68,35 +75,27 @@ public class MenuFrame extends JFrame {
         cb.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int c=cb.getSelectedIndex();
-                picLabel.removeAll();
-                switch(c){
-                    case 0:
-                        System.out.println("ittvagyok");
-                        picLabel.setIcon(new ImageIcon(Resources.CloseHoleImage));
+                int c=cb.getSelectedIndex()+1;
 
-                        //picLabel = new JLabel(new ImageIcon(Resources.BoxImage));
-                        break;
+                switch(c){
                     case 1:
-                        picLabel = new JLabel(new ImageIcon(Resources.OilImage));
+                        img = Resources.Level1;
+                        level = Resources.Level_1_map;
                         break;
                     case 2:
-                        System.out.println("A kurva anyád");
-                        picLabel = new JLabel(new ImageIcon(Resources.InActiveTargetFieldImage));
+                        img = Resources.Level2;
+                        level = Resources.Level_2_map;
                         break;
                     case 3:
-                        picLabel = new JLabel(new ImageIcon(Resources.HoneyImage));
-                        break;
-                    case 4:
-                        picLabel = new JLabel(new ImageIcon(Resources.Level1Pic));
+                        img = Resources.Level3;
+                        level = Resources.Level_3_map;
                         break;
                     default:
-                        picLabel = new JLabel(new ImageIcon(Resources.WorkerImage_Player3));
+                        img = Resources.Level1;
+                        level = Resources.Level_1_map;
                         break;
                 }
-                //picLabel.repaint();
-
-
+                picLabel.repaint();
             }
         });
 
@@ -176,14 +175,14 @@ public class MenuFrame extends JFrame {
         IO io = new IO();
         Warehouse result = new Warehouse();
         try {
-            result=io.GetWarehouseFromFile(Resources.Player_4,playerIndex);
+            result=io.GetWarehouseFromFile(level,playerIndex);
         } catch (Exception e) {
             e.printStackTrace();
         }
         /*
             if(radioButtons.get(0).isSelected()){
                 try {
-                    result=game.GetIO().SetWarehouseFromFile(Resources.Player_2);
+                    result=game.GetIO().SetWarehouseFromFile(Resources.Level_1_map);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
