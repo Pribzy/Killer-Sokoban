@@ -16,6 +16,9 @@ public class GridComponent extends JPanel {
     private List<GPanel> panels;
     private Game game = Game.GetInstance();
 
+    /**
+     * GridComponent konstruktora
+     */
     public GridComponent() {
         panels = new ArrayList<GPanel>();
         //Beállítja a pálya kezdeti állapotát
@@ -190,9 +193,9 @@ public class GridComponent extends JPanel {
 
     }
 
-
-
-
+    /**
+     *  Frissíti a mezők tartalmát.
+     */
     public void RefreshAllPanels() {
         Logger logger = new Logger();
         for (int i = 0; i < panels.size(); i++) {
@@ -275,12 +278,10 @@ public class GridComponent extends JPanel {
     }
 
 
-
-
-
-
-
-
+    /**
+     *
+     * @param panel - A listához hozzáadja a paraméterként átvett panelt.
+     */
     public void AddPanel(GPanel panel) {
         this.panels.add(panel);
         this.add(panel);

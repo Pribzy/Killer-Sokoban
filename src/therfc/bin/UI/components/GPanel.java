@@ -15,6 +15,10 @@ public class GPanel extends JPanel {
 
     private List<GObject> gObjects;
 
+    /**
+     * GPanel konstruktora
+     */
+
     public GPanel(){
 
         this.setPreferredSize(new Dimension(32,32));
@@ -27,11 +31,19 @@ public class GPanel extends JPanel {
 
     }
 
+    /**
+     * Frissíti a panelen lévő objektumokat és újra kirajzolja az aktuális objektumoka, amik rajta vannak.
+     */
+
     public void Refresh(){
 
         repaint();
     }
 
+    /**
+     *
+     * @param g JPanel átfestéséhez szükséges paraméter
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -43,6 +55,11 @@ public class GPanel extends JPanel {
         }
     }
 
+
+    /**
+     *
+     * @param o - Hozzáad egy GObjektumot a listához.
+     */
     public void AddGObject(GObject o){
 
         gObjects.set(o.GetZIndex()-1,o);

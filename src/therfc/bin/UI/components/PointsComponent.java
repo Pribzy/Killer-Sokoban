@@ -18,6 +18,9 @@ public class PointsComponent extends JPanel {
     private List<JLabel> labels = new ArrayList<JLabel>();
     private Game game = Game.GetInstance();
 
+    /**
+     * PointsComponent konstruktora
+     */
     public PointsComponent() {
         //init labels
 
@@ -54,6 +57,9 @@ public class PointsComponent extends JPanel {
         this.setVisible(true);
     }
 
+    /**
+     * Frissíti a pontszámokat, ezáltal mindig az aktuális pontszámok lesznek kiírva.
+     */
     public void RefreshPoints() {
         repaint();
         for (int i = 0; i <labels.size() ; i++) {
@@ -62,8 +68,5 @@ public class PointsComponent extends JPanel {
         repaint();
 
     }
-
-
-
 
 }
