@@ -68,7 +68,7 @@ public class MenuFrame extends JFrame {
 
         felso.add(lbl);
 
-        String[] levels = { "Level 1","Level 2", "Level 3","Level 4","Level 5","Level 6","Level 7"};
+        String[] levels = { "Endre Bácsi Erdeje","Level 2", "Level 3","Level 4","Level 5","Level 6","Level 7"};
 
         final JComboBox<String> cb = new JComboBox<String>(levels);
 
@@ -142,7 +142,9 @@ public class MenuFrame extends JFrame {
         startGame.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 NewGame();
+               dispose();
             }
+
         });
         exitGame.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {

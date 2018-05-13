@@ -76,7 +76,7 @@ public class Game {
 
            this.gameFrame.EndGameMessage(message,yourWinner );
 
-
+        MenuFrame newGame = new MenuFrame();
 
         //logger.Exit(this,"EndGame","max point player");
 
