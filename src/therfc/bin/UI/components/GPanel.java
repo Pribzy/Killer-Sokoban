@@ -68,8 +68,10 @@ public class GPanel extends JPanel {
 
     }
 
-
-
+    /**
+     *
+     * @return gObjektumok listájával tér vissza.
+     */
     public List<GObject> GetGObjects(){
         return gObjects;
     }
