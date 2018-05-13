@@ -62,13 +62,14 @@ public class Hole extends Field {
                 }
             }
         } else {
-            b.Die();
             try {
                 Sound sound = new Sound(getAudioInputStream(new File("src\\therfc\\res\\sounds\\DobozLyukbaEsik.wav")));
                 sound.Play();
             } catch (UnsupportedAudioFileException | IOException e) {
                 e.printStackTrace();
             }
+            b.Die();
+
         }
         //logger.Exit(this, "StepOn", "b stepped on wall");
     }
@@ -87,10 +88,22 @@ public class Hole extends Field {
             if (moveable != null) {
                 moveable.Push(w, d);
                 if (this.GetMoveable() == null) {
+                    try {
+                        Sound sound = new Sound(getAudioInputStream(new File("src\\therfc\\res\\sounds\\WorkerMove.wav")));
+                        sound.Play();
+                    } catch (UnsupportedAudioFileException | IOException e) {
+                        e.printStackTrace();
+                    }
                     previousField.RemoveMoveable(w);
                     this.AddMoveable(w);
                 }
             } else {
+                try {
+                    Sound sound = new Sound(getAudioInputStream(new File("src\\therfc\\res\\sounds\\WorkerMove.wav")));
+                    sound.Play();
+                } catch (UnsupportedAudioFileException | IOException e) {
+                    e.printStackTrace();
+                }
                 previousField.RemoveMoveable(w);
                 this.AddMoveable(w);
             }
@@ -122,10 +135,11 @@ public class Hole extends Field {
             if (this.GetMoveable() != null) {
                 this.GetMoveable().Die();
             }
+
             this.RemoveTrap();
         }
         this.open = o;
-        //logger.Exit(this, "SetOpen", "hole set to " + String.valueOf(o));
+
     }
 
     /**

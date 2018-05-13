@@ -38,10 +38,22 @@ public class TargetField extends Field {
         if (moveable != null) {
             moveable.Push(w,d);
             if (this.GetMoveable() == null){
+                try {
+                    Sound sound = new Sound(getAudioInputStream(new File("src\\therfc\\res\\sounds\\WorkerMove.wav")));
+                    sound.Play();
+                } catch (UnsupportedAudioFileException | IOException e) {
+                    e.printStackTrace();
+                }
                 previousField.RemoveMoveable(w);
                 this.AddMoveable(w);
             }
         } else {
+            try {
+                Sound sound = new Sound(getAudioInputStream(new File("src\\therfc\\res\\sounds\\WorkerMove.wav")));
+                sound.Play();
+            } catch (UnsupportedAudioFileException | IOException e) {
+                e.printStackTrace();
+            }
             previousField.RemoveMoveable(w);
             this.AddMoveable(w);
         }

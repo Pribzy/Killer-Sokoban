@@ -34,8 +34,20 @@ public class Wall extends Field {
             Field previousField =  neighbors.get(d.OppositeDirection()).GetPreviousField(d);
             Boolean canPushToWall =previousField.GetMoveablePushedToWall();
             if (canPushToWall) {
+                try {
+                    Sound sound = new Sound(getAudioInputStream(new File("src\\therfc\\res\\sounds\\WorkerDiedAtWall.wav")));
+                    sound.Play();
+                } catch (UnsupportedAudioFileException | IOException e) {
+                    e.printStackTrace();
+                }
                 w.Die();
             }
+        }
+        try {
+            Sound sound = new Sound(getAudioInputStream(new File("src\\therfc\\res\\sounds\\WorkerStepOnWall.wav")));
+            sound.Play();
+        } catch (UnsupportedAudioFileException | IOException e) {
+            e.printStackTrace();
         }
         //logger.Exit(this, "StepOn", "w tried to step on wall");
     }

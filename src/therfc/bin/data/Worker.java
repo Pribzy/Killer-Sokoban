@@ -1,10 +1,14 @@
 package therfc.bin.data;
 
 import therfc.bin.main.Logger;
+import therfc.res.Sound;
 
 import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.ThreadLocalRandom;
+
+import static javax.sound.sampled.AudioSystem.getAudioInputStream;
 
 /**
  *
@@ -60,6 +64,14 @@ public class Worker extends Moveable {
                 if (traction <= power) {
                     nextField.StepOn(this, d);
                 }
+                else{
+                    try {
+                        Sound sound = new Sound(getAudioInputStream(new File("src\\therfc\\res\\sounds\\WorkerCantPushBox.wav")));
+                        sound.Play();
+                    } catch (UnsupportedAudioFileException | IOException e) {
+                        e.printStackTrace();
+                    }
+                }
             } else {
                 nextField.StepOn(this, d);
             }
@@ -74,7 +86,12 @@ public class Worker extends Moveable {
      * @param d Átadja paraméterként, hogy melyik irányba lesz tolva
      */
     public void Push(Worker w, Direction d) { //a játékost tolják d irányba
-        //logger.Enter(this, "Push", "w,d");
+        try {
+            Sound sound = new Sound(getAudioInputStream(new File("src\\therfc\\res\\sounds\\WorkerPushWorker.wav")));
+            sound.Play();
+        } catch (UnsupportedAudioFileException | IOException e) {
+            e.printStackTrace();
+        }
         SetPushed(true);
         Field nextField = this.GetField().GetNextField(d);
         nextField.StepOn(this, d);
@@ -206,7 +223,12 @@ public class Worker extends Moveable {
      *
      */
     public void AddHoney(){
-       // logger.Enter(this, "AddHoney","");
+        try {
+            Sound sound = new Sound(getAudioInputStream(new File("src\\therfc\\res\\sounds\\PutDownOilOrHoney.wav")));
+            sound.Play();
+        } catch (UnsupportedAudioFileException | IOException e) {
+            e.printStackTrace();
+        }
         Honey honey = new Honey();
         this.GetField().AddTrap(honey);
        // logger.Exit(this, "AddHoney", logger.GetObjectName(honey));
@@ -224,6 +246,12 @@ public class Worker extends Moveable {
      */
     public void AddOil(){
        // logger.Enter(this, "AddOil","");
+        try {
+            Sound sound = new Sound(getAudioInputStream(new File("src\\therfc\\res\\sounds\\PutDownOilOrHoney.wav")));
+            sound.Play();
+        } catch (UnsupportedAudioFileException | IOException e) {
+            e.printStackTrace();
+        }
         Oil oil = new Oil();
         this.GetField().AddTrap(oil);
        // logger.Exit(this, "AddOil", logger.GetObjectName(oil));

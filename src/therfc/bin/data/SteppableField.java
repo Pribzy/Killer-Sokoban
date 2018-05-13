@@ -35,11 +35,23 @@ public class SteppableField extends Field {
 
                     this.GetMoveable().Push(w, d);
                     if (this.GetMoveable() == null) {
+                        try {
+                            Sound sound = new Sound(getAudioInputStream(new File("src\\therfc\\res\\sounds\\WorkerMove.wav")));
+                            sound.Play();
+                        } catch (UnsupportedAudioFileException | IOException e) {
+                            e.printStackTrace();
+                        }
                         neighbors.get(d.OppositeDirection()).RemoveMoveable(w);
                         this.AddMoveable(w);
                     }
 
         } else {
+            try {
+                Sound sound = new Sound(getAudioInputStream(new File("src\\therfc\\res\\sounds\\WorkerMove.wav")));
+                sound.Play();
+            } catch (UnsupportedAudioFileException | IOException e) {
+                e.printStackTrace();
+            }
             neighbors.get(d.OppositeDirection()).RemoveMoveable(w);
             this.AddMoveable(w);
         }

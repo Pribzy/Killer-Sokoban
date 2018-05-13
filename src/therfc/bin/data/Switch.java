@@ -1,6 +1,13 @@
 package therfc.bin.data;
 
 import therfc.bin.main.Logger;
+import therfc.res.Sound;
+
+import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.File;
+import java.io.IOException;
+
+import static javax.sound.sampled.AudioSystem.getAudioInputStream;
 
 /**
  *
@@ -28,10 +35,22 @@ public class Switch extends Field {
         if (this.GetMoveable() != null) {
             this.GetMoveable().Push(w, d);
             if (this.GetMoveable() == null) {
+                try {
+                    Sound sound = new Sound(getAudioInputStream(new File("src\\therfc\\res\\sounds\\WorkerMove.wav")));
+                    sound.Play();
+                } catch (UnsupportedAudioFileException | IOException e) {
+                    e.printStackTrace();
+                }
                 previousField.RemoveMoveable(w);
                 this.AddMoveable(w);
             }
         } else {
+            try {
+                Sound sound = new Sound(getAudioInputStream(new File("src\\therfc\\res\\sounds\\WorkerMove.wav")));
+                sound.Play();
+            } catch (UnsupportedAudioFileException | IOException e) {
+                e.printStackTrace();
+            }
             previousField.RemoveMoveable(w);
             this.AddMoveable(w);
         }
@@ -51,6 +70,12 @@ public class Switch extends Field {
             if (this.GetMoveable() == null) {
                 previousField.RemoveMoveable(b);
                 this.AddMoveable(b);
+                try {
+                    Sound sound = new Sound(getAudioInputStream(new File("src\\therfc\\res\\sounds\\HoleOpen.wav")));
+                    sound.Play();
+                } catch (UnsupportedAudioFileException | IOException e) {
+                    e.printStackTrace();
+                }
                 hole.SetOpen(true);
 
             }
@@ -78,6 +103,12 @@ public class Switch extends Field {
     public void RemoveMoveable(Moveable m) {
         //logger.Enter(this,"RemoveMoveable",logger.GetObjectName(m));
         this.moveable = null;
+        try {
+            Sound sound = new Sound(getAudioInputStream(new File("src\\therfc\\res\\sounds\\HoleClose.wav")));
+            sound.Play();
+        } catch (UnsupportedAudioFileException | IOException e) {
+            e.printStackTrace();
+        }
         hole.SetOpen(false);
         Game game = Game.GetInstance();
         if (logger.GetObjectName(m) == "Box") {

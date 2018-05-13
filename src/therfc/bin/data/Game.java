@@ -5,12 +5,17 @@ import therfc.bin.UI.frames.GameFrame;
 import therfc.bin.UI.frames.MenuFrame;
 import therfc.bin.main.Logger;
 import therfc.res.Resources;
+import therfc.res.Sound;
 
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.File;
+import java.io.IOException;
+
+import static javax.sound.sampled.AudioSystem.getAudioInputStream;
 
 /**
  * 
@@ -61,7 +66,12 @@ public class Game {
     public  void EndGame(String message ) { //ha vége a játéknak,ez a függvény hívódik meg
         //logger.Enter(this,"EndGame","");
 
-
+        try {
+            Sound sound = new Sound(getAudioInputStream(new File("src\\therfc\\res\\sounds\\GameEnd.wav")));
+            sound.Play();
+        } catch (UnsupportedAudioFileException | IOException e) {
+            e.printStackTrace();
+        }
         Worker yourWinner=level.GetMaxPointPlayer(); //visszaadja a legnagyobb pontú játékost ami eddig történt
 
            this.gameFrame.EndGameMessage(message,yourWinner );

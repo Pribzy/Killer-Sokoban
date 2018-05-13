@@ -124,7 +124,7 @@ public class MenuFrame extends JFrame {
 
         felso.add(lbl2);
 
-        String[] choices = { "Players 2","Players 3","Players 4"};
+        String[] choices = { "2 players","3 players","4 players"};
 
         final JComboBox<String> cb2 = new JComboBox<String>(choices);
 
