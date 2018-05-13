@@ -9,14 +9,22 @@ public class GSwitch extends GObject {
 
     private Switch myswitch;
 
-    public GSwitch(Switch s){
-        this.myswitch=s;
-        img= Resources.SwitchImage;
-        this.z_index=1;
+    /**
+     *
+     * @param s Átadja paraméterként a váltót, amit meg fog jeleníteni
+     */
+    public GSwitch(Switch s) {
+        this.myswitch = s;
+        img = Resources.SwitchImage;
+        this.z_index = 1;
     }
 
+    /**
+     *
+     * @param g JPanel átfestéséhez szükséges paraméter
+     */
     @Override
     public void DrawGraphic(Graphics g) {
-        g.drawImage(img, 0,0,null);
+        g.drawImage(img, 0, 0, null);
     }
 }

@@ -30,6 +30,9 @@ public class MenuFrame extends JFrame {
     private JPanel picLabel;
     private BufferedImage img = Resources.Level1;
 
+    /**
+     * MenuFram konstruktora
+     */
     public MenuFrame() {
 
 
@@ -175,6 +178,10 @@ public class MenuFrame extends JFrame {
         this.setResizable(false);
         this.setVisible(true);
     }
+
+    /**
+     * Az új játékot elindító függvény. Az alapján indítja el az új játékot, amiket kiválasztottunk a menüben
+     */
     public void NewGame(){
         Warehouse newWarehouse;
         try {
@@ -185,10 +192,18 @@ public class MenuFrame extends JFrame {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Kilép a jétékból
+     */
     public void ExitGame(){
         System.exit(1);
     }
 
+    /**
+     *
+     * @return A menüben választottak alapján visszaadja az annak megfelelő Warehouse-t
+     */
     public Warehouse SelectLevel(){
         IO io = new IO();
         Warehouse result = new Warehouse();
