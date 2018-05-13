@@ -30,8 +30,18 @@ public class PointsComponent extends JPanel {
             GPanel gPanel = new GPanel();
             gPanel.AddGObject(new GWorker(game.GetWarehouse().GetWorkers().get(i)));
             gPanel.Refresh();
-            playerStaticsPanel.add(gPanel,BorderLayout.LINE_START);
-            playerStaticsPanel.add(labels.get(i),BorderLayout.LINE_END);
+
+            JPanel playerIconAndPoint = new JPanel();
+
+            playerIconAndPoint.add(gPanel,BorderLayout.LINE_START);
+            playerIconAndPoint.add(labels.get(i),BorderLayout.LINE_END);
+            JPanel playerNumber = new JPanel();
+            playerNumber.add(new JLabel((i+1)+". PLAYER: "),BorderLayout.CENTER);
+
+
+            playerStaticsPanel.add(playerNumber,BorderLayout.SOUTH);
+            playerStaticsPanel.add(playerIconAndPoint,BorderLayout.NORTH);
+
             playerStaticsPanel.setVisible(true);
             this.add(playerStaticsPanel,BorderLayout.CENTER);
 
@@ -39,7 +49,7 @@ public class PointsComponent extends JPanel {
 
         }
 
-        this.setPreferredSize(new Dimension(480,40));
+        this.setPreferredSize(new Dimension(480,80));
         this.setLayout(new GridLayout(1,game.GetWarehouse().GetWorkers().size(),0,0));
         this.setVisible(true);
     }

@@ -38,7 +38,7 @@ public class GBox extends GObject {
     public void DrawGraphic(Graphics g) {
 
        g.drawImage(img, 0,0,null );
-        g.drawImage(tractionImage, 4,4,null );
+        g.drawImage(tractionImage, 16,16,null );
 
     }
 

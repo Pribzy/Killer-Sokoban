@@ -44,7 +44,7 @@ public class GameFrame extends JFrame {
 
     public void EndGameMessage(String message,Worker worker){
         JOptionPane.showMessageDialog(this,
-                "Hey "+((worker.GetWarehouse().GetWorkers().indexOf(worker))+1)+". Player!\n\nYOUR WINNER!\n\nYour Points: "+worker.GetPoints(),"Game Over - "+message,JOptionPane.PLAIN_MESSAGE );
+                "Hey "+((worker.GetWarehouse().GetWorkers().indexOf(worker))+1)+". PLAYER!\n\nYOUR WINNER!\n\nYour Points: "+worker.GetPoints(),"Game Over - "+message,JOptionPane.PLAIN_MESSAGE );
     }
 
 

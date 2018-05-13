@@ -71,7 +71,7 @@ public class Switch extends Field {
                 previousField.RemoveMoveable(b);
                 this.AddMoveable(b);
                 try {
-                    Sound sound = new Sound(getAudioInputStream(new File("src\\therfc\\res\\sounds\\HoleOpen.wav")));
+                    Sound sound = new Sound(getAudioInputStream(new File("src\\therfc\\res\\sounds\\HoleClose.wav")));
                     sound.Play();
                 } catch (UnsupportedAudioFileException | IOException e) {
                     e.printStackTrace();
@@ -80,6 +80,12 @@ public class Switch extends Field {
 
             }
         } else {
+            try {
+                Sound sound = new Sound(getAudioInputStream(new File("src\\therfc\\res\\sounds\\HoleClose.wav")));
+                sound.Play();
+            } catch (UnsupportedAudioFileException | IOException e) {
+                e.printStackTrace();
+            }
             previousField.RemoveMoveable(b);
             this.AddMoveable(b);
             hole.SetOpen(true);
@@ -104,20 +110,17 @@ public class Switch extends Field {
         //logger.Enter(this,"RemoveMoveable",logger.GetObjectName(m));
         this.moveable = null;
         try {
-            Sound sound = new Sound(getAudioInputStream(new File("src\\therfc\\res\\sounds\\HoleClose.wav")));
+            Sound sound = new Sound(getAudioInputStream(new File("src\\therfc\\res\\sounds\\HoleOpen.wav")));
             sound.Play();
         } catch (UnsupportedAudioFileException | IOException e) {
             e.printStackTrace();
         }
         hole.SetOpen(false);
-        Game game = Game.GetInstance();
-        if (logger.GetObjectName(m) == "Box") {
-            System.out.println("Switch Off");
-            game.GetIO().WriteToFileByLine("Switch Off");
+
+
         }
         // logger.Exit(this,"RemoveMoveable",logger.GetObjectName(m)+" removed from "+logger.GetObjectName(this));
 
     }
 
 
-}
