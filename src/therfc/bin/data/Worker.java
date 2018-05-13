@@ -26,7 +26,7 @@ public class Worker extends Moveable {
 
     public Worker(int p) {
         //this.power = p;
-        this.power = ThreadLocalRandom.current().nextInt(2,5);
+        this.power = ThreadLocalRandom.current().nextInt(3,5);
         this.dead=false;
     }
 

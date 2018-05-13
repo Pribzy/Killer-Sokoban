@@ -22,7 +22,7 @@ public class Box extends Moveable {
 
     public Box(int t) {
         //this.traction = t;
-        this.traction = ThreadLocalRandom.current().nextInt(1,5);
+        this.traction = ThreadLocalRandom.current().nextInt(1,3);
     }
 
     /**
