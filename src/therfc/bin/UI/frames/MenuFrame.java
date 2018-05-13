@@ -68,7 +68,7 @@ public class MenuFrame extends JFrame {
 
         felso.add(lbl);
 
-        String[] levels = { "Endre Bácsi Erdeje","Level 2", "Level 3","Level 4","Level 5","Level 6","Level 7"};
+        String[] levels = { "Endre Bácsi Erdeje","Projlab Penetráló", "Szoftech Szurdok","Goldschmidt Graveyard","Simon Siratója","Szirmay Szoros","Szebi Szivatója"};
 
         final JComboBox<String> cb = new JComboBox<String>(levels);
 

@@ -99,14 +99,13 @@ public class Resources {
 
 
         //pályák
-        Level_1_map = new File("src\\therfc\\res\\levels\\level1.txt");
-        Level_2_map = new File("src\\therfc\\res\\levels\\level2.txt");
-        Level_3_map = new File("src\\therfc\\res\\levels\\level3.txt");
-        Level_4_map = new File("src\\therfc\\res\\levels\\level4.txt");
-        Level_5_map = new File("src\\therfc\\res\\levels\\level5.txt");
-        Level_6_map = new File("src\\therfc\\res\\levels\\level6.txt");
-        Level_7_map = new File("src\\therfc\\res\\levels\\level7.txt");
-        test = new File("src\\therfc\\res\\levels\\level_test.txt");
+        Level_1_map = new File("src\\therfc\\res\\levels\\endrebacsierdeje.txt");
+        Level_2_map = new File("src\\therfc\\res\\levels\\projlabpenetralo.txt");
+        Level_3_map = new File("src\\therfc\\res\\levels\\szoftechszurdok.txt");
+        Level_4_map = new File("src\\therfc\\res\\levels\\goldsmithgraveyard.txt");
+        Level_5_map = new File("src\\therfc\\res\\levels\\simonsiratoja.txt");
+        Level_6_map = new File("src\\therfc\\res\\levels\\szirmayszoros.txt");
+        Level_7_map = new File("src\\therfc\\res\\levels\\szebiszivatoja.txt");
     }
 
 
