@@ -68,7 +68,7 @@ public class MenuFrame extends JFrame {
 
         felso.add(lbl);
 
-        String[] levels = { "Level 1","Level 2", "Level 3","Level 4","Level 5","Level 6"};
+        String[] levels = { "Level 1","Level 2", "Level 3","Level 4","Level 5","Level 6","Level 7"};
 
         final JComboBox<String> cb = new JComboBox<String>(levels);
 
@@ -89,6 +89,22 @@ public class MenuFrame extends JFrame {
                     case 3:
                         img = Resources.Level3;
                         level = Resources.Level_3_map;
+                        break;
+                    case 4:
+                        img = Resources.Level4;
+                        level = Resources.Level_4_map;
+                        break;
+                    case 5:
+                        img = Resources.Level5;
+                        level = Resources.Level_5_map;
+                        break;
+                    case 6:
+                        img = Resources.Level6;
+                        level = Resources.Level_6_map;
+                        break;
+                    case 7:
+                        img = Resources.Level7;
+                        level = Resources.Level_7_map;
                         break;
                     default:
                         img = Resources.Level1;

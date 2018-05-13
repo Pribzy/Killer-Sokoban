@@ -39,6 +39,11 @@ public class Resources {
     public static BufferedImage Level1;
     public static BufferedImage Level2;
     public static BufferedImage Level3;
+    public static BufferedImage Level4;
+    public static BufferedImage Level5;
+    public static BufferedImage Level6;
+    public static BufferedImage Level7;
+
 
 
 
@@ -46,7 +51,13 @@ public class Resources {
     public static File Level_1_map;
     public static File Level_2_map;
     public static File Level_3_map;
+    public static File Level_4_map;
+    public static File Level_5_map;
+    public static File Level_6_map;
+    public static File Level_7_map;
+
     public static File test;
+
 
     public static  void load() throws IOException, UnsupportedAudioFileException {
         //képek
@@ -81,12 +92,20 @@ public class Resources {
         Level1 = ImageIO.read(new File("src\\therfc\\res\\images\\level1.png"));
         Level2 = ImageIO.read(new File("src\\therfc\\res\\images\\level2.png"));
         Level3 = ImageIO.read(new File("src\\therfc\\res\\images\\level3.png"));
+        Level4 = ImageIO.read(new File("src\\therfc\\res\\images\\level4.png"));
+        Level5 = ImageIO.read(new File("src\\therfc\\res\\images\\level5.png"));
+        Level6 = ImageIO.read(new File("src\\therfc\\res\\images\\level6.png"));
+        Level7 = ImageIO.read(new File("src\\therfc\\res\\images\\level7.png"));
 
 
         //pályák
         Level_1_map = new File("src\\therfc\\res\\levels\\level1.txt");
         Level_2_map = new File("src\\therfc\\res\\levels\\level2.txt");
         Level_3_map = new File("src\\therfc\\res\\levels\\level3.txt");
+        Level_4_map = new File("src\\therfc\\res\\levels\\level4.txt");
+        Level_5_map = new File("src\\therfc\\res\\levels\\level5.txt");
+        Level_6_map = new File("src\\therfc\\res\\levels\\level6.txt");
+        Level_7_map = new File("src\\therfc\\res\\levels\\level7.txt");
         test = new File("src\\therfc\\res\\levels\\level_test.txt");
     }
 
