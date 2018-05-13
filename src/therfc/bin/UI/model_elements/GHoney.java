@@ -10,15 +10,21 @@ public class GHoney extends GObject {
 
     private Honey honey;
 
-    public GHoney(Honey s){
-        this.honey=s;
-        img= Resources.HoneyImage;
-        this.z_index=2;
+    /**
+     * @param s Átadja paraméterként a mézet, amit meg fog jeleníteni
+     */
+    public GHoney(Honey s) {
+        this.honey = s;
+        img = Resources.HoneyImage;
+        this.z_index = 2;
 
     }
 
+    /**
+     * @param g JPanel átfestéséhez szükséges paraméter
+     */
     @Override
     public void DrawGraphic(Graphics g) {
-        g.drawImage(img, 0,0,null);
+        g.drawImage(img, 0, 0, null);
     }
 }

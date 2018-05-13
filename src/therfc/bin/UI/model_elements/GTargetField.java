@@ -9,21 +9,25 @@ public class GTargetField extends GObject {
 
     private TargetField targetfield;
 
-    public GTargetField(TargetField t){
-        this.targetfield=t;
-        if(t.GetActive()) {
+    /**
+     * @param t Átadja paraméterként azt a célmezőt, amit meg fog jeleníteni
+     */
+    public GTargetField(TargetField t) {
+        this.targetfield = t;
+        if (t.GetActive()) {
             img = Resources.ActiveTargetFieldImage;
-        }
-        else if(!t.GetActive()){
+        } else if (!t.GetActive()) {
             img = Resources.InActiveTargetFieldImage;
         }
-        this.z_index=1;
+        this.z_index = 1;
 
     }
 
-
+    /**
+     * @param g JPanel átfestéséhez szükséges paraméter
+     */
     @Override
     public void DrawGraphic(Graphics g) {
-        g.drawImage(img, 0,0,null);
+        g.drawImage(img, 0, 0, null);
     }
 }
