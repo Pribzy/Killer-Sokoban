@@ -95,16 +95,15 @@ public class Hole extends Field {
                 this.AddMoveable(w);
             }
         } else {
-            w.Die();
-
-
-
             try {
                 Sound sound = new Sound(getAudioInputStream(new File("src\\therfc\\res\\sounds\\WorkerDiedInHole.wav")));
                 sound.Play();
             } catch (UnsupportedAudioFileException | IOException e) {
                 e.printStackTrace();
             }
+            w.Die();
+
+
 
 
 
