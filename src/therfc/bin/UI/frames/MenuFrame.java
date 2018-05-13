@@ -25,7 +25,7 @@ public class MenuFrame extends JFrame {
 
     private List<JRadioButton> radioButtons;
     private Game game = Game.GetInstance();
-    private int playerIndex=1;
+    private int playerIndex=2;
     private File level = Resources.Level_1_map;
     private JPanel picLabel;
     private BufferedImage img = Resources.Level1;
